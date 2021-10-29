@@ -1,0 +1,44 @@
+/* Order section in the full view */
+/*
+Details
+View Online
+Links
+Send to
+Citations
+Tags
+*/
+
+[aria-label="Top"] { order: 0 !important;}
+[aria-label="Details"] { order: 1 !important;}
+[aria-label="View Online"] { order: 3 !important;}
+[aria-label="Get It"] { order: 4 !important;}
+[aria-label="Additional Services"] { order: 6 !important;}
+[aria-label="Virtual Browse"] { order: 6 !important;}
+[aria-label="Online Access"] { order: 7 !important;}
+[aria-label="In the library"] { order: 8 !important;}
+[aria-label="Locations / request item"] { order: 9 !important;}
+[aria-label="View It"] { order: 10 !important;}
+[aria-label="Links"] { order: 11 !important;}
+[aria-label="Send to"] { order: 12 !important;}
+[aria-label="Citations"] { order: 13 !important;}
+[aria-label="citationTrails"] { order: 13 !important;}
+[aria-label="Tags"] { order: 14 !important;}
+
+
+/* Moving Order of tabs in New UI */
+#details { order: 0; }
+#details { order: 1; }
+#getit_link1_0 { order: 2; }
+#getit_link2_0 { order: 3; }
+#links { order: 4; }
+#action_list { order: 5; } /* send to */
+#citations { order: 6; }
+#virtualBrowse { order: 7; }
+#citationTrails  { order: 7; }
+#tags { order: 8; }
+.syndetic-unbound-section { order: 9; }
+.full-view-inner-container {
+padding-bottom: 10em;
+display: flex;
+flex-direction: column;
+}

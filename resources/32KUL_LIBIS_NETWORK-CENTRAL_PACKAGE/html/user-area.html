@@ -1,0 +1,53 @@
+<div id="user_area_after" 
+class="view-switcher layout-align-end-center layout-row flex-noshrink"
+style="height: 100%;"
+layout-align="end center" 
+layout="row" flex="noshrink" 
+aria-hidden="false" 
+>
+
+
+	<div ng-show="$parent.$ctrl.userName().length == 0" ng-click="signIn()"
+	class="view-switcher layout-align-end-center layout-row flex-noshrink" style="height: 100%" layout-align="end center" layout="row" flex="noshrink" 
+	id="library_card_button_not_signed_in" >
+		<button 
+		class="md-icon-button md-button md-primoExplore-theme md-ink-ripple" 
+		style="background-color: rgba(0,0,0,.1);"
+		aria-label="Go to my account" ng-show="$parent.$ctrl.userName().length == 0" ng-click="signIn()">
+			<md-icon md-svg-icon="primo-ui:account-card-details" aria-label="icon-account-card-details" class="md-primoExplore-theme"
+			 aria-hidden="true">
+				<svg width="100%" height="100%" viewBox="0 0 24 24" y="1176" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet"
+				 focusable="false">
+					<path d="M2,3H22C23.05,3 24,3.95 24,5V19C24,20.05 23.05,21 22,21H2C0.95,21 0,20.05 0,19V5C0,3.95 0.95,3 2,3M14,6V7H22V6H14M14,8V9H21.5L22,9V8H14M14,10V11H21V10H14M8,13.91C6,13.91 2,15 2,17V18H14V17C14,15 10,13.91 8,13.91M8,6A3,3 0 0,0 5,9A3,3 0 0,0 8,12A3,3 0 0,0 11,9A3,3 0 0,0 8,6Z"></path>
+				</svg>
+			</md-icon>
+		</button>
+		<md-tooltip md-delay="400" md-direction="bottom" class="md-primoExplore-theme _md-show" role="tooltip" id="library_card_button_not_signed_in_tooltip">
+			<span>Sign in to My Account</span>
+		</md-tooltip>
+	</div>
+
+	<div ng-show="$parent.$ctrl.userName().length > 0">
+
+	<div id="user_name" class="user-name">{{$parent.$ctrl.userName()}}</div>
+	<div id="library_card_button_signed_in">
+		<prm-library-card-menu id="library_card_button" ng-show="$parent.$ctrl.userName().length > 0"></prm-library-card-menu>
+		<md-tooltip md-delay="400" md-direction="bottom" class="md-primoExplore-theme _md-show" role="tooltip" id="library_card_button_not_signed_in_tooltip">
+			<span>Go to My Library account</span>
+		</md-tooltip>
+	</div>
+	</div>
+
+	<button id="mobile_menu" class="mobile-menu-button zero-margin md-button md-primoExplore-theme md-ink-ripple hide-gt-xs"
+	 type="button" aria-label="Open user actions menu button" (click)="$ctrl.enableMobileMenu()" style="min-width: 60px" hide-gt-xs>
+		<prm-icon [icon-type]="::$ctrl.topBarIcons.more.type" [svg-icon-set]="::$ctrl.topBarIcons.more.iconSet" [icon-definition]="::$ctrl.topBarIcons.more.icon">
+			<md-icon md-svg-icon="primo-ui:dots-horizontal" aria-label="icon-dots-horizontal" class="md-primoExplore-theme" aria-hidden="true">
+				<svg id="dots-horizontal_cache305" width="100%" height="100%" viewBox="0 0 24 24" y="120" xmlns="http://www.w3.org/2000/svg"
+				 fit preserveAspectRatio="xMidYMid meet" focusable="false">
+					<path d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z">
+					</path>
+				</svg>
+			</md-icon>
+		</prm-icon>
+	</button>
+</div>

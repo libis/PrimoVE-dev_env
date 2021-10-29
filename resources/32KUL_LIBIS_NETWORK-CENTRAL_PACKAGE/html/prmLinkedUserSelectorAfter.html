@@ -1,0 +1,19 @@
+<div layout="column" id="prmLinkedUserSelectorAfter">
+
+<div id="signout_div">
+	<button class="sign_out_button button-with-icon zero-margin md-button md-primoExplore-theme md-ink-ripple" 
+    ng-click="signOut()" aria-label="Sign out"
+        id="sign_out_button">
+		<span>Sign out</span>
+	</button>
+</div>
+
+
+<!--
+<prm-authentication id="sign_out_button" class="sign_out_buttonV" layout="flex" [is-logged-in]="$parent.$parent.$ctrl.userName().length > 0" ng-show="notShib"></prm-authentication>
+<prm-authentication id="sign_out_button"></prm-authentication>
+$ctrl.loginIframeService.loginService.userSessionManagerService.isLoggedInIDP()
+$ctrl.loginIframeService.loginService.userSessionManagerService.userLogout()
+$ctrl.userSessionManagerService.userLogout()
+-->
+</div>
