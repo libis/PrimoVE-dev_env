@@ -1,0 +1,52 @@
+<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+</style>
+
+<md-content layout-xs="column" layout="row" class="display-block-xs">
+    <div flex-xs="100" flex="60" layout="column">
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <a href="http://www.thomasmore.be/bibliotheek/hulp-nodig-bij-limo" target="_blank" id="limo_content_link" aria-label="Link to info about content in Limo"
+                   title="Link to info about content in Limo">
+                    <span class="md-headline" id="ContentInLimo">
+                        Wat vind je in Limo?
+                    </span>
+                </a>
+                <h3>Volledige inhoud</h3>
+                <p>Je vindt miljoenen bronnen terug: online artikels en e-tijdschriften, boeken & e-books, tijdschriften, databanken en allerlei andere soorten bronnen.</p>
+                <h3>Campus</h3>
+                <p>Door je campus te selecteren, beperk je je zoekopdracht tot lokale bronnen: boeken en tijdschriften op het rek, e-books, e-tijdschriften, enz.</p>
+
+            </md-card-content>
+        </md-card>
+
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <a href="/KULeuven_TMOREK" onclick="document.location.href = '/KULeuven_TMOREK'"><img src="custom/32KUL_KHK-TMOREK/img/library-logo-kul.png" /></a>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div flex-xs="100" flex="40" layout="column">
+                <prm-news parent-Ctrl='$ctrl'></prm-news>
+                <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+                    <md-card-content>
+                        <a href="/primo-explore/account?section=overview&amp;vid=TMOREK&amp;" id="my_library_account" aria-label="Link to my Library Account" title="Link to my Library Account" class="md-primoExplore-theme">
+                          <md-icon md-svg-icon="primo-ui:account-card-details" aria-label="icon-account-card-details" class="md-primoExplore-theme" aria-hidden="true"><svg id="account-card-details" width="100%" height="100%" viewBox="0 0 24 24" y="1176" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                          <path d="M2,3H22C23.05,3 24,3.95 24,5V19C24,20.05 23.05,21 22,21H2C0.95,21 0,20.05 0,19V5C0,3.95 0.95,3 2,3M14,6V7H22V6H14M14,8V9H21.5L22,9V8H14M14,10V11H21V10H14M8,13.91C6,13.91 2,15 2,17V18H14V17C14,15 10,13.91 8,13.91M8,6A3,3 0 0,0 5,9A3,3 0 0,0 8,12A3,3 0 0,0 11,9A3,3 0 0,0 8,6Z"></path>
+                          </svg></md-icon>
+                          <span class="md-headline">
+                            Mijn bibliotheekaccount
+                          </span>
+                        </a>
+                        <br>
+                         <a href="https://services.libis.be/library_info/" target="_blank" id="find_library" aria-label="Find Library Contact Info" title="Find Library Contact Info" class="md-primoExplore-theme">
+                         <span class="md-headline" id="ContentFindLibrary">
+                             Zoek bibliotheek
+                         </span>
+                         </a>
+                         <br>
+                        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+                    </md-card-content>
+                </md-card>
+    </div>
+</md-content>

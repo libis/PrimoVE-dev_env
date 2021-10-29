@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_KHM",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-khm.primo.exlibrisgroup.com/",
+    "institution": "32KUL_KHM",
+    "vidId": "TMOREMA",
+    "views": [
+      "TMOREMA"
+    ]
+  }
+}
