@@ -1,0 +1,32 @@
+<div class="neutralized-button layout-full-width layout-display-flex md-button" tabindex="0" layout="flex" ng-click="$ctrl.onClick()" aria-label="{{$ctrl.location.librarycodeTranslation}} {{$ctrl.location.subLocation | translate}},
+                        {{'fulldisplay.availabilty.' + $ctrl.location.availabilityStatus | translate}},
+                         {{$ctrl.getButtonActionLabel() | translate}}" md-ink-ripple="red">
+  <div layout="row" flex="100" layout-align="space-between center">
+    <div class="md-list-item-text" layout="row" layout-wrap flex>
+      <div flex flex-xs="100">
+        <h3 ng-if="$ctrl.location && $ctrl.getLibraryName($ctrl.location)">
+          <span>{{$ctrl.location.librarycodeTranslation}}</span>
+          <custom-lib-info location-code="$ctrl.location.mainLocation"></custom-lib-info>
+        </h3>
+        <h5 ng-if="$ctrl.location.relatedTitle != null && $ctrl.location.relatedTitle !== ''" class="related-title">
+          <prm-icon icon-type="{{$ctrl.opacLocations.relatedArrow.type}}" svg-icon-set="{{$ctrl.opacLocations.relatedArrow.iconSet}}" icon-definition="{{$ctrl.opacLocations.relatedArrow.icon}}" class="related-title-icon h-flipped"></prm-icon>
+          <span translate="nui.location.related_title" class="related-title-label"></span>
+          <span class="related-title-name">{{$ctrl.location.relatedTitle}}</span>
+        </h5>
+        <p>
+          <span class="availability-status {{$ctrl.location.availabilityStatus}}" translate="fulldisplay.availabilty.{{$ctrl.location.availabilityStatus}}"></span>
+          <span ng-if="$ctrl.location.subLocation">,</span>
+          <span ng-if="$ctrl.location && $ctrl.location.subLocation && $ctrl.getSubLibraryName($ctrl.location)">{{$ctrl.location.collectionTranslation}} </span>
+          <span ng-if="$ctrl.location.callNumber">;</span>
+          <span ng-if="$ctrl.location.callNumber">{{$ctrl.location.callNumber}}</span>
+        </p>
+      </div>
+      <div layout-align="end center" layout="row" layout-wrap flex-xs="100" flex-sm="30" flex class="list-item-actions">
+        <prm-stack-map ng-if="$ctrl.isSuprima() && $ctrl.location.stackMapUrl" [map-url]="$ctrl.location.stackMapUrl"></prm-stack-map>
+      </div>
+    </div>
+    <prm-icon ng-if="!$ctrl.isOvp()" class="padding-right-small" icon-type="{{$ctrl.opacLocations.externalLinkIcon.type}}" svg-icon-set="{{$ctrl.opacLocations.externalLinkIcon.iconSet}}" icon-definition="{{$ctrl.opacLocations.externalLinkIcon.icon}}"></prm-icon>
+    <prm-icon ng-if="$ctrl.isOvp()" class="padding-right-small" icon-type="{{$ctrl.opacLocations.rightArrow.type}}" svg-icon-set="{{$ctrl.opacLocations.rightArrow.iconSet}}" icon-definition="{{$ctrl.opacLocations.rightArrow.icon}}"></prm-icon>
+  </div>
+</div>
+<prm-location-after parent-ctrl="$ctrl"></prm-location-after>

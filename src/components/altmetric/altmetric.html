@@ -1,0 +1,15 @@
+<div id="altmetric-doi-{{$ctrl.id}}" class="eth-altmetric-container layout-row">
+  <div aria-label="Altmetric" ng-if="$ctrl.doi != ''"  ng-click="$event.stopPropagation();"
+        data-link-target="_blank"
+        rel="noopener"
+        class="altmetric-embed"
+        data-hide-no-mentions="true"
+        data-badge-type="4" data-badge-popover="right" data-doi="{{$ctrl.doi}}">
+ </div>
+ <div id="altmetric-isbn-{{$ctrl.id}}" aria-label="Altmetric" ng-if="$ctrl.isbn != ''"
+      ng-click="$event.stopPropagation();"
+      data-link-target="_blank" rel="noopener"
+      class="altmetric-embed" data-hide-no-mentions="true" data-badge-type="4"
+      data-badge-popover="right" data-isbn="{{$ctrl.isbn}}">
+ </div>
+</div>

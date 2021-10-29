@@ -1,0 +1,68 @@
+{
+  "name": "overall-primove-package-dev-env",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/libis/PrimoVE-dev_env-32KUL_LIBIS_NETWORK",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-network.primo.exlibrisgroup.com/",
+    "institution": "32KUL_LIBIS_NETWORK",
+    "vidId": "CENTRAL_PACKAGE",
+    "build": {
+      "views": [
+        "CENTRAL_PACKAGE",
+        "KULeuven"
+      ],
+      "dist": "./dist",
+      "resources": "./resources",
+      "package": "./package",
+      "tmp": "./tmpPackage"
+    }
+  },
+  "scripts": {
+    "__start": "cross-env-shell \"primoServe --vid $npm_package_primo_institution:$npm_package_primo_vidId --proxy $npm_package_primo_url --dir ./dist --ve\"",
+    "start": "cross-env node ./scripts/primoServe.js",
+    "serve": "cross-env primoServe --dir ./dist",
+    "__build": "cross-env-shell \"rimraf dist/ && webpack\"",
+    
+    "build": "cross-env-shell node ./scripts/primoBuild.js",
+    "rebuild": "cross-env-shell webpack --config ./scripts/webpack.config.js",
+
+    "build:dev": "cross-env-shell node ./scripts/primoBuild.js --mode=development",
+    "watch": "cross-env webpack --watch",
+    "package": "cross-env node make_package.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.14.9",
+    "@webpack-cli/generators": "^2.2.0",
+    "adm-zip": "^0.5.4",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-import-directory": "^1.1.0",
+    "babel-plugin-transform-html-import-to-string": "^0.0.1",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^6.2.0",
+    "fs-extra": "^9.1.0",
+    "glob": "^7.1.6",
+    "html-loader": "^2.1.2",
+    "imports-loader": "^3.0.0",
+    "mini-css-extract-plugin": "^2.1.0",
+    "filemanager-webpack-plugin": "^6.1.7",
+    "prettier": "^2.3.2",
+    "primo-explore-eth-archives-getit": "^0.0.15",
+    "primo-serve": "^0.0.17",
+    "rimraf": "^3.0.2",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "angular": "1.8.2",
+    "yarn": "^1.22.15"
+  },
+  "description": "This is a Primo 'CUSTOM_VIEW' package"
+}

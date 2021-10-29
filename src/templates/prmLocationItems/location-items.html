@@ -1,0 +1,139 @@
+<h3 class="section-title" style="margin-bottom: .75em !important;">
+    <span translate="nui.aria.locationItems.locationItems"></span>
+  </h3>
+  <div layout="row" layout-align="space-between center">
+    <md-button class="button-link link-alt-color zero-margin" ng-if="$ctrl.showRegisterUser()" (click)="$ctrl.reloadWithRegisterUser()" aria-label="{{'fulldisplay.otherLocations.register' | translate}}"><span class="bold-text padding-small" translate="fulldisplay.otherLocations.register"></span></md-button>
+  </div>
+  <div class="tab-content-header margin-bottom-small margin-left-medium" layout="row" layout-align="space-between end">
+    <div layout="column" flex>
+      <h4 ng-if="$ctrl.currLoc.location && $ctrl.getLibraryName($ctrl.currLoc.location)" class="md-title ng-binding zero-margin">
+        <span>{{$ctrl.currLoc.location.librarycodeTranslation}}</span>      
+      </h4>
+      <h5 ng-if="$ctrl.currLoc.location.relatedTitle != null && $ctrl.currLoc.location.relatedTitle !== ''" class="related-title">
+        <prm-icon icon-type="{{$ctrl.opacLocations.relatedArrow.type}}" svg-icon-set="{{$ctrl.opacLocations.relatedArrow.iconSet}}" icon-definition="{{$ctrl.opacLocations.relatedArrow.icon}}" class="related-title-icon h-flipped"></prm-icon>
+        <span translate="nui.location.related_title" class="related-title-label"></span>
+        <span class="related-title-name">{{$ctrl.currLoc.location.relatedTitle}}</span>
+      </h5>
+      <p ng-if="$ctrl.currLoc.location.availabilityStatus" class="ng-binding ng-scope zero-margin">
+        <span class="availability-status {{$ctrl.currLoc.location.availabilityStatus}}" translate="fulldisplay.availabilty.{{$ctrl.currLoc.location.availabilityStatus}}"></span>
+        <span ng-if="$ctrl.currLoc.location.subLocation">,</span>
+        <span ng-if="$ctrl.currLoc.location && $ctrl.currLoc.location.subLocation && $ctrl.getSubLibraryName($ctrl.currLoc.location)">{{$ctrl.currLoc.location.collectionTranslation}} </span>
+        <span ng-if="$ctrl.currLoc.location.callNumber"></span>
+        <span ng-if="$ctrl.currLoc.location.callNumber">{{$ctrl.currLoc.location.callNumber}}</span>
+      </p>
+      <p ng-if="$ctrl.currLoc.location.availabilityStatement" class="ng-binding ng-scope zero-margin">{{$ctrl.currLoc.location.availabilityStatement}}</p>
+      <div ng-if="!$ctrl.currLoc.locationNoItems">
+        <div ng-if="!$ctrl.summaryLinesVisible" layout="row" layout-align="start start">
+          <div layout="column" style="max-width: calc(100% - 70px);">
+            <div class="weak-text text-trim-ellipsis" ng-repeat="line in $ctrl.currLoc.summaryHoldings.baseSummaryShort track by $index" layout="row">
+              <div translate="{{line.key}}" class="margin-right-small"></div><span class="summary-brief" class="" layout="row"><a ng-if="line.value.includes('http:')" ng-href="{{line.value}}">{{line.value}}</a> <span title="{{line.value}}" ng-if="!line.value.includes('http:')">{{line.value}}</span></span>
+            </div>
+          </div>
+          <div>
+            <md-button class="button-as-link link-alt-color" (click)="$ctrl.summaryLinesVisible = true" ng-if="!$ctrl.summaryLinesVisible && $ctrl.currLoc.summaryHoldings.baseSummaryShort.length > 0 && $ctrl.currLoc.isHoldingExpandedData" aria-label="{{'nui.locations.expand' | translate}}"><span translate="nui.locations.expand" class="bold-text"></span></md-button>
+          </div>
+        </div>
+        <div ng-if="$ctrl.summaryLinesVisible" layout="row" layout-align="start start">
+          <div layout="column">
+            <div ng-repeat="line in $ctrl.currLoc.summaryHoldings.allLines track by $index">
+              <div class="margin-top-small"><span class="bold-text" translate="{{line.key}}"></span></div>
+              <div ng-repeat="lineItem in line.value track by $index" class="padding-left-medium"><span><a ng-if="lineItem.includes('http:')" href="{{lineItem}}">{{lineItem}}</a> <span ng-if="!lineItem.includes('http:')">{{lineItem}}</span></span>
+              </div>
+            </div>
+          </div>
+          <md-button class="button-as-link link-alt-color" (click)="$ctrl.summaryLinesVisible = false" ng-if="$ctrl.summaryLinesVisible && 	$ctrl.currLoc.summaryHoldings.baseSummaryShort.length > 0 && $ctrl.currLoc.isHoldingExpandedData"><span translate="nui.locations.collapse" class="bold-text"></span></md-button>
+        </div>
+      </div>
+      <div class="layout-column" ng-if="$ctrl.currLoc.locationNoItems" flex layout="row">
+        <div flex="70"><span class="weak-text text-trim-ellipsis" ng-if="$ctrl.summaryLinesVisible" ng-repeat="line in $ctrl.currLoc.summaryHoldings.baseSummaryShort track by $index"><div><div translate="{{line.key}}"></div><a class="text-trim-ellipsis" ng-if="line.value.includes('http:')" ng-href="{{line.value}}">{{line.value}}</a> <span class="text-trim-ellipsis" ng-if="!line.value.includes('http:')">{{line.value}}<md-tooltip>{{line.value}}</md-tooltip></span></div>
+        </span>
+        <div ng-if="!$ctrl.summaryLinesVisible">
+          <div ng-repeat="line in $ctrl.currLoc.summaryHoldings.allLines track by $index">
+            <div class="margin-top-small"><span class="bold-text" translate="{{line.key}}"></span></div>
+            <div ng-repeat="lineItem in line.value track by $index" class="padding-left-medium"><span><a ng-if="lineItem.includes('http:')" href="{{lineItem}}">{{lineItem}}</a> <span ng-if="!lineItem.includes('http:')">{{lineItem}}</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div flex><span class="text-link" (click)="$ctrl.summaryLinesVisible = !$ctrl.summaryLinesVisible"><span ng-if="!$ctrl.summaryLinesVisible && $ctrl.currLoc.summaryHoldings.baseSummaryShort.length > 0 && $ctrl.currLoc.isHoldingExpandedData" translate="nui.locations.collapse"></span>      <span ng-if="$ctrl.summaryLinesVisible && $ctrl.currLoc.summaryHoldings.baseSummaryShort.length > 0 && $ctrl.currLoc.isHoldingExpandedData" translate="nui.locations.expand"></span></span>
+      </div>
+    </div>
+  </div>
+  <div layout="row">
+    <custom-lib-info location-code="$ctrl.currLoc.location.mainLocation"></custom-lib-info>
+    <prm-stack-map ng-if="$ctrl.isSuprima() && $ctrl.currLoc.location.stackMapUrl" [map-url]="$ctrl.currLoc.location.stackMapUrl"></prm-stack-map>
+  </div>
+  <div layout="row" ng-hide="$ctrl.currLoc.locationNoItems" layout-align="end center">
+    <md-button class="md-icon-button md-mini" aria-label="{{'nui.aria.locationItems.filterButton' | translate}}" ng-if="($ctrl.isFilter || $ctrl.isFiltered) && $ctrl.isAnyFilterFilled()" (click)="$ctrl.filterClick();">
+      <md-tooltip><span ng-if="$ctrl.isLocationsFilterVisible" translate="nui.aria.locationItems.filterOut"></span> <span ng-if="!$ctrl.isLocationsFilterVisible" translate="nui.aria.locationItems.filter"></span></md-tooltip>
+      <prm-icon ng-if="!$ctrl.isLocationsFilterVisible"
+        icon-type="{{$ctrl.opacLocations.filter.type}}" svg-icon-set="{{$ctrl.opacLocations.filter.iconSet}}" icon-definition="{{$ctrl.opacLocations.filter.icon}}"></prm-icon>
+      <prm-icon ng-if="$ctrl.isLocationsFilterVisible" icon-type="{{$ctrl.opacLocations.filterOut.type}}" svg-icon-set="{{$ctrl.opacLocations.filterOut.iconSet}}" icon-definition="{{$ctrl.opacLocations.filterOut.icon}}"></prm-icon>
+    </md-button>
+    <div class="vertical-divider transparent-divider"></div>
+    <md-button aria-label="{{'nui.locItems.collapse' | translate}}" class="md-icon-button header-action expand-collapse-button" (click)="$ctrl.toggleExpandAll($ctrl.currLoc)">
+      <md-tooltip md-autohide="true"><span ng-if="$ctrl.currLoc.isExpandAll" translate="nui.locItems.collapse"></span> <span ng-if="!$ctrl.currLoc.isExpandAll" translate="nui.locItems.expand"></span></md-tooltip><span ng-if="!$ctrl.currLoc.isExpandAll"><prm-icon icon-type="{{$ctrl.opacLocations.expandAllIcon.type}}" svg-icon-set="{{$ctrl.opacLocations.expandAllIcon.iconSet}}" icon-definition="{{$ctrl.opacLocations.expandAllIcon.icon}}"></prm-icon></span>
+      <span
+        ng-if="$ctrl.currLoc.isExpandAll">
+        <prm-icon icon-type="{{$ctrl.opacLocations.collapseAllIcon.type}}" svg-icon-set="{{$ctrl.opacLocations.collapseAllIcon.iconSet}}" icon-definition="{{$ctrl.opacLocations.collapseAllIcon.icon}}"></prm-icon>
+        </span>
+    </md-button>
+  </div>
+  </div>
+  <prm-locations-filter ng-if="$ctrl.isLocationsFilterVisible && $ctrl.isAnyFilterFilled()" [item]="$ctrl.item" [is-disabled]="$ctrl.isItemsFilterDisable($ctrl.item)" (filter-event)="$ctrl.handleFilterEvent($event)" [is-after-filtering]="$ctrl.isFiltered"
+    [drop-down-options]="$ctrl.dropDownOptions" [filters]="$ctrl.filters" (clear-filters-event)="$ctrl.clearFilters(true)"></prm-locations-filter>
+  <div ng-if="$ctrl.currLoc.locationNoItems" class="padding-left-medium">
+    <div class="bar alert-bar margin-bottom-medium" layout="row" layout-align="start center"><span flex ng-if="$ctrl.isLoggedIn();" translate="nui.locations.noitems.signin"></span> <span flex ng-if="!$ctrl.isLoggedIn();" translate="nui.locations.noitems.guest"></span></div>
+  </div>
+  <md-list layout="column" ng-hide="$ctrl.currLoc.locationNoItems" class="separate-list-items margin-left-medium">
+    <md-list-item ng-repeat="item in $ctrl.currLoc.items track by $index" class="md-2-line has-expand" ng-if="!$ctrl.currLoc.isMore || !$last" ng-class="item.isExpanded?'item-expanded':''" (click)="item.isExpanded = !item.isExpanded">
+      <div layout="row" flex>
+        <div class="md-list-item-text" layout="row" layout-wrap flex>
+          <div flex flex-xs="100">
+            <div ng-if="item.itemFields[0]">
+              <h3><span translate="nui.item.brief.1"></span> {{item.itemFields[0]}}</h3>
+              <md-tooltip>{{item.itemFields[0]}}</md-tooltip>
+            </div>
+            <div ng-if="item.itemFields[1]">
+              <h4><span translate="nui.item.brief.2"></span> {{item.itemFields[1]}}</h4>
+              <md-tooltip>{{item.itemFields[1]}}</md-tooltip>
+            </div>
+          </div>
+          <div class="weak-text" flex flex-xs="100">
+            <div ng-if="item.itemFields[2]">
+              <p><span translate="nui.item.brief.3"></span> {{item.itemFields[2]}}</p>
+              <md-tooltip>{{item.itemFields[2]}}</md-tooltip>
+            </div>
+            <div ng-if="item.itemFields[3]">
+              <p><span translate="nui.item.brief.4"></span> {{item.itemFields[3]}}</p>
+              <md-tooltip>{{item.itemFields[3]}}</md-tooltip>
+            </div>
+            <div ng-if="item.isExpanded">
+              <div ng-repeat="full in item.fullItemFields track by $index">
+                <p>{{full}}</p>
+                <md-tooltip>{{item.fullItemValues[$index]}}</md-tooltip>
+              </div>
+            </div>
+          </div>
+          <div layout-align="end center" layout="row" layout-wrap flex-xs="100" flex-sm="30">
+            <div ng-if="!$ctrl.currLoc.location.isValidUser"><span translate="item.request.not_available"></span></div>
+            <div ng-if="$ctrl.currLoc.location.isValidUser && item.listOfServices.length === 0"><span translate="item.request.blocked"></span></div>
+            <div layout="row" layout-align="center center" ng-repeat="service in item.listOfServices track by $index" ng-if="$ctrl.isLoggedIn()">
+              <prm-service-button ng-if="$ctrl.allowService()" [service]="service" (change-tab-event)="::$ctrl.onChangeTabEvent($event)" [parent-tab]="::$ctrl.tabId" [request-parameters]="$ctrl.getServiceAdditionalParams(item, service)" method="GET"></prm-service-button>
+              <div class="skewed-divider" ng-if="!$last"></div>
+            </div>
+          </div>
+        </div>
+        <div class="align-self-stretch">
+          <md-button class="md-secondary item-expand-button" aria-label="{{'nui.aria.locationItems.expandcollapse' | translate}}">
+            <prm-icon ng-class="{'rotate-180': item.isExpanded}" icon-type="{{$ctrl.opacLocations.expandIcon.type}}" svg-icon-set="{{$ctrl.opacLocations.expandIcon.iconSet}}" icon-definition="{{$ctrl.opacLocations.expandIcon.icon}}"></prm-icon>
+          </md-button>
+        </div>
+      </div>
+      <prm-location-item-after parent-ctrl="$ctrl"></prm-location-item-after>
+    </md-list-item>
+    <prm-spinner ng-if="$ctrl.inProgress" class="inline-loader half-transparent no-text" layout="row" layout-align="center center"></prm-spinner>
+  </md-list>
+  <md-button ng-if="!$ctrl.currLoc.locationNoItems && $ctrl.currLoc.isMore" class="button-link link-alt-color zero-margin" (click)="$ctrl.getlocationsItems($ctrl.currLoc, true);" ng-hide="!$ctrl.currLoc.isMore" aria-label="{{'fulldisplay.locations.showmore' | translate}}"><span class="bold-text padding-small" translate="fulldisplay.locations.showmore"></span></md-button>
+  <prm-location-items-after parent-ctrl="$ctrl"></prm-location-items-after>
+  

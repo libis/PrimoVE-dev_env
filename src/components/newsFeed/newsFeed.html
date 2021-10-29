@@ -1,0 +1,13 @@
+<md-card ng-hide="!feedresults.length" class ="default-card _md md-primoExplore-theme">
+<md-card-content>
+ <h1 translate="nui.customization.news_feed.title"></h1>
+ <md-list>
+   <md-list-item ng-repeat="feed in feedresults | limitTo: maxfeeds">
+      <div class ="md-list-item-text"> <a href="{{ feed.link }}" target="_news">{{ feed.title }}</a>
+         <div class ="blogheaderbody">{{ feed.contentSnippet }}</div>
+      </div>
+      
+   </md-list-item>
+ </md-list>
+</md-card-content>
+</md-card>

@@ -1,0 +1,7 @@
+<div ng-hide="{{$ctrl.linkText == ''}}" class="prm-notice {{$ctrl.linkClass}}">
+  <a class="arrow-link" ng-href="{{$ctrl.linkUrl}}" target="_blank">
+    <span>{{$ctrl.linkText}}</span>
+    <prm-icon external-link icon-type="svg" svg-icon-set="primo-ui" icon-definition="open-in-new"></prm-icon>
+    <prm-icon external-link link-arrow icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-right"></prm-icon>
+  </a>
+</div>

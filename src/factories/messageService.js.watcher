@@ -1,0 +1,85 @@
+import { WatchIgnorePlugin } from 'webpack';
+import messageServiceHTML from './messageService.html'
+
+export default class MessageService {
+  constructor($rootScope, $compile, $mdToast, $sce, $translate, $timeout) {
+    this.mdToast = $mdToast;
+    this.sce = $sce;
+    this.translate = $translate;
+    this.timeout = $timeout;
+    this.compile = $compile;
+    this.rootScope = $rootScope;
+  }
+
+  show(message = '', options = {}) {
+    let self = this;
+    let scope = options.scope || null;
+    let hideDelay = options.hideDelay || 0;
+    let action = options.action || null;
+    let actionLabel = options.actionLabel || 'unknown';
+
+    let wachter = self.rootScope.$watch(() => {
+      try {
+        if (message.length == 0) {
+          message = self.translate.instant('nui.customizing.idslu.alertMessage');  
+        }
+
+        if (/alertMessage/.test(message) || message.length <= 1) {
+          return false;
+        } else {
+          return true;
+        }
+      } catch(e) {
+        return false;
+      }
+      
+    }, (n, o) => {
+      if (n == true) {        
+        watcher();
+
+        console.log('--------->' + message);
+  
+        if (message.length > 0) {
+          let toastConfig = {
+            parent: document.body,
+            controllerAs: 'ctrl',
+            controller: function() {
+              this.actionLabel = actionLabel;
+  
+              this.onClose = () => {
+                self.mdToast.hide();
+              };
+  
+              if (action) {
+                this.onAction = ($event = null) => {
+                   action.call(this);
+                   self.mdToast.hide();
+                }
+              }
+  
+              if (scope) {
+                //this.message = self.sce.trustAsHtml(self.compile(`<span>${message}</span>`)(self.rootScope).html());
+                this.message = self.sce.trustAsHtml(self.compile(`<span>${message}</span>`)(scope).html());
+              } else {
+                this.message = self.sce.trustAsHtml(message);
+              }
+  
+            },
+            template: messageServiceHTML,
+            position: 'top center',
+            hideDelay: hideDelay
+          }
+  
+          self.mdToast.show(toastConfig);
+        } else {
+          console.log('No message to display');
+        }
+  
+      }
+
+    });
+  }
+
+}
+
+MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
