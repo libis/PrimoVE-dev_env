@@ -23,6 +23,7 @@ Tags
 [aria-label="Citations"] { order: 13 !important;}
 [aria-label="citationTrails"] { order: 13 !important;}
 [aria-label="Tags"] { order: 14 !important;}
+[aria-label="Altmetrics"] { order: 14 !important;}
 
 
 /* Moving Order of tabs in New UI */
@@ -36,6 +37,7 @@ Tags
 #virtualBrowse { order: 7; }
 #citationTrails  { order: 7; }
 #tags { order: 8; }
+#altmetrics { order: 9; }
 .syndetic-unbound-section { order: 9; }
 .full-view-inner-container {
 padding-bottom: 10em;
