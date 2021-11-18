@@ -37,6 +37,9 @@ import "./css/index.css";
   window.Primo = new Primo();
 
   let moduleList = ['ngMaterial', 'angularLoad'];
+  let servicesHost = 'https://services.libis.be/';
+
+
   //let moduleList = ['oc.lazyLoad', 'ngMaterial', 'angularLoad', 'ethArchivesGetitModule', 'slspEditPersonalDetails', 'slspHttpInterceptRequests'];
 
   let app = angular.module(customType, moduleList).config(($sceDelegateProvider) => {
@@ -47,7 +50,8 @@ import "./css/index.css";
     .service('MessageService', MessageService)
     .service('FeedbackService', FeedbackService)
     // .service('FilterLocationsService', FilterLocationsService)
-    .constant('reportAProblemURL', 'https://services.libis.be/report_a_problem')
+    .constant('reportAProblemURL', servicesHost + 'report_a_problem')
+    .constant('feedbackServiceURL', servicesHost + 'feedback')
     .run(($translate, $rootScope, angularLoad) => {
       angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
         console.log('Altmetric script loaded');

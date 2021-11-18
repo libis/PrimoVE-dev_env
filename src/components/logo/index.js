@@ -19,8 +19,8 @@ class ViewLogoController {
     this.compile = $compile;
     this.localeLibraryLogo = window.appConfig.customization.libraryLogo;
     this.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
-   
-    
+
+
     Primo.view.then((view) => {
       //let vid = view.code;
       let vid = window.appConfig.vid
@@ -42,13 +42,13 @@ class ViewLogoController {
         }, (n, o) => {
           if (n == true) {
             self.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
-            self.processInstituteUrl() 
+            self.processInstituteUrl()
             watcher();
           }
         });
-      }else{
+      } else {
         self.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
-        self.processInstituteUrl() 
+        self.processInstituteUrl()
       }
       if (self.localeLibraryLogo !== localeLibraryLogo) {
         $http({
@@ -64,27 +64,22 @@ class ViewLogoController {
           self.localeLibraryLogo;
         });
       }
-
-
     });
   }
 
   processInstituteUrl() {
-    if ( this.scope.$parent.$parent.$ctrl.logoURL != this.instituteUrl  ) {
-      if (this.instituteUrl ) {
-        if (this.instituteUrl  == 'http://www.libis.be/') {
-          this.scope.$parent.$parent.$ctrl.logoURL =  '/primo-discovery/search?vid=' + vid + "&lang=" + locale;
+    if (this.instituteUrl != "institutionWebsiteUrl" && this.instituteUrl != this.scope.$parent.$parent.$ctrl.logoURL) {
+      if (this.instituteUrl) {
+        if (this.instituteUrl == 'http://www.libis.be/') {
+          this.scope.$parent.$parent.$ctrl.logoURL = '/primo-discovery/search?vid=' + vid + "&lang=" + locale;
         } else {
-          this.scope.$parent.$parent.$ctrl.logoURL = this.instituteUrl 
+          this.scope.$parent.$parent.$ctrl.logoURL = this.instituteUrl
         }
       };
-
       window.appConfig.customization.libraryLogoClickableURL = this.scope.$parent.$parent.$ctrl.logoURL;
-       this.compile(this.element[0].parentNode.parentNode)(this.scope.$parent.$parent);
+      this.compile(this.element[0].parentNode.parentNode)(this.scope.$parent.$parent);
     }
   }
-
-
 }
 
 ViewLogoController.$inject = ['$element', '$scope', '$translate', '$http', '$compile', '$rootScope'];
