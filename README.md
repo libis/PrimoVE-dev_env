@@ -142,8 +142,7 @@ ${PackageJSON.primo.institution}-${PackageJSON.primo.vidId}
 - dist/${view}/html => copy of resources/${view}/html  
 - dist/${view}/img  => copy of resources/${view}/img  
 - dist/${view}/js   => created based on ./resources/${view}/js/custom.js  
-- 
-### yarn start --view ${view}
+  ### yarn start --view ${view}
 ===> primoServe --vid ${view} --proxy ${view_proxy} --dir ./dist   
 
 #### resources/${view}/config.json
@@ -166,4 +165,5 @@ parameters to start PrimoServe are configured in  resources/${view}/config.json
   }
 }
 ```
-
+### yarn package
+Creates a package per folder in ./dist

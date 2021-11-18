@@ -1,5 +1,6 @@
 const AdmZip = require('adm-zip');
 const FS = require('fs-extra');
+// var fs = require('fs');
 const glob = require('glob');
 
 const Package = require('./package.json');
@@ -105,8 +106,17 @@ function setup(resource) {
     removeTmpDir(resource);
 }
 
-const institution = Package.primo.institution;
-for (const view of Package.primo.build.views) {
-    let resource = `${institution}-${view}`;
-    setup(resource);
-}
+
+var viewdirs = FS.readdirSync(  Package.primo.build.dist );
+viewdirs.forEach( viewdir => { 
+    // console.log ( viewdir );
+    setup(viewdir);
+})
+
+/*
+    const institution = Package.primo.institution;
+    for (const view of Package.primo.build.views) {
+        let resource = `${institution}-${view}`;
+        setup(resource);
+    }
+*/
