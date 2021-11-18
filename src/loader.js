@@ -1,7 +1,6 @@
 /*
     Primo component loader.
     Will load all defined components in the src/components directory. 
-
     (c)2020 KULeuven/LIBIS 
     Mehmet Celik
 */

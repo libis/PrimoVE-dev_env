@@ -10,7 +10,7 @@ class BrowzineController {
         }
 
         let browzineWatcher = $scope.$watch(() => {
-            return ((typeof browzine != "undefined") && (typeof browzine.primo === 'object'));            
+            return ((typeof window.browzine != "undefined") && (typeof window.browzine.primo === 'object') && (window.browzine.apiKey != "11111111-xxxx-xxxx-xxxx-111111111111"));
         }, (n, o) => {
             if (n == true) {
                 console.log("trigger browzine for:", self.recordid)
@@ -21,21 +21,20 @@ class BrowzineController {
                 browzineWatcher();
             }
         });
-
-
     }
 }
 
 BrowzineController.$inject = ['$scope'];
 
 export let browzineComponent = {
-    name: 'custom-browzine',  
+    name: 'custom-browzine',
     enabled: true,
     appendTo: 'prm-search-result-availability-line-after',
     enableInView: '.*',
-    config:{    bindings: {
-        parentCtrl: '<'
-    },
-    controller: BrowzineController
-}
+    config: {
+        bindings: {
+            parentCtrl: '<'
+        },
+        controller: BrowzineController
+    }
 }

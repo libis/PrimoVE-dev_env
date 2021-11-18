@@ -39,6 +39,7 @@ class SearchAlsoBodyController {
     let self = this;
 
     return [
+      /*
       {
         "view": "41SLSP_RZS:VU15",
         "name": "swisscovery RZS",
@@ -77,8 +78,10 @@ class SearchAlsoBodyController {
         mapping: function mapping(search) {
           return self.searchTerms;
         }
-      }, {
-        "view": "*",
+      }, 
+      */
+     {
+        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHLL:UCLL|^32KUL_KUL:KULeuven',       
         "name": "Google Scholar",
         "url": "https://scholar.google.com/scholar?q=",
         "img": "https://scholar.google.com/favicon.ico",
@@ -87,7 +90,7 @@ class SearchAlsoBodyController {
           return self.searchTerms;
         }
       }, {
-        "view": "*",
+        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHLL:UCLL|^32KUL_KUL:KULeuven',
         "name": "Worldcat",
         "url": "https://www.worldcat.org/search?q=",
         "img": "https://slsp-network.primo.exlibrisgroup.com/discovery/custom/41SLSP_RZS-VU15/img/favicon_worldcat.png",
@@ -99,15 +102,24 @@ class SearchAlsoBodyController {
             "creator": "au",
             "subject": "su"
           };
-
           return self.parsedQuery.map(m => `${type_mappings[m[0]] || "kw"}:${m[2] || ''}`).join(' ');
         }
-      }].filter(f => f.view != self.viewCode);
+      }, {
+        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHLL:UCLL',
+        "name": "Bibliotheek.be",
+        "url": "https://www.bibliotheek.be/catalogus?q=",
+        "img": "https://slsp-network.primo.exlibrisgroup.com/discovery/custom/41SLSP_RZS-VU15/img/bib_be.png",
+        "tooltip": "nui.customizing.idslu.search_also.tooltip.deBib",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      }
+    ].filter(f => new RegExp(f.view).test(self.viewCode));
   }
 }
 
 SearchAlsoBodyController.$inject = ['$location'];
-
 
 export let searchAlsoBodyComponent = {
   name: 'custom-search-also-body',
@@ -116,7 +128,7 @@ export let searchAlsoBodyComponent = {
     controller: SearchAlsoBodyController,
     template: searchAlsoBodyHTML
   },
-  enabled: false,
+  enabled: true,
   appendTo: 'prm-facet-exact-after',
-  enableInView: '.*'
+  enableInView: '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHLL:UCLL|^32KUL_KUL:KULeuven'
 }

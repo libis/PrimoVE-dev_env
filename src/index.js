@@ -1,6 +1,5 @@
 /*
   General entry to Primo custom methods
-
   (c)2020 KULeuven/LIBIS 
   Mehmet Celik  
 */
@@ -8,18 +7,17 @@
 "use strict"
 import Primo from './primo';
 import Loader from './loader';
-import MessageService from './factories/messageService';
+import MessageService from './factories/messageService/messageService';
+import FeedbackService from './factories/feedbackService/feedbackService';
+// import FilterLocationsService from './factories/filterLocationsService/filterLocationsService';
+
+
 // import 'primo-explore-eth-archives-getit';
 
 
 /* TODO : extra css from institute ? */
 import "./css/index.css";
 /**/
-
-/*
-import './swisscovery/41SLSP_NETWORK-VU1_UNION/js/slsp-edit-personal-details';
-import './swisscovery/41SLSP_NETWORK-VU1_UNION/js/slsp-http-intercept-requests';
-*/
 
 // standard google analytics tracking code
 (function (i, s, o, g, r, a, m) {
@@ -47,11 +45,14 @@ import './swisscovery/41SLSP_NETWORK-VU1_UNION/js/slsp-http-intercept-requests';
       ]);
     })
     .service('MessageService', MessageService)
+    .service('FeedbackService', FeedbackService)
+    // .service('FilterLocationsService', FilterLocationsService)
     .constant('reportAProblemURL', 'https://services.libis.be/report_a_problem')
     .run(($translate, $rootScope, angularLoad) => {
       angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
         console.log('Altmetric script loaded');
       });
+
 
       let watcher = $rootScope.$watch(() => {
         try {
@@ -65,6 +66,7 @@ import './swisscovery/41SLSP_NETWORK-VU1_UNION/js/slsp-http-intercept-requests';
         }
       }, (n, o) => {
         if (n == true) {
+
           let apiId = $translate.instant('nui.customization.browzine.id');
           let apikey = $translate.instant('nui.customization.browzine.apikey');
           let journal = $translate.instant('nui.customization.browzine.journal');
@@ -76,7 +78,6 @@ import './swisscovery/41SLSP_NETWORK-VU1_UNION/js/slsp-http-intercept-requests';
           let articleLinkViaUnpaywallText = $translate.instant('nui.customization.browzine.articleLinkViaUnpaywallText');
           let articleAcceptedManuscriptPDFViaUnpaywallText = $translate.instant('nui.customization.browzine.articleAcceptedManuscriptPDFViaUnpaywallText');
           let articleAcceptedManuscriptArticleLinkViaUnpaywallText = $translate.instant('nui.customization.browzine.articleAcceptedManuscriptArticleLinkViaUnpaywallText');
-
           
           window.browzine = {
             api: `https://public-api.thirdiron.com/public/v1/libraries/${apiId}`,

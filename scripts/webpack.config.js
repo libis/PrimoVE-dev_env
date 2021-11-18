@@ -175,7 +175,7 @@ module.exports = () => {
 
     plugins.push(new CopyPlugin({ patterns: copy_plugin_patterns }))
     plugins.push(new MiniCssExtractPlugin({
-        filename: ({ chunk }) => `${chunk.filenameTemplate.replace("js/", "css/").replace(/.js$/, "")}.css`,
+        filename: ({ chunk }) => `${chunk.filenameTemplate.replace("js/", "css/").replace(/.js$/, "1")}.css`,
     }))
 
     config.entry = entries;

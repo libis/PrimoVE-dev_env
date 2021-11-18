@@ -18,11 +18,11 @@ class RemoveDescForDbController {
                 }
             }
         }
-
     }
 
-
     waitForPNX() {
+
+      /*  
         let detailsWatcher = self.$scope.$watch(() =>
             self.parentCtrl.details,
             (newVal, oldVal) => {
@@ -32,6 +32,21 @@ class RemoveDescForDbController {
                 }
             }
         );
+*/
+        let detailsWatcher =  self.$scope.$watch(() => {
+            return ((typeof self.parentCtrl.details != "undefined") );
+        }, (n, o) => {
+            if (n == true) {
+                detailsWatcher();
+                this.removeDescriptionIfDb()
+            }
+        });
+
+
+
+
+
+
     }
 }
 

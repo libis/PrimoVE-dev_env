@@ -118,7 +118,7 @@ ${PackageJSON.primo.institution}-${PackageJSON.primo.vidId}
 - dist/${centralPackage}/img  => copy of resources/${centralPackage}/img  
 - dist/${centralPackage}/js   => created based on ./src/index.js  
 
-### yarn build:view --view ${view}
+### yarn build --view ${view}
 ===> webpack --config ./scripts/webpack.config.js --env view=32KUL_KUL:KULeuven  
    scripts/webpack.config.js wordt gebruikt
 

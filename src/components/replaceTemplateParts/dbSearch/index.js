@@ -24,7 +24,7 @@ class EditDbSearshTextcomponentController {
 EditDbSearshTextcomponentController.$inject = ['$scope', '$element', '$compile'];
 
 export let editDbSearshTextcomponent = {
-  name: 'edit-dbsearch-text',
+  name: 'custom-edit-dbsearch-text',
   enabled: true,
   appendTo: 'prm-databases-after',
   enableInView: '.*',  

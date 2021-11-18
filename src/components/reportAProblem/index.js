@@ -101,7 +101,7 @@ class ReportAProblemController {
 ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http','reportAProblemURL'];
 
 export let reportAProblemcomponent = {
-    name: 'report-a-problem',
+    name: 'custom-report-a-problem',
     enabled: true,
     appendTo: 'prm-service-header-after',
     enableInView: '.*',

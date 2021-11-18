@@ -12,7 +12,7 @@ class RemoveFinesController {
 RemoveFinesController.$inject = ['$scope', '$compile'];
 
 export let removeFinescomponent = {
-  name: 'remove-fines',  
+  name: 'custom-remove-fines',  
   enabled: true,
   appendTo: 'prm-account-overview-after',
   enableInView: '.*',  

@@ -7,7 +7,7 @@ class RemoveBlocksController {
 RemoveBlocksController.$inject = ['$scope', '$compile'];
 
 export let removeBlockscomponent = {
-  name: 'remove-blocks',  
+  name: 'custom-remove-blocks',  
   enabled: true,
   appendTo: 'prm-account-overview-after',
   enableInView: '.*',  

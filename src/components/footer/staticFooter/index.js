@@ -1,3 +1,5 @@
+import './footer.css'
+
 class StaticFooterController {
     constructor($scope) {
         let scope = $scope;

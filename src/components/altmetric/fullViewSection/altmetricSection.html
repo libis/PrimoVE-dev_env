@@ -1,0 +1,27 @@
+<div id="altmetric-section-doi-{{$ctrl.id}}" class="altmetric-section-badge  layout-row" ng-if="$ctrl.doi != ''">
+     <div aria-label="Altmetric" 
+        ng-click="$event.stopPropagation();"
+        data-link-target="_blank"
+        rel="noopener"
+        class="altmetric-embed"
+        data-hide-no-mentions="true"
+        data-badge-type="donut" 
+        data-badge-details="right"
+        data-condensed="true"
+        data-doi="{{$ctrl.doi}}">
+     </div>
+   </div>
+   <div id="altmetric-section-isbn-{{$ctrl.id}}" class="altmetric-section-badge layout-row" ng-if="$ctrl.isbn != ''">
+     <div aria-label="Altmetric" 
+        ng-click="$event.stopPropagation();"
+        data-link-target="_blank"
+        rel="noopener"
+        class="altmetric-embed" 
+        data-hide-no-mentions="true" 
+        data-badge-type="donut"
+        data-badge-details="right"
+        data-condensed="true"
+        data-isbn="{{$ctrl.isbn}}">
+     </div>
+   </div>
+   

@@ -1,4 +1,5 @@
 import altmetricHTML from './altmetric.html'
+import './altmetric.css'
 
 /*
 //script needs to be loaded first. Can be put in the $onInit() function
@@ -10,7 +11,6 @@ app.run(($templateCache) => {
 });
 */
 
-
 class AltMetricController {
   constructor($element, $window, $scope) {
     var self = this;
@@ -20,7 +20,6 @@ class AltMetricController {
     self.isbn = '';
     self.id = self.guid();
     self.recordid = '';
-
 
     if (item && item.pnx && item.pnx.addata) {
       self.recordid = item.pnx.control.recordid[0];
@@ -67,7 +66,7 @@ AltMetricController.$inject = ['$element', '$window', '$scope'];
 
 export let altMetricComponent = {
   name: 'custom-altmetric',  
-  enabled: false,
+  enabled: true,
   appendTo: 'prm-brief-result-after',
   enableInView: '.*',
   config: {  

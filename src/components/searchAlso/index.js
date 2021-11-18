@@ -30,7 +30,7 @@ class SearchAlsoController {
       bindings:{parentCtrl:'<'},
       controller: SearchAlsoController
     },
-    enabled: false,
+    enabled: true,
     appendTo: 'prm-facet-after',
-    enableInView: '.*'
+    enableInView: '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHLL:UCLL|^32KUL_KUL:KULeuven',
   }

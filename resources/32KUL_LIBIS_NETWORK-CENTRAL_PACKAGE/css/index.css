@@ -1,11 +1,9 @@
 
-@import "./app-colors.css";
-@import "./view-colors.css";
-@import "./db-item-detail.css";
+/* @import "./db-item-detail.css"; */
 /* @import "./hide_library_code.css"; */
-@import "./hide_times_cited.css";
-@import "./hide_virtual_browse.css";
-@import "./hide_watermark.css";
+/* @import "./hide_times_cited.css"; */
+/* @import "./hide_virtual_browse.css"; */
+/* @import "./hide_watermark.css"; */
 @import "./logo.css";
 @import "./order_sections_full_view.css";
 @import "./top_menu.css";

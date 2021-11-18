@@ -1,0 +1,6 @@
+/* src/components/altmetric/briefResultsBadge */
+@media screen and (min-width: 650px) {
+    .altmetric-section-badge {
+        position: relative;
+    }
+}
