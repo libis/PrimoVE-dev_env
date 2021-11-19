@@ -1,0 +1,98 @@
+
+
+prm-topbar  {
+    height: auto;
+}
+
+prm-topbar header {
+    width: 100%;
+}
+
+prm-topbar navbar__title a:hover
+{
+    background-color: inherit;    
+    box-shadow: inherit;
+
+}
+
+/*
+prm-topbar .md-button a,
+prm-topbar .md-button a:link,
+prm-topbar .md-button a:visited
+prm-topbar .md-button a:active
+ {
+    color: hsla(0,0%,100%,.65);
+}
+
+
+
+prm-topbar .md-button a:hover
+ {
+    color: hsla(0,0%,100%,1);
+}
+*/
+
+prm-topbar > div.top-nav-bar {
+    /* display: none  */
+}
+
+prm-topbar > div.top-nav-bar div.navbar--local > div.container {
+    display: block;
+    min-height:30px;
+    
+}
+prm-topbar > div.top-nav-bar div.navbar--local > div.container prm-search-bookmark-filter {
+    width:100%;
+    margin-top: -25px;
+}
+
+prm-topbar > div.top-nav-bar div.navbar--local > div.container  prm-main-menu >  nav > ul {
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+
+
+div.search-options {
+    flex: 0 0 0%;
+}
+
+/*
+prm-autocomplete {
+    background-color: peru;
+}
+md-autocomplete-wrap {
+    background-color: purple;
+    color:  cornflowerblue
+}
+*/
+
+/*
+prm-tabs-and-scopes-selector {
+  
+}
+*/
+
+
+prm-search-bar div.search-input > prm-autocomplete > md-autocomplete-wrap > button,
+prm-search-bar div.search-input > prm-autocomplete > md-autocomplete-wrap > button:focus
+{
+    color:#0f7d00
+}
+prm-search-bar div.search-input > prm-autocomplete > md-autocomplete-wrap > button:hover {
+    color:#000;
+}
+
+prm-search-bar div.search-input input#searchBar {
+    border-right: 0pc;
+    border-top-right-radius: 0pc;
+    border-bottom-right-radius: 0pc;
+}
+
+md-content md-content, md-content.md-primoExplore-theme {
+    background-color:#fff
+}
+
+div.md-range-content md-input-container input[type="number"]{
+    padding: 2px
+}

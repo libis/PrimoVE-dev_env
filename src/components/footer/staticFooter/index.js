@@ -8,7 +8,7 @@ class StaticFooterController {
         let vidDir = window.appConfig['vid'].replace(/:/,"-")
         scope.vidDir = vidDir
 
-        var templateUrl = 'custom/'+ vidDir +'/html/templates/footer_' + locale + '.html';
+        var templateUrl = 'custom/'+ vidDir +'/html/footer/footer_' + locale + '.html';
 
         $scope.getTemplateUrl = function () {
             return templateUrl;

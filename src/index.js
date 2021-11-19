@@ -32,8 +32,7 @@ import "./css/index.css";
 })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
 (function () {
-  //let customType = 'centralCustom';
-  let customType = 'viewCustom';
+  let customType = 'centralCustom';
   window.Primo = new Primo();
 
   let moduleList = ['ngMaterial', 'angularLoad'];

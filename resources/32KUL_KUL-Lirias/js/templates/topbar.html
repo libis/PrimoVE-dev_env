@@ -1,0 +1,46 @@
+<prm-top-bar-before></prm-top-bar-before>
+<div class="top-nav-bar" layout="row" flex-order="1" layout-align="start center" tabindex="0" role="navigation">
+    <!-- Accesibility skip to menu -->
+    <prm-skip-to tabindex="0"></prm-skip-to>
+    <header class="screen-only ng-scope">
+        <div class="navbar navbar--global navbar--no-padding">
+            <div class="container">
+                <a href="https://www.kuleuven.be/" class="logo logo--small logo--floating pull--left" title="KU Leuven"></a>
+                <a href="#" class="navbar__toggle navbar__toggle--btn  show--bp-med">&nbsp;</a>
+            </div>
+            <!-- Institution logo -->
+            <!-- <prm-logo></prm-logo> -->
+        </div>
+        <!-- spacer -->
+        <div class="flex" flex></div>
+
+        <div class="navbar navbar--local">
+            <div class="container" style="position:  relative;">
+
+                <div class="heading--2 navbar__title navbar__title--no-margin">
+                    <a href="/discovery/search?vid=32KUL_KUL:Lirias" class="ng-binding">
+                        <i class="material-icons">home</i> Lirias</a>
+                </div>
+
+                <a href="/#" class="navbar__toggle pull--left hidden--bp-med" role="button" aria-expanded="false" data-toggle="collapse"
+                    data-target=".nav--tabs">Menu
+                    <span class="lines"></span>
+                </a>
+
+                <div style="display:flex; justify-content:flex-end; bottom: 0; position: absolute; right: 0;">
+                    <div style="padding-right:1em">
+                        <prm-search-bookmark-filter class="view-switcher" layout-align="end center" layout="row" hide-sm></prm-search-bookmark-filter>
+                    </div>
+                    <div>
+                        <prm-change-lang></prm-change-lang>
+                    </div>
+                </div>
+
+                <prm-main-menu ng-if="$ctrl.showMainMenu" menu-type="menu"></prm-main-menu>
+
+            </div>
+        </div>
+    </header>
+
+</div>
+

@@ -1,0 +1,18 @@
+<ul ng-model="$ctrl.selectedLanguage" ng-change="$ctrl.changeLanguage()"
+    aria-label="{{'nui.aria.account.details.langaugesselect' | translate}}"
+    class="pagination language">
+    <li ng-repeat="language in ::$ctrl.languages">
+        <a class="pagination__btn" href="" 
+            ng-class="{'active':$ctrl.selectedLanguage == '{{language}}'}" 
+            ng-if="language == 'nl'"
+            ng-click="$ctrl.selectedLanguage='nl'; $ctrl.changeLanguage()">
+            NL
+        </a> 
+        <a class="pagination__btn" href="" 
+            ng-class="{'active':$ctrl.selectedLanguage=='{{language}}'}" 
+            ng-if="language == 'en'"
+            ng-click="$ctrl.selectedLanguage='en'; $ctrl.changeLanguage()">     
+            EN
+        </a> 
+    </li>
+</ul>

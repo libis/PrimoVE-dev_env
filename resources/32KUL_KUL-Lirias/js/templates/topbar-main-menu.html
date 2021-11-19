@@ -1,0 +1,12 @@
+<div style="position: relative; flex-direction:row" ng-if=" $ctrl.viewUrlsList.length > 0">
+        <nav class="nav nav--tabs nav--more">
+            <ul>
+                <li class="nav__item" id="{{'mainmenu.label.'+x.label | translate}}" tabindex="0" ng-repeat="x in ::$ctrl.viewUrlsList |limitTo:ctrl.showCount()">
+                    <a href="#" (click)="$ctrl.updateUrl(x.url,x.target)">
+                        <span class="item-content" translate="mainmenu.label.{{ ::x.label }}"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

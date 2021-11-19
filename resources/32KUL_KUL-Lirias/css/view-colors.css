@@ -7,21 +7,21 @@
     background-color: rgba(15, 125, 0, 0.1); }
 
 .md-button[id=payFinesNow] {
-  color: #54969d; }
+  color: #1f98bd; }
   .md-button[id=payFinesNow]:hover:not([disabled]), .md-button[id=payFinesNow]:focus:not([disabled]), .md-button[id=payFinesNow].hovered:not([disabled]), .md-button[id=payFinesNow].md-focused:not([disabled]), .md-button[id=payFinesNow]._md-focused:not([disabled]) {
-    color: #265f65;
-    background-color: rgba(84, 150, 157, 0.1); }
+    color: #08566e;
+    background-color: rgba(31, 152, 189, 0.1); }
 
 .bar.alert-bar {
   color: black;
-  background-color: #f7eda3;
-  order-color: ##ede49e; }
+  background-color: #f79570;
+  border-color: #ea916e; }
 
 .primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
-  background-color: #54969d; }
+  background-color: #1f98bd; }
 
 .primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
-  background-color: #42767c; }
+  background-color: #187591; }
 
 .primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
   background-color: #cacaca; }
@@ -37,4 +37,43 @@ md-toolbar.md-primoExplore-theme .md-toolbar-tools prm-linked-user-selector md-i
   color: #45aab4;
   border-bottom-color: #45aab4; }
 
+.prm-primary-color {
+  color: #1f98bd; }
+
+.prm-primary-bg {
+  color: white;
+  background-color: #1f98bd; }
+  .prm-primary-bg.prm-hue1 {
+    background-color: #1d8db0; }
+  .prm-primary-bg.prm-hue2 {
+    background-color: #1b86a7; }
+  .prm-primary-bg.prm-hue3 {
+    background-color: #1a7f9e; }
+    .prm-primary-bg.prm-hue3-important {
+      background-color: #1a7f9e !important; }
+  .prm-primary-bg.prm-hue4 {
+    background-color: #187591; }
+  .prm-primary-bg.prm-hue5 {
+    background-color: #21a3ca; }
+  .prm-primary-bg.prm-hue6 {
+    background-color: #1f98bd; }
+
 /* view color hook end*/
+
+
+md-content, md-content.md-primoExplore-theme {
+  background-color: #fff;
+
+}
+
+#facets > prm-facet  prm-breadcrumbs div.md-chip-remove-container > button {
+  color: #45aab4;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+}
+#facets > prm-facet  prm-breadcrumbs div.md-chip-remove-container > button:hover {
+  color: #1e6d75;
+  background-color: rgba(69, 170, 180, 0.1);
+  transition: color 0.1s ease;
+}
+
