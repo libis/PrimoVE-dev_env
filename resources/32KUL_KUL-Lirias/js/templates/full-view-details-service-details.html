@@ -1,0 +1,116 @@
+<div class="section-body" id="item-details">
+    <div class="spaced-rows" layout="column">
+        <div ng-repeat="detail in ::$ctrl.details" layout="row" layout-xs="column" class="layout-block-xs"
+            ng-if="$ctrl.showDetail(detail)">
+            <div flex-gt-sm="20" flex-gt-xs="25" flex><span class="bold-text word-break"
+                    data-details-label="{{detail.label}}" translate="fulldisplay.{{detail.label}}"
+                    translate-attr-title="fulldisplay.{{detail.label}}"></span></div>
+            <div class="item-details-element-container" flex>
+                <div role="list" class="item-details-element"
+                    ng-class="{'item-details-element-multiple': (detail.values && detail.values.length > 1)}"
+                    ng-repeat="value in detail.values">
+                    <div role="listitem" ng-show="$ctrl.showListItem(detail, $index)"
+                        ng-repeat="curValue in $ctrl.getValuesOfValueItems(value) track by $index" layout="column"
+                        class="word-break">
+                        <ng-container ng-init="chainArray = $ctrl.getChainArray(curValue, value.chainDelimiter)">
+                        </ng-container>
+                        <div ng-show="value.isLinkable"
+                            ng-class="{'string-to-rtl-details': ($ctrl.dontChangeStringDirectionToRtl(curValue) && !value.chainDelimiter), 'chain-display-space':(chainArray.length > 1 && !$last)}">
+                            <prm-highlight ng-if="$ctrl.isSubfieldExist(curValue, '$$C')" terms="$ctrl.hl(value.keyt)"
+                                text="$ctrl.getPrefix(curValue)"></prm-highlight>
+                            <a
+                                (click)="$ctrl.setCameFromIndicationLateral(value)"
+                                ng-if="$ctrl.isSubfieldExist(curValue, '$$Z') && value.keyt !== 'crsinfo' && !$ctrl.isSubfieldExist(curValue, '$$T')"
+                                class="arrow-link" aria-label="{{$ctrl.getTextFromVal(curValue)}}"
+                                ui-sref="fulldisplay({vid:'{{$ctrl.queryOptions.vid}}',scope:'{{$ctrl.queryOptions.scope}}',tab:'{{$ctrl.queryOptions.tab}}',docid:'alma{{$ctrl.getSubfieldFromVal(curValue, '$$Z')}}',context:'L'})"
+                                ui-sref-opts="{reload: true}">
+                                <prm-highlight terms="$ctrl.highlights[value.keyt]"
+                                    text="$ctrl.getTextFromVal(curValue)"></prm-highlight>
+                                <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui"
+                                    icon-definition="chevron-right"></prm-icon>
+                            </a>
+                            <a (click)="$ctrl.setCameFromIndicationLateral(value)"
+                                ng-if="$ctrl.isSubfieldExist(curValue, '$$Z') && value.keyt !== 'crsinfo' && $ctrl.isSubfieldExist(curValue, '$$T')"
+                                class="arrow-link" aria-label="{{$ctrl.getTextFromVal(curValue)}}"
+                                href="{{::$ctrl.getSubfieldFromVal(curValue, '$$Z')}}" target="_blank">
+                                <prm-highlight terms="$ctrl.highlights[value.keyt]"
+                                    text="$ctrl.getTextFromVal(curValue)"></prm-highlight>
+                                <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui"
+                                    icon-definition="chevron-right"></prm-icon>
+                            </a
+                            ><a (click)="$ctrl.setCameFromIndicationLateral(value);$ctrl.setIsFacetExact(value);"
+                                ng-if="!$ctrl.isSummonOverAlma() && curValue && !$ctrl.isSubfieldExist(curValue, '$$Z') && value.keyt !== 'crsinfo' && !$ctrl.isSubfieldExist(curValue, '$$L')"
+                                class="arrow-link" aria-label="{{$ctrl.getTextFromVal(chainValue)}}"
+                                ng-repeat="chainValue in chainArray track by $index"
+                                ng-class="{'chain-display':chainArray.length > 1}"
+                                ui-sref="exploreMain.search({vid:'{{$ctrl.queryOptions.vid}}',query: '{{$ctrl.getQuery(value,chainValue)}}',search_scope:'{{$ctrl.queryOptions.scope}}',facet:'{{$ctrl.getFacet(value,chainValue)}}',mode:'{{$ctrl.serachMode}}'})"
+                                ui-sref-opts="{reload: true}"
+                                >
+                                <prm-highlight terms="$ctrl.highlights[value.keyt]"
+                                    text="$ctrl.getTextFromVal(chainValue)"></prm-highlight>
+                                <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui"
+                                    icon-definition="chevron-right"></prm-icon>
+                            </a>
+                            <a (click)="$ctrl.setCameFromIndicationLateral(value)"
+                                ng-if="$ctrl.isSummonOverAlma() && curValue && !$ctrl.isSubfieldExist(curValue, '$$Z') && value.keyt !== 'crsinfo'"
+                                class="arrow-link" aria-label="{{$ctrl.getTextFromVal(curValue)}}"
+                                href="{{::$ctrl.createSummonOverAlmaLink(value,curValue)}}" target="_blank"
+                                >
+   
+                                <prm-highlight terms="$ctrl.highlights[value.keyt]"
+                                    text="$ctrl.getTextFromVal(curValue)"></prm-highlight>
+                                <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui"
+                                    icon-definition="chevron-right"></prm-icon>
+                            </a
+                            ><a (click)="$ctrl.runLinkToLegantoBeacon()"
+                                ng-if="curValue && $ctrl.isSubfieldExist(curValue, '$$R')" class="arrow-link"
+                                aria-label="{{$ctrl.getTextFromVal(curValue)}}"
+                                title="{{::$ctrl.getToolTip(value) | translate}}"
+                                href="{{::$ctrl.createLegantoLink(curValue)}}" target="_blank">
+                                <prm-highlight terms="$ctrl.highlights[value.keyt]"
+                                    text="$ctrl.getTextFromVal(curValue)"></prm-highlight>
+                                <prm-icon external-link icon-type="svg" svg-icon-set="primo-ui"
+                                    icon-definition="open-in-new"></prm-icon>
+                                <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui"
+                                    icon-definition="chevron-right"></prm-icon>
+                            </a>
+                            <prm-highlight
+                                ng-if="$ctrl.isSubfieldExist(curValue, '$$L') || value.keyt === 'crsinfo' && !$ctrl.isSubfieldExist(curValue, '$$R') "
+                                terms="$ctrl.hl(value.keyt)" text="$ctrl.getTextFromVal(curValue)"></prm-highlight>
+<!-- NEW LINE-->                            
+                            <prm-external-linking parent-ctrl="$ctrl" cur-value="curValue" value="value" ng-if="$ctrl.isSubfieldExist(curValue, '$$U')"></prm-external-linking>
+<!--
+                            <a class="arrow-link prm-after-external-linking-link" >
+                                <prm-icon class="arrow-link" link-arrow icon-type="svg" svg-icon-set="primo-ui"
+                                icon-definition="chevron-right"></prm-icon>
+                            </a>
+-->                                                        
+<!-- END NEW LINE-->                                      
+                        </div>
+                        <div ng-show="!value.isLinkable"
+                            ng-class="{'string-to-rtl-details': $ctrl.dontChangeStringDirectionToRtl(curValue)}"
+                            ng-style="($ctrl.dontChangeStringDirectionToRtl(curValue) && !$ctrl.isLtr()) && {'text-align':'right'}">
+                            <prm-highlight ng-if="$ctrl.isSubfieldExist(curValue, '$$C')" terms="$ctrl.hl(value.keyt)"
+                                text="$ctrl.getPrefix(curValue) + $ctrl.getTextFromVal(curValue)"></prm-highlight>
+                            <prm-highlight ng-if="!$ctrl.isSubfieldExist(curValue, '$$C')"
+                                terms="$ctrl.hl(value.keyt)" text="$ctrl.getTextFromVal(curValue)"></prm-highlight>
+                        </div>
+                    </div>
+                </div>
+                <md-button ng-show="detail.isCollapsible" (click)="detail.showMore=!detail.showMore"
+                    aria-label="show.hide.{{detail.label}}"><span ng-show="detail.showMore"
+                        translate="proquest.collections.more"></span> <span ng-show="!detail.showMore"
+                        translate="proquest.collections.more.hide"></span> <span ng-show="detail.showMore"><i
+                            class="icon arrow-icon fa fa-chevron-down"></i></span> <span ng-show="!detail.showMore"><i
+                            class="icon arrow-icon fa fa-chevron-up"></i></span></md-button>
+                <md-button ng-show="$ctrl.displayShowAllButton(detail)" class="button-link link-alt-color zero-margin"
+                    (click)="$ctrl.changeShowMoreStatus(detail)"><span ng-show="detail.showMore"
+                        class="bold-text padding-small" translate="fulldisplay.details.showAll"></span> <span
+                        ng-show="!detail.showMore" class="bold-text padding-small"
+                        translate="fulldisplay.details.showLess"></span></md-button>
+            </div>
+        </div>
+        <prm-record-collection-paths ng-if="$ctrl.isCDEnabled()" [item]="::$ctrl.item"></prm-record-collection-paths>
+    </div>
+</div>
+<prm-service-details-after parent-ctrl="$ctrl"></prm-service-details-after>

@@ -1,0 +1,7 @@
+<div
+ng-if="$ctrl.parentCtrl.isSubfieldExist($ctrl.curValue, '$$U') && $ctrl.value.keyt !== 'crsinfo' && !$ctrl.parentCtrl.isSubfieldExist($ctrl.curValue, '$$L')"
+class="arrow-link" aria-label="{{$ctrl.parentCtrl.getTextFromVal($ctrl.curValue)}}"
+ui-sref-opts="{reload: true}">
+<span class="material-icons"> subdirectory_arrow_right </span>
+<prm-highlight terms="" text="$ctrl.parentCtrl.getSubfieldFromVal($ctrl.curValue, '$$U');"></prm-highlight>
+</div>

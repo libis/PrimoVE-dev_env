@@ -1,0 +1,12 @@
+prm-external-linking, prm-external-linking > div  {
+    margin-left: 1.5em;
+}
+
+prm-external-linking span.material-icons {
+    font-size: inherit;
+}
+
+.GOBLACK {
+
+    background-color: black;
+}
