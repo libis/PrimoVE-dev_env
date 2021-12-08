@@ -87,19 +87,16 @@ class PrimoPubSub {
 }
 
 window.pubSub = new PrimoPubSub();
-window.liriasBlending = false;
+
 
 angular.module('httpRewrite', ['ng'])
     .config(['$httpProvider', ($httpProvider) => {
         $httpProvider.interceptors.push(['$q', ($q) => {
             return {
                 'request': (request) => {                    
-                    let windowParams = window.location.search.slice(1).split('&').map( m => m.split('=')).reduce((map, obj)=>{ map[obj[0]] = obj[1] ; return map }, {})
-                    if (windowParams.hasOwnProperty('blend')) {
-                        liriasBlending = windowParams.blend == 1
-                    }
+                    blendedSearch.activate()
                     
-                    if (liriasBlending) {
+                    if (blendedSearch.active) {
                         request = pubSub.delegateTopic('before', request.url, request.headers, request.params ,request);
                         pubSub.fireEvent(request.url, request.data);
                     }
@@ -114,7 +111,7 @@ angular.module('httpRewrite', ['ng'])
                     return $q.reject(response)
                 },
                 'response': (response) => {       
-                    if (liriasBlending) {
+                    if (blendedSearch.active) {
                         response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
                         pubSub.fireEvent(response.config.url, response.data);
                     }
