@@ -21,14 +21,14 @@ class ExternalLinksInDetailsController {
 
         // console.log( identifiers[0].values[0].values );
         
-        console.log( creatorContributor );
+        // console.log( creatorContributor );
 
         if (creatorContributor[0]) {
             if (creatorContributor[0].values) {
                 var newCreatorContributor = creatorContributor[0].values[0].values.map(i => {
-                    console.log (i)
+                    // console.log (i)
                     if (new RegExp("\\$\\$U").test(i)) {
-                        var personIdentifiers = i.replace(/(.*)(\$\$U)([^\n]*)/, '$3').split(","); // Dit moet nog een splti op ; worden !!!!!!!!
+                        var personIdentifiers = i.replace(/(.*)(\$\$U)([^\n]*)/, '$3').split(";"); // Dit moet nog een split op ; worden !!!!!!!!
                         personIdentifiers = personIdentifiers.map ( p => { 
                             if (new RegExp("^[ ]*orcid:").test(p)) {
                                 return p.replace(/^[ ]*orcid:/,'').split(",").map ( id => {
@@ -47,8 +47,8 @@ class ExternalLinksInDetailsController {
                             }
                         })
                         
-                        console.log ( "personIdentifiers" );
-                        console.log ( personIdentifiers.join(" ") );
+                        // console.log ( "personIdentifiers" );
+                        // console.log ( personIdentifiers.join(" ") );
                         return i.replace(/(.*)(\$\$Q.*)(\$\$U)([^\n]*)/, '$1$2'+'$$$$U'+personIdentifiers.join(" ") )
                     } else {
                         return i;
