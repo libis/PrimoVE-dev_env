@@ -20,6 +20,8 @@ class PrimoPubSub {
             if (!this.hOP.call(this.topics, topic)) this.topics[topic] = []; //init
             let index = this.topics[topic].push(listener) - 1; //add
 
+            console.log('SUBSCRIBING to: "%s", topic has %d functions', topic, this.topics[topic].length)
+
             return {
                 remove: function () {
                     this.topics[topic].splice(index, 1); //delete
@@ -85,13 +87,22 @@ class PrimoPubSub {
 }
 
 window.pubSub = new PrimoPubSub();
+window.liriasBlending = false;
 
 angular.module('httpRewrite', ['ng'])
     .config(['$httpProvider', ($httpProvider) => {
         $httpProvider.interceptors.push(['$q', ($q) => {
             return {
                 'request': (request) => {                    
-                    request = pubSub.delegateTopic('before', request.url, request.headers, request.params ,request);
+                    let windowParams = window.location.search.slice(1).split('&').map( m => m.split('=')).reduce((map, obj)=>{ map[obj[0]] = obj[1] ; return map }, {})
+                    if (windowParams.hasOwnProperty('blend')) {
+                        liriasBlending = windowParams.blend == 1
+                    }
+                    
+                    if (liriasBlending) {
+                        request = pubSub.delegateTopic('before', request.url, request.headers, request.params ,request);
+                        pubSub.fireEvent(request.url, request.data);
+                    }
                     return request
                 },
                 'requestError': (request) => {
@@ -102,9 +113,11 @@ angular.module('httpRewrite', ['ng'])
                     //response.data = delegateTopic('afterError', response.config.url, response.data);
                     return $q.reject(response)
                 },
-                'response': (response) => {                    
-                    response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
-                    pubSub.fireEvent(response.config.url, response.data);
+                'response': (response) => {       
+                    if (liriasBlending) {
+                        response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
+                        pubSub.fireEvent(response.config.url, response.data);
+                    }
                     return response
                 }
             }

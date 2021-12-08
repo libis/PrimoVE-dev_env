@@ -1,30 +1,6 @@
 const syncFetch = require('sync-fetch');
 
-function createObservable(subscribe) {
-    return {
-        subscribe: subscribe
-    }
-}
-
-const fetchObservable = {
-    from: (url) => {
-        return createObservable((ob) => {
-            fetch(url).then(r => r.json()).then(json => ob.next(json));
-        });
-    }
-}
-
-const observer = (self) => {
-    return {
-        next: (data) => { console.log('-------------->', data); self['data'] = data; },
-        error: (err) => { console.log(error) },
-        complete: () => { }
-    }
-}
-
-
-//fetchObservable.from(esURL).subscribe(observer(result))            
-
+         
 angular.module('blendedSearch', ['ng']).run(() => {
 
     pubSub.subscribe('before-pnxBaseURL', (url, headers, params, data) => {                
@@ -58,8 +34,8 @@ angular.module('blendedSearch', ['ng']).run(() => {
             docs = data.docs.slice(0, newLimitSet1);
             docs = docs.concat(result.docs.slice(0, newLimitSet2));
 
-            let rankSet1 = data.docs[0].pnx.control.score;
-            let rankSet2 = result.docs[0].rank;
+            let rankSet1 = data.docs[0].pnx.control.hasOwnProperty['score'] ? data.docs[0].pnx.control.score : 1;
+            let rankSet2 = result.docs[0].hasOwnProperty('rank') ? result.docs[0].rank : 1;
 
             docs = docs.map(m => {
                 if (m.hasOwnProperty('rank')) {
@@ -77,12 +53,12 @@ angular.module('blendedSearch', ['ng']).run(() => {
     });
 
     // reverse titels
-    pubSub.subscribe('after-pnxBaseURL', function (url, headers, params, data) {
-        data.docs.map(m => {
-            //console.log(m); 
-            m.pnx.display.title[0] = m.pnx.display.title[0].split('').reverse().join('');
-            return m;
-        });
-        return data;
-    });    
+    // pubSub.subscribe('after-pnxBaseURL', function (url, headers, params, data) {
+    //     data.docs.map(m => {
+    //         //console.log(m); 
+    //         m.pnx.display.title[0] = m.pnx.display.title[0].split('').reverse().join('');
+    //         return m;
+    //     });
+    //     return data;
+    // });    
 })
