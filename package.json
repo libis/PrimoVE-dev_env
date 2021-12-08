@@ -25,10 +25,8 @@
     "start": "cross-env node ./scripts/primoServe.js",
     "serve": "cross-env primoServe --dir ./dist",
     "__build": "cross-env-shell \"rimraf dist/ && webpack\"",
-    
     "build": "cross-env-shell node ./scripts/primoBuild.js",
     "rebuild": "cross-env-shell webpack --config ./scripts/webpack.config.js",
-
     "build:dev": "cross-env-shell node ./scripts/primoBuild.js --mode=development",
     "watch": "cross-env webpack --watch",
     "package": "cross-env node make_package.js"
@@ -46,12 +44,12 @@
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.2",
     "css-loader": "^6.2.0",
+    "filemanager-webpack-plugin": "^6.1.7",
     "fs-extra": "^9.1.0",
     "glob": "^7.1.6",
     "html-loader": "^2.1.2",
     "imports-loader": "^3.0.0",
     "mini-css-extract-plugin": "^2.1.0",
-    "filemanager-webpack-plugin": "^6.1.7",
     "prettier": "^2.3.2",
     "primo-explore-eth-archives-getit": "^0.0.15",
     "primo-serve": "^0.0.17",
@@ -62,6 +60,7 @@
   },
   "dependencies": {
     "angular": "1.8.2",
+    "sync-fetch": "^0.3.1",
     "yarn": "^1.22.15"
   },
   "description": "This is a Primo 'CUSTOM_VIEW' package"

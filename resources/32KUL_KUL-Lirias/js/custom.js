@@ -16,4 +16,4 @@ import changeLangHTML from './templates/changeLang.html'
 })();
 
 
-import "../css/_index.css";
+//import "../css/_index.css";

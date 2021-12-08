@@ -141,7 +141,7 @@ configiew = () => {
                 //delete: [path.resolve(root, `resources/${viewdir}/css/_index.css`)],
             },
             onEnd: {
-                delete: [path.resolve(root, `resources/${viewdir}/css/_index.css`)],
+                //delete: [path.resolve(root, `resources/${viewdir}/css/_index.css`)],
             }
         }
     }))
