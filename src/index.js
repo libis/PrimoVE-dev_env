@@ -9,14 +9,15 @@ import Primo from './primo';
 import Loader from './loader';
 import MessageService from './factories/messageService/messageService';
 import FeedbackService from './factories/feedbackService/feedbackService';
+import './factories/httpRewrite';
+import './factories/blendedSearch'
+
 // import FilterLocationsService from './factories/filterLocationsService/filterLocationsService';
-
-
 // import 'primo-explore-eth-archives-getit';
 
 
 /* TODO : extra css from institute ? */
-import "./css/index.css";
+//import "./css/index.css";
 /**/
 
 // standard google analytics tracking code
@@ -35,7 +36,7 @@ import "./css/index.css";
   let customType = 'centralCustom';
   window.Primo = new Primo();
 
-  let moduleList = ['ngMaterial', 'angularLoad'];
+  let moduleList = ['ngMaterial', 'angularLoad', 'httpRewrite', 'blendedSearch'];
   let servicesHost = 'https://services.libis.be/';
 
 
@@ -55,8 +56,6 @@ import "./css/index.css";
       angularLoad.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
         console.log('Altmetric script loaded');
       });
-
-
       let watcher = $rootScope.$watch(() => {
         try {
           if ($translate.instant('nui.customization.browzine.id') == 'nui.customization.browzine.id') {
