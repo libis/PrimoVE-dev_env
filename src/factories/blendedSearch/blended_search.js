@@ -106,13 +106,17 @@ window.blendedSearch = {
             l2 = l2 < 0 ? 0 : l2 //compensate for o2 > t2
         }
 
+        if (this.set2.data.docs.length < l2) {
+            l2=this.set2.data.docs.length;
+        }
+
         if (l2 < l1) {
             l1 = l1 + (l1 - l2)
         }
 
         return [l1, o1, l2, o2];
     },
-    buildFacet(facets) {
+    mergeFacets(facets) {
         let facetMap = this.set2.data.facets.reduce((map, obj) => { map[obj['name']] = obj; return map }, {});
         try {
             facets.forEach((v, i, a) => {
@@ -139,6 +143,25 @@ window.blendedSearch = {
         }
 
         return facets;        
+    },
+    mergeDocs() {
+        let docs = [];
+        docs = blendedSearch.set1.data.docs.slice(0, blendedSearch.set1.limit);
+        docs = docs.concat(blendedSearch.set2.data.docs.slice(0, blendedSearch.set2.limit));
+
+        let rankSet1 = blendedSearch.set1.score;
+        let rankSet2 = blendedSearch.set2.score;
+
+        docs = docs.map(m => {
+            if (m.hasOwnProperty('rank')) {
+                m.pnx.control['score'] = (m.rank / rankSet2) * rankSet1;
+            }
+            return m;
+        })
+
+        docs = docs.sort((a, b) => b.pnx.control.score - a.pnx.control.score);
+
+        return docs
     }
 };
 
@@ -162,31 +185,13 @@ angular.module('blendedSearch', ['ng']).run(() => {
             console.log('BLENDING ResultSet2:', JSON.stringify(result.info));
 
             //process result 
-            let newLimitSet1 = blendedSearch.set1.limit;
-            let newLimitSet2 = blendedSearch.set2.limit;
-
             // DOCS
-            let docs = [];
-            docs = data.docs.slice(0, newLimitSet1);
-            docs = docs.concat(result.docs.slice(0, newLimitSet2));
-
-            let rankSet1 = blendedSearch.set1.score;
-            let rankSet2 = blendedSearch.set2.score;
-
-            docs = docs.map(m => {
-                if (m.hasOwnProperty('rank')) {
-                    m.pnx.control['score'] = (m.rank / rankSet2) * rankSet1;
-                }
-                return m;
-            })
-
-            docs = docs.sort((a, b) => b.pnx.control.score - a.pnx.control.score);
-            data['docs'] = docs;
+            data['docs'] = blendedSearch.mergeDocs();
 
             // FACETS
             let facets = data.facets;
             if (facets) {
-                data['facets'] = blendedSearch.buildFacet(facets);
+                data['facets'] = blendedSearch.mergeFacets(facets);
             }
             data['info']['total'] += result['info']['total'];
 
@@ -200,7 +205,7 @@ angular.module('blendedSearch', ['ng']).run(() => {
     pubSub.subscribe('after-getFacetsBaseURL', (url, headers, params, data) => {
         let facets = data.facets;
         if (facets) {
-            data['facets'] = blendedSearch.buildFacet(facets);
+            data['facets'] = blendedSearch.mergeFacets(facets);
         }
 
         return data;
