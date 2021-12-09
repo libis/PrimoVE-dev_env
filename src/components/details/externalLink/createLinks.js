@@ -21,43 +21,43 @@ class ExternalLinksInDetailsController {
 
         // console.log( identifiers[0].values[0].values );
         
-        // console.log( creatorContributor );
+        //console.log( creatorContributor );
 
-        if (creatorContributor[0]) {
-            if (creatorContributor[0].values) {
-                var newCreatorContributor = creatorContributor[0].values[0].values.map(i => {
-                    // console.log (i)
-                    if (new RegExp("\\$\\$U").test(i)) {
-                        var personIdentifiers = i.replace(/(.*)(\$\$U)([^\n]*)/, '$3').split(";"); // Dit moet nog een split op ; worden !!!!!!!!
-                        personIdentifiers = personIdentifiers.map ( p => { 
-                            if (new RegExp("^[ ]*orcid:").test(p)) {
-                                return p.replace(/^[ ]*orcid:/,'').split(",").map ( id => {
-                                    return '[<a href="https://orcid.org/' + id +'" target="_blank">ORCID<i class=\"material-icons prm-text\" style>launch</i></a>]'
-                                }).join(" ");
-                            }else if (new RegExp("^[ ]*researcherid:").test(p)) {
-                                return p.replace(/^[ ]*researcherid:/,'').split(",").map ( id => {
-                                    return '[<a href="https://www.researcherid.com/rid' + id +'" target="_blank">ResearcherID<i class=\"material-icons prm-text\" style>launch</i></a>]'
-                                }).join(" ");
-                            }else if (new RegExp("^[ ]*staff_nr:").test(p)) {
-                                return p.replace(/^[ ]*staff_nr:/,'').split(",").map ( id => {
-                                    return '[<a href="https://www.kuleuven.be/wieiswie/en/person/' + id +'" target="_blank">KU Leuven ID<i class=\"material-icons prm-text\" style>launch</i></a>]'
-                                }).join(" ");                                
-                            }else{
-                                return p
-                            }
-                        })
-                        
-                        // console.log ( "personIdentifiers" );
-                        // console.log ( personIdentifiers.join(" ") );
-                        return i.replace(/(.*)(\$\$Q.*)(\$\$U)([^\n]*)/, '$1$2'+'$$$$U'+personIdentifiers.join(" ") )
-                    } else {
-                        return i;
-                    }
-                }); 
-                creatorContributor[0].values[0].values = newCreatorContributor
-            }
+        if (creatorContributor.length > 0) {
+            creatorContributor = creatorContributor.map ( persontype => {
+                persontype.values = persontype.values.map ( person => {
+                    person.values = person.values.map(i => {
+                        //console.log ("["+i+"]");
+                        if (new RegExp(" \\$\\$U").test(i)) {
+                            var personIdentifiers = i.replace(/(.*)( \$\$U)([^\n]*)/, '$3').split(";");
+                            //console.log ("personIdentifiers:" + personIdentifiers)
+                            personIdentifiers = personIdentifiers.map ( p => { 
+                                if (new RegExp("^[ ]*orcid:").test(p)) {
+                                    return p.replace(/^[ ]*orcid:/,'').split(",").map ( id => {
+                                        return '[<a href="https://orcid.org/' + id +'" target="_blank">ORCID<i class=\"material-icons prm-text\" style>launch</i></a>]'
+                                    }).join(" ");
+                                }else if (new RegExp("^[ ]*researcherid:").test(p)) {
+                                    return p.replace(/^[ ]*researcherid:/,'').split(",").map ( id => {
+                                        return '[<a href="https://www.researcherid.com/rid' + id +'" target="_blank">ResearcherID<i class=\"material-icons prm-text\" style>launch</i></a>]'
+                                    }).join(" ");
+                                }else if (new RegExp("^[ ]*staff_nr:").test(p)) {
+                                    return p.replace(/^[ ]*staff_nr:/,'').split(",").map ( id => {
+                                        return '[<a href="https://www.kuleuven.be/wieiswie/en/person/' + id +'" target="_blank">KU Leuven ID<i class=\"material-icons prm-text\" style>launch</i></a>]'
+                                    }).join(" ");                                
+                                }else{
+                                    return p
+                                }
+                            })
+                            return i.replace(/(.*)(\$\$Q.*)[/s]{0,1}( \$\$U)([^\n]*)/,'$1$2'+'$$$$U'+ personIdentifiers.join(" ") )
+                        } else {
+                            return i;
+                        }
+                    });
+                    return person
+                })
+                return persontype
+            });
         }
-
         
         
         if (identifiers[0]) {
@@ -70,9 +70,7 @@ class ExternalLinksInDetailsController {
                         return i;
                     }
                 });
-
                 //console.log( newIdentifiers );
-
                 identifiers[0].values[0].values = newIdentifiers
             }
         }
