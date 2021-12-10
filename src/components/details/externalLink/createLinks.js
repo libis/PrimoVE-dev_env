@@ -10,6 +10,7 @@ class ExternalLinksInDetailsController {
     createExternalLinks() {
 
         // console.log( self.parentCtrl.details )
+        console.log( self.parentCtrl )
 
         let identifiers = self.parentCtrl.details.filter(function (d) {
             return d.label === "identifier";
@@ -18,6 +19,27 @@ class ExternalLinksInDetailsController {
         let creatorContributor = self.parentCtrl.details.filter(function (d) {
             return ["creator","contributor"].includes(d.label);
         });
+
+        let relatedwork = self.parentCtrl.details.filter(function (d) {
+            return ["relatedwork"].includes(d.label);
+        });
+
+        if (relatedwork.length > 0) {
+            relatedwork = relatedwork.map ( relatedwork => {
+                relatedwork.values = relatedwork.values.map ( rw => {
+                    rw["isLinkable"] = true;
+                    rw["facetField"] =  undefined;
+                    rw["isFacetExact"] = false;
+                    rw["isLinkable"] = true;
+                    rw["key"] =  "any";
+                    rw["keyt"] =  "any";
+                    rw["operator"] =  "exact";
+                    return rw
+                })
+                return relatedwork
+            })
+        }
+
 
         // console.log( identifiers[0].values[0].values );
         
