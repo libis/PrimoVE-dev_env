@@ -18,12 +18,21 @@
                             ng-class="{'string-to-rtl-details': ($ctrl.dontChangeStringDirectionToRtl(curValue) && !value.chainDelimiter), 'chain-display-space':(chainArray.length > 1 && !$last)}">
                             <prm-highlight ng-if="$ctrl.isSubfieldExist(curValue, '$$C')" terms="$ctrl.hl(value.keyt)"
                                 text="$ctrl.getPrefix(curValue)"></prm-highlight>
-                            <a
+<!-- NEW LINE-->                           
+                                <a
+                                (click)="$ctrl.setCameFromIndicationLateral(value)"
+                                ng-if="$ctrl.isSubfieldExist(curValue, '$$Z') && value.keyt !== 'crsinfo' && !$ctrl.isSubfieldExist(curValue, '$$T')"
+                                class="arrow-link" aria-label="{{$ctrl.getTextFromVal(curValue)}}"
+                                ui-sref="fulldisplay({vid:'{{$ctrl.queryOptions.vid}}',scope:'{{$ctrl.queryOptions.scope}}',tab:'{{$ctrl.queryOptions.tab}}',docid:'{{$ctrl.getSubfieldFromVal(curValue, '$$Z')}}',context:'SearchWebhook'})"
+                                ui-sref-opts="{reload: true}">
+<!--
+                                <a
                                 (click)="$ctrl.setCameFromIndicationLateral(value)"
                                 ng-if="$ctrl.isSubfieldExist(curValue, '$$Z') && value.keyt !== 'crsinfo' && !$ctrl.isSubfieldExist(curValue, '$$T')"
                                 class="arrow-link" aria-label="{{$ctrl.getTextFromVal(curValue)}}"
                                 ui-sref="fulldisplay({vid:'{{$ctrl.queryOptions.vid}}',scope:'{{$ctrl.queryOptions.scope}}',tab:'{{$ctrl.queryOptions.tab}}',docid:'alma{{$ctrl.getSubfieldFromVal(curValue, '$$Z')}}',context:'L'})"
                                 ui-sref-opts="{reload: true}">
+-->
                                 <prm-highlight terms="$ctrl.highlights[value.keyt]"
                                     text="$ctrl.getTextFromVal(curValue)"></prm-highlight>
                                 <prm-icon link-arrow icon-type="svg" svg-icon-set="primo-ui"
