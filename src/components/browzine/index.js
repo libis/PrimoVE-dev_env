@@ -30,7 +30,7 @@ export let browzineComponent = {
     name: 'custom-browzine',
     enabled: true,
     appendTo: 'prm-search-result-availability-line-after',
-    enableInView: '.*',
+    enableInView: '!(32KUL_KUL:Lirias)',
     config: {
         bindings: {
             parentCtrl: '<'

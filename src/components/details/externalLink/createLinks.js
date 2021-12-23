@@ -10,7 +10,7 @@ class ExternalLinksInDetailsController {
     createExternalLinks() {
 
         // console.log( self.parentCtrl.details )
-        console.log( self.parentCtrl )
+        // console.log( self.parentCtrl )
 
         let identifiers = self.parentCtrl.details.filter(function (d) {
             return d.label === "identifier";
