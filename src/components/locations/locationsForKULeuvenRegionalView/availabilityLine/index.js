@@ -21,7 +21,10 @@ class AvailabilityLineController {
     console.log ( self.$ctrl.result.delivery.almaInstitutionsList )
     console.log ( self.$ctrl)
     console.log ( "displayedAvailability:"+ self.$ctrl.displayedAvailability );
+    console.log ( "delivery.displayedAvailability:"+ self.$ctrl.result.delivery.displayedAvailability)
+    console.log ( "delivery.availability:"+self.$ctrl.result.delivery.availability[0] );
     */
+
     self.$ctrl.displayedAvailability.forEach(availability => {
       /*
       console.log(" showOtherLibraries(availability) " + self.$ctrl.showOtherLibraries(availability))
@@ -50,7 +53,7 @@ class AvailabilityLineController {
       var availabilityInstitutionsNames = availabilityInstitutions.map(inst => inst.instName)
 
       if (self.$ctrl.result.delivery.availability[0] === "available_in_library") {
-        if (self.$ctrl.result.delivery.displayedAvailability ===  "available_in_library") {
+        if (self.$ctrl.result.delivery.displayedAvailability === "available_in_library" || self.$ctrl.result.delivery.displayedAvailability === null ) {
           availabilityInstitutionsNames.unshift(window.appConfig["primo-view"].institution.description);
         }
         if (availabilityInstitutionsNames.length > 0) {
@@ -71,9 +74,11 @@ class AvailabilityLineController {
           }
         }
       }
+
+
+      
       // if (self.$ctrl.result.delivery.bestlocation === null) {
       if (self.$ctrl.result.delivery.availability[0] === "no_inventory") {
-        //self.$ctrl.displayedAvailability = ["available_in_library"];
         self.$ctrl.result.delivery.availability = ["available_in_library"];
         if (availabilityInstitutionsNames.length > 0) {
           if (availabilityInstitutionsNames.length === 1) {
