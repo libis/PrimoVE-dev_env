@@ -1,6 +1,6 @@
-import LocationsForBibliographicViewHTML from './locationsForBibliographicView.html'
+import fullLocationsForBibliographicViewHTML from './fullLocationsForBibliographicView.html'
 
-class LocationsForBibliographicViewController {
+class fullLocationsForBibliographicViewController {
     constructor($element, $compile, $scope, FilterLocationsService) {
         self = this
         this.$element = $element;
@@ -94,9 +94,9 @@ class LocationsForBibliographicViewController {
     }
 }
 
-LocationsForBibliographicViewController.$inject = ['$element', '$compile', '$scope', 'FilterLocationsService'];
+fullLocationsForBibliographicViewController.$inject = ['$element', '$compile', '$scope', 'FilterLocationsService'];
 
-export let locationsForBibliographicViewConfig = {
+export let fullLocationsForBibliographicViewConfig = {
     name: 'custom-locations-bibliographic-view',  
     enabled: true,
     appendTo: 'prm-full-view-after',
@@ -105,8 +105,8 @@ export let locationsForBibliographicViewConfig = {
       bindings: {
         parentCtrl: '<'
       },
-      controller: LocationsForBibliographicViewController,
-      template: LocationsForBibliographicViewHTML
+      controller: fullLocationsForBibliographicViewController,
+      template: fullLocationsForBibliographicViewHTML
     }
 }
   
