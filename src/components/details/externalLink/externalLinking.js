@@ -9,7 +9,7 @@ class ExternalLinkingController {
 }
 ExternalLinkingController.$inject = ['$scope', '$element'];
 
-export let externalLinkingcomponent = {
+export let externalLinkingComponent = {
     name: 'prm-external-linking',
     enabled: true,
     appendTo: '',

@@ -17,7 +17,6 @@ class RemoveLoginController {
       self.parentCtrl.isLoggedInIDP = function() { return true };
     }
   
-    console.log ( $scope) ;
     // remove "Sign in" Alert in "How to get it"
     if( self.parentCtrl.reqAlert ){
       var s = document.createElement("style");

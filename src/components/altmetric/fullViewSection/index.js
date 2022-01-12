@@ -6,7 +6,6 @@ import altmetricSectionHTML from './altmetricSection.html'
 import './altmetricSection.css'
 
 // http intersept ""tiles""."ResultTileInterface" => hash each key ""32KUL_KUL:KULeuven.ResultTileInterfaceFrbrGeneric.ALL_CONTENT_SLOT" .tabsorder.items
-
 class altmetricSectionController {
   constructor($element, $window, $scope) {
     var self = this;
@@ -67,6 +66,13 @@ class altmetricSectionController {
           self.sectionData.display = true;
           self.waitForTargetThenMoveSection(sectionSelector, self.$element);
         });
+
+        angular.element(document.querySelector(`#altmetric-section-isbn-${self.id}`)).on('altmetric:show', function () {
+          var sectionSelector = `div.full-view-section#${self.sectionData.scrollId} div.full-view-section-content div.section-body`;
+          self.sectionData.display = true;
+          self.waitForTargetThenMoveSection(sectionSelector, self.$element);
+        });
+
         altmetricWatcher(); //deregister watcher
       }
     }, false);
@@ -79,16 +85,18 @@ class altmetricSectionController {
       return targetElementExists;
     }, (n, o) => {
       if (n == true) {
-        let targetElement = document.querySelector(sectionTargetSelector)
+        let targetElement = document.querySelector(sectionTargetSelector);
         if (targetElement && targetElement.appendChild) {
-          targetElement.appendChild(sectionSourceElement[0]);
+          // console.log ( targetElement.querySelector('div.altmetric-section-badge')  )
+          if ( !targetElement.querySelector('div.altmetric-section-badge') ){
+            targetElement.appendChild(sectionSourceElement[0].querySelector('div.altmetric-section-badge').cloneNode(true));
+          }
         }
         unbindWatcher();
       }
     }
     );
   }
-
 
   guid() {
     let s4 = function () {
@@ -101,7 +109,6 @@ class altmetricSectionController {
 };
 
 altmetricSectionController.$inject = ['$element', '$window', '$scope'];
-
 
 export let altmetricSectionConfig = {
   name: 'custom-altmetric-section',
@@ -116,3 +123,54 @@ export let altmetricSectionConfig = {
     template: altmetricSectionHTML
   }
 }
+
+
+class altmetricSectionRefreshController {
+  constructor($element, $scope) {
+    var self = this;
+    self.$element = $element;
+    self.$scope = $scope;
+    self.service_scrollId = 'altmetrics'
+    //console.log ($scope);
+    //self.scrollId = self.parentCtrl.parentCtrl.service.scrollId;
+    //console.log (self.parentCtrl.parentCtrl.service )
+
+    //this is a watcher on the local scope and will trigger altmetric
+    let altmetricWatcher = $scope.$watch(() => {
+      let altmetricLoaded = (typeof window._altmetric_embed_init) === 'function';
+      let serviceLoaded = ( self.parentCtrl.parentCtrl.service !== undefined );
+      let runTrigger = (altmetricLoaded && serviceLoaded);
+      return runTrigger;
+    }, (n, o) => {
+      if (n == true) {
+        if ( self.parentCtrl.parentCtrl.service.scrollId === self.service_scrollId ) {
+          // var sectionSelector = `div.full-view-section#${self.service_scrollId} div.full-view-section-content div.section-body`;
+          let altmetricBadge = document.querySelector('custom-altmetric-section div.altmetric-section-badge').cloneNode(true);
+          let targetElement = self.$element.parent().parent().find('div')[2];
+          if ( !targetElement.querySelector('div.altmetric-section-badge') ){
+            targetElement.appendChild( altmetricBadge )
+          }
+        }
+        altmetricWatcher(); //deregister watcher
+      }
+    }, false);
+  }
+}
+
+altmetricSectionRefreshController.$inject = ['$element', '$scope'];
+
+export let altmetricSectionRefreshConfig = {
+  name: 'custom-altmetric-section-refresh',
+  enabled: true,
+  appendTo: 'prm-full-view-service-container-after',
+  enableInView: '.*',
+  config: {
+    bindings: {
+      parentCtrl: '<'
+    },
+    controller: altmetricSectionRefreshController,
+    template: ''
+  }
+}
+
+
