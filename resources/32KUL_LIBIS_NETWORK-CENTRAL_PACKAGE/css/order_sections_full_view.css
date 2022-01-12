@@ -8,8 +8,29 @@ Citations
 Tags
 */
 
+
+
+/*
+De WG Limo wil dezelfde volgorde van de secties behouden als in de huidige Limo.
+DWZ onderstaande. Dit is zo geconfigureerd in de view van KU Leuven, behalve Send To en Altmetrics, die niet in de configuratie zitten.
+
+(Search within Journal: te verbergen)
+Citations
+Getit / View Online
+Links
+*Send To: *: zou hier tussen moeten staan maar zit niet in de configuratie
+Details
+More of the same
+Browseshelf (nieuw, niet zeker of dat gebruitkt gaat worden)
+(QuickAccess: nieuw, momenteel niet actief)
+Altmetrics: zit niet in de configuratie
+*/
+
+
 [aria-label="Top"] { order: 0 !important;}
-[aria-label="Details"] { order: 1 !important;}
+[aria-label="Citations"] { order: 1 !important;}
+
+
 [aria-label="View Online"] { order: 3 !important;}
 [aria-label="Get It"] { order: 4 !important;}
 [aria-label="Additional Services"] { order: 6 !important;}
@@ -20,27 +41,29 @@ Tags
 [aria-label="View It"] { order: 10 !important;}
 [aria-label="Links"] { order: 11 !important;}
 [aria-label="Send to"] { order: 12 !important;}
-[aria-label="Citations"] { order: 13 !important;}
 [aria-label="citationTrails"] { order: 13 !important;}
-[aria-label="Tags"] { order: 14 !important;}
-[aria-label="Altmetrics"] { order: 14 !important;}
+[aria-label="Details"] { order: 14 !important;}
+
+[aria-label="Tags"] { order: 15 !important;}
+[aria-label="Altmetrics"] { order: 15 !important;}
 
 
 /* Moving Order of tabs in New UI */
-#details { order: 0; }
-#details { order: 1; }
+#citations { order: 1; }
+
 #getit_link1_0 { order: 2; }
 #getit_link2_0 { order: 3; }
-#links { order: 4; }
-#action_list { order: 5; } /* send to */
-#citations { order: 6; }
-#virtualBrowse { order: 7; }
-#citationTrails  { order: 7; }
-#tags { order: 8; }
-#altmetrics { order: 9; }
+#links { order: 11; }
+#action_list { order: 12; } /* send to */
+#virtualBrowse { order: 13; }
+#citationTrails  { order: 13; }
+#details { order: 14; }
+#tags { order: 15; }
+#altmetrics { order: 15; }
 .syndetic-unbound-section { order: 9; }
 .full-view-inner-container {
 padding-bottom: 10em;
 display: flex;
 flex-direction: column;
 }
+
