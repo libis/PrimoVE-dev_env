@@ -58,45 +58,60 @@ class altmetricSectionController {
     }, (n, o) => {
       if (n == true) {
         console.log("trigger section altmetric for:", self.recordid);
+        altmetricWatcher(); //deregister watcher
         $window._altmetric_embed_init(`#altmetric-section-isbn-${self.id}`);
         $window._altmetric_embed_init(`#altmetric-section-doi-${self.id}`);
 
         angular.element(document.querySelector(`#altmetric-section-doi-${self.id}`)).on('altmetric:show', function () {
-          var sectionSelector = `div.full-view-section#${self.sectionData.scrollId} div.full-view-section-content div.section-body`;
           self.sectionData.display = true;
-          self.waitForTargetThenMoveSection(sectionSelector, self.$element);
         });
 
         angular.element(document.querySelector(`#altmetric-section-isbn-${self.id}`)).on('altmetric:show', function () {
-          var sectionSelector = `div.full-view-section#${self.sectionData.scrollId} div.full-view-section-content div.section-body`;
           self.sectionData.display = true;
-          self.waitForTargetThenMoveSection(sectionSelector, self.$element);
         });
 
-        altmetricWatcher(); //deregister watcher
+        /*
+        angular.element(document.querySelector(`#altmetric-section-doi-${self.id}`)).on('altmetric:show', function () {
+          var sectionSelector = `div.full-view-section#${self.sectionData.scrollId} div.full-view-section-content`;
+          console.log (sectionSelector )
+          self.waitForTargetThenMoveSection(sectionSelector, self.$element)
+          self.sectionData.display = true;
+        });
+       
+        angular.element(document.querySelector(`#altmetric-section-isbn-${self.id}`)).on('altmetric:show', function () {
+          var sectionSelector = `div.full-view-section#${self.sectionData.scrollId} div.full-view-section-content`;
+          self.sectionData.display = true;
+          self.waitForTargetThenMoveSection(sectionSelector, self.$element)
+        });
+        */
+
       }
     }, false);
   }
 
+
   // Wait for the target element to be created.
-  waitForTargetThenMoveSection(sectionTargetSelector, sectionSourceElement) {
+  /*
+  waitForTargetThenMoveSection = function (sectionTargetSelector, sectionSourceElement) {
     let unbindWatcher = self.$scope.$watch(() => {
       let targetElementExists = document.querySelector(sectionTargetSelector) != null;
       return targetElementExists;
     }, (n, o) => {
       if (n == true) {
-        let targetElement = document.querySelector(sectionTargetSelector);
+        unbindWatcher();
+        var targetElement = document.querySelector(sectionTargetSelector).querySelector('div.section-body');
         if (targetElement && targetElement.appendChild) {
           // console.log ( targetElement.querySelector('div.altmetric-section-badge')  )
           if ( !targetElement.querySelector('div.altmetric-section-badge') ){
-            targetElement.appendChild(sectionSourceElement[0].querySelector('div.altmetric-section-badge').cloneNode(true));
+            targetElement.innerHTML = "<h1>TEST TSET TSET </h1>";
+            // targetElement.appendChild(sectionSourceElement[0].querySelector('div.altmetric-section-badge').cloneNode(true))
           }
         }
-        unbindWatcher();
+
       }
-    }
-    );
+    });
   }
+  */
 
   guid() {
     let s4 = function () {
@@ -124,16 +139,12 @@ export let altmetricSectionConfig = {
   }
 }
 
-
 class altmetricSectionRefreshController {
   constructor($element, $scope) {
     var self = this;
     self.$element = $element;
     self.$scope = $scope;
-    self.service_scrollId = 'altmetrics'
-    //console.log ($scope);
-    //self.scrollId = self.parentCtrl.parentCtrl.service.scrollId;
-    //console.log (self.parentCtrl.parentCtrl.service )
+    self.service_scrollId = 'altmetrics';
 
     //this is a watcher on the local scope and will trigger altmetric
     let altmetricWatcher = $scope.$watch(() => {
@@ -143,7 +154,7 @@ class altmetricSectionRefreshController {
       return runTrigger;
     }, (n, o) => {
       if (n == true) {
-        if ( self.parentCtrl.parentCtrl.service.scrollId === self.service_scrollId ) {
+       if ( self.parentCtrl.parentCtrl.service.scrollId === self.service_scrollId ) {
           // var sectionSelector = `div.full-view-section#${self.service_scrollId} div.full-view-section-content div.section-body`;
           let altmetricBadge = document.querySelector('custom-altmetric-section div.altmetric-section-badge').cloneNode(true);
           let targetElement = self.$element.parent().parent().find('div')[2];
@@ -172,5 +183,8 @@ export let altmetricSectionRefreshConfig = {
     template: ''
   }
 }
+
+
+
 
 

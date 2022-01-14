@@ -12,7 +12,7 @@
         data-doi="{{$ctrl.doi}}">
      </div>
    </div>
-   <div id="altmetric-section-isbn-{{$ctrl.id}}" class="altmetric-section-badge layout-row" ng-if="$ctrl.isbn != ''">
+   <div id="altmetric-section-isbn-{{$ctrl.id}}" class="altmetric-section-badge layout-row" ng-if="$ctrl.doi == '' && $ctrl.isbn != ''">
      <div aria-label="Altmetric" 
         ng-click="$event.stopPropagation();"
         data-link-target="_blank"
