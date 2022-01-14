@@ -6,7 +6,9 @@ class LanguageSelectionController {
         var onlyshow_fr_FR_in_vid = ['ACV', 'BPB', 'FARO', 'FODFIN', 'KBC', 'RBINS', 'RMCA', 'KMKG', 'LIBAR', 'NBB', 'OFO', 'VDIC'];
         let parentEl = angular.element(document.querySelector('primo-explore'));
         if (! onlyshow_fr_FR_in_vid.includes( window.appConfig.vid  ) ) {
-            parentEl.append( "<style>prm-language-selection md-list-item[value='fr']{display:none!important;}</style>" );
+            parentEl.append( 
+              "<style>prm-language-selection md-list-item[value='fr']{display:none !important;} md-option[value='fr_FR'] {display: none !important;}</style>"
+            );            
         }
 
     }

@@ -3,3 +3,4 @@ package/
 dist/
 .DS_Store
 yarn.lock
+**/_index.css
