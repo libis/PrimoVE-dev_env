@@ -28,25 +28,30 @@ Tags
 Citations
 */
 
-class SectionVisibilityOrderController {
-    constructor($scope, $element, $translate) {
+class SectionOrderController {
+    constructor($scope, $element, $translate,$rootScope) {
         var self = this
         self.$scope = $scope;
         self.$element = $element;
         self.$translate = $translate;
-        
-        //this is a watcher on the local scope and will trigger altmetric
-        let servicesWatcher = $scope.$watch(() => {
-            let servicesLoaded =  self.parentCtrl.parentCtrl.fullViewService.servicesArray !== undefined;
-            let calculatePrimaViewItDone =  self.parentCtrl.parentCtrl.fullViewService.calculatePrimaViewItDone()
-            return ( servicesLoaded && calculatePrimaViewItDone );
-        }, (n, o) => {
-            if (n == true) {
-                self.addStyles(self)
-                servicesWatcher(); //deregister watcher
-            }
-        }, false);
 
+        console.log ( $rootScope )
+
+        $rootScope.$on('$translateChangeSuccess', ()=>{
+            console.log ("START START START TEST")
+            //this is a watcher on the local scope and will trigger altmetric
+            let servicesWatcher = $scope.$watch(() => {
+                let servicesLoaded =  self.parentCtrl.parentCtrl.fullViewService.servicesArray !== undefined;
+                let calculatePrimaViewItDone =  self.parentCtrl.parentCtrl.fullViewService.calculatePrimaViewItDone()
+                return ( servicesLoaded && calculatePrimaViewItDone );
+            }, (n, o) => {
+                if (n == true) {
+                    self.addStyles(self)
+                    servicesWatcher(); //deregister watcher
+                }
+            }, false);
+
+        });
 /*
     if (serviceName === 'display') {
         this.viewOnlineScrollId = 'getit_link1_' + scrollIdIndex;
@@ -191,12 +196,13 @@ class SectionVisibilityOrderController {
 
         // 
         if ( self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:Lirias") {
-            servicesOrder = [ "brief", "getit_link1", "details", "links","altmetrics","action_list","tags","citationTrails"];
+            servicesOrder = [ "brief", "getit_link1", "details", "links", "altmetrics", "action_list", "tags", "citationTrails"];
         }
         
-
+        console.log ( servicesOrder )
         self.parentCtrl.parentCtrl.fullViewService.servicesArray.forEach(function( service ) {
-            var styleId = 'style_'+ service["scrollId"].replace(/getit_link1.*/, 'getit_link1').replace(/getit_link2.*/, 'getit_link2')
+            var scrollId = service["scrollId"].replace(/getit_link1.*/, 'getit_link1').replace(/getit_link2.*/, 'getit_link2')
+            var styleId = 'style_'+ scrollId
             var order = servicesOrder.indexOf( scrollId );
 
             if ( appendToElement.querySelector( 'style#'+styleId ) ) {
@@ -205,9 +211,9 @@ class SectionVisibilityOrderController {
             }
 
             if ( order < 0 ) {
-                console.warn( "Error does not exist ");
+                console.warn( "Service not found in servicesOrder");
                 console.log( service );
-                return;
+                order = 50;
             }
 
             order++;
@@ -215,7 +221,7 @@ class SectionVisibilityOrderController {
             var s = document.createElement("style");
             s.setAttribute("id", styleId );
             s.innerHTML = ""
-            s.innerHTML += "button[aria-label=\""+   self.$translate.instant( service["title"] ) +"\"] { order: "+ order +" !important;}";
+            s.innerHTML += "div#services-index button[aria-label=\""+   self.$translate.instant( service["title"] ) +"\"] { order: "+ order +" !important;}";
             s.innerHTML += "div.full-view-section#"+ service["scrollId"] +" { order: "+ order +" !important;}";
 
             appendToElement.appendChild(s);
@@ -225,9 +231,9 @@ class SectionVisibilityOrderController {
     }
 }
 
-SectionVisibilityOrderController.$inject = ['$scope', '$element','$translate'];
+SectionOrderController.$inject = ['$scope', '$element','$translate','$rootScope'];
 
-export let sectionVisibilityOrderConfig = {
+export let sectionOrderConfig = {
     name: 'custom-section-visibility-order',
     enabled: true,
     appendTo: 'prm-full-view-after',
@@ -236,7 +242,7 @@ export let sectionVisibilityOrderConfig = {
         bindings: {
             parentCtrl: '<'
         },
-        controller: SectionVisibilityOrderController,
+        controller: SectionOrderController,
         template: ''
     }
 }
