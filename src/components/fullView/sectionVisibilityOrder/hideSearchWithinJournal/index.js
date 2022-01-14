@@ -6,7 +6,7 @@ class hideSearchWithinJournalController {
     self.$scope = $scope
     self.$translate = $translate;
     self.$rootScope = $rootScope
-    var hide_in_vid = ['32KUL_KUL:KULeuven'];
+    // var hide_in_vid = ['32KUL_KUL:KULeuven'];
     var service = { 
       title : 'brief.results.tabs.searchWithinJournal',
       scrollId : 'searchWithinJournal'
@@ -16,7 +16,7 @@ class hideSearchWithinJournalController {
       return self.$translate.isReady() 
     }, (n, o) => {
       if (n == true) {
-        if (hide_in_vid.includes(window.appConfig.vid)) {
+        // if (hide_in_vid.includes(window.appConfig.vid)) {
           var s = document.createElement("style");
           s.setAttribute("id",  'style_'+ service["scrollId"] );
           s.innerHTML = ""
@@ -24,7 +24,7 @@ class hideSearchWithinJournalController {
           s.innerHTML += "div.full-view-section#"+ service["scrollId"] +" { display: none !important;}";
 
           document.getElementsByTagName("primo-explore")[0].appendChild(s);
-        }
+        //}
         translatorWatcher();
       } 
     }, false);
