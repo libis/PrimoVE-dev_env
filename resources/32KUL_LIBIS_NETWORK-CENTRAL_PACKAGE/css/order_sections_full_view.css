@@ -1,4 +1,9 @@
 /* Order section in the full view */
+
+/********************************************************************/
+/* See ./src/components/fullView/sectionVisibilityOrder/index.js    */
+/********************************************************************/
+
 /*
 Details
 View Online
@@ -7,8 +12,6 @@ Send to
 Citations
 Tags
 */
-
-
 
 /*
 De WG Limo wil dezelfde volgorde van de secties behouden als in de huidige Limo.
@@ -26,16 +29,20 @@ Browseshelf (nieuw, niet zeker of dat gebruitkt gaat worden)
 Altmetrics: zit niet in de configuratie
 */
 
+/*
 button[aria-label="Top"] { order: 0 !important;}
+*/
 
 /* -----------------------------------------------------*/
 /*citations*/
+/*
 button[aria-label="Citations"] { order: 1 !important;}
 #citations { order: 1; }
-
+*/
 
 /* -----------------------------------------------------*/
 /*view online*/
+/*
 button[aria-label="View Online"] { order: 3 !important;}
 #getit_link1_0,
 #getit_link2_0 {
@@ -45,13 +52,16 @@ button[aria-label="View Online"] { order: 3 !important;}
     -webkit-order: 3;
     order: 3;
   }
+*/
 
-
+/*
 button[aria-label="Get It"] { order: 4 !important;}
 button[aria-label="Additional Services"] { order: 6 !important;}
+*/
 
 /* -----------------------------------------------------*/
 /*Virtual Browse*/
+/*
 button[aria-label="Virtual Browse"] { order: 6 !important;}
 #virtualBrowse {
     -webkit-box-ordinal-group: 6;
@@ -60,16 +70,18 @@ button[aria-label="Virtual Browse"] { order: 6 !important;}
     -webkit-order: 6;
     order: 6;
 }
+*/
 
+/*
 button[aria-label="Online Access"] { order: 7 !important;}
 button[aria-label="In the library"] { order: 8 !important;}
 button[aria-label="Locations / request item"] { order: 9 !important;}
 button[aria-label="View It"] { order: 10 !important;}
-
-
+*/
 
 /* -----------------------------------------------------*/
 /*links*/
+/*
 button[aria-label="Links"] { order: 11 !important;}
 #links{
     -webkit-box-ordinal-group: 11;
@@ -78,9 +90,11 @@ button[aria-label="Links"] { order: 11 !important;}
     -webkit-order: 11;
     order: 11;
   }
+*/
 
 /* -----------------------------------------------------*/
 /*Send to*/
+/*
 button[aria-label="Send to"] { order: 12 !important;}
 #action_list{
     -webkit-box-ordinal-group: 12;
@@ -89,10 +103,11 @@ button[aria-label="Send to"] { order: 12 !important;}
     -webkit-order: 12;
     order: 12;
   }
-
+*/
 
 /* -----------------------------------------------------*/
 /* citationTrails */
+/*
 button[aria-label="citationTrails"] { order: 13 !important;}
 #citationTrails  {
     -webkit-box-ordinal-group: 13;
@@ -101,9 +116,11 @@ button[aria-label="citationTrails"] { order: 13 !important;}
     -webkit-order: 13;
     order: 13;
 }
+*/
 
 /* -----------------------------------------------------*/
 /*details*/
+/*
 button[aria-label="Details"] { order: 14 !important;}
 #details{
     -webkit-box-ordinal-group: 14;
@@ -112,10 +129,11 @@ button[aria-label="Details"] { order: 14 !important;}
     -webkit-order: 14;
     order: 14;
   }
-  
+*/
 
 /* -----------------------------------------------------*/
 /*tags*/
+/*
 button[aria-label="Tags"] { order: 15 !important;}
 #tags {    
     -webkit-box-ordinal-group: 15;
@@ -123,9 +141,11 @@ button[aria-label="Tags"] { order: 15 !important;}
     -ms-flex-order: 15;
     -webkit-order: 15;
     order: 15; }
+*/
 
 /* -----------------------------------------------------*/
 /*altmetrics*/
+/*
 button[aria-label="Altmetrics"] { order: 15 !important;}
 #altmetrics{
     -webkit-box-ordinal-group: 15;
@@ -134,9 +154,10 @@ button[aria-label="Altmetrics"] { order: 15 !important;}
     -webkit-order: 15;
     order: 15;
   }
+*/
 
 /* Moving Order of tabs in New UI */
-.syndetic-unbound-section { order: 20; }
+.syndetic-unbound-section { order: 50; }
 
 .full-view-inner-container {
     padding-bottom: 10em;
