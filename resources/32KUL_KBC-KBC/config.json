@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_KBC",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-kbc.primo.exlibrisgroup.com/",
+    "institution": "32KUL_KBC",
+    "vidId": "KBC",
+    "views": [
+      "KBC"
+    ]
+  }
+}

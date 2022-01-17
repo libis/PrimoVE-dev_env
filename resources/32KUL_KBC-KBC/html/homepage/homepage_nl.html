@@ -1,0 +1,84 @@
+<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    LinkToAZDatabaseList
+</style>
+
+<md-content layout-xs="column" layout="row" class="display-block-xs">
+    <div flex-xs="100" flex="50" layout="column">
+
+        <md-card class="default-card _md md-primoExplore-theme" id="limo-content">
+            <md-card-content>
+                <img style="height:70px;margin-bottom:8px;" src="/primo-explore/custom/KBC/img/BIB10s.JPG"><br />
+                <a href="https://www.kbc.be/particulieren/nl/product/verzekeren/welkom-in-de-verzekeringsbib.html" target="_blank" id="limo_content_link" aria-label="Link naar info over wat je kan vinden in Limo"
+                   title="Link naar info over wat je kan vinden in Limo">
+                    <span class="md-headline" id="ContentInLimo">
+                        Wat vind je in Limo?
+                    </span>
+
+                </a>
+                <br />
+                <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+
+
+            </md-card-content>
+        </md-card>
+    </div>
+    <div flex-xs="100" flex="50" layout="column">
+
+        <md-card class="default-card _md md-primoExplore-theme" id="limo-content">
+            <md-card-content>
+              <p>
+                Zoek in deze catalogus, misschien zit het al in onze collectie van fysieke en e-boeken.
+Graag uitlenen? Dit doe je <a target="_blank" href="https://kbcgroup.sharepoint.com/sites/151132/Lists/Aanvraag%20boek%20uit%20catalogus/AllItems.aspx">hier</a>.
+                </p>
+              <p>
+                Boek niet gevonden? zoek ook eens op onderwerp voor een alternatief.
+                </p>
+              <p>
+                Wil je het boek laten aankopen? Vul dit <a target="_blank" href="https://kbcgroup.sharepoint.com/sites/151132/Lists/Aanvraag%20boek/NewForm.aspx?Source=https%3a//kbcgroup.sharepoint.com/sites/151132/Lists/Aanvraag%2520boek/Allitemsg.aspx%23InplviewHashcaacc3b0-fb65-4e2a-960e-764f18bc3d7e%3D&RootFolder=">formulier</a> in en wij doen de rest.
+                </p>
+
+            </md-card-content>
+        </md-card>
+    </div>
+
+</md-content>
