@@ -1,0 +1,104 @@
+﻿<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    LinkToAZDatabaseList
+</style>
+<md-content layout-xs="column" layout="row">
+    <div flex-xs="100" flex="60" layout="column">
+      <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+          <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">Welkom bij de catalogus van het Documentatiecentrum Vlaams-Brabant</span>
+              </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+              <p>
+                Het Documentatiecentrum Vlaams-Brabant verzamelt informatie over de geschiedenis en het erfgoed van de provincie Vlaams-Brabant en haar voorlopers: de provincie Brabant en het hertogdom Brabant. De bewaarbibliotheek herbergt een unieke collectie boeken en tijdschriften over tal van onderwerpen zoals lokale geschiedenis, heemkunde, archeologie, monumenten, landschappen en ander onroerend erfgoed, dialecten, natuur, genealogie,… Het Documentatiecentrum ontplooit ook een publiekswerking onder de vorm van publicaties, expo’s en lezingen.
+              </p>
+          </md-card-content>
+          <md-card-footer>
+              <p>
+                Voor meer informatie, raadpleeg de website van het <a target="_blank" class="md-primoExplore-theme" href="https://www.vlaamsbrabant.be/documentatiecentrum">Documentatiecentrum Vlaams-Brabant</a>.
+              </p>
+          </md-card-footer>
+      </md-card>
+
+      <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+          <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">Openingsuren</span>
+              </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            Dinsdag tot vrijdag: van 9 tot 16.30 uur<br />
+            Juli en augustus: gesloten tussen 12 en 13 uur<br />
+            <strong>OPGELET: omwille van de corona-maatregelen is er momenteel enkel bezoek op afspraak mogelijk. Neem daarvoor contact op, bij voorkeur via mail.</strong>
+          </md-card-content>
+          <md-card-footer>
+            Documentatiecentrum Vlaams-Brabant<br />
+            Vaartstraat 24, 3000 Leuven<br />
+            Tel.: 016-31 49 54<br />
+            <a href="mailto:documentatiecentrum@vlaamsbrabant.be">documentatiecentrum@vlaamsbrabant.be</a>
+          </md-card-footer>
+      </md-card>
+      <md-card class="default-card _md md-primoExplore-theme">
+          <img alt="foto gevel" src="/primo-explore/custom/docvlaamsbrabant/img/desks.jpg" />
+      </md-card>
+      <md-card class="default-card _md md-primoExplore-theme">
+          <md-card-content>
+            <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+          </md-card-content>
+      </md-card>
+    </div>
+    <div flex-xs="100" flex="40" layout="column">
+      <md-card class="default-card _md md-primoExplore-theme">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Recente aanwinsten</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <prm-aanwinsten parent-Ctrl='$ctrl'></prm-aanwinsten>
+        </md-card-content>
+      </md-card>
+      <prm-spotlight></prm-spotlight>
+    </div>
+  </md-content>
