@@ -1,0 +1,82 @@
+﻿<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    LinkToAZDatabaseList
+</style>
+<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+    <md-card-content>
+            <span class="md-headline" id="ContentInLimo">
+                Wat vind je in Limo?
+            </span>
+        <br />
+        <p>
+            <ul>
+                <li>
+                    <b>Volledige inhoud</b>:
+                    je zoekt zeer ruim, niet alleen in de collectie van de Nationale Bank van Belgi&euml;, maar tegelijkertijd ook in de collecties van de KU Leuven evenals in deze van o.a. het Belgisch en Vlaams Parlement, de FOD Financi&euml;n, enz. Bovendien zal je zoekopdracht ook resultaten opleveren uit een (groeiend aantal) externe informatiebronnen. <i>&ldquo;Volledige inhoud&rdquo; is onze standaard Limo zoekoptie</i>.
+
+                    <br />
+                </li>
+                <br />
+                <li>
+                    <b>NBB catalogus</b>:
+                    de volledige catalogus van de wetenschappelijke bibliotheek van de Nationale Bank van Belgi&euml;. Gebruik deze optie als je enkel materiaal zoekt in het bezit van of beschikbaar bij de Nationale Bank van Belgi&euml;.
+                </li>
+            </ul>
+
+        </p>
+        <br />
+        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+
+        <br />
+        Voor bepaalde functionaliteiten (zoals de reservatie van publicaties of het raadplegen van jouw ontleningen) dien je je in de toepassing aan te melden.
+        <br />
+        <br />
+        Nog vragen? Op zoek naar een logon ID? Contacteer ons:
+        <a href="mailto:documentation@nbb.be">documentation@nbb.be</a>.</br>
+
+
+    </md-card-content>
+
+</md-card>
+
+<prm-news parent-Ctrl='$ctrl'></prm-news>
+
