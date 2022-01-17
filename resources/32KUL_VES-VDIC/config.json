@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_VES",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-vesalius.primo.exlibrisgroup.com/",
+    "institution": "32KUL_VES",
+    "vidId": "VDIC",
+    "views": [
+      "VDIC"
+    ]
+  }
+}
