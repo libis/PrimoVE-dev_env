@@ -1,0 +1,66 @@
+﻿<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    LinkToAZDatabaseList
+</style>
+<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+    <md-card-content>
+            <span class="md-headline" id="ContentInLimo">
+                Wat vind je in Limo?
+            </span>
+        <br />
+        <h4>KMKG</h4>
+        <p>
+            De wetenschappelijke bibliotheek van de Koninklijke Musea voor Kunst en Geschiedenis is gespecialiseerd in de archeologie en de kunst van de vijf continenten, vanaf de prehistorie tot vandaag. De bibliotheek staat niet alleen open voor de museummedewerkers zelf maar ook voor onderzoekers, studenten en andere geïnteresseerden.
+        </p>
+
+        <h4>MIM</h4>
+        <p>
+        De wetenschappelijke bibliotheek van het Muziekinstrumentenmuseum (MIM) is gespecialiseerd in organologie, westerse muziekgeschiedenis, traditionele muziek en ethnomusicologie. De bibliotheek bewaart ook verschillende speciale fondsen waaronder het Fonds Robert Pernet, gewijd aan de Belgische jazz, en het Fonds Christian Poché, gewijd aan de traditionele wereldmuziek.
+        </p>
+        <br />
+        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+
+    </md-card-content>
+
+</md-card>
+
+<prm-news parent-Ctrl='$ctrl'></prm-news>

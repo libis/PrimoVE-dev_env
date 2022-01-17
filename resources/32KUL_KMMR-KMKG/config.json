@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_KMMR",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-kmmr.primo.exlibrisgroup.com/",
+    "institution": "32KUL_KMMR",
+    "vidId": "KMKG",
+    "views": [
+      "KMKG"
+    ]
+  }
+}
