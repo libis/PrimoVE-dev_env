@@ -188,6 +188,8 @@ class SectionOrderController {
         let servicesOrder = self.parentCtrl.parentCtrl.fullViewService.configurationUtil.getBriefResultConfiguration().tabsorder.items.split(',');
         // brief-section always on top 
         servicesOrder.unshift('brief')
+        // citationTrails-section aways after brief
+        servicesOrder.splice(servicesOrder.indexOf('brief'), 1, 'brief', 'citationTrails')
         // action_list-section (send-to) aways after links-section
         servicesOrder.splice(servicesOrder.indexOf('links'), 1, 'links', 'action_list')
 
@@ -202,20 +204,22 @@ class SectionOrderController {
 
         // console.log(servicesOrder)
         self.parentCtrl.parentCtrl.fullViewService.servicesArray.forEach(function (service) {
-            var scrollId = service["scrollId"].replace(/getit_link1.*/, 'getit_link1').replace(/getit_link2.*/, 'getit_link2')
-            var styleId = 'style_' + scrollId
-            var order = servicesOrder.indexOf(scrollId);
+            var orderId = service["scrollId"].replace(/getit_link1.*/, 'getit_link1').replace(/getit_link2.*/, 'getit_link2')
+            var styleId = 'style_' + service["scrollId"]
+            var order = servicesOrder.indexOf(orderId);
 
+            /*
+            console.log (styleId)
+            console.log (service)
+            */
             if (appendToElement.querySelector('style#' + styleId)) {
                 //next 
                 return;
             }
 
             if (order < 0) {
-                /*
                 console.warn("Service not found in servicesOrder");
                 console.log(service);
-                */
                 order = 50;
             }
 
@@ -240,7 +244,6 @@ export let sectionOrderConfig = {
     name: 'custom-section-visibility-order',
     enabled: true,
     appendTo: 'prm-full-view-after',
-    enableInView: '.*',
     config: {
         bindings: {
             parentCtrl: '<'
