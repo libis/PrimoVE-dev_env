@@ -6,12 +6,12 @@ class LinkToMyLibraryCardController {
     self.$translate = $translate
     self.$state = $state
     self.lang = self.$translate.use();
-
+/*
     console.log("TSET")
     console.log(this)
     console.log($scope)
     console.log($state)
-
+*/
     $scope.aria_label = self.$translate.instant( "nui.customization.linkToMyLibraryCard.aria_label" )
     
 /*
