@@ -13,7 +13,7 @@ class LanguageSelectionController {
       document.getElementsByTagName("primo-explore")[0].appendChild(s);
     }
 
-    var hide_en_US_in_vid  = ["32KUL_KUL:VLP"];
+    var hide_en_US_in_vid  = ["32KUL_VLP:VLP"];
 
     if (hide_en_US_in_vid.includes(window.appConfig.vid)) {
       var s = document.createElement("style");
