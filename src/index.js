@@ -9,15 +9,17 @@ import Primo from './primo';
 import Loader from './loader';
 import MessageService from './factories/messageService/messageService';
 import FeedbackService from './factories/feedbackService/feedbackService';
+
 import './factories/httpRewrite';
-import './factories/blendedSearch'
+import './factories/blendedSearch';
+// import './vendor/angular-css.min';
 
 // import FilterLocationsService from './factories/filterLocationsService/filterLocationsService';
 // import 'primo-explore-eth-archives-getit';
 
 
 /* TODO : extra css from institute ? */
-//import "./css/index.css";
+import "./css/index.css";
 /**/
 
 // standard google analytics tracking code
@@ -114,6 +116,9 @@ import './factories/blendedSearch'
           watcher();
         }
       });
+    })
+    .run(($templateCache) => {
+      $templateCache.put ('components/search/fullView/full-view.html', $templateCache.get('components/search/fullView/full-view.html').replace('"service in $ctrl.services.slice(1) track by $index"', '"service in $ctrl.services.slice(1) track by service.scrollId"'));
     });
 
   //Load components

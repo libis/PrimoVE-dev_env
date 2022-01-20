@@ -61,6 +61,10 @@ class altmetricSectionController {
         $window._altmetric_embed_init(`#altmetric-section-isbn-${self.id}`);
         $window._altmetric_embed_init(`#altmetric-section-doi-${self.id}`);
 
+
+     ///    this.fullViewService.updateServices ?????
+     ///    this.fullViewService.isPromiseResolved  ????
+
         angular.element(document.querySelector(`#altmetric-section-doi-${self.id}`)).on('altmetric:show', function () {
           self.sectionData.display = true;
         });
@@ -68,52 +72,10 @@ class altmetricSectionController {
         angular.element(document.querySelector(`#altmetric-section-isbn-${self.id}`)).on('altmetric:show', function () {
           self.sectionData.display = true;
         });
-
-        /*
-        angular.element(document.querySelector(`#altmetric-section-doi-${self.id}`)).on('altmetric:show', function () {
-          var sectionSelector = `div.full-view-section#${self.sectionData.scrollId} div.full-view-section-content`;
-          console.log (sectionSelector )
-          self.waitForTargetThenMoveSection(sectionSelector, self.$element)
-          self.sectionData.display = true;
-        });
-       
-        angular.element(document.querySelector(`#altmetric-section-isbn-${self.id}`)).on('altmetric:show', function () {
-          var sectionSelector = `div.full-view-section#${self.sectionData.scrollId} div.full-view-section-content`;
-          self.sectionData.display = true;
-          self.waitForTargetThenMoveSection(sectionSelector, self.$element)
-        });
-        */
 
       }
     }, false);
   }
-
-
-
-
-
-  // Wait for the target element to be created.
-  /*
-  waitForTargetThenMoveSection = function (sectionTargetSelector, sectionSourceElement) {
-    let unbindWatcher = self.$scope.$watch(() => {
-      let targetElementExists = document.querySelector(sectionTargetSelector) != null;
-      return targetElementExists;
-    }, (n, o) => {
-      if (n == true) {
-        unbindWatcher();
-        var targetElement = document.querySelector(sectionTargetSelector).querySelector('div.section-body');
-        if (targetElement && targetElement.appendChild) {
-          // console.log ( targetElement.querySelector('div.altmetric-section-badge')  )
-          if ( !targetElement.querySelector('div.altmetric-section-badge') ){
-            targetElement.innerHTML = "<h1>TEST TSET TSET </h1>";
-            // targetElement.appendChild(sectionSourceElement[0].querySelector('div.altmetric-section-badge').cloneNode(true))
-          }
-        }
-
-      }
-    });
-  }
-  */
 
   guid() {
     let s4 = function () {
