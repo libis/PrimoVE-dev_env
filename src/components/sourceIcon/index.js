@@ -47,5 +47,5 @@ export let sourceIconComponent = {
   },
   enabled: true,
   appendTo: 'prm-brief-result-after',
-  enableInView: '.*'
+  enableInView: '^(?!32KUL_KUL:Lirias)'
 }
