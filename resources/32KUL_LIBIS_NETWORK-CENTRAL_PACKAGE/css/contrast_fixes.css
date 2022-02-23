@@ -1,0 +1,27 @@
+.list-item-wrapper, md-card.default-card{
+background-color: #f9f9f9 !important;
+}
+
+prm-full-view-service-container{
+    padding:1rem;
+    background-color: #fcfcfc;
+}
+
+prm-full-view prm-brief-result-container .result-item-primary-content {
+    padding-left: 1.5em !important;
+}
+
+prm-full-view prm-brief-result-container .list-item-primary-content {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#brief > prm-full-view-service-container {
+    border: none;
+    background-color: unset;
+}
+
+.full-view-section {
+    margin-top: 1.5em;
+  }
+
