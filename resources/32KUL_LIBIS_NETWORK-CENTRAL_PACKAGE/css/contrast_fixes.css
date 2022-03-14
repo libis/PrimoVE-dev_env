@@ -23,5 +23,9 @@ prm-full-view prm-brief-result-container .list-item-primary-content {
 
 .full-view-section {
     margin-top: 1.5em;
-  }
+}
+
+.item-expand-button, .expand-collapse-button{
+    display:none;
+}
 
