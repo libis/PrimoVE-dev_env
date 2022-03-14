@@ -15,7 +15,7 @@ export let removeFinescomponent = {
   name: 'custom-remove-fines',  
   enabled: true,
   appendTo: 'prm-account-overview-after',
-  enableInView: '.*',  
+  enableInView: '^49ECB_INST:ECB',
   config: {
     bindings: {parentCtrl: '<'},
     controller: RemoveFinesController,
