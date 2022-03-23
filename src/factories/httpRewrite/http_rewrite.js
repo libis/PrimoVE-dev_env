@@ -7,6 +7,7 @@ class PrimoPubSub {
     //* get all WebService base urls
     get restBaseURLs() {
         try {
+            //console.log( angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs') );
             return angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs');
         } catch (e) {
             console.error('restBaseURLs: ', e.message);
@@ -44,7 +45,13 @@ class PrimoPubSub {
     findTopicKeyByURLValue(v) {
         try {
             let urlV = new URL(v, window.location.origin);
-            return Object.keys(this.restBaseURLs).find(k => this.restBaseURLs[k] === urlV.pathname)
+
+            const restBaseURLs = this.restBaseURLs;
+            let matchingKeys = Object.keys(restBaseURLs).filter( k => new RegExp('^'+restBaseURLs[k]).test(urlV.pathname) );
+            if ( matchingKeys.length > 0 ){
+                return matchingKeys.reduce( (a, b) => restBaseURLs[a].length > restBaseURLs[a].length ? a : b );
+            }
+            
         } catch (e) {
             console.error('findTopicKeyByURLValue: ', e.message)
             return undefined
@@ -111,10 +118,17 @@ angular.module('httpRewrite', ['ng'])
                     return $q.reject(response)
                 },
                 'response': (response) => {       
+                    
                     if (blendedSearch.active) {
                         response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
                         pubSub.fireEvent(response.config.url, response.data);
                     }
+
+                    if (deliveryRewrite.active) {
+                        response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
+                        pubSub.fireEvent(response.config.url, response.data);
+                    }
+
                     return response
                 }
             }
