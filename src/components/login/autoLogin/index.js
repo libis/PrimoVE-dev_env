@@ -57,5 +57,5 @@ export let AutoLoginCheckboxComponent = {
   },
   enabled: true,
   appendTo: ['lbs-promote-login'],
-  enableInView: '32KUL_KUL:KULeuven|32KUL_KHL:UCLL'
+  enableInView: '32KUL_KUL:KULeuven|32KUL_KATHO:VIVES'
 }
