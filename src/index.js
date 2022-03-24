@@ -13,6 +13,7 @@ import FeedbackService from './factories/feedbackService/feedbackService';
 import './factories/httpRewrite';
 import './factories/blendedSearch';
 import './factories/deliveryRewrite';
+import './factories/webhookTLevel';
 // import './vendor/angular-css.min';
 
 // import FilterLocationsService from './factories/filterLocationsService/filterLocationsService';
@@ -39,7 +40,7 @@ import "./css/index.css";
   let customType = 'centralCustom';
   window.Primo = new Primo();
 
-  let moduleList = ['ngMaterial', 'angularLoad', 'httpRewrite', 'blendedSearch', 'deliveryRewrite'];
+  let moduleList = ['ngMaterial', 'angularLoad', 'httpRewrite', 'blendedSearch', 'deliveryRewrite','webhookTLevel'];
   let servicesHost = 'https://services.libis.be/';
 
 
