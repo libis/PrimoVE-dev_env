@@ -11,7 +11,14 @@ class StaticFooterController {
         var templateUrl = 'custom/'+ vidDir +'/html/footer/footer_' + locale + '.html';
 
         $scope.getTemplateUrl = function () {
-            return templateUrl;
+            var http = new XMLHttpRequest();
+            http.open('HEAD', templateUrl, false);
+            http.send();
+            if (http.status != 404) {
+                return templateUrl;
+            }else{
+                return templateUrl = 'custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/html/footer/footer_' + locale + '.html';
+            }
         }
     }
 }
