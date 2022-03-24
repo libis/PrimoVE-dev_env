@@ -38,8 +38,10 @@
 
                     <md-checkbox ng-change="changePromoteOption()" ng-model="primoPromoteLogin" ng-true-value="'alwaysSignin'" aria-label="{{::('nui.customization.promoteLogin.alwaysSignin' | translate)}}"></md-checkbox>
                     <span translate="nui.customization.promoteLogin.alwaysSigninInfo">
+                        <!--
                         Next time, bring me to the Sign In page and do not show this message again.<br/>
                         (I will be automatically signed in when I am already logged in via the KU Leuven Central Login.) 
+                        -->
                     </span>
 
                       </div>
@@ -49,7 +51,7 @@
                       Continue as guest
                     </md-button>
                     
-                    <span translate="nui.customization.promoteLogin.limitedAccess">Limited access for non-KU Leuven users</span>
+                    <span translate="nui.customization.promoteLogin.limitedAccess"><!-- Limited access for non-KU Leuven users --></span>
                      
                      
                 </div>
