@@ -96,15 +96,14 @@ class SectionOrderController {
     addStyles() {
         var self = this
 
-        console.log( self.parentCtrl.parentCtrl.fullViewService.servicesArray )
         self.parentCtrl.parentCtrl.fullViewService.servicesArray.forEach(function (service) {
             var orderId = service["scrollId"].replace(/getit_link1.*/, 'getit_link1').replace(/getit_link2.*/, 'getit_link2')
             var styleId = 'style_' + service["scrollId"]
             var order = self.servicesOrder.indexOf(orderId);
-
+/*
             console.log (styleId)
             console.log (service)
-
+*/
             if (order < 0) {
                 console.warn("Service ["+ service.serviceName +"] not found in servicesOrder");
                 order = 50;
