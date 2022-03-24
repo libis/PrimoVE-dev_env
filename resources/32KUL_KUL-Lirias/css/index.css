@@ -1,3 +1,8 @@
 
-@import "./view-colors.css";
+@import "./app-colors.css";
+@import "./font-size.css";
+@import "./homepage.css";
 @import "./kuleuven.css";
+@import "./menu.css";
+@import "./show_times_cited .css";
+@import "./view-colors.css";
