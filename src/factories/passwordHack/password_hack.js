@@ -33,6 +33,15 @@ angular.module('passwordHack', ['ng']).run(() => {
         }
         return data;
     })
+    
+    pubSub.subscribe('after-calculatePcDelivery', (url, headers, params, data) => {
+        let links = data.delivery.link;
+        if (links) {
+            data.delivery.link = passwordHack.removePasswordLinks(links);
+        }
+        return data;
+    })
+
     pubSub.subscribe('after-calculatePhysicalServiceId', (url, headers, params, data) => {
         let links = data.link;
         if (links) {
@@ -40,6 +49,5 @@ angular.module('passwordHack', ['ng']).run(() => {
         }
         return data;
     })
-
 
 });
