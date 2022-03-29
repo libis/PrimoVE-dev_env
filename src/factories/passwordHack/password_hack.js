@@ -33,4 +33,13 @@ angular.module('passwordHack', ['ng']).run(() => {
         }
         return data;
     })
+    pubSub.subscribe('after-calculatePhysicalServiceId', (url, headers, params, data) => {
+        let links = data.link;
+        if (links) {
+            data['link'] = passwordHack.removePasswordLinks(links);
+        }
+        return data;
+    })
+
+
 });
