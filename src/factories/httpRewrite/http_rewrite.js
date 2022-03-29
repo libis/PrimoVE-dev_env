@@ -95,7 +95,7 @@ class PrimoPubSub {
 
 window.pubSub = new PrimoPubSub();
 
-
+// components/appConfig/appConfig.ts
 angular.module('httpRewrite', ['ng'])
     .config(['$httpProvider', ($httpProvider) => {
         $httpProvider.interceptors.push(['$q', ($q) => {
@@ -118,7 +118,7 @@ angular.module('httpRewrite', ['ng'])
                     return $q.reject(response)
                 },
                 'response': (response) => {       
-                    
+                    /*
                     if (blendedSearch.active) {
                         response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
                         pubSub.fireEvent(response.config.url, response.data);
@@ -128,6 +128,10 @@ angular.module('httpRewrite', ['ng'])
                         response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
                         pubSub.fireEvent(response.config.url, response.data);
                     }
+                    */
+
+                    response.data = pubSub.delegateTopic('after', response.config.url, response.config.headers, response.config.params, response.data);
+                    pubSub.fireEvent(response.config.url, response.data);
 
                     return response
                 }
