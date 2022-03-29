@@ -56,7 +56,7 @@ window.blendedSearch = {
         url: '',
         headers: {},
         params: {},
-        data: {},
+        data: { },
         get score() {
             let s = 1;
             try {
@@ -146,8 +146,12 @@ window.blendedSearch = {
     },
     mergeDocs() {
         let docs = [];
-        docs = blendedSearch.set1.data.docs.slice(0, blendedSearch.set1.limit);
-        docs = docs.concat(blendedSearch.set2.data.docs.slice(0, blendedSearch.set2.limit));
+        if (blendedSearch.set1.data.docs) {
+            docs =  docs.concat(blendedSearch.set1.data.docs.slice(0, blendedSearch.set1.limit));
+        }
+        if (blendedSearch.set2.data.docs) {
+            docs =  docs.concat(blendedSearch.set2.data.docs.slice(0, blendedSearch.set1.limit));
+        }
 
         let rankSet1 = blendedSearch.set1.score;
         let rankSet2 = blendedSearch.set2.score;
@@ -186,14 +190,21 @@ angular.module('blendedSearch', ['ng']).run(() => {
 
             //process result 
             // DOCS
-            data['docs'] = blendedSearch.mergeDocs();
+            if (result.info) {
+                data['docs'] = blendedSearch.mergeDocs();
+            }
 
             // FACETS
             let facets = data.facets;
-            if (facets) {
-                data['facets'] = blendedSearch.mergeFacets(facets);
+            if (result.info) {
+                if (facets) {
+                    data['facets'] = blendedSearch.mergeFacets(facets);
+                }
+            }   
+
+            if (result.info) {
+                data['info']['total'] += result['info']['total'];
             }
-            data['info']['total'] += result['info']['total'];
 
             data
 
