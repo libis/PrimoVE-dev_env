@@ -15,6 +15,7 @@ import './factories/blendedSearch';
 import './factories/deliveryRewrite';
 import './factories/webhookTLevel';
 import './factories/passwordHack';
+import './factories/filterLinksService';
 // import './vendor/angular-css.min';
 
 // import FilterLocationsService from './factories/filterLocationsService/filterLocationsService';
@@ -42,7 +43,7 @@ import "./css/index.css";
   window.Primo = new Primo();
 
     //let moduleList = ['oc.lazyLoad', 'ngMaterial', 'angularLoad', 'ethArchivesGetitModule', 'slspEditPersonalDetails', 'slspHttpInterceptRequests'];
-  let moduleList = ['ngMaterial', 'angularLoad', 'httpRewrite', 'blendedSearch', 'deliveryRewrite','webhookTLevel','passwordHack'];
+  let moduleList = ['ngMaterial', 'angularLoad', 'httpRewrite', 'blendedSearch', 'deliveryRewrite','webhookTLevel','passwordHack','filterLinksService'];
   let servicesHost = 'https://services.libis.be/';
 
 
