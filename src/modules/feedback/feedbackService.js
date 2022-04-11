@@ -31,3 +31,5 @@ export default class FeedbackService {
 }
 
 FeedbackService.$inject = ['$mdDialog'];
+
+angular.module('feedback', ['ng']).service('FeedbackService', FeedbackService);

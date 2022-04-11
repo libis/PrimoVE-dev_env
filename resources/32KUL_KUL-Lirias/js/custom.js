@@ -20,4 +20,4 @@ import fullViewDetailsServiceDetailsHTMl from './templates/full-view-details-ser
 })();
 
 
-import "../css/_index.css";
+import "../css/index.css";
