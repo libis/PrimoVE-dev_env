@@ -1,6 +1,10 @@
-import messageServiceHTML from './messageService.html'
+/*
+  KULeuven/LIBIS (c) 2022
+  Mehmet Celik mehmet(dot)celik(at)kuleuven(dot)be
+*/
+import messageServiceHTML from './generalMessage.html'
 
-export default class MessageService {
+class MessageService {
   constructor($rootScope, $compile, $mdToast, $sce, $translate, $timeout) {
     this.mdToast = $mdToast;
     this.sce = $sce;
@@ -17,15 +21,14 @@ export default class MessageService {
     let action = options.action || null;
     let actionLabel = options.actionLabel || 'unknown';
 
-    this.timeout(function() {
-      //debugger;
+    this.timeout(function() {      
       if (message.length == 0) {
         // code table entries can not have empty descriptions.
         // message <= 1 will not be displayed!!!!
-        let messageKey = 'nui.customization.alertMessage';
+        let messageKey = 'solo.generalMessage';
         
         message = self.translate.instant(messageKey);        
-        message = (message == 'alertMessage' || message.length <= 1) ? '' : message;
+        message = (message == 'generalMessage' || message.length <= 1) ? '' : message;
       }
 
       if (message.length > 0) {
@@ -63,9 +66,11 @@ export default class MessageService {
       } else {
         console.log('No message to display');
       }
-    }, 10000);
+    }, 2000);
   }
 
 }
 
 MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
+
+angular.module('generalMessage', ['ng']).service('MessageService', MessageService);

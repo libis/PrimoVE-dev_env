@@ -56,12 +56,11 @@
     "rimraf": "^3.0.2",
     "style-loader": "^3.2.1",
     "webpack": "^5.57.1",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^4.8.0",
+    "yarn": "^1.22.15"
   },
   "dependencies": {
-    "angular": "1.8.2",
-    "sync-fetch": "^0.3.1",
-    "yarn": "^1.22.15"
+    "sync-fetch": "^0.3.1"
   },
   "description": "This is a Primo 'CUSTOM_VIEW' package"
 }

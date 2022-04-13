@@ -1,29 +1,28 @@
-const { merge } = require('angular');
 const syncFetch = require('sync-fetch');
 
 window.blendedSearch = {
-    active: false,
+    active: true,
     activate: () => {
-        let windowParams = window.location.search.slice(1).split('&').map(m => m.split('=')).reduce((map, obj) => { map[obj[0]] = obj[1]; return map }, {})
-        if (windowParams.hasOwnProperty('blend')) {
-            let active = windowParams.blend == 1;
-            if (blendedSearch.active != active) {
-                blendedSearch.active = active
-                console.log('blendedSearch state change isActive:', blendedSearch.active);
-            }
-        }
+        // let windowParams = window.location.search.slice(1).split('&').map(m => m.split('=')).reduce((map, obj) => { map[obj[0]] = obj[1]; return map }, {})
+        // if (windowParams.hasOwnProperty('blend')) {
+        //     let active = windowParams.blend == 1;
+        //     if (blendedSearch.active != active) {
+                 blendedSearch.active = active
+        //         console.log('blendedSearch state change isActive:', blendedSearch.active);
+        //     }
+        // }
     },
-    init: (url, headers, params, data) => {
-        blendedSearch.set1.url = url;
-        blendedSearch.set1.headers = headers;
-        blendedSearch.set1.params = JSON.parse(JSON.stringify(params));
-        blendedSearch.set1.data = data;
+    init: (reqRes) => {        
+        blendedSearch.set1.url = reqRes.url;
+        blendedSearch.set1.headers = reqRes.headers;
+        blendedSearch.set1.params = JSON.parse(JSON.stringify(reqRes.params));
+        blendedSearch.set1.data = reqRes.data;
 
-        blendedSearch.set2.url = url;
-        blendedSearch.set2.headers = headers;
+        blendedSearch.set2.url = reqRes.url;
+        blendedSearch.set2.headers = reqRes.headers;
         blendedSearch.set2.data = {};
 
-        let cloned_params = JSON.parse(JSON.stringify(params));
+        let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
         cloned_params['scope'] = 'lirias_profile';
         cloned_params['pcAvailability'] = true;
         blendedSearch.set2.params = cloned_params;
@@ -107,7 +106,7 @@ window.blendedSearch = {
         }
 
         if (this.set2.data.docs.length < l2) {
-            l2=this.set2.data.docs.length;
+            l2 = this.set2.data.docs.length;
         }
 
         if (l2 < l1) {
@@ -116,9 +115,9 @@ window.blendedSearch = {
 
         return [l1, o1, l2, o2];
     },
-    mergeFacets(facets) {
-        let facetMap = this.set2.data.facets.reduce((map, obj) => { map[obj['name']] = obj; return map }, {});
-        try {
+    mergeFacets(facets) {        
+        try {            
+            let facetMap = this.set2.data.facets.reduce((map, obj) => { map[obj['name']] = obj; return map }, {});
             facets.forEach((v, i, a) => {
                 //merge into facet
                 if (facetMap.hasOwnProperty(v['name'])) {
@@ -142,12 +141,16 @@ window.blendedSearch = {
             console.log(e);
         }
 
-        return facets;        
+        return facets;
     },
     mergeDocs() {
         let docs = [];
-        docs = blendedSearch.set1.data.docs.slice(0, blendedSearch.set1.limit);
-        docs = docs.concat(blendedSearch.set2.data.docs.slice(0, blendedSearch.set2.limit));
+        if (blendedSearch.set1.data.docs) {
+            docs = docs.concat(blendedSearch.set1.data.docs.slice(0, blendedSearch.set1.limit));
+        }
+        if (blendedSearch.set2.data.docs) {
+            docs = docs.concat(blendedSearch.set2.data.docs.slice(0, blendedSearch.set1.limit));
+        }
 
         let rankSet1 = blendedSearch.set1.score;
         let rankSet2 = blendedSearch.set2.score;
@@ -165,59 +168,58 @@ window.blendedSearch = {
     }
 };
 
-angular.module('blendedSearch', ['ng']).run(() => {
+//angular.module('blendedSearch', ['ng']).run(() => {
 
-    pubSub.subscribe('before-pnxBaseURL', (url, headers, params, data) => {
-        blendedSearch.init(url, headers, params);
-        blendedSearch.set2.search();
+    //document.addEventListener('pubSubInterceptorsReady', (e) => {
+        pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
+            blendedSearch.init(reqRes);
+            blendedSearch.set2.search();
 
-        data.params.limit = blendedSearch.set1.limit;
-        data.params.offset = blendedSearch.set1.offset;
-        return data;
-    })
+            reqRes.params.limit = blendedSearch.set1.limit;
+            reqRes.params.offset = blendedSearch.set1.offset;
+            return reqRes;
+        })
 
-    // federated search and merge result set
-    pubSub.subscribe('after-pnxBaseURL', (url, headers, params, data) => {
-        if (params['scope'] != 'lirias_profile') {
-            let result = blendedSearch.set2.data;
-            blendedSearch.set1.data = JSON.parse(JSON.stringify(data));
-            console.log('BLENDING ResultSet1:', JSON.stringify(data.info));
-            console.log('BLENDING ResultSet2:', JSON.stringify(result.info));
+        // federated search and merge result set
+        pubSub.subscribe('after-pnxBaseURL', (reqRes) => {            
+            if (reqRes.config.params['scope'] != 'lirias_profile') {
+                let result = blendedSearch.set2.data;
+                blendedSearch.set1.data = JSON.parse(JSON.stringify(reqRes.data));
+                console.log('BLENDING ResultSet1:', JSON.stringify(reqRes.data.info));
+                console.log('BLENDING ResultSet2:', JSON.stringify(result.info));
 
-            //process result 
-            // DOCS
-            data['docs'] = blendedSearch.mergeDocs();
+                //process result 
+                // DOCS
+                if (result.info) {
+                    reqRes.data['docs'] = blendedSearch.mergeDocs();
+                }
 
-            // FACETS
-            let facets = data.facets;
-            if (facets) {
-                data['facets'] = blendedSearch.mergeFacets(facets);
+                // FACETS
+                let facets = reqRes.data.facets;
+                if (result.info) {
+                    if (facets) {
+                        reqRes.data['facets'] = blendedSearch.mergeFacets(facets);
+                    }
+                }
+
+                if (result.info) {
+                    reqRes.data['info']['total'] += result['info']['total'];
+                }
+
+                //reqRes.data
+
             }
-            data['info']['total'] += result['info']['total'];
-
-            data
-
-        }
-        return data;
-    });
+            return reqRes;
+        });
 
 
-    pubSub.subscribe('after-getFacetsBaseURL', (url, headers, params, data) => {
-        let facets = data.facets;
-        if (facets) {
-            data['facets'] = blendedSearch.mergeFacets(facets);
-        }
+        pubSub.subscribe('after-getFacetsBaseURL', (reqRes) => {
+            let facets = reqRes.data.facets;
+            if (facets) {
+                reqRes.data['facets'] = blendedSearch.mergeFacets(facets);
+            }
 
-        return data;
-    })
-
-    // reverse titels
-    // pubSub.subscribe('after-pnxBaseURL', function (url, headers, params, data) {
-    //     data.docs.map(m => {
-    //         //console.log(m); 
-    //         m.pnx.display.title[0] = m.pnx.display.title[0].split('').reverse().join('');
-    //         return m;
-    //     });
-    //     return data;
-    // });    
-});
+            return reqRes;
+        })
+   // });
+//});

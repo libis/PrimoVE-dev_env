@@ -12,18 +12,6 @@ class RemoveLoginController {
       $element.append(angular.element(s));
     }
 
-    // remove "Sign in" Alert above resultlist
-    if(typeof  self.parentCtrl.isLoggedInIDP === "function"){
-      self.parentCtrl.isLoggedInIDP = function() { return true };
-    }
-  
-    // remove "Sign in" Alert in "How to get it"
-    if( self.parentCtrl.reqAlert ){
-      var s = document.createElement("style");
-      s.innerHTML = "alma-htgi-tabs > prm-alert-bar { display: none  !important }";
-      $element.append(angular.element(s));
-    }
-
   }
 }
 
@@ -37,6 +25,6 @@ export let RemoveLoginComponent = {
     template: ''
   },
   enabled: true,
-  appendTo: ['prm-search-after','prm-user-area-expandable-after','prm-request-services-after','alma-htgi-tabs-after'],
+  appendTo: ['prm-user-area-expandable-after'],
   enableInView: '.*Lirias|32KUL_DOCVB:docvlaamsbrabant|32KUL_GSB*|32KUL_GSG.*|32KUL_KMMR.*|32KUL_VES.*|.*JESUITS.*|.*DOKS.*'
 }
