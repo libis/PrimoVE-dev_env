@@ -16,7 +16,7 @@ export default class PrimoPubSub {
         setTimeout(() => {
             try{
                 Object.keys(this.restBaseURLs) ;
-                if (Object.keys(this.restBaseURLs).length> 0) {
+                if ( Object.keys(this.restBaseURLs).length > 0 && (typeof this.translate) === 'function' ) {
                     console.log('pubSub is ready to load interceptors');
                     self.isReady = true;
                     self.fireEvent('pubSubInterceptorsReady', {});
@@ -36,6 +36,17 @@ export default class PrimoPubSub {
             return angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs');
         } catch (e) {
             console.error('restBaseURLs: ', e.message);
+            return {};
+        }
+    }
+    
+
+    //* get translate function
+    get translate() {
+        try {
+            return angular.element(document.querySelector('primo-explore')).injector().get('$translate');
+        } catch (e) {
+            console.error('translate: ', e.message);
             return {};
         }
     }
@@ -87,7 +98,8 @@ export default class PrimoPubSub {
     findTopicKeyByURLValue(v) {
         try {
             let urlV = new URL(v, window.location.origin);
-            return Object.keys(this.restBaseURLs).find(k => this.restBaseURLs[k] === urlV.pathname)
+            //return Object.keys(this.restBaseURLs).find(k => this.restBaseURLs[k] === urlV.pathname);
+            return Object.keys(this.restBaseURLs).find(k => urlV.pathname.startsWith(this.restBaseURLs[k]) );
         } catch (e) {
             console.error('findTopicKeyByURLValue: ', e.message)
             return undefined
@@ -101,7 +113,6 @@ export default class PrimoPubSub {
             let topicName = this.findTopicKeyByURLValue(reqRes.url || reqRes.config.url);            
             if (topicName) {                
                 let delegateTopic = `${prefix}-${topicName}`;
-                
                 if (this.hOP.call(this.topics, delegateTopic)) {                    
                     this.topics[delegateTopic].forEach(subscription => {
                         let newReqRes = subscription(reqRes);
