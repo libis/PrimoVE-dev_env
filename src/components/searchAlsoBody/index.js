@@ -92,7 +92,7 @@ class SearchAlsoBodyController {
         }
       },
       {
-        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHLL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA',
+        "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHLL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA',
         "name": "UniCat",
         "url": "http://kuleuven.e-bronnen.be/login?url=https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
@@ -103,7 +103,7 @@ class SearchAlsoBodyController {
         }
       },
        {
-        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHLL:UCLL|^32KUL_KUL:KULeuven',
+        "view": '^FARO|^32KUL_KUL:KULeuven',
         "name": "Worldcat",
         "url": "https://www.worldcat.org/search?q=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_worldcat.ico",
