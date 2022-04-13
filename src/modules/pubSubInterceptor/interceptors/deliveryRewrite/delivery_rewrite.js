@@ -1,6 +1,3 @@
-const { merge } = require('angular');
-const syncFetch = require('sync-fetch');
-
 window.deliveryRewrite = {
     active: true,
     activate: () => {
