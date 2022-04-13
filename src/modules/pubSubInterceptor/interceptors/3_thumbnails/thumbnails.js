@@ -19,8 +19,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
             } catch (error) {
                 console.error(`No thumbnail for record:${m.pnx.control.recordid}`);
             }
-        });
-        debugger;
+        });        
     }
     return reqRes
 });
