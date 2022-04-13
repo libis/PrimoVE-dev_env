@@ -22,9 +22,26 @@ window.blendedSearch = {
         blendedSearch.set2.headers = reqRes.headers;
         blendedSearch.set2.data = {};
 
-        let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
+//All Content : search_scope=All_Content
+//Books & more : search_scope=KULeuven_PROFILE
+//Curated collectionstab=search_scope=KULEUVEN_COLLECTIONS
+
+        additionalParams = {
+            'All_Content': ['facet_delcategory,include,Online Resource'],
+            'KULeuven_PROFILE': ['facet_delcategory,include,Online Resource', 'facet_lds07,include,book'],
+        }
+
+        let cloned_params = JSON.parse(JSON.stringify(reqRes.params));        
+        if (Object.keys(cloned_params).includes('scope')) {
+            let facets = additionalParams[cloned_params['scope']];
+            if (facets && facets.length > 0) {
+                cloned_params['qInclude'] = facets.join('|,|');
+            }
+        }
+        
         cloned_params['scope'] = 'lirias_profile';
         cloned_params['pcAvailability'] = true;
+        
         blendedSearch.set2.params = cloned_params;
     },
     set1: {
@@ -69,13 +86,16 @@ window.blendedSearch = {
         search: () => {
             blendedSearch.set2.data = {};
 
-            let esURL = new URL(`${window.location.origin}${blendedSearch.set2.url}`);
+            let esURL = new URL(`${window.location.origin}${blendedSearch.set2.url}`);            
+            
             Object.keys(blendedSearch.set2.params).forEach(key => {
                 if (blendedSearch.set2.params[key] != undefined) {
                     esURL.searchParams.append(key, blendedSearch.set2.params[key])
                 }
             });
 
+
+            console.log(esURL.href);
             //fetch result
             result = syncFetch(esURL, { method: 'GET', headers: blendedSearch.set2.headers }).json();
             blendedSearch.set2.data = result;
