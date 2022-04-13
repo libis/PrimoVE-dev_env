@@ -93,7 +93,7 @@ export let altmetricSectionConfig = {
   name: 'custom-altmetric-section',
   enabled: true,
   appendTo: 'prm-full-view-after',
-  enableInView: '.*',
+  enableInView: '32KUL_KUL.*|32KUL_HUB.*|32KUL_KHK.*|32KUL_KHL.*|32KUL_KHM.*|32KUL_KATHO.*',
   config: {
     bindings: {
       parentCtrl: '<'
@@ -150,7 +150,7 @@ export let altmetricSectionRefreshConfig = {
   name: 'custom-altmetric-section-refresh',
   enabled: true,
   appendTo: 'prm-full-view-service-container-after',
-  enableInView: '.*',
+  enableInView: '32KUL_KUL.*|32KUL_HUB.*|32KUL_KHK.*|32KUL_KHL.*|32KUL_KHM.*|32KUL_KATHO.*',
   config: {
     bindings: {
       parentCtrl: '<'

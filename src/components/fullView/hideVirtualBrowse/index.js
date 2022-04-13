@@ -1,5 +1,5 @@
 
-class HideVirtualBroweController {
+class HideVirtualBrowseController {
   constructor($scope, $translate, $rootScope) {
 
     let self = this
@@ -31,18 +31,18 @@ class HideVirtualBroweController {
   }
 }
 
-HideVirtualBroweController.$inject = ['$scope', '$translate', '$rootScope']
+HideVirtualBrowseController.$inject = ['$scope', '$translate', '$rootScope']
 
-export let hideVirtualBroweConfig = {
+export let hideVirtualBrowseConfig = {
   name: 'custom-hide-virtual-browse',
   enabled: true,
   appendTo: 'prm-explore-footer-after',
-  enableInView: '32KUL_KUL.*',
+  enableInView: '32KUL_KUL.*|32KUL_LUCAWENK.*',
   config: {
     bindings: {
       parentCtrl: '<'
     },
-    controller: HideVirtualBroweController,
+    controller: HideVirtualBrowseController,
     template: ''
   }
 }
