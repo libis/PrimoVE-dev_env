@@ -26,7 +26,7 @@ window.passwordHack = {
 //angular.module('passwordHack', ['ng']).run(() => {
     // https://libis-kul-psb.primo.exlibrisgroup.com/primaws/rest/pub/edelivery/alma9992368054301488?vid=32KUL_KUL:KULeuven&lang=en&googleScholar=false&lang=en
     // link[0].displayLabel
-    document.addEventListener('pubSubInterceptorsReady', (e) => {
+   // document.addEventListener('pubSubInterceptorsReady', (e) => {
         pubSub.subscribe('after-prepareElectorincRTA', (reqRes) => {
             let links = reqRes.data.link;
             if (links) {
@@ -50,5 +50,5 @@ window.passwordHack = {
             }
             return reqRes;
         })
-    });
+   // });
 //});

@@ -18,7 +18,7 @@ window.filterLinksService = {
 };
 
 //angular.module('filterLinksService', ['ng']).run(() => {
-    document.addEventListener('pubSubInterceptorsReady', (e) => {
+   // document.addEventListener('pubSubInterceptorsReady', (e) => {
         pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
             enableInView = '32KUL_KUL:Lirias';
             if (new RegExp(enableInView).test(window.appConfig.vid)) {
@@ -28,5 +28,5 @@ window.filterLinksService = {
             }
             return reqRes;
         })
-    });
+   // });
 //});

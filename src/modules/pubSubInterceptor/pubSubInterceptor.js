@@ -2,10 +2,10 @@
   KULeuven/LIBIS (c) 2022
   Mehmet Celik mehmet(dot)celik(at)kuleuven(dot)be
 */
-import PrimoPubSub from './pubSub';
-import './interceptors/**/*';
+// import PrimoPubSub from './pubSub';
+// window.pubSub = new PrimoPubSub();
 
-window.pubSub = new PrimoPubSub();
+import interceptors from './interceptors/**/*';
 
 angular.module('pubSubInterceptor', ['ng'])
     .config(['$httpProvider', ($httpProvider) => {

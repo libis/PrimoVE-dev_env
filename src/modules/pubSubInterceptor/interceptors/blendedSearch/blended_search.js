@@ -1,4 +1,3 @@
-//const { merge } = require('angular');
 const syncFetch = require('sync-fetch');
 
 window.blendedSearch = {
@@ -171,7 +170,7 @@ window.blendedSearch = {
 
 //angular.module('blendedSearch', ['ng']).run(() => {
 
-    document.addEventListener('pubSubInterceptorsReady', (e) => {
+    //document.addEventListener('pubSubInterceptorsReady', (e) => {
         pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
             blendedSearch.init(reqRes);
             blendedSearch.set2.search();
@@ -222,5 +221,5 @@ window.blendedSearch = {
 
             return reqRes;
         })
-    });
+   // });
 //});

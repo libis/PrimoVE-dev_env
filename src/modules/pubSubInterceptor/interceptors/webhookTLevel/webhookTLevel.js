@@ -20,7 +20,7 @@ window.webhookTLevel = {
 };
 
 //angular.module('webhookTLevel', ['ng']).run(() => {
-    document.addEventListener('pubSubInterceptorsReady', (e) => {
+  //  document.addEventListener('pubSubInterceptorsReady', (e) => {
         // federated search and merge result set
         pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
             if (reqRes.config.params['scope'] == 'lirias_profile') {
@@ -34,5 +34,5 @@ window.webhookTLevel = {
             }
             return reqRes;
         });
-    });
+   // });
 //});

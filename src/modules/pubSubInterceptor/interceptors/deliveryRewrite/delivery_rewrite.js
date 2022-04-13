@@ -16,7 +16,7 @@ window.deliveryRewrite = {
 };
 
 //angular.module('deliveryRewrite', ['ng']).run(() => {
-    document.addEventListener('pubSubInterceptorsReady', (e) => {
+  //  document.addEventListener('pubSubInterceptorsReady', (e) => {
         pubSub.subscribe('after-calculatePcDelivery', (reqRes) => {
 
             enableInView = '32KUL_KUL:Lirias';
@@ -27,5 +27,5 @@ window.deliveryRewrite = {
             }
             return reqRes;
         })
-    });
+  //  });
 //});
