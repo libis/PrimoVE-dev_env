@@ -79,9 +79,6 @@ md-content, md-content.md-primoExplore-theme {
 
 .list-item-wrapper, md-card.default-card{
   background-color: #f3f3f3 !important;
-}
+  }
   
 
-.md-dialog-container.fixed-container{
-  background-color: transparent !important;
-}
