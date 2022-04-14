@@ -35,7 +35,7 @@ window.blendedSearch = {
         if (Object.keys(cloned_params).includes('scope')) {
             let facets = additionalParams[cloned_params['scope']];
             if (facets && facets.length > 0) {
-                cloned_params['qInclude'] = facets.join('|,|');
+                cloned_params['qInclude'] = `${cloned_params['qInclude']}|,|${facets.join('|,|')}`;
             }
         }
         
@@ -83,7 +83,7 @@ window.blendedSearch = {
 
             return s;
         },
-        search: () => {
+        search: () => {            
             blendedSearch.set2.data = {};
 
             let esURL = new URL(`${window.location.origin}${blendedSearch.set2.url}`);            
