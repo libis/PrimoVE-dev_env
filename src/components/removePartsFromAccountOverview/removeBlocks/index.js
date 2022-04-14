@@ -10,7 +10,7 @@ export let removeBlockscomponent = {
   name: 'custom-remove-blocks',  
   enabled: true,
   appendTo: 'prm-account-overview-after',
-  enableInView: '.*',  
+  enableInView: '^49ECB_INST:ECB',
   config: {
     bindings: {parentCtrl: '<'},
     controller: RemoveBlocksController,

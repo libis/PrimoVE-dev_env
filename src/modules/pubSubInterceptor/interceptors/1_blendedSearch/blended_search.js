@@ -99,7 +99,7 @@ window.blendedSearch = {
             //fetch result
             result = syncFetch(esURL, { method: 'GET', headers: blendedSearch.set2.headers }).json();
             blendedSearch.set2.data = result;
-
+            
             return result;
         },
         get limit() {
@@ -115,8 +115,11 @@ window.blendedSearch = {
         let t1 = 0;
         let l1 = Math.ceil(this.set1.params.limit / 2);
         let o1 = Math.ceil(this.set1.params.offset / 2);
-
-        let t2 = this.set2.data.info.total;
+        
+        let t2 = 0
+        if (this.set2.data.info){
+            let t2 = this.set2.data.info.total;
+        }
         let l2 = l1;
         let o2 = o1;
 
@@ -125,8 +128,10 @@ window.blendedSearch = {
             l2 = l2 < 0 ? 0 : l2 //compensate for o2 > t2
         }
 
-        if (this.set2.data.docs.length < l2) {
-            l2 = this.set2.data.docs.length;
+        if (this.set2.data.docs) {
+            if (this.set2.data.docs.length < l2) {
+                l2 = this.set2.data.docs.length;
+            }
         }
 
         if (l2 < l1) {
@@ -136,7 +141,7 @@ window.blendedSearch = {
         return [l1, o1, l2, o2];
     },
     mergeFacets(facets) {        
-        try {            
+        try {           
             let facetMap = this.set2.data.facets.reduce((map, obj) => { map[obj['name']] = obj; return map }, {});
             facets.forEach((v, i, a) => {
                 //merge into facet
@@ -201,7 +206,7 @@ window.blendedSearch = {
         })
 
         // federated search and merge result set
-        pubSub.subscribe('after-pnxBaseURL', (reqRes) => {            
+        pubSub.subscribe('after-pnxBaseURL', (reqRes) => {     
             if (reqRes.config.params['scope'] != 'lirias_profile') {
                 let result = blendedSearch.set2.data;
                 blendedSearch.set1.data = JSON.parse(JSON.stringify(reqRes.data));

@@ -25,10 +25,10 @@ class MessageService {
       if (message.length == 0) {
         // code table entries can not have empty descriptions.
         // message <= 1 will not be displayed!!!!
-        let messageKey = 'solo.generalMessage';
+        let messageKey = 'nui.customizing.alertMessage';
         
         message = self.translate.instant(messageKey);        
-        message = (message == 'generalMessage' || message.length <= 1) ? '' : message;
+        message = (message == 'alertMessage' || message.length <= 1 || message == 'NOT_DEFINED') ? '' : message;
       }
 
       if (message.length > 0) {
