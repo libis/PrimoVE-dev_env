@@ -28,7 +28,7 @@ class MessageService {
         let messageKey = 'nui.customizing.alertMessage';
         
         message = self.translate.instant(messageKey);        
-        message = (message == 'alertMessage' || message.length <= 1 || message == 'NOT_DEFINED') ? '' : message;
+        message = (message == 'alertMessage' || message == 'nui.customizing.alertMessage' || message.length <= 1 || message == 'NOT_DEFINED') ? '' : message;
       }
 
       if (message.length > 0) {

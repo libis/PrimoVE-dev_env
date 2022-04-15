@@ -112,13 +112,14 @@ window.linksServiceRewrite = {
 
 
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
-    // linksServiceRewrite.init(url, headers, params, $translate);
+    // "linksServiceRewrite".init(url, headers, params, $translate);
     var rewriteActions = linksServiceRewrite.configuration.afterPnxBaseURL.filter(c => {
         return new RegExp(c.enableInView).test(window.appConfig.vid)
     })
 
     if (rewriteActions.length > 0) {
         rewriteActions.forEach(rewriteAction => {
+
             delete rewriteAction.enableInView;
             // console.log(rewriteAction);
             Object.entries(rewriteAction).forEach(ra => {
@@ -127,27 +128,26 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                 // console.log (reqRes.data)
 
                 // pnxBaseURL is also called for fullview (Permalink)
-                //  the url than starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
-                if (!reqRes.config.url.startsWith('/primaws/rest/pub/pnxs/L/')) {
-                    if (reqRes.data['docs']) {
-                        reqRes.data['docs'].map(d => {
-                            parameters.doc = d
-                            try {
-                                d = linksServiceRewrite[action](parameters);
-                            } catch (error) {
-                                console.error(error);
-                            }
-                            return d
-                        });
-                    }
-                } else {
-                    if (reqRes.data['pnx']) {
-                        parameters.doc = reqRes.data
+                // the url than starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
+                // the url than starts with /primaws/rest/pub/pnxs/SearchWebhook/ instead of /primaws/rest/pub/pnxs
+                if (reqRes.data['docs']) {
+                    reqRes.data['docs'].map(d => {
+                        parameters.doc = d
                         try {
-                            reqRes.data = linksServiceRewrite[action](parameters);
+                            d = linksServiceRewrite[action](parameters);
                         } catch (error) {
                             console.error(error);
                         }
+                        return d
+                    });
+                }
+
+                if (reqRes.data['pnx']) {
+                    parameters.doc = reqRes.data
+                    try {
+                        reqRes.data = linksServiceRewrite[action](parameters);
+                    } catch (error) {
+                        console.error(error);
                     }
                 }
             });
