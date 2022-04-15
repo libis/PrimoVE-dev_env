@@ -35,7 +35,11 @@ window.blendedSearch = {
         if (Object.keys(cloned_params).includes('scope')) {
             let facets = additionalParams[cloned_params['scope']];
             if (facets && facets.length > 0) {
-                cloned_params['qInclude'] = `${cloned_params['qInclude']}|,|${facets.join('|,|')}`;
+                if ('qInclude' in cloned_params && cloned_params['qInclude'].length > 0) {
+                    cloned_params['qInclude'] = `${cloned_params['qInclude']}|,|${facets.join('|,|')}`;
+                } else {
+                    cloned_params['qInclude'] = `${facets.join('|,|')}`;
+                }                
             }
         }
         
@@ -94,7 +98,7 @@ window.blendedSearch = {
                 }
             });
 
-
+            
             console.log(esURL.href);
             //fetch result
             result = syncFetch(esURL, { method: 'GET', headers: blendedSearch.set2.headers }).json();
