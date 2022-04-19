@@ -4,6 +4,7 @@ class ExternalLinksInDetailsController {
         this.$scope = $scope;
         this.parentCtrl = this.parentCtrl.parentCtrl;
         this.waitForPNX()
+
     }
 
 
@@ -96,6 +97,12 @@ class ExternalLinksInDetailsController {
                 identifiers[0].values[0].values = newIdentifiers
             }
         }
+
+        var s = document.createElement("link");
+        s.setAttribute("id", 'style_material_icons');
+        s.setAttribute("href", 'https://fonts.googleapis.com/icon?family=Material+Icons');
+        s.setAttribute("rel", 'stylesheet');
+        document.getElementsByTagName("primo-explore")[0].appendChild(s);
 
     }
 

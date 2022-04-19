@@ -14,5 +14,10 @@
 @import "./hide-clipboard.css";
 @import "./contrast_fixes.css";
 
-
-
+.material-icons {
+    font-family: 'Material Icons';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    font-size: 'inherit';
+}
