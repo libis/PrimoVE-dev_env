@@ -19,12 +19,19 @@ s
                 console.log ( " this.instituttion:" +  this.instituttion)
                 console.log ( " this.pickupInstitution:" +  this.pickupInstitution)
                 */
-                if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription') != "requestConsortiumFormDescription" ) {
-                    this.$ctrl.requestConsortiumFormDescription = 'nui.customization.almaRequest.requestConsortiumFormDescription';
+                if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription.'+  this.pickupInstitution) != this.pickupInstitution ) {
+                    this.$ctrl.requestConsortiumFormDescription = 'nui.customization.almaRequest.requestConsortiumFormDescription.'+  this.pickupInstitution;
+                }else{
+                    if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription') != "requestConsortiumFormDescription" ) {
+                        this.$ctrl.requestConsortiumFormDescription = 'nui.customization.almaRequest.requestConsortiumFormDescription';
+                    }
                 }
             }else{
                 this.$ctrl.requestConsortiumFormDescription = this.$ctrl.requestFormDescription;
             }
+
+            console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
+
         }
     }
 }
