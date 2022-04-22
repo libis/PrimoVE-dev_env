@@ -14,22 +14,24 @@ s
     $doCheck() {
         if ( this.$ctrl.requestService.ilsData) {
             this.pickupInstitution =  this.$ctrl.requestService.ilsData["services-arr"].services[0]["chosen-parameters-map"].pickupInstitution
-            if (  this.instituttion !== this.pickupInstitution) {
-                /*
-                console.log ( " this.instituttion:" +  this.instituttion)
-                console.log ( " this.pickupInstitution:" +  this.pickupInstitution)
-                */
-                if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription.'+  this.pickupInstitution) != this.pickupInstitution ) {
-                    this.$ctrl.requestConsortiumFormDescription = 'nui.customization.almaRequest.requestConsortiumFormDescription.'+  this.pickupInstitution;
-                }else{
-                    if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription') != "requestConsortiumFormDescription" ) {
-                        this.$ctrl.requestConsortiumFormDescription = 'nui.customization.almaRequest.requestConsortiumFormDescription';
-                    }
-                }
-            }else{
-                this.$ctrl.requestConsortiumFormDescription = this.$ctrl.requestFormDescription;
-            }
+            if (  this.pickupInstitution ) {
+                if (  this.instituttion !== this.pickupInstitution) {
+                    /*
+                    console.log ( " this.pickupInstitution: [" +  this.pickupInstitution +"]")
+                    console.log ( " this.$translation     : [" +  this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription.'+  this.pickupInstitution) +"]")
+                    */
+                    if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription.'+  this.pickupInstitution).replace(/[_\s]/g, "") != this.pickupInstitution.replace(/[_\s]/g, "") ) {
 
+                        this.$ctrl.requestConsortiumFormDescription = 'nui.customization.almaRequest.requestConsortiumFormDescription.'+  this.pickupInstitution;
+                    }else{
+                        if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumFormDescription') != "requestConsortiumFormDescription" ) {
+                            this.$ctrl.requestConsortiumFormDescription = 'nui.customization.almaRequest.requestConsortiumFormDescription';
+                        }
+                    }
+                }else{
+                    this.$ctrl.requestConsortiumFormDescription = this.$ctrl.requestFormDescription;
+                }
+            }
             console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
 
         }
