@@ -15,19 +15,24 @@ class RequestACopyController {
     let serviceTitleCode = self.parentCtrl.parentCtrl.title;
     //let appendButtonTo = $element.parent().parent().parent().parent();
     let appendButtonTo = angular.element( ($element.nativeElement).closest('prm-full-view-service-container').querySelector('prm-full-view-service-container-after') )
-    
+
     let recordData = self.currentRecord;
+
+    // console.log( recordData )
+
        /* captcha implementation (Already used in )
         https://github.com/VividCortex/angular-recaptcha
         */
-    let capchaPublicKey = window.appConfig["system-configuration"]["Public Captcha Key"];
+    let capchaPublicKey = window.recaptcha.publicCaptchaKey;
 
     let TypesShowRequestACopy = ['chapter','journal-article','thesis-dissertation','conference','report','dataset','c-bookreview','media','software'];
     let StatusShowRequestACopy = ['published'];
 
     if (/^nui\.getit\./.test(serviceTitleCode)) {
-      var ShowRequestACopyType = recordData.pnx.facets.lfc16.filter(value => -1 !== TypesShowRequestACopy.indexOf(value));
-      var ShowRequestACopyStatus = recordData.pnx.facets.lfc12.filter(value => -1 !== StatusShowRequestACopy.indexOf(value));
+      var ShowRequestACopyType = recordData.pnx.display.lds07.filter(value => -1 !== TypesShowRequestACopy.indexOf( value.toLowerCase() ));
+      var ShowRequestACopyStatus = recordData.pnx.display.lds08.filter(value => -1 !== StatusShowRequestACopy.indexOf( value.toLowerCase() ));
+
+      // console.log( "request a copy serviceTitleCode: " + serviceTitleCode )
 
       if ((!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode)) && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0) {
 
@@ -38,11 +43,12 @@ class RequestACopyController {
             self.view = view;
 
             self.onCampus = self.user.isOnCampus();
-            console.log( serviceTitleCode )
+            
+            // console.log( serviceTitleCode )
+
             if ( ! /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode)  || /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode) && ! self.onCampus ) {
               appendButtonTo.after($compile(requestACopyHTML)($scope));
             }
-
 
             self.showRequestACopyForm = ($event) => {
               $mdDialog.show({
@@ -60,8 +66,8 @@ class RequestACopyController {
                     replyTo: self.user.email,
                     motivation: '',
                     title: pnxDisplay.title[0],
-                    contributor: (() => { ( pnxDisplay.contributor ? pnxDisplay.contributor[0] : '' ) })(),
-                    creator: pnxDisplay.creator ? pnxDisplay.creator[0] : '',
+                    contributor: (() => { ( pnxDisplay.contributor ? pnxDisplay.contributor[0].split("$$")[0] : '' ) })(),
+                    creator: pnxDisplay.creator ? pnxDisplay.creator[0].split("$$")[0] : '',
                     ispartof: pnxDisplay.ispartof ? pnxDisplay.ispartof[0] : '',
                     subject: 'request a copy'
                   }
@@ -91,6 +97,7 @@ class RequestACopyController {
                       sourceId: recordData.pnx.control.sourceid[0],
                       recordId: recordData.pnx.control.recordid[0],
                       sourceRecordId: recordData.pnx.control.sourcerecordid[0],
+                      
                       title: pnxDisplay.title[0],
                       contributor: (() => { ( pnxDisplay.contributor ? pnxDisplay.contributor[0] : '' ) })(),
                       creator: pnxDisplay.creator ? pnxDisplay.creator[0] : '',
@@ -116,20 +123,11 @@ class RequestACopyController {
                         cache: false,
                         data: data
                       }).then(function (response) {
-                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.request_a_copy.success') || 'Thank you the request had been send!';
-                        MessageService.__show({
-                          message: message,
-                          scope: $scope,
-                          hideDelay: 5000
-                        });
+                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('nui.customization.request_a_copy.success') || 'Thank you the request had been send!';
+                        MessageService.show(message, {scope:$scope, hideDelay: 5000});
                       }, function (response) {
-                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.request_a_copy.fail') || 'Unable to submit the request.';
-                        console.log( message )
-                        MessageService.__show({
-                          message: message,
-                          scope: $scope,
-                          hideDelay: 5000
-                        });
+                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('nui.customization.request_a_copy.fail') || 'Unable to submit the request.';
+                        MessageService.show(message, {scope:$scope, hideDelay: 5000});
                       });
                     }
                   }
@@ -160,7 +158,7 @@ export let requestACopyConfig = {
   name: 'custom-request-a-copy',
   enabled: true,
   appendTo: 'prm-service-header-after',
-  enableInView: '^Lirias',
+  enableInView: '^32KUL_KUL:Lirias',
   config: {
       bindings: { parentCtrl: '<' },
       controller: RequestACopyController,

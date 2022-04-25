@@ -5,7 +5,7 @@
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>
-                    <span translate="lbs.nui.details.request_a_copy"></span>
+                    <span translate="nui.customization.request_a_copy.title"></span>
                 </h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancelRequest()">
@@ -20,27 +20,27 @@
                     <div style="font-size:0.8rem; border-bottom: #e9e9e9 1px solid; margin-bottom: 18px">
                                 <span ng-bind="request.title"></span><br>
                                 <span ng-bind="request.creator"></span> <span ng-bind="request.contributorsr"></span><br>
-                                <span ng-bind="request. ispartof"></span>
+                                <span ng-bind="request.ispartof"></span>
                      </div>
                 </md-container>
                 <input type="hidden" name='subject' ng-model='request.subject'>
                 
                 <md-input-container class="md-block" style="margin-top: 36px;">
-                    <label><span translate="lbs.nui.details.email"></span></label>
-                    <input type="email" name='replyTo' title="{{ 'lbs.nui.details.email.why' | translate}}" placeholder='john.doe@kuleuven.be' required ng-model='request.replyTo' ng-pattern="/^.+@.+\..+$/">
+                    <label><span translate="nui.customization.request_a_copy.email.label"></span></label>
+                    <input type="email" name='replyTo' title="{{ 'nui.customization.request_a_copy.email.why' | translate}}" placeholder='john.doe@kuleuven.be' required ng-model='request.replyTo' ng-pattern="/^.+@.+\..+$/">
                     <div ng-if='requestACopyForm.replyTo.$error.required' role="alert">
-                      <div style='color:tomato;'><span translate="lbs.nui.details.email.mandatory"></span></div>
+                      <div style='color:tomato;'><span translate="nui.customization.request_a_copy.email.mandatory"></span></div>
                     </div>
                     <div ng-if='requestACopyForm.replyTo.$error.email' role="error">
-                      <div style='color:tomato;'><span translate="lbs.nui.details.email.mandatory.error"></span></div>
+                      <div style='color:tomato;'><span translate="nui.customization.request_a_copy.mandatory.error"></span></div>
                     </div>
                 </md-input-container>
                 <md-input-container lass="md-block" style="margin-top: 36px;">
-                    <label><span translate="lbs.nui.request_a_copy.motivation.label"></span></label>
-                    <textarea name="motivation" placeholder="{{ 'lbs.nui.request_a_copy.motivation.description' | translate }}" 
+                    <label><span translate="nui.customization.request_a_copy.motivation.label"></span></label>
+                    <textarea name="motivation" placeholder="{{ 'nui.customization.request_a_copy.motivation.description' | translate }}" 
                     md-maxlength="5000" required md-no-asterisk rows="5" cols="80" ng-model="request.motivation"></textarea>
                     <div ng-if='requestACopyForm.motivation.$error.required' role="error">
-                      <div style='color:tomato;'><span translate="lbs.nui.request_a_copy.motivation.mandatory"></span></div>
+                      <div style='color:tomato;'><span translate="nui.customization.request_a_copy.motivation.mandatory"></span></div>
                     </div>
                 </md-input-container>
 

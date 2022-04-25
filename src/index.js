@@ -23,7 +23,7 @@ import "./css/index.css";
   let customType = 'centralCustom';
   window.Primo = new Primo();
     
-  let moduleList = ['pubSubInterceptor', 'ngMaterial', 'angularLoad', 'google', 'altmetric', 'browzine', 'generalMessage', 'feedback'];
+  let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'google', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback'];
   let servicesHost = 'https://services.libis.be/';
 
 
@@ -34,6 +34,7 @@ import "./css/index.css";
     })
     .constant('reportAProblemURL', servicesHost + 'report_a_problem')
     .constant('feedbackServiceURL', servicesHost + 'feedback')
+    .constant('requestACopyURL', servicesHost + 'request_a_copy')    
     .run(($templateCache) => {
       $templateCache.put ('components/search/fullView/full-view.html', $templateCache.get('components/search/fullView/full-view.html').replace('"service in $ctrl.services.slice(1) track by $index"', '"service in $ctrl.services.slice(1) track by service.scrollId"'));
     });
