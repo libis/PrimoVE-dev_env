@@ -5,7 +5,6 @@ angular.module('reCaptcha', ['angularLoad']).run(['angularLoad', '$rootScope', '
 
     let watcher = $rootScope.$watch(() => {
       try {
-        console.log ( self.$translate.instant('nui.customization.recaptcha.publicCaptchaKey') )
         if (self.$translate.instant('nui.customization.recaptcha.publicCaptchaKey') == 'nui.customization.recaptcha.publicCaptchaKey') {
           return false;
         } else {
