@@ -32,7 +32,7 @@ class LinkToMyLibraryCardController {
 LinkToMyLibraryCardController.$inject = ['$scope', '$translate', '$state']
 
 export let linkToMyLibraryCardConfig = {
-  name: 'prm-link-to-my-library-card',
+  name: 'custom-link-to-my-library-card',
   enabled: true,
   appendTo: null,
   enableInView: '.*',
