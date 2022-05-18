@@ -81,7 +81,7 @@ class SearchAlsoBodyController {
       }, 
       */
      {
-        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven',       
+        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL',       
         "name": "Google Scholar",
         "url": "https://scholar.google.com/scholar?q=",
         "img": "https://scholar.google.com/favicon.ico",
