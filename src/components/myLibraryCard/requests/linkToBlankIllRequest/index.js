@@ -31,7 +31,7 @@ export let LinkToBlankIllRequestcomponent = {
   name: 'custom-link-to-blank-ill-request',
   enabled: true,
   appendTo: 'prm-account-links-after',
-  enableInView: '32KUL_KUL:KULeuven',
+  enableInView: '32KUL_KUL:KULeuven.*|32KUL_KUL:REGIONAL.*',
     config: {
         bindings: { parentCtrl: '<' },
         controller: LinkToBlankIllRequestController,
