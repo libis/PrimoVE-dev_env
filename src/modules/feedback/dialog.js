@@ -9,6 +9,7 @@ export default class DialogController {
 
     let self = this;
 
+
     $scope.cancelFeedback = () => {
       this.mdDialog.cancel();
     }
@@ -25,7 +26,7 @@ export default class DialogController {
           let data = {
             subject: $scope.feedback.subject,
             view: self.view.code,
-            inst: self.view.institution.code,
+            inst: self.view.institution.code || window.appConfig['primo-view']['institution']['institution-code'],
             loggedIn: self.user.isLoggedIn(),
             onCampus: self.user.isOnCampus(),
             user: self.user.name,
@@ -35,6 +36,7 @@ export default class DialogController {
             email: $scope.feedback.replyTo || self.user.email,
             userAgent: navigator.userAgent
           };
+
           if ($scope.feedback.replyTo.length > 0 && $scope.feedback.message.length > 0) {
             self.mdDialog.hide();
 
