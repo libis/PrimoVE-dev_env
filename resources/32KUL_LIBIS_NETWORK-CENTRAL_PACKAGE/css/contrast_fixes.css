@@ -29,12 +29,16 @@ prm-full-view prm-brief-result-container .list-item-primary-content {
     display:none;
 }
 
-prm-location .md-list-item-text p span:last-of-type {
+prm-location .md-list-item-text p span:last-of-type, prm-location-items p span:last-of-type {
     font-weight: bold;
     font-size: 1rem;
 }
 
 prm-location-holdings-after .weak-text{
     color: #888 !important;
+}
+
+prm-location .list-item-actions{
+    flex:unset !important;
 }
 
