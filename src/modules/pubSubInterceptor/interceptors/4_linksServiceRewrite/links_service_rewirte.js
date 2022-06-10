@@ -7,13 +7,13 @@ window.linksServiceRewrite = {
                 removelinks: { type: "backlink" }
             },
             {
-                enableInView: '32KUL_KADOC:KADOC',
+                enableInView: '32KUL_KADOC:KADOC|32KUL_VLP:.*',
                 createLinksFromOtherField: { field: "display.lds45" }
             }
         ],
         afterDeliveryURL: [
             {
-                enableInView: '32KUL_KADOC:KADOC',
+                enableInView: '32KUL_KADOC:KADOC|32KUL_VLP:.*',
                 createLinksFromOtherField: { field: "display.lds45" }
             }
         ]
