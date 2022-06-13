@@ -48,8 +48,10 @@ window.linksServiceRewrite = {
         }
 
         if (doc.pnx) {
-            var links = field.split('.').reduce((previous, current) => { console.log(previous); return previous[current] }, doc.pnx);
+            var links = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
 
+            // console.log("------------------------------")
+            // console.log (links)
 
             if (links) {
                 links = links.map(link => {
@@ -59,23 +61,19 @@ window.linksServiceRewrite = {
                 })
 
                 // linksDefinitions: (5) ['linktorsrc', 'addlink', 'backlink', 'sourcerecord', '']
-
                 links = links.map(link => {
                     var linkURL = getValueFromSubfield(link, "U");
                     // check for namespaces in URL, maybe we should use an url template ?
                     var linkType = getValueFromSubfield(link, "T");
                     if (linkType === undefined) { linkType = '' }
                     var displayLabel = getValueFromSubfield(link, "C");
-                    if (displayLabel !== undefined) {
-                        displayLabel = pubSub.translate.instant('fulldisplay.constants.' + displayLabel);
-                    }
                     if (displayLabel === undefined) {
                         displayLabel = getValueFromSubfield(link, "E");
-                        displayLabel = pubSub.translate.instant('fulldisplay.constants.' + displayLabel);
-
                     }
                     if (displayLabel === undefined) {
                         displayLabel = getValueFromSubfield(link, "D");
+                    }else{
+                        displayLabel = pubSub.translate.instant('fulldisplay.constants.' + displayLabel);
                     }
                     if (displayLabel === undefined) {
                         if (linkType === 'addlink') {
@@ -94,7 +92,14 @@ window.linksServiceRewrite = {
                     }
                 });
 
-                console.log(links)
+                links.sort(
+                    function(a, b) {          
+                        if (a.linkType === b.linkType) {
+                            return a.displayLabel > b.displayLabel ? 1 : -1;
+                        }
+                        return a.linkType > b.linkType ? 1 : -1;
+                    }
+                );
 
                 if (doc.delivery) {
                     if (doc.delivery.link) {
@@ -103,7 +108,6 @@ window.linksServiceRewrite = {
                 } /* else { 
                     doc.delivery = { link: links }
                 } */
-                console.log(doc)
             }
         }
         return doc;
@@ -141,7 +145,6 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         return d
                     });
                 }
-
                 if (reqRes.data['pnx']) {
                     parameters.doc = reqRes.data
                     try {
