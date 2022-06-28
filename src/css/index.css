@@ -1,0 +1,23 @@
+
+/* @import "./db-item-detail.css"; */
+/* @import "./hide_library_code.css"; */
+/* @import "./hide_times_cited.css"; */
+/* @import "./hide_virtual_browse.css"; */
+/* @import "./hide_watermark.css"; */
+@import "./logo.css";
+@import "./homepage.css";
+@import "./disclaimer_dialog.css";
+@import "./order_sections_full_view.css";
+@import "./top_menu.css";
+@import "./facet_persistence_lock.css";
+@import "./hide_advanced_search_day_month.css";
+@import "./hide-clipboard.css";
+@import "./contrast_fixes.css";
+
+.material-icons {
+    font-family: 'Material Icons';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    font-size: inherit !important;
+}
