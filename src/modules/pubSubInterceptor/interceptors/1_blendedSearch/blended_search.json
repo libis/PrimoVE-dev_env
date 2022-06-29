@@ -1,0 +1,6 @@
+{
+    "32KUL_KUL:KULeuven": {
+        "All_Content": ["facet_delcategory,include,Online Resource"],
+        "KULeuven_PROFILE": ["facet_delcategory,include,Online Resource", "facet_lds07,include,book"]
+    }
+}

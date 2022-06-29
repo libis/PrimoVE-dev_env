@@ -11,23 +11,33 @@ export default class PrimoPubSub {
         this.watcherId = this._watcher();                
     }
 
-    _watcher() {
+    _watcher(count=0) {
         let self = this;
+        
         setTimeout(() => {
             try{
-                Object.keys(this.restBaseURLs) ;
-                if ( Object.keys(this.restBaseURLs).length > 0 && (typeof this.translate) === 'function' ) {
+                count++;
+                if (count > 10) {
+                    console.error('pubSub not ready');
+                    self.isReady = false;
+                    self.fireEvent('pubSubInterceptorsNOTReady', {});    
+                    clearTimeout(this.watcherId);
+                    return;
+                }
+
+                if ( document.querySelector('primo-explore div.graphic') == null && Object.keys(this.restBaseURLs).length > 0 && (typeof this.translate) === 'function' ) {
                     console.log('pubSub is ready to load interceptors');
                     self.isReady = true;
                     self.fireEvent('pubSubInterceptorsReady', {});
+                    clearTimeout(this.watcherId);
                 } else {
-                    this.watcherId = self._watcher();
+                    this.watcherId = self._watcher(count);
                 }
             } catch(e){
-                console.log(e);
-                this.watcherId = self._watcher();
+                console.log(e);                
+                this.watcherId = self._watcher(count);
             }
-        }, 300);
+        }, 500);
     }
 
     //* get all WebService base urls
@@ -35,7 +45,7 @@ export default class PrimoPubSub {
         try {
             return angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs');
         } catch (e) {
-            console.error('restBaseURLs: ', e.message);
+            console.error('restBaseURLs: ', e);
             return {};
         }
     }
