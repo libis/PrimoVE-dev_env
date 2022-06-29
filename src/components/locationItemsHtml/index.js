@@ -3,7 +3,7 @@ class LocationItemsHtmlController {
         self = this
         this.element = $element; 
         this.parentCtrl = this.parentCtrl.parentCtrl;
-        this.inner = '';
+       // this.inner = '';
 
         let componentWatcher = $scope.$watch(() => {
             //activate when user clicks on a location, creating a md-list-item            
