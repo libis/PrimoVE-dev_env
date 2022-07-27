@@ -58,6 +58,9 @@ class SectionOrderController {
         if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:Lirias") {
             self.servicesOrder = ["brief", "getit_link1", "details", "links", "altmetrics", "action_list", "tags", "citationTrails"];
         }
+        if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:JESUITS") {
+            self.servicesOrder = ["brief", "details", "getit_link1", "links", "altmetrics", "action_list", "tags", "citationTrails"];
+        }
         let translatorWatcher = $scope.$watch(() => {
             return self.$translate.isReady()
         }, (n, o) => {
