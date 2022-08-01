@@ -1,7 +1,7 @@
 class filterFacetValuesController {
     constructor($scope) {
         const facetsFilters = [{
-            vid: "JESUITS",
+            vid: '32KUL_KUL:JESUITS,32KUL_LIBIS_NETWORK:JESUITS_UNION',
             filters: [{
                 name: "library",
                 type: "include",
@@ -14,8 +14,13 @@ class filterFacetValuesController {
         }];
 
         let vidfacetsFilters = facetsFilters.filter(f => {
-            return f.vid == this.parentCtrl.parentCtrl.vid
+            // return f.vid == this.parentCtrl.parentCtrl.vid
+            return new RegExp(f.vid).test(this.parentCtrl.parentCtrl.vid)
         });
+
+
+       
+
         if (vidfacetsFilters.length == 1) {
             let vidfacetsFilter = vidfacetsFilters[0]
 
@@ -52,7 +57,7 @@ export let filterFacetValuesConfig = {
     name: 'custom-filter-facet-values',
     enabled: false,
     appendTo: 'prm-facet-after',
-    enableInView: '^JESUITS',
+    enableInView: '32KUL_KUL:JESUITS,32KUL_LIBIS_NETWORK:JESUITS_UNION',
     config: {
         bindings: { parentCtrl: '<' },
         controller: filterFacetValuesController,

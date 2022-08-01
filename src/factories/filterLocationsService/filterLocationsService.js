@@ -31,7 +31,7 @@ export default class FilterLocationsService {
 
         // console.log ( this.vid )
 
-        if (this.vid == "JESUITS") {
+        if (this.vid == "JESUITS" || this.vid == "32KUL_LIBIS_NETWORK:JESUITS_UNION") {
             const library_filter_array = {
                 "KUL_GBIB_LIB": {
                     "id" : function (lib) { 
