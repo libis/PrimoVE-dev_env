@@ -1,11 +1,20 @@
 {
     "32KUL_KUL:KULeuven": {
         "All_Content": ["facet_delcategory,include,Online Resource"],
+        "KULEUVEN_CATALOG": [
+            "facet_delcategory,include,Online Resource",            
+            "rtype,exclude,book_chapters",
+            "rtype,exclude,articles"
+        ],
         "KULeuven_PROFILE": [
-            "facet_delcategory,include,Online Resource",
-            "facet_lds07,include,book"
+            "facet_delcategory,include,Online Resource",            
+            "rtype,exclude,book_chapters",
+            "rtype,exclude,articles"
         ]
     },
+    "32KUL_KUL:REGIONAL":{
+        "All_Content": ["facet_delcategory,include,Online Resource"]
+    },    
     "32KUL_KUL:KULeuven_TEST": {"lirias_profile": ["facet_delcategory,include,Online Resource"]},
     "32KUL_HUB:ODISEE": {"ALL_CONTENT_PROFILE": ["facet_delcategory,include,Online Resource"]},
     "32KUL_KATHO:VIVES": {"ALL_CONTENT_PROFILE": ["facet_delcategory,include,Online Resource"]},

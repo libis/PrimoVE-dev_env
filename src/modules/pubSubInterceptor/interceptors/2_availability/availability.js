@@ -7,7 +7,7 @@
 // link: [{…}]
 // physicalItemTextCodes: ""
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
-    console.log(reqRes);
+    //console.log(reqRes);
 //    if (Object.keys(reqRes.config.params).includes('blendFacetsSeparately')) {        
         if (reqRes.data.docs) {
             reqRes.data.docs.map((m) => {

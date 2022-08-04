@@ -160,13 +160,13 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
 });
 
 pubSub.subscribe('after-deliveryURL', (reqRes) => {
-    console.log('after-deliveryURL')
-    console.log(reqRes)
+    //console.log('after-deliveryURL')
+    //console.log(reqRes)
     var rewriteActions = linksServiceRewrite.configuration.afterDeliveryURL.filter(c => {
         return new RegExp(c.enableInView).test(window.appConfig.vid)
     })
 
-    console.log(reqRes.data[0].delivery.link)
+    //console.log(reqRes.data[0].delivery.link)
     if (rewriteActions.length > 0) {
         rewriteActions.forEach(rewriteAction => {
             delete rewriteAction.enableInView;

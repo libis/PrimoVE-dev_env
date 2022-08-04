@@ -12,12 +12,15 @@ window.blendedSearch = {
     get vid() {
         return window.appConfig['vid'];
     },
-    get allowed() {
-        if (Object.keys(window.blendedSearchAddParams).includes(blendedSearch.vid)) {
-            console.log('Blend allowed');
+    get allowed() {        
+        let cloned_params = blendedSearch.set2.params;      
+        if (Object.keys(window.blendedSearchAddParams).includes(blendedSearch.vid) && 
+            Object.keys(window.blendedSearchAddParams[blendedSearch.vid]).includes(cloned_params['scope'])){
+                        
+            console.log('BLENDING: Blend allowed');
             return true;
         }
-        console.log('Blend not allowed');
+        console.log('BLENDING: Blend not allowed');
         return false;
     },
     init: (reqRes) => {
@@ -30,34 +33,26 @@ window.blendedSearch = {
         blendedSearch.set2.url = reqRes.url;
         blendedSearch.set2.headers = reqRes.headers;
         blendedSearch.set2.data = {};
-
-        //All Content : search_scope=All_Content
-        //Books & more : search_scope=KULeuven_PROFILE
-        //Curated collectionstab=search_scope=KULEUVEN_COLLECTIONS
-
-        // let blendedSearchAddParams = {
-        //     "32KUL_KUL:KULeuven": {
-        //         "All_Content": ["facet_delcategory,include,Online Resource"],
-        //         "KULeuven_PROFILE": ["facet_delcategory,include,Online Resource", "facet_lds07,include,book"]
-        //     }
-        // };
-
+        
         let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
         if (Object.keys(cloned_params).includes('scope')) {            
 
-            let facets = window.blendedSearchAddParams[blendedSearch.vid][cloned_params['scope']];
+            let facets = [];
+            try {
+                facets = window.blendedSearchAddParams[blendedSearch.vid][cloned_params['scope']];
+            } catch(e) {
+                console.log(`BLENDING: ${blendedSearch.vid} no extra facets defined.`)
+            }
+      
             if (facets && facets.length > 0) {
-                if ('qInclude' in cloned_params && cloned_params['qInclude'].length > 0) {
-                    cloned_params['qInclude'] = `${cloned_params['qInclude']}|,|${facets.join('|,|')}`;
+                if ('multiFacets' in cloned_params && cloned_params['multiFacets'].length > 0) {
+                    cloned_params['multiFacets'] = `${cloned_params['multiFacets']}|,|${facets.join('|,|')}`;
                 } else {
-                    cloned_params['qInclude'] = `${facets.join('|,|')}`;
+                    cloned_params['multiFacets'] = `${facets.join('|,|')}`;
                 }
             }
-        }
-
-        cloned_params['scope'] = 'lirias_profile';
+        }        
         cloned_params['pcAvailability'] = true;
-
         blendedSearch.set2.params = cloned_params;
     },
     set1: {
@@ -100,20 +95,28 @@ window.blendedSearch = {
             return s;
         },
         search: () => {
+            let result = {}
             blendedSearch.set2.data = {};
-
             let esURL = new URL(`${window.location.origin}${blendedSearch.set2.url}`);
 
             Object.keys(blendedSearch.set2.params).forEach(key => {
                 if (blendedSearch.set2.params[key] != undefined) {
-                    esURL.searchParams.append(key, blendedSearch.set2.params[key])
+                    if (key == 'scope') {
+                        esURL.searchParams.append(key, 'lirias_profile');
+                    } else {
+                        esURL.searchParams.append(key, blendedSearch.set2.params[key])
+                    }
                 }
             });
 
-
-            console.log(esURL.href);
+            console.log(`BLENDING: ${esURL.href}`);
             //fetch result
-            result = syncFetch(esURL, { method: 'GET', headers: blendedSearch.set2.headers }).json();
+            try {
+                result = syncFetch(esURL, { method: 'GET', headers: blendedSearch.set2.headers }).json();
+            } catch(e) {
+                console.error(`BLENDING(ERROR): ${e.message}`)
+                result = {};
+            }
             blendedSearch.set2.data = result;
 
             return result;
@@ -128,13 +131,14 @@ window.blendedSearch = {
         }
     },
     limitOffset() {
+        
         let t1 = 0;
         let l1 = Math.ceil(this.set1.params.limit / 2);
         let o1 = Math.ceil(this.set1.params.offset / 2);
 
         let t2 = 0
         if (this.set2.data.info) {
-            let t2 = this.set2.data.info.total;
+            t2 = this.set2.data.info.total;
         }
         let l2 = l1;
         let o2 = o1;
@@ -153,7 +157,7 @@ window.blendedSearch = {
         if (l2 < l1) {
             l1 = l1 + (l1 - l2)
         }
-
+        console.log(l1, o1, l2, o2);
         return [l1, o1, l2, o2];
     },
     mergeFacets(facets) {
@@ -179,7 +183,7 @@ window.blendedSearch = {
                 }
             });
         } catch (e) {
-            console.log(e);
+            console.log(`BLENDING: ${e.message}`);
         }
 
         return facets;
@@ -213,8 +217,8 @@ window.blendedSearch = {
 
 //document.addEventListener('pubSubInterceptorsReady', (e) => {
 pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
-    if (blendedSearch.allowed) {
-        blendedSearch.init(reqRes);
+    blendedSearch.init(reqRes);
+    if (blendedSearch.allowed) {        
         blendedSearch.set2.search();
 
         reqRes.params.limit = blendedSearch.set1.limit;
@@ -252,7 +256,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                 reqRes.data['info']['total'] += result['info']['total'];
             }
 
-            //reqRes.data
+            console.log(reqRes.data);
 
         }
     }
