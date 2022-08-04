@@ -1,0 +1,40 @@
+@media only screen and (min-width: 1280px) {
+  prm-explore-main .header::before {
+      display:none;
+  }
+
+  prm-logo prm-logo-after, div#home-buttons-holder {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  prm-logo .logo-image, prm-logo img{
+    height: 60px;
+  }
+}
+
+
+
+
+.js_card{
+  height: 100%;
+  background: url('https://kuleuven.limo.libis.be/discovery/custom/32KUL_KUL-JESUITS/img/bibliotheek.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.js_card_r{
+  max-width: none !important;
+}
+
+div#logo_partners{
+  margin-left:auto;
+  margin-right: auto;
+}
+
+div#logo_partners img{
+  max-height: 3em;
+  margin-left: 1em;
+  margin-right: 1em;
+}

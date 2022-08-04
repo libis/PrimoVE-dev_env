@@ -100,7 +100,7 @@ export let fullLocationsForBibliographicViewConfig = {
     name: 'custom-locations-bibliographic-view',  
     enabled: true,
     appendTo: 'prm-full-view-after',
-    enableInView: '^JESUITS',
+    enableInView: '32KUL_KUL:JESUITS,32KUL_LIBIS_NETWORK:JESUITS_UNION',
     config: {  
       bindings: {
         parentCtrl: '<'

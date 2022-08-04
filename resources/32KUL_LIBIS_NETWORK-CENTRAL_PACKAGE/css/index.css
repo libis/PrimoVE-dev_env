@@ -13,6 +13,7 @@
 @import "./hide_advanced_search_day_month.css";
 @import "./hide-clipboard.css";
 @import "./contrast_fixes.css";
+@import "./advanced_search_tweaks.css";
 
 .material-icons {
     font-family: 'Material Icons';

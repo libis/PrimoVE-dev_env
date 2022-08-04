@@ -7,27 +7,43 @@
 
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
-                <a href="http://www.thomasmore.be/bibliotheek/hulp-nodig-bij-limo" target="_blank" id="limo_content_link" aria-label="Link to info about content in Limo"
-                   title="Link to info about content in Limo">
+                <a href="http://www.thomasmore.be/bibliotheek/hulp-nodig-bij-limo" target="_blank"
+                    id="limo_content_link" aria-label="Link to info about content in Limo"
+                    title="Link to info about content in Limo">
                     <span class="md-headline" id="ContentInLimo">
                         What can you find in Limo?
                     </span>
                 </a>
                 <h3>All content</h3>
-                <p>You can search millions of items: online articles and e-journals, books & e-books, journals, databases, and many more. </p>
+                <p>You can search millions of items: online articles and e-journals, books & e-books, journals,
+                    databases, and many more. </p>
                 <h3>Campus</h3>
-                <p>You can limit your search results to local items by selecting your campus: physical books and journals, e-books, e-journals, etc.</p>
+                <p>You can limit your search results to local items by selecting your campus: physical books and
+                    journals, e-books, e-journals, etc.</p>
 
             </md-card-content>
         </md-card>
 
-<!--
+        <!--
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
                 <a href="/KULeuven_TMOREK" onclick="document.location.href = '/KULeuven_TMOREK'"><img src="custom/32KUL_KHK-TMOREK/img/library-logo-kul.png" /></a>
             </md-card-content>
         </md-card>
 -->
+
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <a href="https://kuleuven.limo.libis.be/discovery/search?vid=32KUL_KUL:REGIONAL"
+                    onclick="document.location.href='https:\/\/kuleuven.limo.libis.be\/discovery\/search?vid=32KUL_KUL:REGIONAL'"><img
+                        src="https://kuleuven.limo.libis.be/discovery/custom/32KUL_KUL-REGIONAL/img/library-logo-en.png" /></a>
+                <br>
+                <a href="https://kuleuven.limo.libis.be/discovery/search?vid=32KUL_KUL:REGIONAL"
+                    onclick="document.location.href='https:\/\/kuleuven.limo.libis.be\/discovery\/search?vid=32KUL_KUL:REGIONAL'">KU
+                    Leuven incl. gemengde campussen</a>
+            </md-card-content>
+
+        </md-card>
     </div>
     <div flex-xs="100" flex="40" layout="column">
         <prm-news parent-Ctrl='$ctrl'></prm-news>
@@ -35,12 +51,14 @@
             <md-card-content>
                 <prm-link-to-my-library-card parent-Ctrl='$ctrl'></prm-link-to-my-library-card>
                 <br>
-                 <a href="https://services.libis.be/library_info/" target="_blank" id="find_library" aria-label="Find Library Contact Info" title="Find Library Contact Info" class="md-primoExplore-theme">
-                 <span class="md-headline" id="ContentFindLibrary">
-                     Find Library
-                 </span>
-                 </a>
-                 <br>
+                <a href="https://services.libis.be/library_info/" target="_blank" id="find_library"
+                    aria-label="Find Library Contact Info" title="Find Library Contact Info"
+                    class="md-primoExplore-theme">
+                    <span class="md-headline" id="ContentFindLibrary">
+                        Find Library
+                    </span>
+                </a>
+                <br>
                 <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
             </md-card-content>
         </md-card>

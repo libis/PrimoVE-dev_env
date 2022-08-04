@@ -1,0 +1,22 @@
+<div id="user_area_after" class="view-switcher layout-align-end-center layout-row flex-noshrink" style="height: 100%;" layout-align="end center"
+ layout="row" flex="noshrink" aria-hidden="false">
+
+
+	<prm-change-lang></prm-change-lang>
+
+	<div ng-show="$parent.$ctrl.userName().length > 0">
+
+		<div id="user_name" class="user-name">{{$parent.$ctrl.userName()}}</div>
+		<div id="library_card_button_signed_in">
+			<prm-library-card-menu id="library_card_button" ng-show="$parent.$ctrl.userName().length > 0"></prm-library-card-menu>
+			<md-tooltip md-delay="400" md-direction="bottom" class="md-primoExplore-theme _md-show" role="tooltip" id="library_card_button_not_signed_in_tooltip">
+				<span>My Library account</span>
+			</md-tooltip>
+		</div>
+	</div>
+</div>
+
+
+
+
+					<prm-change-lang (change-lang-event)="$ctrl.closeLinksMenu()"></prm-change-lang>

@@ -49,3 +49,8 @@ md-card md-card-content span#ContentFindLibrary::before {
 md-card md-card-content span#ReadingLists::before {
     content: "playlist_add_check";
 }
+
+/* hide journals tab content */
+prm-journals .layout-row > md-content.flex > .padding-medium > md-card.default-card md-card-content{
+    display: none;
+}
