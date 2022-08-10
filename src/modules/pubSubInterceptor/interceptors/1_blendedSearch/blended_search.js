@@ -8,15 +8,15 @@ const syncFetch = require('sync-fetch');
 //     }
 // };
 
-window.blendedSearch = {    
+window.blendedSearch = {
     get vid() {
         return window.appConfig['vid'];
     },
-    get allowed() {        
-        let cloned_params = blendedSearch.set2.params;      
-        if (Object.keys(window.blendedSearchAddParams).includes(blendedSearch.vid) && 
-            Object.keys(window.blendedSearchAddParams[blendedSearch.vid]).includes(cloned_params['scope'])){
-                        
+    get allowed() {
+        let cloned_params = blendedSearch.set2.params;
+        if (Object.keys(window.blendedSearchAddParams).includes(blendedSearch.vid) &&
+            Object.keys(window.blendedSearchAddParams[blendedSearch.vid]).includes(cloned_params['scope'])) {
+
             console.log('BLENDING: Blend allowed');
             return true;
         }
@@ -33,17 +33,17 @@ window.blendedSearch = {
         blendedSearch.set2.url = reqRes.url;
         blendedSearch.set2.headers = reqRes.headers;
         blendedSearch.set2.data = {};
-        
+
         let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
-        if (Object.keys(cloned_params).includes('scope')) {            
+        if (Object.keys(cloned_params).includes('scope')) {
 
             let facets = [];
             try {
                 facets = window.blendedSearchAddParams[blendedSearch.vid][cloned_params['scope']];
-            } catch(e) {
+            } catch (e) {
                 console.log(`BLENDING: ${blendedSearch.vid} no extra facets defined.`)
             }
-      
+
             if (facets && facets.length > 0) {
                 if ('multiFacets' in cloned_params && cloned_params['multiFacets'].length > 0) {
                     cloned_params['multiFacets'] = `${cloned_params['multiFacets']}|,|${facets.join('|,|')}`;
@@ -51,7 +51,7 @@ window.blendedSearch = {
                     cloned_params['multiFacets'] = `${facets.join('|,|')}`;
                 }
             }
-        }        
+        }
         cloned_params['pcAvailability'] = true;
         blendedSearch.set2.params = cloned_params;
     },
@@ -113,7 +113,7 @@ window.blendedSearch = {
             //fetch result
             try {
                 result = syncFetch(esURL, { method: 'GET', headers: blendedSearch.set2.headers }).json();
-            } catch(e) {
+            } catch (e) {
                 console.error(`BLENDING(ERROR): ${e.message}`)
                 result = {};
             }
@@ -131,7 +131,7 @@ window.blendedSearch = {
         }
     },
     limitOffset() {
-        
+
         let t1 = 0;
         let l1 = Math.ceil(this.set1.params.limit / 2);
         let o1 = Math.ceil(this.set1.params.offset / 2);
@@ -207,7 +207,31 @@ window.blendedSearch = {
             return m;
         })
 
-        docs = docs.sort((a, b) => b.pnx.control.score - a.pnx.control.score);
+        try {
+            switch (blendedSearch.set1.params.sort) {
+                case 'title':                               
+                    docs = docs.sort((a, b) => a.pnx.display.title[0].toLowerCase().replaceAll(/\W/g,'').localeCompare(b.pnx.display.title[0].toLowerCase().replaceAll(/\W/g,'')));                    
+                    break;
+                case 'author':
+                    docs = docs.sort((a, b) => {
+                        const creatorA = a.pnx.display.creator || [''];
+                        const creatorB = b.pnx.display.creator || [''];
+                        return creatorA[0].toLowerCase().replaceAll(/\W/g,'').localeCompare(creatorB[0].toLowerCase().replaceAll(/\W/g,''));
+                    });
+                    break;
+                case 'date_d': //newest
+                    docs = docs.sort((a, b) => new Date(a.pnx.addata.date[0]) - new Date(b.pnx.addata.date[0]));
+                    break;
+                case 'date_a': //oldest
+                    docs = docs.sort((a, b) => new Date(b.pnx.addata.date[0]) - new Date(a.pnx.addata.date[0]));
+                    break;
+                default:
+                    docs = docs.sort((a, b) => b.pnx.control.score - a.pnx.control.score);
+                    break;
+            }
+        } catch (e) {
+            console.error(`Error sorting records:${e.message}`);        
+        }
 
         return docs
     }
@@ -218,7 +242,7 @@ window.blendedSearch = {
 //document.addEventListener('pubSubInterceptorsReady', (e) => {
 pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
     blendedSearch.init(reqRes);
-    if (blendedSearch.allowed) {        
+    if (blendedSearch.allowed) {
         blendedSearch.set2.search();
 
         reqRes.params.limit = blendedSearch.set1.limit;
