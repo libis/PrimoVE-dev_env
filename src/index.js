@@ -19,8 +19,10 @@ import './modules/feedback';
 import "./css/index.css";
 /**/
 
+//let customType = 'centralCustom';
+
 (function () {
-  let customType = 'centralCustom';
+ 
   window.Primo = new Primo();
     
   let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'google', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback'];

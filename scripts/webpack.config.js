@@ -46,7 +46,21 @@ const config = {
         filename: 'js/custom.js',
         clean: false
     },
-    plugins: [],
+    plugins: [
+        /*
+            [
+              "search-and-replace",
+              {
+                "rules": [
+                  {
+                    "search": "viewCustom",
+                    "replace": "centralCustom"
+                  }
+                ]
+              }
+            ]
+            */
+    ],
     module: {
         rules: [
             {
@@ -96,7 +110,7 @@ configCentral = () => {
         { from: path.resolve(root, `resources/${centralPackage}/img`), to: `${distDir}/${centralPackage}/img` }
     ]).flat()
 
-    entries['central'] = { import: path.resolve(root, "./src/index.js"), filename: `${centralPackage}/js/custom.js` }
+    entries['central'] = { import: path.resolve(root, "./src/centralCustom.js"), filename: `${centralPackage}/js/custom.js` }
 
     plugins.push(new FileManagerPlugin({
         events: {
@@ -132,8 +146,30 @@ configiew = () => {
         { from: path.resolve(root, `resources/${viewdir}/html`), to: `${distDir}/${viewdir}/html` },
         { from: path.resolve(root, `resources/${viewdir}/img`), to: `${distDir}/${viewdir}/img` },
     ]).flat()
+
     /* TODO : check if view uses CENTRAL PACKAGE and rebuild CENTRAL PACKAGE is necessary */
-    entries[process.env.VIEW] = { import: path.resolve(root, `./resources/${viewdir}/js/custom.js`), filename: `${viewdir}/js/custom.js` }
+
+    if (/32KUL_LIBIS_NETWORK/.test(viewdir) ) {
+        console.log ("It is a NETWORK ZONE view")
+        entries[process.env.VIEW] = { import: path.resolve(root, "./src/viewCustom.js"), filename: `${viewdir}/js/custom.js` }
+        plugins.push(new FileManagerPlugin({
+            events: {
+                onStart: {
+                    delete: [path.resolve(root, `./src/css`)],
+                    copy: [
+                        { source: path.resolve(root, `resources/${viewdir}/css`), destination: path.resolve(root, `./src/css`) }
+                    ],
+                },
+                onEnd: {
+                    delete: [path.resolve(root, `./src/css`), path.resolve(root, `./src/index.css`)]
+                }
+            }
+        }))
+    }else{
+        entries[process.env.VIEW] = { import: path.resolve(root, `./resources/${viewdir}/js/custom.js`), filename: `${viewdir}/js/custom.js` }
+    }
+
+   // entries[process.env.VIEW] = { import: path.resolve(root, `./resources/${viewdir}/js/custom.js`), filename: `${viewdir}/js/custom.js` }
 
     plugins.push(new FileManagerPlugin({
         events: {
