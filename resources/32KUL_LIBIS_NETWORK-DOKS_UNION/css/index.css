@@ -964,4 +964,13 @@ md-toolbar.md-primoExplore-theme .md-toolbar-tools prm-linked-user-selector md-i
   .prm-primary-bg.prm-hue4 {
     background-color: #a21a27; }
 
+     
+
+
+@media (min-width: 1280px) and (max-width: 1919px) {
+  .search-wrapper >.flex-lg-10, .layout-row>.flex-lg-10 {
+    min-width: 180px
+  }
+}
+  
 /* view color hook end 32KUL_LIBIS_NETWORK-DOKS_UNION/css/index.css */
