@@ -13,52 +13,52 @@ class SavedQueriesLlistController {
         vid: "ACV"
       },
       "32KUL_TIFA:BOSA" : {
-        vid: "ACV"
+        vid: "OFO"
       },
       "32KUL_BPB:BPB" : {
-        vid: "ACV"
+        vid: "BPB"
       },
       "32KUL_DOCVB:docvlaamsbrabant" : {
-        vid: "ACV"
+        vid: "docvlaamsbrabant"
       },
       "32KUL_VCV:FARO" : {
-        vid: "ACV"
+        vid: "FARO"
       },
       "32KUL_FIN:FODFIN" : {
-        vid: "ACV"
+        vid: "FODFIN"
       },
       "32KUL_GSB:GSB" : {
-        vid: "ACV"
+        vid: "GSB"
       },
       "32KUL_GSG:GSG" : {
-        vid: "ACV"
+        vid: "GSG"
       },
       "32KUL_IMEC:IMEC" : {
-        vid: "ACV"
+        vid: "IMEC"
       },
       "32KUL_KADOC:KADOC" : {
-        vid: "ACV"
+        vid: "KADOC"
       },
       "32KUL_KBC:KBC" : {
-        vid: "ACV"
+        vid: "KBC"
       },
       "32KUL_KMMR:KMKG" : {
-        vid: "ACV"
+        vid: "KMKG"
       },
       "32KUL_RMCA:RMCA" : {
-        vid: "ACV"
+        vid: "RMCA"
       },
       "32KUL_NBB:NBB" : {
-        vid: "ACV"
+        vid: "NBB"
       },
       "32KUL_RBINS:RBINS" : {
-        vid: "ACV"
+        vid: "RBINS"
       },
       "32KUL_VES:VDIC" : {
-        vid: "ACV"
+        vid: "VDIC"
       },
       "32KUL_VLP:VLP" : {
-        vid: "ACV"
+        vid: "VLP"
       },
       "32KUL_KUL:KULeuven": {
         vid: "KULeuven"
