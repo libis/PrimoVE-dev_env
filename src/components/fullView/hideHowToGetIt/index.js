@@ -1,5 +1,5 @@
 
-class HideWhereToFindItController {
+class HideHowToGetItController {
   constructor($scope, $translate, $rootScope) {
 
     let self = this
@@ -8,8 +8,8 @@ class HideWhereToFindItController {
     self.$rootScope = $rootScope
     //var hide_in_vid = ['32KUL_KUL:KULeuven'];
     var service = {
-      title: 'nui.getit.service_getit',
-      scrollId: 'getit_link1_1'
+      title: 'nui.getit.service_howtogetit',
+      scrollId: 'getit_link1_0'
     }
 
     let translatorWatcher = $scope.$watch(() => {
@@ -31,18 +31,18 @@ class HideWhereToFindItController {
   }
 }
 
-HideWhereToFindItController.$inject = ['$scope', '$translate', '$rootScope']
+HideHowToGetItController.$inject = ['$scope', '$translate', '$rootScope']
 
-export let hideWhereToFindItConfig = {
-  name: 'custom-hide-where-to-find-it',
+export let HideHowToGetItConfig = {
+  name: 'custom-hide-how-to-get-it',
   enabled: true,
   appendTo: 'prm-explore-footer-after',
-  enableInView: '32KUL_KUL:Lirias|32KUL_LIBIS_NETWORK:JESUITS_UNION',
+  enableInView: '32KUL_LIBIS_NETWORK:JESUITS_UNION',
   config: {
     bindings: {
       parentCtrl: '<'
     },
-    controller: HideWhereToFindItController,
+    controller: HideHowToGetItController,
     template: ''
   }
 }

@@ -10,8 +10,6 @@ class ReportAProblemController {
 
       let recordData = self.currentRecord;
 
-      console.log ( Primo.user )
-
       Primo.user.then(user => {
         self.user = user;
 

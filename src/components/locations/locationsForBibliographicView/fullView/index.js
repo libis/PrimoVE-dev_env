@@ -1,40 +1,62 @@
 import fullLocationsForBibliographicViewHTML from './fullLocationsForBibliographicView.html'
 
 class fullLocationsForBibliographicViewController {
-    constructor($element, $compile, $scope, FilterLocationsService) {
-        self = this
+    constructor($element, $translate, $scope) {
         this.$element = $element;
         this.$scope = $scope;
+        this.$translate = $translate;
         this.vid = window.appConfig.vid;
-        this.FilterLocationsService = FilterLocationsService;
-    }
-
-    $onInit() {
         this.parentCtrl = this.parentCtrl.parentCtrl;
         this.item = this.parentCtrl.item;
         this.pnx = this.item.pnx;
-       
-        this.delivery_library =  this.FilterLocationsService.filterLocations(this.pnx);
 
-        // console.log ( this.delivery_library)
+        const library_filter_array = {
+            'msb jesuit armarium': {
+                "url": "https://kuleuven.limo.libis.be/permalink/32KUL_KUL/tuno99/" + this.pnx.control.recordid
+                //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KULeuven&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab&noLogin=true"
+            },
+            'kadoc jesuit armarium': {
+                "url": "https://kadoc.limo.libis.be/permalink/32KUL_KADOC/dtohan/" + this.pnx.control.recordid
+                //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
+            },
+            'anet ruusbroec collection': {
+                "url": "https://anet.be/record/uantwerpen/opacuantwerpen/" + this.pnx.control.sourcerecordid + "/N"
+            }
+        }
 
-        
+
+        this.delivery_library = this.pnx.display.lds10.map(lds10 => {
+            var library_code = lds10.toLowerCase();
+            lds10 = library_filter_array[library_code];
+            lds10['name'] = this.$translate.instant(library_code);
+
+            return lds10;
+        });
+
         this.parentElement = this.$element.parent().parent()[0];
-        this.insertLocationsLinksSection()
+
+        let translatorWatcher = this.$scope.$watch(() => {
+            return this.$translate.isReady()
+        }, (n, o) => {
+            if (n == true) {
+                this.insertLocationsLinksSection()
+                translatorWatcher();
+            }
+        }, false);
     }
 
     insertLocationsLinksSection() {
-        if (typeof this.delivery_library !== 'undefined' && this.delivery_library.length > 0) {
-            // the array is defined and has at least one element
 
+        if (typeof this.pnx.display.lds10 !== 'undefined' && this.pnx.display.lds10.length > 0) {
             let locationsLinksSectionData = {
                 scrollId: "locationsLinks",
                 serviceName: "locationsLinks",
-                title: "brief.results.tabs.LocationsLinks"
+                title: "nui.brief.results.tabs.LocationsLinks"
             };
             let locationsLinksSectionElement = this.$element //.find('locations-for-bibliographic-view')[0];
             this.insertSection(locationsLinksSectionData, locationsLinksSectionElement);
         }
+
     }
 
     insertSection(sectionData, sectionElement) {
@@ -82,31 +104,30 @@ class fullLocationsForBibliographicViewController {
     }
 
     insertSectionData(sectionData) {
-        Promise.resolve( this.parentCtrl.fullViewService.getServices( this.parentCtrl.item, this.parentCtrl.originator) ).then(
-            function(services) {
-              // Add to services if not alread in the list
-              //if ( services.findIndex(service => service.scrollId === "altmetrics") < 0 ){
-                services.splice(services.length -2, 0, sectionData);
-              //}
-        })
+        Promise.resolve(this.parentCtrl.fullViewService.getServices(this.parentCtrl.item, this.parentCtrl.originator)).then(
+            function (services) {
+                // Add to services if not alread in the list
+                //if ( services.findIndex(service => service.scrollId === "altmetrics") < 0 ){
+                services.splice(services.length - 2, 0, sectionData);
+                //}
+            })
 
         // this.parentCtrl.services.splice(this.parentCtrl.services.length - 1, 0, sectionData);
     }
 }
 
-fullLocationsForBibliographicViewController.$inject = ['$element', '$compile', '$scope', 'FilterLocationsService'];
+fullLocationsForBibliographicViewController.$inject = ['$element', '$translate', '$scope'];
 
 export let fullLocationsForBibliographicViewConfig = {
-    name: 'custom-locations-bibliographic-view',  
+    name: 'custom-locations-bibliographic-view',
     enabled: true,
     appendTo: 'prm-full-view-after',
-    enableInView: '32KUL_KUL:JESUITS,32KUL_LIBIS_NETWORK:JESUITS_UNION',
-    config: {  
-      bindings: {
-        parentCtrl: '<'
-      },
-      controller: fullLocationsForBibliographicViewController,
-      template: fullLocationsForBibliographicViewHTML
+    enableInView: '32KUL_KUL:JESUITS|32KUL_LIBIS_NETWORK:JESUITS_UNION',
+    config: {
+        bindings: {
+            parentCtrl: '<'
+        },
+        controller: fullLocationsForBibliographicViewController,
+        template: fullLocationsForBibliographicViewHTML
     }
 }
-  
