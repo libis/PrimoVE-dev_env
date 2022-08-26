@@ -14,6 +14,7 @@
 @import "./hide-clipboard.css";
 @import "./contrast_fixes.css";
 @import "./advanced_search_tweaks.css";
+@import "./hide_source_text.css";
 
 .material-icons {
     font-family: 'Material Icons';
