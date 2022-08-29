@@ -3,7 +3,20 @@ import savedQueriesLlistHTML from './savedQueriesLlist.html'
 class SavedQueriesLlistController {
   constructor($scope) {
     var self = this;
+    $scope.locale = $scope.$root.$$childHead.$ctrl.userSessionManagerService.i18nService.getLanguage() ||  "en";
 
+    $scope.bloglink =  "https://limonews-libis-en.blogspot.com/2022/08/your-saved-searches-are-not_1.html";
+    $scope.blogtext = "More information";
+    
+    if($scope.locale == "fr"){
+      $scope.bloglink =  "https://limonews-libis-fr.blogspot.com/2022/08/vos-recherches-enregistrees-ne-sont-pas.html";
+      $scope.blogtext = "Plus d'information";
+    }
+    if($scope.locale == "nl"){
+      $scope.bloglink =  "https://limo-help.blogspot.com/2022/08/je-bewaarde-zoekacties-zijn-niet.html";
+      $scope.blogtext = "Meer informatie";
+    }
+ 
     let host = "limo.q.libis.be"
 
     let vid = "LUCA"
@@ -103,7 +116,7 @@ SavedQueriesLlistController.$inject = ['$scope']
 export let savedQueriesLlistConfig = {
   name: 'custom-saved-queries-list',
   enabled: true,
-  appendTo: 'prm-saved-queries-list-after',
+  appendTo: 'prm-saved-queries-after',
   enableInView: '.*',
   config: {
     bindings: { parentCtrl: '<' },
