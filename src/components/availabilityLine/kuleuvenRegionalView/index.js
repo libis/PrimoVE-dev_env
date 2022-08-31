@@ -102,7 +102,7 @@ class AvailabilityLineController {
 
 AvailabilityLineController.$inject = ['$scope', '$translate'];
 
-export let availabilityLineLocationsForKULeuvenRegionalViewwConfig = {
+export let availabilityLineLocationsForKULeuvenRegionalViewComponent = {
   name: 'custom-availability-line-regional-view',
   enabled: true,
   appendTo: 'prm-search-result-availability-line-after',

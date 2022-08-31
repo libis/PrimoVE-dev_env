@@ -24,6 +24,13 @@ class NewsFeedController {
                 ]
             },
             {
+                feedUrl: "https://limo-libis.blogspot.com/feeds/posts/default",
+                feedLang: ['fr'],
+                feedContentType: 'title',
+                feedInst: "LIMO",
+                feedFilter: [ ]
+            },
+            {
                 feedUrl: "https://limo-libis-nl.blogspot.com/feeds/posts/default",
                 feedLang: ['nl'],
                 feedContentType: 'title',
