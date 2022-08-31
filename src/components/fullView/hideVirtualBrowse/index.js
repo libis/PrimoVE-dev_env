@@ -37,7 +37,7 @@ export let hideVirtualBrowseConfig = {
   name: 'custom-hide-virtual-browse',
   enabled: true,
   appendTo: 'prm-explore-footer-after',
-  enableInView: '32KUL_KUL.*|32KUL_LUCAWENK.*',
+  enableInView: '32KUL_KUL.*|32KUL_LUCAWENK.*|32KUL_KHL.*|32KUL_DOCVB.*|32KUL_BPB.*|32KUL_KHK.*|32KUL_KHM.*',
   config: {
     bindings: {
       parentCtrl: '<'
