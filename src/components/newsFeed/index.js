@@ -8,24 +8,6 @@
   Tag "nui.customization.newsfeed.views_linked_to_tag.LIBISNET": entry appears in views : "32KUL_ACV:ACV","32KUL_BPB:BPB","32KUL_DOCVB:docvlaamsbrabant","32KUL_FIN:FODFIN","32KUL_GSB:GSB","32KUL_GSG:GSG","32KUL_IMEC:IMEC","32KUL_KADOC:KADOC","32KUL_KBC:KBC","32KUL_KMMR:KMKG","32KUL_NBB:NBB","32KUL_RBINS:RBINS","32KUL_RMCA:RMCA","32KUL_TIFA:BOSA","32KUL_VCV:FARO","32KUL_VES:VDIC","32KUL_VLP:VLP", 
   Tag "nui.customization.newsfeed.views_linked_to_tag.CDI": entry appear in view of inst with CDI "32KUL_HUB:ODISEE","32KUL_KATHO:VIVES","32KUL_KHK:TMOREK","32KUL_KHL:UCLL","32KUL_KHM:TMOREMA","32KUL_KUL:KULeuven","32KUL_LUCAWENK:LUCA"
   
-
-32KUL_ACV:ACV,32KUL_BPB:BPB,32KUL_DOCVB:docvlaamsbrabant,32KUL_FIN:FODFIN,32KUL_GSB:GSB,32KUL_GSG:GSG,32KUL_IMEC:IMEC,32KUL_KADOC:KADOC,32KUL_KBC:KBC,32KUL_KMMR:KMKG,32KUL_NBB:NBB,32KUL_RBINS:RBINS,32KUL_RMCA:RMCA,32KUL_TIFA:BOSA,32KUL_VCV:FARO,32KUL_VES:VDIC,32KUL_VLP:VLP
-
-
-32KUL_HUB:ODISEE,32KUL_KATHO:VIVES,32KUL_KHK:TMOREK,32KUL_KHL:UCLL,32KUL_KHM:TMOREMA,32KUL_KUL:KULeuven,32KUL_LUCAWENK:LUCA,32KUL_KUL:REGIONAL
-
- 32KUL_KUL-JESUITS
- 32KUL_KUL-Lirias
-
- 
- 32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE
- 32KUL_LIBIS_NETWORK-DOKS_UNION
- 32KUL_LIBIS_NETWORK-JESUITS_UNION
-
-32KUL_KUL-music
- 32KUL_LUCAWENK-music
-
- 
  
  */
 
@@ -51,29 +33,16 @@ class NewsFeedController {
                 feedUrl: "https://limonews-libis-en.blogspot.com/feeds/posts/default",
                 feedLang: ['en'],
                 feedContentType: 'title',
-                feedFilter: [
-                    { param: "entry.categories", value: "All Views" },
-                    { param: "entry.categories", value: "Odisee" },
-                    { param: "entry.categories", value: "KULeuven" },
-                    { param: "entry.categories", value: "KU Leuven Association" }
-                ]
             },
             {
                 feedUrl: "https://limonews-libis-fr.blogspot.com/feeds/posts/default",
                 feedLang: ['fr'],
                 feedContentType: 'title',
-                feedFilter: []
             },
             {
                 feedUrl: " https://limo-help.blogspot.com/feeds/posts/default",
                 feedLang: ['nl'],
                 feedContentType: 'title',
-                feedFilter: [
-                    { param: "entry.categories", value: "All Views" },
-                    { param: "entry.categories", value: "Odisee" },
-                    { param: "entry.categories", value: "KULeuven" },
-                    { param: "entry.categories", value: "KU Leuven Association" }
-                ]
             }
         ];
 
@@ -106,8 +75,7 @@ class NewsFeedController {
         var self = this
 
         var feedEndpoint = (self.feeds.filter(feed => feed['feedLang'] == self.locale))[0]['feedUrl']
-        feedEndpoint = feedEndpoint + "?alt=json-in-script&max-results=" + self.$scope.maxfeeds
-
+        feedEndpoint = feedEndpoint + "?alt=json-in-script&max-results=10"
         self.$http.jsonp(feedEndpoint).then(function (res) {
             var entries = res.data.feed.entry
             var daysBeforeToday = 30
@@ -127,6 +95,9 @@ class NewsFeedController {
 
             self.$scope.feedresults = self.$scope.feedresults.filter(entry => {
                 // console.log(entry)
+                if ( entry.category == undefined){
+                    return true
+                }
                 entry.category = entry.category.filter(category => {
                     // console.log(category.term)
                     if (category.term.toUpperCase() == "ALL") {
@@ -149,6 +120,9 @@ class NewsFeedController {
                 // console.log(entry.category)  
                 return (entry.category.length > 0);
             });
+
+
+            self.$scope.feedresults = self.$scope.feedresults.slice(0, self.$scope.maxfeeds);
         });
     }
 }
