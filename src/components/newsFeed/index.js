@@ -25,7 +25,7 @@ class NewsFeedController {
 
         // console.log (locale)
 
-        self.$scope.maxfeeds = 3;
+        self.$scope.maxfeeds = 10;
         self.$scope.feedresults = [];
 
         self.feeds = [
