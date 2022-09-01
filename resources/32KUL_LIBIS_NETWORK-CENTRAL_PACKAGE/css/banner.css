@@ -1,19 +1,14 @@
 prm-banner-card-content .banner-content md-card-title md-card-title-text span {
-    font-size: 18px;
-    font-weight: bolder;
-    color: #3a3a3a;
-    background: transparent;
-    padding: 0 20px;
+    background: rgba(0,0,0,0.5);
 }
 
 prm-banner-card-content .banner-content md-card-title md-card-title-text .banner-title {
-    transition: 0.5s;
+    font-size:26px;
 }
 
 .gt-sm prm-banner-card-content a:focus .banner-title, .gt-sm prm-banner-card-content a:hover .banner-title,
 .__gt-sm prm-banner-card-content prm-tags-list md-chips .md-chip .md-chip-content:hover strong .banner-title {
     background: transparent;
-    font-size: 90px;
+    font-size: 70px;
     line-height: 140px;
-    padding-left: 20px;
 }
