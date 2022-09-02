@@ -19,7 +19,7 @@ window.passwordHack = {
                 ||
                 (
                     l.linkType == 'addlink' &&
-                    /www.kuleuven.be/.test(l.linkURL) &&
+                    /notinuse/.test(l.linkURL) &&
                     l.displayLabel == 'Test please ignore'
                 )
             )
