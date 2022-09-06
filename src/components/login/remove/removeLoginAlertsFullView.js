@@ -22,7 +22,7 @@ class RemoveLoginAlertsFullViewController {
 RemoveLoginAlertsFullViewController.$inject = ['$scope','$element'];
 
 export let RemoveLoginAlertsFullViewComponent = {
-  name: 'custom-remove-login-alerts',
+  name: 'custom-remove-login-alerts-full-view',
   config: {
     bindings: { parentCtrl: '<' },
     controller: RemoveLoginAlertsFullViewController,
