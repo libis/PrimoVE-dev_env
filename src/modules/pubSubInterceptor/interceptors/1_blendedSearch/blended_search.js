@@ -12,11 +12,21 @@ window.blendedSearch = {
     get vid() {
         return window.appConfig['vid'];
     },
+    get blendKey() {
+        let cloned_params = blendedSearch.set2.params;
+        let key = `blend.${cloned_params['scope']}`;
+        return key;
+    },
+    get hasBlendKey(){
+        return this.blendFilter != this.blendKey;
+    },
+    get blendFilter(){
+        Primo.bridge.translate.instant(this.blendKey);
+    },
     get allowed() {
         let cloned_params = blendedSearch.set2.params;
-        if (Object.keys(window.blendedSearchAddParams).includes(blendedSearch.vid) &&
-            Object.keys(window.blendedSearchAddParams[blendedSearch.vid]).includes(cloned_params['scope'])) {
-
+        
+        if ( this.hasBlendKey ) {
             console.log('BLENDING: Blend allowed');
             return true;
         }
@@ -39,7 +49,7 @@ window.blendedSearch = {
 
             let facets = [];
             try {
-                facets = window.blendedSearchAddParams[blendedSearch.vid][cloned_params['scope']];
+                facets = this.blendFilter;
             } catch (e) {
                 console.log(`BLENDING: ${blendedSearch.vid} no extra facets defined.`)
             }
