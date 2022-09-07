@@ -1,0 +1,84 @@
+<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    md-card md-card-content span#ContentLinkToOther::before {
+        content: "explore";
+    }
+
+</style>
+<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+    <md-card-content>
+            <span class="md-headline" id="ContentInLimo">
+                Wat vind je in de muziekcatalogus van Limo?
+            </span>
+        <br />
+        Gedrukte en elektronische publicaties met betrekking tot muziek die in het bezit zijn van <a href="http://bib.kuleuven.be/luca/bibliotheeklemmens">LUCA Campus Lemmens</a>, <a href="https://bib.kuleuven.be/lbib/">KU Leuven Musicologie</a> en <a href="http://www.matrix-new-music.be/">KU Leuven MATRIX</a>.
+        <br/>
+        <span class="md-headline" id="ContentSearchTips">
+        Wat zijn de extra zoekmogelijkheden in deze muziekcatalogus ?
+        </span>
+        <br/>
+        Via de filters links op het scherm kan je beperken op :
+        <ul>
+            <!--
+        <li>instrumentatie</li>
+        -->
+        <li>aantal spelers</li>
+        <li>compositieperiode</li>
+        </ul>
+        <br />
+
+        <span class="md-headline" id="ContentLinkToOther"></span>
+        Andere zoektools
+        </span>
+        <br/>
+
+        <ul>
+        <li>Gebruik <a href="/KULeuven">http://limo.libis.be/KULeuven</a> om de collecties van alle KU Leuven bibliotheken te doorzoeken.</li>
+        <li>Via <a href="/LUCA_MUSIC">http://limo.libis.be/LUCA_MUSIC</a> vind je dezelfde informatie, maar gepresenteerd voor gebruikers van de LUCA-bibliotheken. </li>
+        </ul>
+
+
+    </md-card-content>
+
+</md-card>
+
+<prm-news parent-Ctrl='$ctrl'></prm-news>

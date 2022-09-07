@@ -37,7 +37,7 @@ export let hideWhereToFindItConfig = {
   name: 'custom-hide-where-to-find-it',
   enabled: true,
   appendTo: 'prm-explore-footer-after',
-  enableInView: '32KUL_KUL:Lirias',
+  enableInView: '32KUL_KUL:Lirias|32KUL_LIBIS_NETWORK:JESUITS_UNION',
   config: {
     bindings: {
       parentCtrl: '<'

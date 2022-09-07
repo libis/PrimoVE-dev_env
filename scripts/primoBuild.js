@@ -37,6 +37,7 @@ if (
     console.log ( "==> "+ yarn )
     exec(yarn, (error, stdout, stderr) => {
         if (error) {
+            // console.log(`${stdout}`);
             console.error(`exec error: ${error}`);
             return;
         }

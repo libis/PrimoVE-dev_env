@@ -19,8 +19,17 @@ import './modules/feedback';
 import "./css/index.css";
 /**/
 
+
+
 (function () {
-  let customType = 'centralCustom';
+ 
+  var customType = 'centralCustom';
+
+  if ( /32KUL_LIBIS_NETWORK/.test(window.appConfig.vid) ) {
+    console.log ("custom.js is a copy of the Central Pacakge with customType = 'viewCustom'")
+    customType = 'viewCustom';
+  }
+
   window.Primo = new Primo();
     
   let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'google', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback'];

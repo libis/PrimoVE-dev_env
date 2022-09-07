@@ -2,14 +2,13 @@ import reportAProblemHTML from './reportAProblem.html'
 import reportAProblemDialogHTML from './reportAProblemDialog.html'
 
 class ReportAProblemController {
-  constructor($element, $compile, $scope, $mdDialog, $mdToast, $http,reportAProblemURL) {
+  constructor($element, $compile, $scope, $mdDialog, $translate, $http,reportAProblemURL, MessageService ) {
     let self = this;
+    self.translate = $translate;    
     if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
       $element.parent().parent().find('h4').after($compile(reportAProblemHTML)($scope));
 
       let recordData = self.currentRecord;
-
-      console.log ( Primo.user )
 
       Primo.user.then(user => {
         self.user = user;
@@ -48,11 +47,12 @@ class ReportAProblemController {
                     subject: $scope.report.subject,
                     view: self.view.code,
                     inst: self.view.institution.code,
-                    loggedIn: self.user.isLoggedIn(),
+                    loggedIn: self.user.isLoggedIn()(),
                     onCampus: self.user.isOnCampus(),
                     user: self.user.name,
                     fe: '',
-                    ip: self.view.ip.address,
+                    //ip: self.view.ip.address,
+                    ip: self.view.ip,
                     message: $scope.report.message,
                     replyTo: $scope.report.replyTo || self.user.email,
                     userAgent: navigator.userAgent
@@ -70,10 +70,10 @@ class ReportAProblemController {
                       cache: false,
                       data: data
                     }).then(function(response) {
-                      let message = self.translate.instant('lbs.nui.feedback.success') || 'Thank you for your feedback!';
+                      let message = self.translate.instant('nui.customization.report_a_problem.success') || 'Thank you for your feedback!';
                       MessageService.show(message, {scope:$scope, hideDelay: 5000});
                     }, function(response) {
-                      let message = self.translate.instant('lbs.nui.feedback.fail') || 'Unable to submit feedback.';
+                      let message = self.translate.instant('nui.customization.report_a_problem.fail') || 'Unable to submit feedback.';
                       MessageService.show(message, {scope:$scope, hideDelay: 5000});                      
                     });
                   }
@@ -98,7 +98,7 @@ class ReportAProblemController {
   }
 }
 
-ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http','reportAProblemURL'];
+ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$translate', '$http','reportAProblemURL', 'MessageService'];
 
 export let reportAProblemcomponent = {
     name: 'custom-report-a-problem',

@@ -39,19 +39,43 @@
         content: "my_location";
     }
 
-    LinkToAZDatabaseList
+    md-card md-card-content span#ContentLinkToOther::before {
+        content: "explore";
+    }
+
 </style>
 <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
     <md-card-content>
             <span class="md-headline" id="ContentInLimo">
-                Wat vind je in Limo?
+                Wat vind je in de muziekcatalogus van Limo?
             </span>
         <br />
-        <p>
-            gedrukte en elektronische publicaties die in het bezit zijn van Belgisch Parlement Belge en andere LIBISnet bibliotheken;
-        </p>
+        Gedrukte en elektronische publicaties met betrekking tot muziek die in het bezit zijn van <a href="http://bib.kuleuven.be/luca/bibliotheeklemmens">LUCA Campus Lemmens</a>, <a href="https://bib.kuleuven.be/lbib/">KU Leuven Musicologie</a> en <a href="http://www.matrix-new-music.be/">KU Leuven MATRIX</a>.
+        <br/>
+        <span class="md-headline" id="ContentSearchTips">
+        Wat zijn de extra zoekmogelijkheden in deze muziekcatalogus ?
+        </span>
+        <br/>
+        Via de filters links op het scherm kan je beperken op :
+        <ul>
+            <!--
+        <li>instrumentatie</li>
+        -->
+        <li>aantal spelers</li>
+        <li>compositieperiode</li>
+        </ul>
         <br />
-        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+
+        <span class="md-headline" id="ContentLinkToOther"></span>
+        Andere zoektools
+        </span>
+        <br/>
+
+        <ul>
+            <li>Gebruik <a href="/LUCA">http://limo.libis.be/LUCA</a> om de collecties van alle LUCA-bibliotheken te doorzoeken.           
+            <li>Via <a href="/LUCA_MUSIC">http://limo.libis.be/KULEUVEN_MUSIC</a> vind je dezelfde informatie, maar gepresenteerd voor gebruikers van de KU Leuven-bibliotheken.
+        </ul>
+
 
     </md-card-content>
 

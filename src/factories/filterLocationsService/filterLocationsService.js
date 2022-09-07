@@ -13,6 +13,10 @@ export default class FilterLocationsService {
       }
 
     filterLocations(pnx_record) {
+
+        console.log ("filterLocations")
+        console.log (pnx_record)
+
         var availlibrary = pnx_record.display.availlibrary.map((lib) => { return lib.split("$$"); })
 
         availlibrary = availlibrary.map((lib) => {
@@ -56,6 +60,12 @@ export default class FilterLocationsService {
                     "url":  "https://"+document.location.host+"/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
                 },
                 "ANET_UA-CST": {
+                    "id" : function (lib) { return pnx_record.search.addsrcrecordid },
+                    "name": "Ruusbroec Institute Library – University of Antwerp",
+                    //"url": "https://anet.be/record/opacanet/<#recordid>"
+                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
+                },
+                "ANET_UA-RG": {
                     "id" : function (lib) { return pnx_record.search.addsrcrecordid },
                     "name": "Ruusbroec Institute Library – University of Antwerp",
                     //"url": "https://anet.be/record/opacanet/<#recordid>"
