@@ -1,13 +1,5 @@
 const syncFetch = require('sync-fetch');
 
-
-// let blendedSearchAddParams = {
-//     "32KUL_KUL:KULeuven": {
-//         "All_Content": ["facet_delcategory,include,Online Resource"],
-//         "KULeuven_PROFILE": ["facet_delcategory,include,Online Resource", "facet_lds07,include,book"]
-//     }
-// };
-
 window.blendedSearch = {
     get vid() {
         return window.appConfig['vid'];
@@ -17,11 +9,13 @@ window.blendedSearch = {
         let key = `blend.${cloned_params['scope']}`;
         return key;
     },
-    get hasBlendKey(){
-        return this.blendFilter != this.blendKey;
+    get hasBlendKey(){        
+        return this.blendFilter && this.blendFilter != this.blendKey && 
+               this.blendFilter != this.blendKey.replace(/^blend\./, '').replaceAll('_', ' ') && 
+               this.blendFilter.length > 1;
     },
     get blendFilter(){
-        Primo.bridge.translate.instant(this.blendKey);
+        return Primo.bridge.translate.instant(this.blendKey);
     },
     get allowed() {
         let cloned_params = blendedSearch.set2.params;
@@ -141,21 +135,35 @@ window.blendedSearch = {
         }
     },
     limitOffset() {
+        let l1_fraction = parseFloat(Primo.bridge.translate.instant('blend.alma_fraction')) || 0.5;
+        let l2_fraction = parseFloat(Primo.bridge.translate.instant('blend.lirias_fraction')) || 0.5;
 
         let t1 = 0;
-        let l1 = Math.ceil(this.set1.params.limit / 2);
-        let o1 = Math.ceil(this.set1.params.offset / 2);
+        let l1 = Math.ceil(this.set1.params.limit * l1_fraction);
+        let o1 = Math.ceil(this.set1.params.offset * l1_fraction);
 
-        let t2 = 0
+        let t2 = 0;
         if (this.set2.data.info) {
             t2 = this.set2.data.info.total;
         }
-        let l2 = l1;
-        let o2 = o1;
+        let l2 = Math.ceil(this.set1.params.limit * l2_fraction);
+        let o2 = Math.ceil(this.set1.params.offset * l2_fraction);
+
+
+        if ((l1+l2) > this.set1.params.limit) {
+            l2 -= 1;
+            if (l2 < 0) {
+                l2=0;
+            }
+        }
 
         if ((t2 - o2) < l2) {
             l2 = t2 - o2
             l2 = l2 < 0 ? 0 : l2 //compensate for o2 > t2
+        }
+
+        if ((l1+l2) < this.set1.params.limit) {
+            l1 = this.set1.params.limit - l2;
         }
 
         if (this.set2.data.docs) {
@@ -164,8 +172,10 @@ window.blendedSearch = {
             }
         }
 
-        if (l2 < l1) {
-            l1 = l1 + (l1 - l2)
+        if (l2 == 0) {
+            l1 = this.set1.params.limit;
+            o1 = this.set1.params.offset;            
+            o2 = 0;
         }
         console.log(l1, o1, l2, o2);
         return [l1, o1, l2, o2];
@@ -204,7 +214,7 @@ window.blendedSearch = {
             docs = docs.concat(blendedSearch.set1.data.docs.slice(0, blendedSearch.set1.limit));
         }
         if (blendedSearch.set2.data.docs) {
-            docs = docs.concat(blendedSearch.set2.data.docs.slice(0, blendedSearch.set1.limit));
+            docs = docs.concat(blendedSearch.set2.data.docs.slice(0, blendedSearch.set2.limit));
         }
 
         let rankSet1 = blendedSearch.set1.score;
