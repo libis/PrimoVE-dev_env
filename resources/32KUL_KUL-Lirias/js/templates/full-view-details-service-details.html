@@ -18,12 +18,21 @@
                             ng-class="{'string-to-rtl-details': ($ctrl.dontChangeStringDirectionToRtl(curValue) && !value.chainDelimiter), 'chain-display-space':(chainArray.length > 1 && !$last)}">
                             <prm-highlight ng-if="$ctrl.isSubfieldExist(curValue, '$$C')" terms="$ctrl.hl(value.keyt)"
                                 text="$ctrl.getPrefix(curValue)"></prm-highlight>
-<!-- NEW LINE-->                           
+<!-- NEW LINE-->              
+
+<!-- For link to fullview (currently 2022-08-01 noet working) use ui-sref
+     ui-sref="fulldisplay({vid:'{{$ctrl.queryOptions.vid}}',scope:'{{$ctrl.queryOptions.scope}}',tab:'{{$ctrl.queryOptions.tab}}',docid:'{{$ctrl.getSubfieldFromVal(curValue, '$$Z')}}',context:'SearchWebhook'})" -->
+
                             <a
                                 (click)="$ctrl.setCameFromIndicationLateral(value)"
                                 ng-if="$ctrl.isSubfieldExist(curValue, '$$Z') && value.keyt !== 'crsinfo' && !$ctrl.isSubfieldExist(curValue, '$$T') &&  $ctrl.item.pnx.control.sourceid[0] === 'lirias'"
                                 class="arrow-link" aria-label="{{$ctrl.getTextFromVal(curValue)}}"
-                                ui-sref="fulldisplay({vid:'{{$ctrl.queryOptions.vid}}',scope:'{{$ctrl.queryOptions.scope}}',tab:'{{$ctrl.queryOptions.tab}}',docid:'{{$ctrl.getSubfieldFromVal(curValue, '$$Z')}}',context:'SearchWebhook'})"
+                                ui-sref="exploreMain.search({
+                                    vid:'{{$ctrl.queryOptions.vid}}',
+                                    query:'any,contains,{{$ctrl.getSubfieldFromVal(curValue, '$$Z')}}',
+                                    tab:'{{$ctrl.queryOptions.tab}}',
+                                    search_scope:'{{$ctrl.queryOptions.search_scope}}'
+                                 })"
                                 ui-sref-opts="{reload: true}">
                                 <prm-highlight terms="$ctrl.highlights[value.keyt]"
                                 text="$ctrl.getTextFromVal(curValue)"></prm-highlight>

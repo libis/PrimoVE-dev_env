@@ -1,0 +1,8 @@
+/* Disable short permalinks */
+.__xs prm-permalink .layout-column>.long-permalink, prm-permalink .layout-column>.long-permalink {
+    display: inherit;
+}
+
+.__xs prm-permalink .layout-column>.short-permalink, prm-permalink .layout-column>.short-permalink {
+    display: none;
+}

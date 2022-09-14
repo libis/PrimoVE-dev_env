@@ -31,6 +31,18 @@ export default class Bridge {
     return null;
   }
 
+  static get translate() {
+    let injector = this.injector;
+    if (injector) {
+      let t = injector.get('$translate');
+      if (t) {
+        return t;
+      }
+    }
+
+    return null;    
+  }
+
   static rootScope() {
     let injector = this.injector;
     if (injector) {
