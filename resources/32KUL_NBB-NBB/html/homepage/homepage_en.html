@@ -41,38 +41,47 @@
 
     LinkToAZDatabaseList
 </style>
-<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
-    <md-card-content>
-        <span class="md-headline" id="ContentInLimo">
-            What can you find in Limo?
-        </span>
-        <br />
-        <p>
-            <ul>
-                <li>
-                    <b>All content</b>: search as widely as possible. You do not only search the collection of the National Bank of Belgium, but also the collections of KU Leuven University as well as those of the Belgian and Flemish Parliament &amp; the FPS Finance. What's more, now your search will also produce results from a growing number of other information sources <i>&ldquo;All content&rdquo; is our Limo default search option</i>.
-                    <br />
-                </li>
+<md-content layout-xs="column" layout="row" class="display-block-xs">
+    <div flex-xs="100" flex="60" layout="column">
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <span class="md-headline">
+                    Welkom in de Mediatheek
+                </span>
                 <br />
-                <li>
-                    <b>NBB catalogue</b>: the complete catalogue of the scientific library of the National Bank of Belgium. Use this option if you are only looking for material in the possession of or available at the National Bank of Belgium.
+                <p>
+                
 
-                </li>
-            </ul>
-
-
-        </p>
-        <br />
-        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
-
-
-        <br />
-        For certain functionalities (such as the reservation of publications or to consult your borrowings), you need to log into the application.<br />
-        <br />
-        Any questions? Need a logon ID? Contact us at <a href="mailto:documentation@nbb.be">documentation@nbb.be</a>.</br>
-
-
-    </md-card-content>
-</md-card>
-
-<prm-news parent-Ctrl='$ctrl'></prm-news>
+                </p>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div flex-xs="100" flex="60" layout="column">
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <span class="md-headline">
+                    Zoektips
+                </span>
+                <br />
+                <p>
+                    Limo zoekt standaard op alle woorden die je ingeeft in de zoekbalk (cfr. Google).<br />
+                    Bijvoorbeeld: Goethe italiaanse reis<br />
+                    Je kunt ook onderstaande operatoren gebruiken om je zoekopdracht te verfijnen (AND, OR of NOT in hoofdletters!)
+                </p>
+                <p>
+                    Er is ook de optie “Geavanceerd zoeken”. Hierbij kan je in specifieke velden zoeken (b.v. titel, auteur, …)
+                </p>
+                <!--<prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>-->
+                <table>
+                    <tr><td style="font-weight: bold;padding:0 0.5rem;text-align: center;">AND</td><td style="font-size: 0.9rem;">Geeft resultaten waarin beide zoektermen voorkomen b.v. Reve AND avonden</td></tr>
+                    <tr><td style="font-weight: bold;padding:0 0.5rem;text-align: center;">OR</td><td style="font-size: 0.9rem;">Geeft resultaten waarin één van beide zoektermen voorkomt b.v. Reve OR avonden</td></tr>
+                    <tr><td style="font-weight: bold;padding:0 0.5rem;text-align: center;">NOT</td><td style="font-size: 0.9rem;">Sluit een bepaald woord uit b.v. Kroatië NOT anwb</td></tr>
+                    <tr><td style="font-weight: bold;padding:0 0.5rem;text-align: center;">?</td><td style="font-size: 0.9rem;">Zoekt op delen van woorden b.v. w?rm vindt zowel worm als warm</td></tr>
+                    <tr><td style="font-weight: bold;padding:0 0.5rem;text-align: center;">*</td><td style="font-size: 0.9rem;">Zoekt op delen van woorden b.v. boer* vindt ook boerderij, boerenpsalm, boerenkrijg, enz.</td></tr>
+                    <tr><td style="font-weight: bold;padding:0 0.5rem;text-align: center;">""</td><td style="font-size: 0.9rem;">Zoekt op een exacte woordcombinatie b.v. "duurzame ontwikkeling"</td></tr>
+                    <tr><td style="font-weight: bold;padding:0 0.5rem;text-align: center;">()</td><td style="font-size: 0.9rem;">Gebruik haakjes om termen te groeperen b.v. Goethe (brieven OR lettres)</td></tr>
+                </table>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>   

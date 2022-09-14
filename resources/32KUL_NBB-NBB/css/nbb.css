@@ -1,0 +1,203 @@
+/* primary color hook end*/   
+prm-search md-content.layout-align-center-start {
+    padding: 1.5em;
+    /*display: block;*/
+}
+
+prm-search md-content.layout-align-center-start  .facet-to-left-spacer {
+    margin-right: 0em;
+}
+
+@media (max-width: 1919px) and (min-width: 1280px){
+    prm-search md-content.layout-align-center-start  .facet-to-left-spacer {
+        margin-right: 5.5em;
+    }
+}
+
+@media (min-width:  600px){
+    prm-search md-content.layout-align-center-start .simple-search-wrapper {
+        flex-direction:row;
+    }
+}
+
+@media (max-width:  600px){
+    prm-search md-content.layout-align-center-start .simple-search-wrapper {
+        flex-direction:column;
+    }
+}
+
+div.search-input input#searchBar {
+    padding-right: 5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+prm-main-menu div.settings-container,
+prm-main-menu md-divider {
+    display: none;
+}
+
+prm-search-bar .search-element-inner  .search-options{
+    display: none;
+}
+
+prm-search-bar .search-switch-buttons .md-button.switch-to-advanced,
+prm-search-bar .search-switch-buttons .md-button.switch-to-simple{
+    /* color:#003299; */
+    color:#fff !important;
+}
+
+prm-search-bar .search-switch-buttons .md-button.switch-to-advanced:hover,
+prm-search-bar .search-switch-buttons .md-button.switch-to-simple:hover{
+    /* color:#003299; */
+    color:#003299 !important;
+}
+
+.md-dialog-container.fixed-container{
+    background: transparent !important;
+}
+
+prm-search-bar .simple-search-wrapper .search-actions {
+    background-color:#003299;
+    color: #fff;
+}
+prm-search-bar .simple-search-wrapper .search-actions .md-button.button-confirm{
+    color: #fff;
+}
+
+prm-topbar .top-nav-bar {
+    background-color:#fff;
+    color:#003299;
+}
+
+prm-user-area {
+    background-color:#fff;
+}
+
+prm-search-bookmark-filter #favorites-button {
+    color: #fff;
+    background-color: #003299;
+}
+
+#beta-switch {
+    margin-left: 1em;
+}
+
+prm-topbar  .md-button.button-over-dark:hover:not([disabled]),
+prm-topbar div#home-buttons-holder .md-button:hover:not([disabled]),
+prm-topbar div[id='main menu'] .md-button:hover:not([disabled]),
+prm-topbar .md-button:hover:not([disabled]),
+prm-user-area .md-button.user-menu-button:hover:not([disabled]) {
+    color:#003299;
+}
+
+prm-topbar  .md-button.button-over-dark,
+prm-topbar div#home-buttons-holder .md-button,
+prm-topbar div[id='main menu']  .md-button,
+prm-topbar .md-button,
+prm-user-area .md-button.user-menu-button {
+    color:#003299;
+}
+
+.hoverable-over-dark:not(.disable-hover), .md-button.button-over-dark:not(.disable-hover),
+prm-main-menu[menu-type="full"] .md-button.md-focused:not(.disable-hover),
+prm-main-menu[menu-type="full"] .md-button .md-input-container-dummy > .md-select-dummy:not(.disable-hover):focus,
+prm-main-menu[menu-type="full"] .md-button:not(.disable-hover):focus,
+prm-main-menu[menu-type="full"] .md-button:not(.disable-hover):hover,
+prm-main-menu[menu-type="full"] .md-button md-select:not(.disable-hover):focus,
+prm-main-menu[menu-type="full"] .overlay-menu-item.md-focused:not(.disable-hover),
+prm-main-menu[menu-type="full"] .overlay-menu-item .md-input-container-dummy > .md-select-dummy:not(.disable-hover):focus,
+prm-main-menu[menu-type="full"] .overlay-menu-item:not(.disable-hover):focus,
+prm-main-menu[menu-type="full"] .overlay-menu-item:not(.disable-hover):hover,
+prm-main-menu[menu-type="full"] .overlay-menu-item md-select:not(.disable-hover):focus,
+prm-main-menu[menu-type="full"] md-button:not(.disable-hover):focus,
+prm-main-menu[menu-type="full"] md-button:not(.disable-hover):hover,
+prm-topbar .md-button:not(.disable-hover), prm-user-area .md-button.user-menu-button:not(.disable-hover),
+prm-user-area md-fab-toolbar ._md-fab-action-item .md-button:not(.disable-hover),
+prm-user-area md-fab-toolbar ._md-fab-action-item md-input-container:not(.disable-hover),
+prm-user-area md-fab-toolbar .md-fab-action-item .md-button:not(.disable-hover),
+prm-user-area md-fab-toolbar .md-fab-action-item md-input-container:not(.disable-hover){
+    color:#003299 !important;
+}
+
+#favorites-button{
+    color: white !important;
+}
+
+prm-user-area md-fab-toolbar ._md-fab-action-item .md-button, prm-user-area md-fab-toolbar ._md-fab-action-item md-input-container,
+prm-user-area md-fab-toolbar .md-fab-action-item .md-button, prm-user-area md-fab-toolbar .md-fab-action-item md-input-container {
+    color:#003299;
+}
+
+prm-user-area .user-menu-button .user-name {
+    color:#003299;
+    text-decoration:underline;
+}
+
+prm-linked-user-selector-after div#prmLinkedUserSelectorAfter {
+    margin-left: 1em;
+}
+
+prm-linked-user-selector-after div#prmLinkedUserSelectorAfter button#sign_out_button.md-button{
+    background-color: #003299;
+    color: #fff;
+    font-weight: 600;
+}
+
+prm-search-bookmark-filter div#fixed-buttons-holder.fixed-to-top  #favorites-button{
+    background-color: rgba(58,58,58,.12)
+}
+
+div#library_card_button_not_signed_in {
+    height: 100%;
+    margin-right: .5em;
+}
+
+html, body {
+    background-color: #fff;
+}
+
+#mainMenu > a,
+#mainMenu > button {
+    box-shadow: none;
+}
+
+[aria-label="Request"]{
+    background: #003299;
+    color: white !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    padding: 0.5rem !important;
+}
+
+
+/* DIT ZIT IN DE CENTRALE PACKAGE ???????? */
+div#footer {
+    height: 35px;
+    width: 100%;
+    background-color: #A0a09d;
+    border-top: solid 2px #fff;
+    padding: 0 1em;
+    font-size: small;
+    align-items: center;
+}
+
+    prm-atoz-search-bar .advanced-search-backdrop, prm-browse-search-bar .advanced-search-backdrop, prm-newspapers-search-bar .advanced-search-backdrop, prm-search-bar .advanced-search-backdrop, prm-tags-search-bar .advanced-search-backdrop {
+    background-color: #003299;
+}
+
+.prm-links-hover.prm-hue-1, a:hover, .md-button.arrow-link-button .button-content:hover, .recommendations-title:hover > span > span, .recommendations-title.hover > span > span, prm-tags-list .md-chips .md-chip .md-chip-content:hover strong, prm-tags-list .md-chips md-chip .md-chip-content:hover strong, prm-tags-list md-chips .md-chip .md-chip-content:hover strong, prm-tags-list md-chips md-chip .md-chip-content:hover strong, a:focus, .md-button.arrow-link-button .button-content:focus, a.hover, .md-button.arrow-link-button .hover.button-content, .md-button.arrow-link-button:hover .button-content, .md-button.arrow-link-button:focus .button-content, prm-citation-trails-item.active-item md-card > .md-button:hover .item-title span, prm-citation-trails-item.active-item md-card > .md-button:focus .item-title span {
+    color: #003299;
+}
+
+.prm-links, .md-button.arrow-link-button [link-arrow], a, .md-button.arrow-link-button .button-content, [class*="NFT"] > span, [class*="check_"] > span, [class*="_more"] > span, [class*="_unknown"] > span, [class*="may_"] > span, [class*="does_not_exist"] > span, .worldcat > span, .getit > span, [class*="available"] > span, [class*="FT"] > span, .not_restricted > span, .ext_not_restricted > span, .fulltext > span, .fulltext_linktorsrc > span, .fulltext_newspaper > span, .fulltext_linktorsrc_newspaper > span, [class*="unavailable"] > span, [class*="no_"] > span, .restricted > span, .duedate > span, .login-dialog md-list md-list-item .md-list-item-text h3, .login-dialog md-list md-list-item .md-list-item-text .list-item-title, .login-dialog md-list md-list-item > .md-no-style .md-list-item-text h3, .login-dialog md-list md-list-item > .md-no-style .md-list-item-text .list-item-title, .login-dialog .md-list md-list-item .md-list-item-text h3, .login-dialog .md-list md-list-item .md-list-item-text .list-item-title, .login-dialog .md-list md-list-item > .md-no-style .md-list-item-text h3, .login-dialog .md-list md-list-item > .md-no-style .md-list-item-text .list-item-title, .login-dialog .md-list[class$="-line"] md-list-item .md-list-item-text h3, .login-dialog .md-list[class$="-line"] md-list-item .md-list-item-text .list-item-title, .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text h3, .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text .list-item-title, .login-dialog .collapsable-container md-list md-list-item .md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content strong, prm-tags-list .md-chips md-chip .md-chip-content strong, prm-tags-list md-chips .md-chip .md-chip-content strong, prm-tags-list md-chips md-chip .md-chip-content strong, md-tabs.tabs-as-links md-tab-item, md-tabs.tabs-as-links md-tab-item:not([disabled]), md-tabs.tabs-as-app .back-button, md-grid-tile .tile-header .header-link .arrow-icon, .tiles-grid-tile .tile-header .header-link .arrow-icon, md-grid-tile .tile-header .header-link:hover, md-grid-tile .tile-header .header-link:focus, .tiles-grid-tile .tile-header .header-link:hover, .tiles-grid-tile .tile-header .header-link:focus, md-grid-tile .tile-header .md-button, .tiles-grid-tile .tile-header .md-button, md-input-container.has-fixed-message [ng-message] a, .separate-list-items md-list-item .item-loader-with-text .md-button, md-list-item.list-item-as-link {
+    color: #003299;
+}
+
+prm-brief-result .item-title span {
+    color: #003299;
+}
+
+.__xs prm-atoz-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-browse-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-newspapers-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-tags-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .classic-input, .default-shadow, .list-item-wrapper:last-of-type, .prm-bricks-list md-list-item, .prm-recommendations-fullview md-card, .tiles-grid-tile, md-card.default-card, md-grid-tile, md-list.prm-list, md-toolbar.md-primoExplore-theme.white-toolbar.is-stuck, md-toolbar.white-toolbar.is-stuck, md-toolbar.white-toolbar.is-stuck:not(.md-menu-toolbar), md-tooltip.content-tooltip, prm-breadcrumbs .md-chip, prm-browse-search md-list.prm-list, prm-collection-search .search-within .filter-chip, prm-featured-result-item md-card, prm-gallery-collection, prm-gallery-item .collection-element, prm-location-items md-list, prm-more-like-this-item md-card, prm-ngrs-results-button md-card, prm-opac md-list md-list-item:last-of-type, prm-page-nav-menu #resultsPerPage .counter-main md-fab-actions::after, prm-page-nav-menu #speedDialWidget .counter-main md-fab-actions::after, prm-recomendation-item .media-on-hover .pin-button, prm-resource-recommender md-card, prm-search-error-message .md-card, prm-search-error-message md-card, prm-search-result-list .pages-separated-with-gaps .list-item-wrapper.first-in-page:not(:first-of-type)::before, prm-search-result-list .pages-separated-with-gaps .list-item-wrapper:nth-last-child(2), prm-search-result-list .results-header.is-stuck, prm-tags-results-list md-list.prm-list, prm-virtual-browse-item md-card {
+    box-shadow: none;
+}
