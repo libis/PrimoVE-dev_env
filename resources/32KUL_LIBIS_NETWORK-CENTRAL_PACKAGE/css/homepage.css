@@ -54,3 +54,11 @@ md-card md-card-content span#ReadingLists::before {
 prm-journals .layout-row > md-content.flex > .padding-medium > md-card.default-card md-card-content{
     display: none;
 }
+
+prm-news md-list-item.md-no-proxy,
+prm-news md-list-item .md-no-style {
+    padding-top: 0px;
+    padding-left: 8px;
+    padding-bottom: 8px;
+    padding-right: 8px;
+}
