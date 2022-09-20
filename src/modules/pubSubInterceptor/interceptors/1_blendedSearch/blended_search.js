@@ -9,18 +9,31 @@ window.blendedSearch = {
         let key = `blend.${cloned_params['scope']}`;
         return key;
     },
-    get hasBlendKey(){        
-        return this.blendFilter && this.blendFilter != this.blendKey && 
-               this.blendFilter != this.blendKey.replace(/^blend\./, '').replaceAll('_', ' ') && 
-               this.blendFilter.length > 1;
+    get hasBlendKey() {
+        // return this.blendFilter && this.blendFilter != this.blendKey && 
+        //        this.blendFilter != this.blendKey.replace(/^blend\./, '').replaceAll('_', ' ') && 
+        //        this.blendFilter.length > 1;
+        return blendedSearch.blendFilter && blendedSearch.blendFilter.length > 1;
     },
-    get blendFilter(){
-        return Primo.bridge.translate.instant(this.blendKey);
+    get blendFilter() {
+        let filter = Primo.bridge.translate.instant(blendedSearch.blendKey);
+
+        if (filter != blendedSearch.blendKey &&
+            filter != blendedSearch.blendKey.replace(/^blend\./, '').replaceAll('_', ' ') &&
+            filter.length > 1) {
+            return filter.split('|')
+        }
+
+        if (filter.length == 1) {
+            return ['', '']; //TODO:FIx this
+        }
+
+        return [];
     },
     get allowed() {
         let cloned_params = blendedSearch.set2.params;
-        
-        if ( this.hasBlendKey ) {
+
+        if (blendedSearch.hasBlendKey) {
             console.log('BLENDING: Blend allowed');
             return true;
         }
@@ -34,16 +47,18 @@ window.blendedSearch = {
         blendedSearch.set1.params = JSON.parse(JSON.stringify(reqRes.params));
         blendedSearch.set1.data = reqRes.data;
 
+        let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
         blendedSearch.set2.url = reqRes.url;
         blendedSearch.set2.headers = reqRes.headers;
+        blendedSearch.set2.params = cloned_params;
         blendedSearch.set2.data = {};
 
-        let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
         if (Object.keys(cloned_params).includes('scope')) {
 
             let facets = [];
             try {
-                facets = this.blendFilter;
+                console.log(blendedSearch.blendFilter);
+                facets = blendedSearch.blendFilter;
             } catch (e) {
                 console.log(`BLENDING: ${blendedSearch.vid} no extra facets defined.`)
             }
@@ -150,10 +165,10 @@ window.blendedSearch = {
         let o2 = Math.ceil(this.set1.params.offset * l2_fraction);
 
 
-        if ((l1+l2) > this.set1.params.limit) {
-            l2 -= 1;
+        if ((l1 + l2) > this.set1.params.limit) {
+            l2 = this.set1.params.limit - l1;
             if (l2 < 0) {
-                l2=0;
+                l2 = 0;
             }
         }
 
@@ -162,7 +177,7 @@ window.blendedSearch = {
             l2 = l2 < 0 ? 0 : l2 //compensate for o2 > t2
         }
 
-        if ((l1+l2) < this.set1.params.limit) {
+        if ((l1 + l2) < this.set1.params.limit) {
             l1 = this.set1.params.limit - l2;
         }
 
@@ -174,7 +189,7 @@ window.blendedSearch = {
 
         if (l2 == 0) {
             l1 = this.set1.params.limit;
-            o1 = this.set1.params.offset;            
+            o1 = this.set1.params.offset;
             o2 = 0;
         }
         console.log(l1, o1, l2, o2);
@@ -229,14 +244,14 @@ window.blendedSearch = {
 
         try {
             switch (blendedSearch.set1.params.sort) {
-                case 'title':                               
-                    docs = docs.sort((a, b) => a.pnx.display.title[0].toLowerCase().replaceAll(/\W/g,'').localeCompare(b.pnx.display.title[0].toLowerCase().replaceAll(/\W/g,'')));                    
+                case 'title':
+                    docs = docs.sort((a, b) => a.pnx.display.title[0].toLowerCase().replaceAll(/\W/g, '').localeCompare(b.pnx.display.title[0].toLowerCase().replaceAll(/\W/g, '')));
                     break;
                 case 'author':
                     docs = docs.sort((a, b) => {
                         const creatorA = a.pnx.display.creator || [''];
                         const creatorB = b.pnx.display.creator || [''];
-                        return creatorA[0].toLowerCase().replaceAll(/\W/g,'').localeCompare(creatorB[0].toLowerCase().replaceAll(/\W/g,''));
+                        return creatorA[0].toLowerCase().replaceAll(/\W/g, '').localeCompare(creatorB[0].toLowerCase().replaceAll(/\W/g, ''));
                     });
                     break;
                 case 'date_d': //newest
@@ -250,7 +265,7 @@ window.blendedSearch = {
                     break;
             }
         } catch (e) {
-            console.error(`Error sorting records:${e.message}`);        
+            console.error(`Error sorting records:${e.message}`);
         }
 
         return docs
@@ -311,7 +326,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
 pubSub.subscribe('after-getFacetsBaseURL', (reqRes) => {
     if (blendedSearch.allowed) {
         let facets = reqRes.data.facets;
-        if (facets) {
+        if (facets && facets.length > 0) {
             reqRes.data['facets'] = blendedSearch.mergeFacets(facets);
         }
     }

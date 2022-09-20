@@ -8,7 +8,7 @@ import Component from './core/angular/component';
 
 export default class Primo {
     get version() {
-        let _version = "0.0.5";
+        let _version = "0.0.8";
         return `Library:${_version} - ALMA:${window.appConfig['system-configuration'].Alma_Version}`;
     }
 
