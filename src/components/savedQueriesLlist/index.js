@@ -17,7 +17,7 @@ class SavedQueriesLlistController {
       $scope.blogtext = "Meer informatie";
     }
  
-    let host = "limo.q.libis.be"
+    let host = "limo.libis.be"
 
     let vid = "LUCA"
 
