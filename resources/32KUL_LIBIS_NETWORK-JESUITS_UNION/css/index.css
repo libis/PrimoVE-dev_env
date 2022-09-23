@@ -1,6 +1,8 @@
 
 @import "../../resources/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/css/index.css";
 
+@import "./order_sections_full_view.css";
+
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_KUL-JESUITS/css/view-colors.css ***!
   \***************************************************************************************************/

@@ -1,0 +1,39 @@
+/*
+
+src\components\fullView\sectionVisibilityOrder\sectionOrder\index.js
+
+        if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:JESUITS" ||
+            self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_LIBIS_NETWORK:JESUITS_UNION" 
+        ) {
+            self.servicesOrder = ["brief", "details", "locationsLinks", "links", "action_list", "tags", "citationTrails"];
+        }
+*/
+
+
+div#services-index button[aria-label="Top"] { order: 0 !important;}
+div#services-index button[aria-label="nui.brief.results.tabs.brief"] { order: 0 !important;}
+div.full-view-section#brief { order: 0 !important;}
+
+div#services-index button[aria-label="Details"] { order: 1 !important;}
+div#services-index button[aria-label="brief.results.tabs.details"] { order: 1 !important;}
+div.full-view-section#details { order: 1 !important;}
+
+div#services-index button[aria-label="LocationsLinks"] { order: 2 !important;}
+div#services-index button[aria-label="nui.brief.results.tabs.LocationsLinks"] { order: 2 !important;}
+div.full-view-section#locationsLinks { order: 2 !important;}
+
+div#services-index button[aria-label="Links"] { order: 3 !important;}
+div#services-index button[aria-label="nui.brief.results.tabs.links"] { order: 3 !important;}
+div.full-view-section#links { order: 3 !important;}
+
+div#services-index button[aria-label="Send to"] { order: 4 !important;}
+div#services-index button[aria-label="nui.brief.results.tabs.send_to"] { order: 4 !important;}
+div.full-view-section#action_list { order: 4 !important;}
+
+
+div#services-index button[aria-label="Citations"] { order: 6 !important;}
+div#services-index button[aria-label="citation_trail.link.citations"] { order: 6 !important;}
+div.full-view-section#citationTrails { order: 6 !important;}
+
+
+
