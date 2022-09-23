@@ -115,7 +115,7 @@ configCentral = () => {
 }
 
 configiew = () => {
-    console.log("\View: " + process.env.VIEW + "\n\n")
+    console.log("\nView: " + process.env.VIEW + "\n")
     var viewdir = process.env.VIEW.replace(":", "-");
     if (!viewdirs.includes(viewdir)) {
         console.log(`\nView directory ./resources/${viewdir} does not exists\nUse One of these option:\n`)
@@ -136,8 +136,9 @@ configiew = () => {
     /* TODO : check if view uses CENTRAL PACKAGE and rebuild CENTRAL PACKAGE is necessary */
 
     if (/32KUL_LIBIS_NETWORK/.test(viewdir) ) {
-        console.log ("It is a NETWORK ZONE view")
-        entries[process.env.VIEW] = { import: path.resolve(root, "./src/index.js"), filename: `${viewdir}/js/custom.js` }
+        console.log (process.env.VIEW + " is a NETWORK ZONE view")
+        console.log ("NETWORK ZONE views can NOT inherit from Central Package")
+        entries[process.env.VIEW] = { import: path.resolve(root, "./src/index.js"), filename: `${viewdir}/js/custom.js` }        
         plugins.push(new FileManagerPlugin({
             events: {
                 onStart: {
