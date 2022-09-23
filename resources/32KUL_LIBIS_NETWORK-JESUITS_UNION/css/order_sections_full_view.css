@@ -19,6 +19,8 @@ div#services-index button[aria-label="brief.results.tabs.details"] { order: 1 !i
 div.full-view-section#details { order: 1 !important;}
 
 div#services-index button[aria-label="LocationsLinks"] { order: 2 !important;}
+div#services-index button[aria-label="Locations"] { order: 2 !important;}
+div#services-index button[aria-label="Locaties"] { order: 2 !important;}
 div#services-index button[aria-label="nui.brief.results.tabs.LocationsLinks"] { order: 2 !important;}
 div.full-view-section#locationsLinks { order: 2 !important;}
 
@@ -27,6 +29,7 @@ div#services-index button[aria-label="nui.brief.results.tabs.links"] { order: 3 
 div.full-view-section#links { order: 3 !important;}
 
 div#services-index button[aria-label="Send to"] { order: 4 !important;}
+div#services-index button[aria-label="Export"] { order: 4 !important;}
 div#services-index button[aria-label="nui.brief.results.tabs.send_to"] { order: 4 !important;}
 div.full-view-section#action_list { order: 4 !important;}
 
