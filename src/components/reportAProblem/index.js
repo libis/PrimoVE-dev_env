@@ -2,11 +2,23 @@ import reportAProblemHTML from './reportAProblem.html'
 import reportAProblemDialogHTML from './reportAProblemDialog.html'
 
 class ReportAProblemController {
-  constructor($element, $compile, $scope, $mdDialog, $translate, $http,reportAProblemURL, MessageService ) {
+
+  constructor($element, $compile, $scope, $mdDialog, $translate, $http, reportAProblemURL, MessageService )  { 
+    this.$element = $element;
+    this.$compile = $compile;
+    this.$scope = $scope;
+    this.$mdDialog = $mdDialog;
+    this.$translate = $translate;
+    this.$http = $http;
+    this.reportAProblemURL = reportAProblemURL;
+    this.MessageService = MessageService;
+
+  }
+
+  $onInit() {
     let self = this;
-    self.translate = $translate;    
     if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
-      $element.parent().parent().find('h4').after($compile(reportAProblemHTML)($scope));
+      self.$element.parent().parent().find('h4').after(self.$compile(self.reportAProblemHTML)(self.$scope));
 
       let recordData = self.currentRecord;
 
@@ -17,7 +29,7 @@ class ReportAProblemController {
           self.view = view;
 
           self.showReportAProblemForm = ($event) => {
-            $mdDialog.show({
+            self.$mdDialog.show({
               parent: angular.element(document.body),
               clickOutsideToClose: true,
               fullscreen: false,

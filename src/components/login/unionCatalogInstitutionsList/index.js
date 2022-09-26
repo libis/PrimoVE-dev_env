@@ -6,14 +6,18 @@
 /****************************************************************************************/
 
 class UnionCatalogInstitutionsListController {
-  constructor($scope, $translate)  {
+  constructor($scope, $translate) { 
+    this.$scope = $scope;
+    this.$translate = $translate;
+  }
+
+  $onInit() {
     let self = this;
     let parentCtrl = self.parentCtrl.parentCtrl
 
+    self.$translate.instant('nui.customization.almaInstitutionsFilterInstCodeList').split(',')
 
-    $translate.instant('nui.customization.almaInstitutionsFilterInstCodeList').split(',')
-
-    self.almaInstitutionsFilterInstCodeList = $translate.instant('nui.customization.almaInstitutionsFilterInstCodeList').split(',')
+    self.almaInstitutionsFilterInstCodeList = self.$translate.instant('nui.customization.almaInstitutionsFilterInstCodeList').split(',')
 
     var availabilityInstitutions = parentCtrl.unionCatalogInstitutionsList.filter(inst => {
       console.log (inst)

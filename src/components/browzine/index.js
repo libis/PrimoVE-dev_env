@@ -1,5 +1,10 @@
 class BrowzineController {
+
     constructor($scope) {
+        this.$scope = $scope;
+    }
+
+    $onInit() {
         let self = this;
         let item = self.parentCtrl.parentCtrl.result;
 
@@ -9,7 +14,7 @@ class BrowzineController {
             self.recordid = item.pnx.control.recordid[0];
         }
 
-        let browzineWatcher = $scope.$watch(() => {
+        let browzineWatcher = self.$scope.$watch(() => {
             return ((typeof window.browzine != "undefined") && (typeof window.browzine.primo === 'object') && (window.browzine.apiKey != "11111111-xxxx-xxxx-xxxx-111111111111"));
         }, (n, o) => {
             if (n == true) {

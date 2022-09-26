@@ -14,7 +14,12 @@ import PromoteLoginHTML from './promoteLogin.html'
 // nui.customization.automatic_login.alwaysSignin => Ga meteen naar de loginpagina bij starten van Limo
 
 class PromoteLoginController {
-  constructor($scope, $mdDialog) {
+  constructor($scope, $mdDialog) { 
+    this.$scope = $scope;
+    this.$mdDialog = $mdDialog;
+  }
+
+  $onInit() {
     let self = this;
     let parentCtrl = self.parentCtrl.parentCtrl
 

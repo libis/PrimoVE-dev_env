@@ -29,12 +29,14 @@ Citations
 */
 
 class SectionOrderController {
-    constructor($scope, $element, $translate, $rootScope) {
+    constructor($scope, $element, $translate)  { 
+        this.$scope = $scope;
+        this.$element = $element;
+        this.$translate = $translate;
+      }
+    
+      $onInit() {
         var self = this
-        self.$scope = $scope;
-        self.$element = $element;
-        self.$translate = $translate;
-
         window.fullViewServiceOrder = [];
         
         self.appendToElement = document.getElementsByTagName("primo-explore")[0];
@@ -63,7 +65,7 @@ class SectionOrderController {
         ) {
             self.servicesOrder = ["brief", "details", "locationsLinks", "links", "action_list", "tags", "citationTrails"];
         }
-        let translatorWatcher = $scope.$watch(() => {
+        let translatorWatcher = self.$scope.$watch(() => {
             return self.$translate.isReady()
         }, (n, o) => {
             if (n == true) {
@@ -80,7 +82,7 @@ class SectionOrderController {
                     }
                 });
 
-                let servicesWatcher = $scope.$watch(() => {
+                let servicesWatcher = self.$scope.$watch(() => {
                     let servicesLoaded = self.parentCtrl.parentCtrl.fullViewService.servicesArray !== undefined;
                     let calculatePrimaViewItDone = self.parentCtrl.parentCtrl.fullViewService.calculatePrimaViewItDone();
                     let calculatePcDeliveryDone = self.parentCtrl.parentCtrl.fullViewService.calculatePcDeliveryDone;
@@ -145,7 +147,7 @@ class SectionOrderController {
     }
 }
 
-SectionOrderController.$inject = ['$scope', '$element', '$translate', '$rootScope'];
+SectionOrderController.$inject = ['$scope', '$element', '$translate'];
 
 export let sectionOrderConfig = {
     name: 'custom-section-visibility-order',

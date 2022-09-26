@@ -1,10 +1,27 @@
 import requestACopyHTML from './requestACopy.html'
 import requestACopyDialogHTML from './requestACopyDialog.html'
 
+/*
+The value of recordData.pnx.display.lds07 and recordData.pnx.display.lds08
+in combination with serviceTitleCode determines the
+condition to show or hide the "Request a Copy" button
+*/
+
 class RequestACopyController {
-  constructor($element, $compile, $scope, $mdDialog, $http, $rootScope, requestACopyURL, MessageService) {
+  constructor($element, $compile, $scope, $mdDialog, $translate, $http, $rootScope, requestACopyURL, MessageService) {
+      this.$element = $element;
+      this.$compile = $compile;
+      this.$scope = $scope;
+      this.$mdDialog = $mdDialog;
+      this.$translate = $translate;
+      this.$http = $http;
+      this.$rootScope = $rootScope
+      this.requestACopyURL = requestACopyURL;
+      this.MessageService = MessageService;
+  }
+  
+  $onInit() {
     let self = this;
-    self.$rootScope = $rootScope;
     // If you want to add the button to the title (like report a problem)
     //let serviceTitleCode = self.parentCtrl.parentCtrl.title
     //let appendButtonTo = $element.parent().parent().find('h4');
@@ -31,9 +48,11 @@ class RequestACopyController {
     if (/^nui\.getit\./.test(serviceTitleCode)) {
       var ShowRequestACopyType = recordData.pnx.display.lds07.filter(value => -1 !== TypesShowRequestACopy.indexOf( value.toLowerCase() ));
       var ShowRequestACopyStatus = recordData.pnx.display.lds08.filter(value => -1 !== StatusShowRequestACopy.indexOf( value.toLowerCase() ));
-
-      // console.log( "request a copy serviceTitleCode: " + serviceTitleCode )
-
+/*
+      console.log( "request a copy serviceTitleCode: " + serviceTitleCode )
+      console.log( "request a copy ShowRequestACopyType: " + ShowRequestACopyType )
+      console.log( "request a copy ShowRequestACopyStatus: " + ShowRequestACopyStatus )
+*/
       if ((!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode)) && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0) {
 
 
@@ -123,10 +142,10 @@ class RequestACopyController {
                         cache: false,
                         data: data
                       }).then(function (response) {
-                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('nui.customization.request_a_copy.success') || 'Thank you the request had been send!';
+                        let message = self.$translate.instant('nui.customization.request_a_copy.success') || 'Thank you the request had been send!';
                         MessageService.show(message, {scope:$scope, hideDelay: 5000});
                       }, function (response) {
-                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('nui.customization.request_a_copy.fail') || 'Unable to submit the request.';
+                        let message = self.$translate.instant('nui.customization.request_a_copy.fail') || 'Unable to submit the request.';
                         MessageService.show(message, {scope:$scope, hideDelay: 5000});
                       });
                     }
@@ -152,7 +171,7 @@ class RequestACopyController {
   }
 }
 
-RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$http', '$rootScope', 'requestACopyURL', 'MessageService'];
+RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$translate', '$http', '$rootScope', 'requestACopyURL', 'MessageService'];
 
 export let requestACopyConfig = {
   name: 'custom-request-a-copy',

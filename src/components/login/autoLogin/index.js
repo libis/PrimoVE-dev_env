@@ -1,7 +1,11 @@
 import autoLoginCheckboxHTML from './autoLoginCheckbox.html'
 
 class AutoLoginCheckboxController {
-  constructor($scope) {
+  constructor($scope) { 
+    this.$scope = $scope;
+  }
+
+  $onInit() {
     var self = this;
     /* Remove the localStorage parameter primoPromoteLogin if the url contains clearLogin */
     self.NeverShowSignInPopup = false;

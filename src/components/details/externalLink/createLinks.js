@@ -1,15 +1,18 @@
 class ExternalLinksInDetailsController {
-    constructor($scope) {
-        self = this
-        this.$scope = $scope;
-        this.parentCtrl = this.parentCtrl.parentCtrl;
-        this.waitForPNX()
 
+    constructor($scope) {
+        let self = this;
+        this.$scope = $scope;
     }
 
+    $onInit() {
+        let self = this;
+        self.parentCtrl = this.parentCtrl.parentCtrl;
+        this.waitForPNX()
+    }
 
     createExternalLinks() {
-
+        let self = this;
         // console.log( self.parentCtrl.details )
         // console.log( self.parentCtrl )
 
@@ -110,6 +113,7 @@ class ExternalLinksInDetailsController {
 
 
     waitForPNX() {
+        let self = this;
         let detailsWatcher = self.$scope.$watch(() =>
             self.parentCtrl.details,
             (newVal, oldVal) => {
