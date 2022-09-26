@@ -28,7 +28,7 @@ export let payFinesMessageComponent = {
   name: 'custom-pay-fines-message',  
   enabled: true,
   appendTo: 'prm-top-bar-before',
-  enableInView: '.*',  
+  enableInView: '32KUL_KUL:.*',  
   config: {
     bindings: {parentCtrl: '<'},
     controller: PayFinesMessageController,
