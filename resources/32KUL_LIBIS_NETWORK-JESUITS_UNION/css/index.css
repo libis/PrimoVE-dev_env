@@ -1,5 +1,7 @@
 
-@import "../../../resources/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/css/index.css";
+@import "../../resources/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/css/index.css";
+
+@import "./order_sections_full_view.css";
 
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_KUL-JESUITS/css/view-colors.css ***!
@@ -21,7 +23,7 @@
 .bar.alert-bar {
   color: black;
   background-color: #f7eda3;
-  order-color: ##ede49e; }
+  order-color: #ede49e; }
 
 .primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
   background-color: #54969d; }

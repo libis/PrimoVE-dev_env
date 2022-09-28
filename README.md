@@ -60,10 +60,9 @@ src                            Source code
 │       ├── index.js           Business logic of component (with import off index.css central-package) 
 │       ├── libInfo.html       Visuals of component  
 │       └── libInfo.json       Extra data  
-├── factories                  Angular factories and services 
-│   ├── messageService.html  
-│   └── messageService.js  
-├── index.js                   ViewCustom definition  
+├── modules                    Angular modules
+│   └── pubSubInterceptor.js  
+├── index.js                   ViewCustom/CentralCustom definition  
 ├── loader.js                  Component loader  
 ├── primo                      Bridge into Primo services like user, records, facets ...  
 └── templates                  Template files used to overwrite existing primo templates  
