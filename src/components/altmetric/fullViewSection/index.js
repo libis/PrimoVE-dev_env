@@ -7,9 +7,17 @@ import './altmetricSection.css'
 
 class altmetricSectionController {
   constructor($element, $window, $scope) {
-    var self = this;
+    this.$element = $element;
+    this.$window = $window;
+    this.$scope = $scope;
+  }
+
+  $onInit() {
+    let self = this;
+    let $scope = self.$scope;
+    let $window = self.$window;
+    let $element = self.$element;
     self.item = self.parentCtrl.parentCtrl.item;
-    self.$element = $element
 
     self.doi = '';
     self.isbn = '';

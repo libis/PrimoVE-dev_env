@@ -19,9 +19,11 @@ class PromoteLoginController {
     this.$mdDialog = $mdDialog;
   }
 
-  $onInit() {
+  $onInit() { 
     let self = this;
     let parentCtrl = self.parentCtrl.parentCtrl
+    let $scope = self.$scope;
+    let $mdDialog= self.$mdDialog;
 
     var url = window.location.href;
     self.NeverShowSignInPopup = false;

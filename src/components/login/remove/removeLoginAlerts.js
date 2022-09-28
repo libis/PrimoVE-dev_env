@@ -5,8 +5,6 @@ class RemoveLoginAlertsController {
   $onInit() {
     let self = this;
     self.parentCtrl = this.parentCtrl.parentCtrl
-    
-    // console.log (self.parentCtrl);
 
     // remove "Sign in" Alert above resultlist
     if(typeof  self.parentCtrl.isLoggedInIDP === "function"){

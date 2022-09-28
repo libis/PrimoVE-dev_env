@@ -17,7 +17,7 @@ class AcquisitionsController {
     }
     month = ("0" + month).slice(-2);
     current_month = ("0" + current_month).slice(-2);
-    console.log("Current month is: " + month);
+    // console.log("Current month is: " + month);
 
     $scope.url = window.location.origin + "/discovery/search?query=any,contains,acquisitionDate" + year + month + "DOCVB* OR acquisitionDate" + current_year + current_month + "DOCVB*,AND&tab=phys_items_tab&search_scope=PHYS_ITEMS&vid="+ vid + "&lang=nl_BE&mode=advanced&offset=0;"
   }

@@ -39,7 +39,7 @@ class AutoLoginCheckboxController {
       self.alwaysSigninCheckBox = true;
     }
 
-    $scope.alwaysSigninChecked = function () {
+    self.$scope.alwaysSigninChecked = function () {
       if (self.alwaysSigninCheckBox) {
         localStorage.setItem('primoPromoteLogin', 'alwaysSignin');
       } else {
