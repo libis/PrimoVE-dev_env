@@ -5,27 +5,27 @@
         line-height: 2em;
     }
 
-        md-card md-card-content span.md-headline::before {
-            font-family: 'Material Icons';
-            font-weight: normal;
-            font-style: normal;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            font-feature-settings: 'liga';
-            -webkit-font-feature-settings: 'liga';
-            -webkit-font-smoothing: antialiased;
-            margin-right: 2px;
-            vertical-align: middle;
-            /*
+    md-card md-card-content span.md-headline::before {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        font-feature-settings: 'liga';
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+        margin-right: 2px;
+        vertical-align: middle;
+        /*
      line-height: 1;
      font-size: 20px;
      color: #53738c;
     */
-        }
+    }
 
     md-card md-card-content span#ContentInLimo::before {
         content: "info";
@@ -51,9 +51,9 @@
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
 
-                   <span class="md-headline" id="ContentInLimo">
-                        What can you find in Limo?
-                    </span>
+                <span class="md-headline" id="ContentInLimo">
+                    What can you find in Limo?
+                </span>
                 <br />
 
                 You can find printed and electronic publications
@@ -62,7 +62,8 @@
                     <li>
                         contained in
                         <a id="limo_content_link" target="blank" href="https://www.ucll.be/nl/leercentra">
-                            scientific and scholarly databases and e-journal collections licensed by <strong>UC Leuven-Limburg</strong>
+                            scientific and scholarly databases and e-journal collections licensed by <strong>UC
+                                Leuven-Limburg</strong>
                         </a>
                         or freely available
                     </li>
@@ -71,34 +72,39 @@
             </md-card-content>
 
         </md-card>
-
-<!--
-
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
-                <a href="/KULeuven_UCLL" onclick="document.location.href = '/KULeuven_UCLL'"><img src="custom/KULeuven_UCLL/img/library-logo.png" /></a>
-
+                <span class="md-title">
+                    Switch to catalog:
+                    <nobr><a href="https://kuleuven.limo.libis.be/discovery/search?vid=32KUL_KUL:REGIONAL"
+                            target="_blank">KU Leuven campussen <i class="material-icons prm-text">launch</i></a></nobr>
+                </span>
+                <br>&nbsp;
+                <P>
+                    This catalog allows you to search for physical items per KU Leuven campus, including Aalst, Brussel,
+                    Geel, Diepenbeek, Sint-Lucasbibliotheek Gent, Sint-Katelijne-Waver and Technologiecampus Gent.
+                </P>
             </md-card-content>
 
         </md-card>
-    -->
-
     </div>
     <div flex-xs="100" flex="40" layout="column">
 
-                <prm-news parent-Ctrl='$ctrl'></prm-news>
-                <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
-                    <md-card-content>
-                        <prm-link-to-my-library-card parent-Ctrl='$ctrl'></prm-link-to-my-library-card>
-                       <br>
-                        <a href="https://services.libis.be/library_info/" target="_blank" id="find_library" aria-label="Find Library Contact Info" title="Find Library Contact Info" class="md-primoExplore-theme">
-                        <span class="md-headline" id="ContentFindLibrary">
-                            Find Library
-                        </span>
-                        </a>
-                        <br/>
-                        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
-                    </md-card-content>
-                </md-card>
+        <prm-news parent-Ctrl='$ctrl'></prm-news>
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <prm-link-to-my-library-card parent-Ctrl='$ctrl'></prm-link-to-my-library-card>
+                <br>
+                <a href="https://services.libis.be/library_info/" target="_blank" id="find_library"
+                    aria-label="Find Library Contact Info" title="Find Library Contact Info"
+                    class="md-primoExplore-theme">
+                    <span class="md-headline" id="ContentFindLibrary">
+                        Find Library
+                    </span>
+                </a>
+                <br />
+                <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+            </md-card-content>
+        </md-card>
     </div>
 </md-content>
