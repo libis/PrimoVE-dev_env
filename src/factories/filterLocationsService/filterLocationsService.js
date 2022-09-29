@@ -1,3 +1,10 @@
+
+
+
+/*********************************************************/
+/* Currently not in use    !!!!!!!!!!!!!!                */
+/* pnx_record.display.availlibrary Not in USE in PrimoVE */
+/*********************************************************/
 export default class FilterLocationsService {
     constructor($rootScope, $compile, $mdToast, $sce, $translate, $timeout) {
         this.mdToast = $mdToast;

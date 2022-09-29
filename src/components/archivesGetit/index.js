@@ -2,6 +2,10 @@
 
 class ArchivesGetitController {
   constructor() {
+    // this.mainParentCtrl = this.parentCtrl;
+  }
+
+  $onInit() {
     this.mainParentCtrl = this.parentCtrl;
   }
 }

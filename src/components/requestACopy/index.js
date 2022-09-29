@@ -8,20 +8,27 @@ condition to show or hide the "Request a Copy" button
 */
 
 class RequestACopyController {
-  constructor($element, $compile, $scope, $mdDialog, $translate, $http, $rootScope, requestACopyURL, MessageService) {
+  constructor($element, $compile, $scope, $mdDialog, $translate, $http, requestACopyURL, MessageService) {
       this.$element = $element;
       this.$compile = $compile;
       this.$scope = $scope;
       this.$mdDialog = $mdDialog;
       this.$translate = $translate;
       this.$http = $http;
-      this.$rootScope = $rootScope
       this.requestACopyURL = requestACopyURL;
       this.MessageService = MessageService;
   }
   
   $onInit() {
     let self = this;
+    let $element = self.$element;
+    let $compile = self.$compile;
+    let $scope = self.$scope;
+    let $mdDialog = self.$mdDialog;
+    let $translate = self.$translate;
+    let $http = self.$http;
+    let $requestACopyURL = self.$requestACopyURL;
+    let $MessageService = self.$MessageService;
     // If you want to add the button to the title (like report a problem)
     //let serviceTitleCode = self.parentCtrl.parentCtrl.title
     //let appendButtonTo = $element.parent().parent().find('h4');
@@ -171,7 +178,7 @@ class RequestACopyController {
   }
 }
 
-RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$translate', '$http', '$rootScope', 'requestACopyURL', 'MessageService'];
+RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$translate', '$http', 'requestACopyURL', 'MessageService'];
 
 export let requestACopyConfig = {
   name: 'custom-request-a-copy',

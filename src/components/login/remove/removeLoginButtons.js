@@ -1,7 +1,5 @@
 class RemoveLoginController {
-
-  constructor($scope, $element) { 
-    this.$scope = $scope;
+  constructor($element) { 
     this.$element = $element;
   }
 
@@ -20,7 +18,7 @@ class RemoveLoginController {
   }
 }
 
-RemoveLoginController.$inject = ['$scope','$element'];
+RemoveLoginController.$inject = ['$element'];
 
 export let RemoveLoginComponent = {
   name: 'custom-remove-login',

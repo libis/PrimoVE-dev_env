@@ -1,10 +1,12 @@
 class RemoveBlocksController {
-  constructor($scope, $compile) {
-    this.parentCtrl.parentCtrl.accountOverviewService._requiredTabsList  =  this.parentCtrl.parentCtrl.requiredTabsList.filter( (tab) => { return tab != "blocks" } ) 
+  constructor() {
+  }
+  $onInit() {
+    this.parentCtrl.parentCtrl.accountOverviewService._requiredTabsList = this.parentCtrl.parentCtrl.requiredTabsList.filter( (tab) => { return tab != "blocks" } ) 
   }
 }
 
-RemoveBlocksController.$inject = ['$scope', '$compile'];
+RemoveBlocksController.$inject = [];
 
 export let removeBlockscomponent = {
   name: 'custom-remove-blocks',  

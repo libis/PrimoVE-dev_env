@@ -1,31 +1,37 @@
 import fullLocationsForBibliographicViewHTML from './fullLocationsForBibliographicView.html'
 
 class fullLocationsForBibliographicViewController {
+
     constructor($element, $translate, $scope) {
+        let self = this;
         this.$element = $element;
-        this.$scope = $scope;
         this.$translate = $translate;
-        this.vid = window.appConfig.vid;
-        this.parentCtrl = this.parentCtrl.parentCtrl;
-        this.item = this.parentCtrl.item;
-        this.pnx = this.item.pnx;
+        this.$scope = $scope;
+    }
+
+    $onInit() {
+        let self = this;
+        self.vid = window.appConfig.vid;
+        self.parentCtrl = this.parentCtrl.parentCtrl;
+        self.item = this.parentCtrl.item;
+        self.pnx = this.item.pnx;
 
         const library_filter_array = {
             'msb jesuit armarium': {
-                "url": "https://kuleuven.limo.libis.be/permalink/32KUL_KUL/tuno99/" + this.pnx.control.recordid
+                "url": "https://kuleuven.limo.libis.be/permalink/32KUL_KUL/tuno99/" + self.pnx.control.recordid
                 //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KULeuven&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab&noLogin=true"
             },
             'kadoc jesuit armarium': {
-                "url": "https://kadoc.limo.libis.be/permalink/32KUL_KADOC/dtohan/" + this.pnx.control.recordid
+                "url": "https://kadoc.limo.libis.be/permalink/32KUL_KADOC/dtohan/" + self.pnx.control.recordid
                 //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
             },
             'anet ruusbroec collection': {
-                "url": "https://anet.be/record/uantwerpen/opacuantwerpen/" + this.pnx.control.sourcerecordid + "/N"
+                "url": "https://anet.be/record/uantwerpen/opacuantwerpen/" + self.pnx.control.sourcerecordid + "/N"
             }
         }
 
 
-        this.delivery_library = this.pnx.display.lds10.map(lds10 => {
+        self.delivery_library = self.pnx.display.lds10.map(lds10 => {
             var library_code = lds10.toLowerCase();
             lds10 = library_filter_array[library_code];
             lds10['name'] = this.$translate.instant(library_code);
@@ -33,20 +39,23 @@ class fullLocationsForBibliographicViewController {
             return lds10;
         });
 
-        this.parentElement = this.$element.parent().parent()[0];
+        self.parentElement = self.$element.parent().parent()[0];
 
         let translatorWatcher = this.$scope.$watch(() => {
             return this.$translate.isReady()
         }, (n, o) => {
             if (n == true) {
-                this.insertLocationsLinksSection()
+                self.insertLocationsLinksSection()
                 translatorWatcher();
             }
         }, false);
     }
 
     insertLocationsLinksSection() {
+        console.log ("this.pnx:")
+        console.log (this.pnx.display)
 
+        
         if (typeof this.pnx.display.lds10 !== 'undefined' && this.pnx.display.lds10.length > 0) {
             let locationsLinksSectionData = {
                 scrollId: "locationsLinks",
@@ -73,7 +82,7 @@ class fullLocationsForBibliographicViewController {
     // Wait for the target element to be created.
     waitForTargetThenMoveSection(sectionTitleSelector, sectionElement) {
         let unbindWatcher = this.$scope.$watch(() =>
-            this.parentElement.querySelector(sectionTitleSelector),
+        this.parentElement.querySelector(sectionTitleSelector),
             (newVal, oldVal) => {
                 if (newVal) {
                     this.moveSectionElement(newVal, sectionElement);
@@ -120,7 +129,7 @@ fullLocationsForBibliographicViewController.$inject = ['$element', '$translate',
 
 export let fullLocationsForBibliographicViewConfig = {
     name: 'custom-locations-bibliographic-view',
-    enabled: true,
+    enabled: false,
     appendTo: 'prm-full-view-after',
     enableInView: '32KUL_KUL:JESUITS|32KUL_LIBIS_NETWORK:JESUITS_UNION',
     config: {

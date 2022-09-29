@@ -1,7 +1,6 @@
 class ExternalLinksInDetailsController {
 
     constructor($scope) {
-        let self = this;
         this.$scope = $scope;
     }
 

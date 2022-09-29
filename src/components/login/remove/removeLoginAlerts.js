@@ -1,27 +1,29 @@
 class RemoveLoginAlertsController {
 
-  constructor($scope, $element) { }
+  constructor($element) {
+    this.$element = $element;
+  }
 
   $onInit() {
     let self = this;
     self.parentCtrl = this.parentCtrl.parentCtrl
 
     // remove "Sign in" Alert above resultlist
-    if(typeof  self.parentCtrl.isLoggedInIDP === "function"){
-      self.parentCtrl.isLoggedInIDP = function() { return true };
+    if (typeof self.parentCtrl.isLoggedInIDP === "function") {
+      self.parentCtrl.isLoggedInIDP = function () { return true };
     }
-  
+
     // remove "Sign in" Alert in "How to get it"
-    if( self.parentCtrl.reqAlert ){
+    if (self.parentCtrl.reqAlert) {
       var s = document.createElement("style");
       s.innerHTML = "prm-alert-bar { display: none  !important }";
-      $element.append(angular.element(s));
+      self.$element.append(angular.element(s));
     }
 
   }
 }
 
-RemoveLoginAlertsController.$inject = ['$scope','$element'];
+RemoveLoginAlertsController.$inject = ['$element'];
 
 export let RemoveLoginAlertsComponent = {
   name: 'custom-remove-login-alerts',

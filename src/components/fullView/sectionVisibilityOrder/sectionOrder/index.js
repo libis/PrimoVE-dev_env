@@ -29,25 +29,24 @@ Citations
 */
 
 class SectionOrderController {
-    constructor($scope, $element, $translate)  { 
+    constructor($scope, $translate) {
         this.$scope = $scope;
-        this.$element = $element;
         this.$translate = $translate;
-      }
-    
-      $onInit() {
+    }
+
+    $onInit() {
         var self = this
         window.fullViewServiceOrder = [];
-        
+
         self.appendToElement = document.getElementsByTagName("primo-explore")[0];
 
         self.servicesOrder = self.parentCtrl.parentCtrl.fullViewService.configurationUtil.getBriefResultConfiguration().tabsorder.items.split(',');
         // brief-section always on top 
         self.servicesOrder.unshift('brief')
-        
+
         // citationTrails-section aways after brief
         self.servicesOrder.splice(self.servicesOrder.indexOf('brief'), 1, 'brief', 'citationTrails')
-        
+
         // action_list-section (send-to) aways before details
         self.servicesOrder.splice(self.servicesOrder.indexOf('details'), 1, 'action_list', 'details')
 
@@ -61,7 +60,7 @@ class SectionOrderController {
             self.servicesOrder = ["brief", "getit_link1", "details", "links", "altmetrics", "action_list", "tags", "citationTrails"];
         }
         if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:JESUITS" ||
-            self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_LIBIS_NETWORK:JESUITS_UNION" 
+            self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_LIBIS_NETWORK:JESUITS_UNION"
         ) {
             self.servicesOrder = ["brief", "details", "locationsLinks", "links", "action_list", "tags", "citationTrails"];
         }
@@ -73,12 +72,12 @@ class SectionOrderController {
                 services_keys.forEach(function (service_key) {
                     var service = self.parentCtrl.parentCtrl.fullViewService.servicesDirectives[service_key];
                     var orderId = service["scrollId"]
-                    if (orderId){
+                    if (orderId) {
                         var order = self.servicesOrder.indexOf(orderId);
-                        if (order < 0) { 
+                        if (order < 0) {
                             order = 50
                         }
-                        self.addStyle(order,service)
+                        self.addStyle(order, service)
                     }
                 });
 
@@ -107,31 +106,31 @@ class SectionOrderController {
             var orderId = service["scrollId"].replace(/getit_link1.*/, 'getit_link1').replace(/getit_link2.*/, 'getit_link2')
             var styleId = 'style_section_order_' + service["scrollId"]
             var order = self.servicesOrder.indexOf(orderId);
-/*
-            console.log (styleId)
-            console.log (service)
-*/
+            /*
+                        console.log (styleId)
+                        console.log (service)
+            */
             if (order < 0) {
-                console.warn("Service ["+ service.serviceName +"] not found in servicesOrder");
+                console.warn("Service [" + service.serviceName + "] not found in servicesOrder");
                 order = 50;
             }
 
-            self.addStyle(order,service)
+            self.addStyle(order, service)
 
         });
 
     }
 
-    addStyle(order,service) {
+    addStyle(order, service) {
         var self = this
 
         var styleId = 'style_' + service["scrollId"]
-        if ( window.fullViewServiceOrder.includes(styleId) ) {
+        if (window.fullViewServiceOrder.includes(styleId)) {
             return;
         }
         window.fullViewServiceOrder.push(styleId);
 
-        if ( self.appendToElement.querySelector('style#' + styleId)) {
+        if (self.appendToElement.querySelector('style#' + styleId)) {
             //next 
             return;
         }
@@ -140,14 +139,14 @@ class SectionOrderController {
         s.setAttribute("id", styleId);
         s.innerHTML = ""
         s.innerHTML += "div#services-index button[aria-label=\"" + self.$translate.instant(service["title"]) + "\"] { order: " + order + " !important;}";
-        s.innerHTML += "div#services-index button[aria-label=\"" +service["title"] + "\"] { order: " + order + " !important;}";
+        s.innerHTML += "div#services-index button[aria-label=\"" + service["title"] + "\"] { order: " + order + " !important;}";
         s.innerHTML += "div.full-view-section#" + service["scrollId"] + " { order: " + order + " !important;}";
 
         self.appendToElement.appendChild(s);
     }
 }
 
-SectionOrderController.$inject = ['$scope', '$element', '$translate'];
+SectionOrderController.$inject = ['$scope', '$translate'];
 
 export let sectionOrderConfig = {
     name: 'custom-section-visibility-order',

@@ -1,8 +1,11 @@
 class otherMembersController {
   constructor($scope, $element) {
+    this.$scope = $scope;
+    this.$element = $element;
+  }
+
+  $onInit() {
     let self = this;
-    self.$scope = $scope;
-    self.$element = $element;
     let itemDelivery = self.parentCtrl.parentCtrl.$scope.$parent.$parent.$parent.$ctrl.item.delivery;
 
     /*

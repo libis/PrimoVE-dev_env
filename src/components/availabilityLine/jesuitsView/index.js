@@ -1,19 +1,22 @@
 class AvailabilityLineController {
+
   constructor($scope, $translate) {
+    this.$scope = $scope;
+    this.$translate = $translate;
+  }
+
+
+  $onInit() {
     let self = this;
-
     self.almaInstitutionsFilterInstCodeList = ["32KUL_KUL", "32KUL_KADOC"]
-
-    self.$scope = $scope;
-    self.$translate = $translate;
     self.$ctrl = self.parentCtrl.parentCtrl;
     self.$scope.$ctrl = self.parentCtrl.parentCtrl;
 
-
+/*
     console.log("AvailabilityLineController")
     console.log(self)
     console.log( self.$ctrl.result )
-
+*/
 
     self.$scope.$ctrl.getPlaceHolders = function () {
       return self.$scope.$ctrl.placeHolders;
@@ -57,6 +60,10 @@ class AvailabilityLineController {
       var availabilityInstitutionsNames = availabilityInstitutions.map(inst => inst.instName)
 
       if (self.$ctrl.result.delivery.availability[0] === "available_in_library") {
+
+        alert ('Check how tis works ???\nNeed to config delivery in Import Profile ?\n physical vs electronic??')
+
+
         if (self.$ctrl.result.delivery.displayedAvailability === "available_in_library" || self.$ctrl.result.delivery.displayedAvailability === null ) {
           availabilityInstitutionsNames.unshift(window.appConfig["primo-view"].institution.description);
         }
@@ -110,7 +117,7 @@ export let availabilityLineLocationsForKULeuvenRegionalViewwConfig = {
   name: 'custom-availability-line-regional-view',
   enabled: true,
   appendTo: 'prm-search-result-availability-line-after',
-  enableInView: '32KUL_KUL:JESUITS,32KUL_LIBIS_NETWORK:JESUITS_UNION',
+  enableInView: '32KUL_KUL:JESUITS|32KUL_LIBIS_NETWORK:JESUITS_UNION',
   config: {
     bindings: {
       parentCtrl: '<'

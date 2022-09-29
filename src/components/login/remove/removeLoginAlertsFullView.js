@@ -1,7 +1,5 @@
 class RemoveLoginAlertsFullViewController {
-
-  constructor($scope, $element) { 
-    this.$scope = $scope;
+  constructor($element) { 
     this.$element = $element;
   }
 
@@ -25,7 +23,7 @@ class RemoveLoginAlertsFullViewController {
   }
 }
 
-RemoveLoginAlertsFullViewController.$inject = ['$scope','$element'];
+RemoveLoginAlertsFullViewController.$inject = ['$element'];
 
 export let RemoveLoginAlertsFullViewComponent = {
   name: 'custom-remove-login-alerts-full-view',
