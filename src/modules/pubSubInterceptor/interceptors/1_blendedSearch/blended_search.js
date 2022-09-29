@@ -1,6 +1,7 @@
 const syncFetch = require('sync-fetch');
 
 window.blendedSearch = {
+    originalLimit: 10,
     get vid() {
         return window.appConfig['vid'];
     },
@@ -10,9 +11,6 @@ window.blendedSearch = {
         return key;
     },
     get hasBlendKey() {
-        // return this.blendFilter && this.blendFilter != this.blendKey && 
-        //        this.blendFilter != this.blendKey.replace(/^blend\./, '').replaceAll('_', ' ') && 
-        //        this.blendFilter.length > 1;
         return blendedSearch.blendFilter && blendedSearch.blendFilter.length > 1;
     },
     get blendFilter() {
@@ -33,7 +31,7 @@ window.blendedSearch = {
     get allowed() {
         let cloned_params = blendedSearch.set2.params;
 
-        if (blendedSearch.hasBlendKey) {
+        if (blendedSearch.hasBlendKey && cloned_params.tab !== 'jsearch_slot') {
             console.log('BLENDING: Blend allowed');
             return true;
         }
@@ -41,10 +39,11 @@ window.blendedSearch = {
         return false;
     },
     init: (reqRes) => {
-        let self = this;
+        let self = this;        
         blendedSearch.set1.url = reqRes.url;
         blendedSearch.set1.headers = reqRes.headers;
         blendedSearch.set1.params = JSON.parse(JSON.stringify(reqRes.params));
+//        blendedSearch.set1.params.limit = 100;
         blendedSearch.set1.data = reqRes.data;
 
         let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
@@ -57,7 +56,6 @@ window.blendedSearch = {
 
             let facets = [];
             try {
-                console.log(blendedSearch.blendFilter);
                 facets = blendedSearch.blendFilter;
             } catch (e) {
                 console.log(`BLENDING: ${blendedSearch.vid} no extra facets defined.`)
@@ -274,16 +272,21 @@ window.blendedSearch = {
 
 //angular.module('blendedSearch', ['ng']).run(() => {
 
-//document.addEventListener('pubSubInterceptorsReady', (e) => {
+document.addEventListener('pubSubInterceptorsReady', (e) => {
 pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
+    blendedSearch.originalLimit = reqRes.params.limit;
+    //reqRes.params.limit=100;
     blendedSearch.init(reqRes);
-    if (blendedSearch.allowed) {
+    if (blendedSearch.allowed) {    
         blendedSearch.set2.search();
 
         reqRes.params.limit = blendedSearch.set1.limit;
         reqRes.params.offset = blendedSearch.set1.offset;
         return reqRes;
     }
+
+
+    //reqRes.params.limit=blendedSearch.set1.limit
 
     return reqRes;
 })
@@ -332,5 +335,5 @@ pubSub.subscribe('after-getFacetsBaseURL', (reqRes) => {
     }
     return reqRes;
 })
-   // });
+    });
 //});
