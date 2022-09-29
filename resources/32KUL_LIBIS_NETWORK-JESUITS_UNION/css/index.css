@@ -4,7 +4,7 @@
 @import "./order_sections_full_view.css";
 
 /*!***************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_KUL-JESUITS/css/view-colors.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_LIBIS_NETWORK-JESUITS_UNION/css/view-colors.css ***!
   \***************************************************************************************************/
 /* view color hook */
 /* ---------------- */
@@ -47,7 +47,7 @@ md-toolbar.md-primoExplore-theme .md-toolbar-tools prm-linked-user-selector md-i
 
 /* view color hook end*/
 /*!**************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_KUL-JESUITS/css/app-colors.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_LIBIS_NETWORK-JESUITS_UNION/css/app-colors.css ***!
   \**************************************************************************************************/
 /* primary color hook */
 /* commenttttt*/
@@ -671,7 +671,7 @@ div#footer {
     background-color: #e64a19;
 }
 /*!********************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_KUL-JESUITS/css/menu.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_LIBIS_NETWORK-JESUITS_UNION/css/menu.css ***!
   \********************************************************************************************/
 prm-topbar .md-button a,
 prm-topbar .md-button a:link,
@@ -741,7 +741,7 @@ md-menu-content.prm-user-menu-content md-menu-item.my-library-card-ctm {
 }
 
 /*!************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_KUL-JESUITS/css/homepage.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_LIBIS_NETWORK-JESUITS_UNION/css/homepage.css ***!
   \************************************************************************************************/
 @media only screen and (min-width: 1280px) {
   prm-explore-main .header::before {
@@ -764,7 +764,7 @@ md-menu-content.prm-user-menu-content md-menu-item.my-library-card-ctm {
 
 .js_card{
   height: 100%;
-  background: url('https://kuleuven.limo.libis.be/discovery/custom/32KUL_KUL-JESUITS/img/bibliotheek.jpg');
+  background: url('https://kuleuven.limo.libis.be/discovery/custom/32KUL_LIBIS_NETWORK-JESUITS_UNION/img/bibliotheek.jpg');
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -785,7 +785,7 @@ div#logo_partners img{
 }
 
 /*!*********************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_KUL-JESUITS/css/index.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./resources/32KUL_LIBIS_NETWORK-JESUITS_UNION/css/index.css ***!
   \*********************************************************************************************/
 
 
