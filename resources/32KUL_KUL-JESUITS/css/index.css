@@ -18,7 +18,7 @@
 .bar.alert-bar {
   color: black;
   background-color: #f7eda3;
-  order-color: ##ede49e; }
+  order-color: #ede49e; }
 
 .primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
   background-color: #54969d; }
