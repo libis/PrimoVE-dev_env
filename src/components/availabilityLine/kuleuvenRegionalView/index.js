@@ -46,9 +46,12 @@ class AvailabilityLineController {
       */
       // ng-if="::($ctrl.showDisplayOtherLocations() || $ctrl.showDisplayLocation()  || $ctrl.showOtherLibraries(availability)) && $ctrl.isPhysical($index)"
 
-      var availabilityInstitutions = self.$ctrl.result.delivery.almaInstitutionsList.filter(inst => {
-        return (inst.availabilityStatus === "available_in_institution" && self.almaInstitutionsFilterInstCodeList.includes(inst.instCode))
-      })
+      var availabilityInstitutions = [];
+      if ( self.$ctrl.result.delivery.almaInstitutionsList) {
+        availabilityInstitutions = self.$ctrl.result.delivery.almaInstitutionsList.filter(inst => {
+          return (inst.availabilityStatus === "available_in_institution" && self.almaInstitutionsFilterInstCodeList.includes(inst.instCode))
+        })
+      }
 
       var availabilityInstitutionsNames = availabilityInstitutions.map(inst => inst.instName)
 
