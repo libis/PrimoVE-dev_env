@@ -201,3 +201,9 @@ prm-brief-result .item-title span {
 .__xs prm-atoz-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-browse-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-newspapers-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .__xs prm-tags-search-bar .search-elements-wrapper.simple-mode .simple-search-wrapper, .classic-input, .default-shadow, .list-item-wrapper:last-of-type, .prm-bricks-list md-list-item, .prm-recommendations-fullview md-card, .tiles-grid-tile, md-card.default-card, md-grid-tile, md-list.prm-list, md-toolbar.md-primoExplore-theme.white-toolbar.is-stuck, md-toolbar.white-toolbar.is-stuck, md-toolbar.white-toolbar.is-stuck:not(.md-menu-toolbar), md-tooltip.content-tooltip, prm-breadcrumbs .md-chip, prm-browse-search md-list.prm-list, prm-collection-search .search-within .filter-chip, prm-featured-result-item md-card, prm-gallery-collection, prm-gallery-item .collection-element, prm-location-items md-list, prm-more-like-this-item md-card, prm-ngrs-results-button md-card, prm-opac md-list md-list-item:last-of-type, prm-page-nav-menu #resultsPerPage .counter-main md-fab-actions::after, prm-page-nav-menu #speedDialWidget .counter-main md-fab-actions::after, prm-recomendation-item .media-on-hover .pin-button, prm-resource-recommender md-card, prm-search-error-message .md-card, prm-search-error-message md-card, prm-search-result-list .pages-separated-with-gaps .list-item-wrapper.first-in-page:not(:first-of-type)::before, prm-search-result-list .pages-separated-with-gaps .list-item-wrapper:nth-last-child(2), prm-search-result-list .results-header.is-stuck, prm-tags-results-list md-list.prm-list, prm-virtual-browse-item md-card {
     box-shadow: none;
 }
+
+prm-logo .product-logo {
+    cursor: pointer;
+    height: 100%;
+    padding: 0;
+  }
