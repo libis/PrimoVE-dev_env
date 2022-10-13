@@ -1,0 +1,8 @@
+prm-location .md-list-item-text p span:last-of-type, prm-location-items p span:last-of-type {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+prm-location-items md-list-item.md-2-line .md-list-item-text p{
+    font-size: 1rem;
+}
