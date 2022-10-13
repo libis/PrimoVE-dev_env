@@ -1,7 +1,9 @@
   <md-button tabindex="0" role="listitem" tabindex="0" ng-href=""
              class="zero-margin button-link md-button md-primoExplore-theme md-ink-ripple request-a-copy"
              layout="column" layout-align="center center" (click)="$ctrl.showRequestACopyForm($event)"
-             aria-label="nui.customization.request_a_copy.title">
+             aria-label="nui.customization.request_a_copy.title"
+             ng-if="$ctrl.showRequestACopy"
+             >
 
                   
  <!--       
