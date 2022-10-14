@@ -1,0 +1,16 @@
+﻿
+.button-content.scopearchiv_ext_restricted_linktorsrc
+{
+    color: #b84d00;
+}
+
+.button-content.scopearchiv_ext_not_restricted_linktorsrc,
+.button-content.scopearchiv_ext_not_restricted_linktorequest
+{
+    color: #0f7d00;
+}
+
+.button-content.scopearchiv_ext_restricted_linktorequest
+{
+    color: #6c6161;
+}

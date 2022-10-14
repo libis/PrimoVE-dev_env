@@ -7,14 +7,27 @@ window.linksServiceRewrite = {
                 removelinks: { type: "backlink" }
             },
             {
-                enableInView: '32KUL_KADOC:KADOC|32KUL_VLP:.*',
-                createLinksFromOtherField: { field: "display.lds45" }
+                enableInView: '32KUL_KUL:Lirias',
+                filter_null: { type: "linktorsrc" }
+            },
+            {
+                enableInView: '32KUL_KADOC:KADOC.*|32KUL_VLP:.*',
+                createLinksFromOtherField: { field: "display.lds45" },
+            },
+            {
+                enableInView: '32KUL_KADOC:KADOC.*',
+                deliveryForExternalResource: { source: "ScopeArchive" }
             }
+            
         ],
         afterDeliveryURL: [
             {
-                enableInView: '32KUL_KADOC:KADOC|32KUL_VLP:.*',
+                enableInView: '32KUL_KADOC:KADOC.*|32KUL_VLP:.*',
                 createLinksFromOtherField: { field: "display.lds45" }
+            },
+            {
+                enableInView: '32KUL_KADOC:KADOC.*',
+                deliveryForExternalResource: { source: "ScopeArchive" }
             }
         ]
     },
@@ -36,9 +49,30 @@ window.linksServiceRewrite = {
         }
         return doc;
     },
+    filter_null: ({ doc = {}, type = "linktorsrc" }) => {
+        if (doc.pnx) {
+            if (doc.pnx.links) {
+                if (doc.pnx.links[type]) {
+                    doc.pnx.links[type] = doc.pnx.links[type].filter(n => n)
+                }
+            }
+        }
+        return doc;
+    },
+
+    getValueFromSubfield:  (field, subfield) => {
+        try {
+            // console.log ( "field: " + field)
+            return field.filter(f => f.startsWith(subfield))[0].trim().substring(1);
+        } catch {
+            return undefined;
+        }
+    },
+
     createLinksFromOtherField: ({ doc = {}, field = null }) => {
         // console.log (doc)
         // console.log (field)
+        /*
         var getValueFromSubfield = function (link, subfield) {
             try {
                 return link.filter(l => l.startsWith(subfield))[0].trim().substring(1);
@@ -46,6 +80,7 @@ window.linksServiceRewrite = {
                 return undefined;
             }
         }
+        */
 
         if (doc.pnx) {
             var links = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
@@ -62,16 +97,16 @@ window.linksServiceRewrite = {
 
                 // linksDefinitions: (5) ['linktorsrc', 'addlink', 'backlink', 'sourcerecord', '']
                 links = links.map(link => {
-                    var linkURL = getValueFromSubfield(link, "U");
+                    var linkURL =  window.linksServiceRewrite.getValueFromSubfield(link, "U");
                     // check for namespaces in URL, maybe we should use an url template ?
-                    var linkType = getValueFromSubfield(link, "T");
+                    var linkType =  window.linksServiceRewrite.getValueFromSubfield(link, "T");
                     if (linkType === undefined) { linkType = '' }
-                    var displayLabel = getValueFromSubfield(link, "C");
+                    var displayLabel =  window.linksServiceRewrite.getValueFromSubfield(link, "C");
                     if (displayLabel === undefined) {
-                        displayLabel = getValueFromSubfield(link, "E");
+                        displayLabel =  window.linksServiceRewrite.getValueFromSubfield(link, "E");
                     }
                     if (displayLabel === undefined) {
-                        displayLabel = getValueFromSubfield(link, "D");
+                        displayLabel =  window.linksServiceRewrite.getValueFromSubfield(link, "D");
                     }else{
                         displayLabel = pubSub.translate.instant('fulldisplay.constants.' + displayLabel);
                     }
@@ -111,9 +146,51 @@ window.linksServiceRewrite = {
             }
         }
         return doc;
+    },
+
+    deliveryForExternalResource: ({ doc = {}, source = null  }) => {
+        // console.log (doc)
+        // console.log (source)
+        if (  doc.pnx.display.source.filter(s => source.includes(s)).length > 0 ) {
+            if (doc.delivery){
+
+/*
+                console.log ( doc.delivery.deliveryCategory )
+                console.log ( doc.delivery.deliveryCategory.includes("Remote Search Resource") )
+                console.log (doc.delivery.availabilityLinksUrl )
+                console.log (doc.delivery.availabilityLinksUrl.length )
+                console.log (doc.delivery.availabilityLinksUrl.length > 0)
+*/
+
+                if (
+                    ( doc.delivery.deliveryCategory.includes("Remote Search Resource") || doc.delivery.deliveryCategory.includes("EXTERNAL-P") )
+                    &&
+                    doc.delivery.availabilityLinksUrl.length > 0
+                ){
+                    var displayConstant   = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
+                    // console.log ( displayConstant )
+
+                    if ( displayConstant ){
+                        /*
+                        console.log ( displayConstant )
+                        console.log ( pubSub.translate.instant('delivery.code.' + displayConstant) );
+                        console.log ( doc.delivery.availabilityLinksUrl[0] )
+                        */
+                        doc.delivery.displayedAvailability = displayConstant;
+                        doc.delivery.availability[0] = displayConstant;
+    
+                        doc.delivery.electronicServices[0].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
+                        doc.delivery.electronicServices[0].serviceUrl = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
+                    }   
+                }
+    
+                // console.log ( doc.pnx.display.source )    
+            }
+        }
+        
+        return doc;
     }
 };
-
 
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
     // "linksServiceRewrite".init(url, headers, params, $translate);
