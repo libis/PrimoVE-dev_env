@@ -1,22 +1,17 @@
 import liriasHTML from './lirias.html'
 
 class LiriasController {
-    constructor($location) {
+    constructor() {
         let self = this;
-        self.location=$location;
-        self.total = 0;
-        self.url = '';
     }
 
-
-    $onInit() {
-        let self = this;
-        self.total = 0;
-        self.url = '';
-        document.addEventListener('liriasResult.local', (event) => {
-            self.total = event.detail.result.total;
-            self.url = event.detail.result.url.href;            
-        })        
+    get total() {
+        try {
+            return blendedSearch.set2.data.info.total;
+        }
+        catch(e) {
+            return 0;
+        }        
     }
 
     goLirias() {
@@ -35,8 +30,6 @@ class LiriasController {
     }
 }
 
-LiriasController.$inject= ['$location'];
-
 export let liriasComponent = {
   name: 'custom-lirias',
   config: {
@@ -45,6 +38,6 @@ export let liriasComponent = {
     template: liriasHTML
   },
   enabled: true,
-  appendTo: 'prm-resource-recommender-after',
+  appendTo: 'prm-search-result-tool-bar-after',
   enableInView: '.*'
 }
