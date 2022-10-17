@@ -311,7 +311,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
             console.log('BLENDING ResultSet2:', JSON.stringify(result.info));
 
             //process result 
-            pubSub.fireEvent('liriasResult.local', {result: {total: result.info.total, url: blendedSearch.searchURL(blendedSearch.set2, document.location.pathname)}})
+//            pubSub.fireEvent('liriasResult.local', {result: {total: result.info.total}})
             // DOCS
             // if (result.info) {
             //     reqRes.data['docs'] = blendedSearch.mergeDocs();
