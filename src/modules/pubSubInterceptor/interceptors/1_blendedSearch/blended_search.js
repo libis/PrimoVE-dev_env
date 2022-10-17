@@ -38,12 +38,26 @@ window.blendedSearch = {
         console.log('BLENDING: Blend not allowed');
         return false;
     },
+    searchURL(url_set, url_path) {
+        let esURL = new URL(`${window.location.origin}${url_path}`);
+
+        Object.keys(url_set.params).forEach(key => {
+            if (url_set.params[key] != undefined) {
+                if (key == 'scope') {
+                    esURL.searchParams.append(key, 'lirias_profile');
+                } else {
+                    esURL.searchParams.append(key, url_set.params[key])
+                }
+            }
+        });
+        
+        return esURL;
+    },    
     init: (reqRes) => {
         let self = this;        
         blendedSearch.set1.url = reqRes.url;
         blendedSearch.set1.headers = reqRes.headers;
         blendedSearch.set1.params = JSON.parse(JSON.stringify(reqRes.params));
-//        blendedSearch.set1.params.limit = 100;
         blendedSearch.set1.data = reqRes.data;
 
         let cloned_params = JSON.parse(JSON.stringify(reqRes.params));
@@ -114,7 +128,7 @@ window.blendedSearch = {
         search: () => {
             let result = {}
             blendedSearch.set2.data = {};
-            let esURL = new URL(`${window.location.origin}${blendedSearch.set2.url}`);
+            let esURL = blendedSearch.searchURL(blendedSearch.set2, blendedSearch.set2.url);
 
             Object.keys(blendedSearch.set2.params).forEach(key => {
                 if (blendedSearch.set2.params[key] != undefined) {
@@ -272,10 +286,9 @@ window.blendedSearch = {
 
 //angular.module('blendedSearch', ['ng']).run(() => {
 
-document.addEventListener('pubSubInterceptorsReady', (e) => {
+//document.addEventListener('pubSubInterceptorsReady', (e) => {
 pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
     blendedSearch.originalLimit = reqRes.params.limit;
-    //reqRes.params.limit=100;
     blendedSearch.init(reqRes);
     if (blendedSearch.allowed) {    
         blendedSearch.set2.search();
@@ -284,9 +297,6 @@ pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
         reqRes.params.offset = blendedSearch.set1.offset;
         return reqRes;
     }
-
-
-    //reqRes.params.limit=blendedSearch.set1.limit
 
     return reqRes;
 })
@@ -301,39 +311,40 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
             console.log('BLENDING ResultSet2:', JSON.stringify(result.info));
 
             //process result 
+            pubSub.fireEvent('liriasResult.local', {result: {total: result.info.total, url: blendedSearch.searchURL(blendedSearch.set2, document.location.pathname)}})
             // DOCS
-            if (result.info) {
-                reqRes.data['docs'] = blendedSearch.mergeDocs();
-            }
+            // if (result.info) {
+            //     reqRes.data['docs'] = blendedSearch.mergeDocs();
+            // }
 
-            // FACETS
-            let facets = reqRes.data.facets;
-            if (result.info) {
-                if (facets) {
-                    reqRes.data['facets'] = blendedSearch.mergeFacets(facets);
-                }
-            }
+            // // FACETS
+            // let facets = reqRes.data.facets;
+            // if (result.info) {
+            //     if (facets) {
+            //         reqRes.data['facets'] = blendedSearch.mergeFacets(facets);
+            //     }
+            // }
 
-            if (result.info) {
-                reqRes.data['info']['total'] += result['info']['total'];
-            }
+            // if (result.info) {
+            //     reqRes.data['info']['total'] += result['info']['total'];
+            // }
 
-            console.log(reqRes.data);
+            // console.log(reqRes.data);
 
         }
     }
     return reqRes;
-});
+//});
 
 
-pubSub.subscribe('after-getFacetsBaseURL', (reqRes) => {
-    if (blendedSearch.allowed) {
-        let facets = reqRes.data.facets;
-        if (facets && facets.length > 0) {
-            reqRes.data['facets'] = blendedSearch.mergeFacets(facets);
-        }
-    }
-    return reqRes;
-})
+// pubSub.subscribe('after-getFacetsBaseURL', (reqRes) => {
+//     if (blendedSearch.allowed) {
+//         let facets = reqRes.data.facets;
+//         if (facets && facets.length > 0) {
+//             reqRes.data['facets'] = blendedSearch.mergeFacets(facets);
+//         }
+//     }
+//     return reqRes;
+// })
     });
 //});
