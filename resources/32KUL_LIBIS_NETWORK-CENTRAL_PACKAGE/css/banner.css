@@ -9,6 +9,6 @@ prm-banner-card-content .banner-content md-card-title md-card-title-text .banner
 .gt-sm prm-banner-card-content a:focus .banner-title, .gt-sm prm-banner-card-content a:hover .banner-title,
 .__gt-sm prm-banner-card-content prm-tags-list md-chips .md-chip .md-chip-content:hover strong .banner-title {
     background: transparent;
-    font-size: 70px;
+    font-size: 50px;
     line-height: 140px;
 }
