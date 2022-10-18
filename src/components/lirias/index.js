@@ -37,7 +37,7 @@ export let liriasComponent = {
     controller: LiriasController,
     template: liriasHTML
   },
-  enabled: true,
+  enabled: false,
   appendTo: 'prm-search-result-tool-bar-after',
   enableInView: '.*'
 }
