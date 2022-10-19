@@ -1,7 +1,6 @@
 const syncFetch = require('sync-fetch');
 
 window.blendedSearch = {
-    originalLimit: 10,
     get vid() {
         return window.appConfig['vid'];
     },
@@ -43,7 +42,6 @@ window.blendedSearch = {
         blendedSearch.set1.url = reqRes.url;
         blendedSearch.set1.headers = reqRes.headers;
         blendedSearch.set1.params = JSON.parse(JSON.stringify(reqRes.params));
-//        blendedSearch.set1.params.limit = 100;
         blendedSearch.set1.data = reqRes.data;
 
         let cloned_params = JSON.parse(JSON.stringify(reqRes.params));

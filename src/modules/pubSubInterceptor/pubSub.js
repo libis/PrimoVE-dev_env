@@ -143,13 +143,17 @@ export default class PrimoPubSub {
                 case 'pubSubInterceptorsReady':
                     let event = new CustomEvent(url, { detail: data, bubbles: true, cancelable: true, composed: false });
                     document.dispatchEvent(event);
-                default:
+                default:                                     
                     let topicName = this.findTopicKeyByURLValue(url);
                     if (topicName) {
                         let eventName = `${topicName}Event`;
                         let event = new CustomEvent(eventName, { detail: data, bubbles: true, cancelable: true, composed: false });
                         document.dispatchEvent(event);
-                    }        
+                    } else if (/\.local$/.test(url)) {                        
+                        let event = new CustomEvent(url, { detail: data, bubbles: true, cancelable: true, composed: false });
+                        document.dispatchEvent(event);
+                    }
+
             }
 
 
