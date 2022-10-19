@@ -1,7 +1,7 @@
 
 class LanguageSelectionController {
   constructor() {
-    var onlyshow_fr_FR_in_vid = ['32KUL_ACV:ACV', '32KUL_BPB:BPB', '32KUL_VCV:FARO', '32KUL_FIN:FODFIN', '32KUL_KBC:KBC', '32KUL_RBINS:RBINS', '32KUL_RMCA:RMCA', '32KUL_KMMR:KMKG', '32KUL_NBB:NBB', '32KUL_TIFA:BOSA', '32KUL_VES:VDIC'];
+    var onlyshow_fr_FR_in_vid = ['32KUL_ACV:ACV', '32KUL_BPB:BPB', '32KUL_VCV:FARO', '32KUL_FIN:FODFIN', '32KUL_KBC:KBC', '32KUL_RBINS:RBINS', '32KUL_RMCA:RMCA', '32KUL_KMMR:KMKG', '32KUL_NBB:NBB','32KUL_NBB:NBBMED', '32KUL_TIFA:BOSA', '32KUL_VES:VDIC'];
 
     if (!onlyshow_fr_FR_in_vid.includes(window.appConfig.vid)) {
       var s = document.createElement("style");
