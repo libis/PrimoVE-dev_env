@@ -1,6 +1,12 @@
 import requestACopyHTML from './requestACopy.html'
 import requestACopyDialogHTML from './requestACopyDialog.html'
 
+/*
+The value of recordData.pnx.display.lds07 and recordData.pnx.display.lds08
+in combination with serviceTitleCode determines the
+condition to show or hide the "Request a Copy" button
+*/
+
 class RequestACopyController {
   constructor($element, $compile, $scope, $mdDialog, $translate, $http, requestACopyURL, MessageService) {
     this.$element = $element;
@@ -33,7 +39,7 @@ class RequestACopyController {
 
     let TypesShowRequestACopy = ['chapter','journal-article','thesis-dissertation','conference','report','dataset','c-bookreview','media','software'];
     let StatusShowRequestACopy = ['published'];
-    
+   
     var ShowRequestACopyType = self.recordPnx.display.lds07.filter(value => -1 !== TypesShowRequestACopy.indexOf( value.toLowerCase() ));
     var ShowRequestACopyStatus = self.recordPnx.display.lds08.filter( value =>  
         StatusShowRequestACopy.filter( status => 
@@ -41,36 +47,32 @@ class RequestACopyController {
         ).length > 0  
       );
 
- 
-    if (self.parentCtrl.service) {      
+    
 
-      if ( ShowRequestACopyType.length == 0 ) {
-        console.log ("No RequestACopy if it is not  " + TypesShowRequestACopy )
-      }
-
-      /*
-      console.log (self.parentCtrl.service)
-      console.log (self.parentCtrl.service.scrollId)
-      console.log (ShowRequestACopyType)
-      console.log (ShowRequestACopyStatus)
-      console.log( !self.recordPnx.display.oa )
-      */
-
-      if (  /^getit_link.*/.test(self.parentCtrl.service.scrollId) && !self.recordPnx.display.oa && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0 ) {
-        let servicesWatcher = self.$scope.$watch(() => {
-          let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
-          let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
-          let calculatePcDeliveryDone =self.parentCtrl.fullViewService.calculatePcDeliveryDone;
-          let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
-          return (servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
-        }, (n, o) => {
-          if (n == true) {
-              self.showRequestACopyButton();
-              servicesWatcher(); //deregister watcher
-          }
-        }, false)
-      }
+    if ( ShowRequestACopyType.length == 0 ) {
+      console.log ("No RequestACopy if it is not  " + TypesShowRequestACopy )
     }
+/*
+    console.log (self.parentCtrl.service.scrollId)
+    console.log (ShowRequestACopyType)
+    console.log (ShowRequestACopyStatus)
+    console.log( !self.recordPnx.display.oa )
+*/
+    
+    let servicesWatcher = self.$scope.$watch(() => {
+      let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
+      let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
+      let calculatePcDeliveryDone =self.parentCtrl.fullViewService.calculatePcDeliveryDone;
+      let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
+      return (servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
+    }, (n, o) => {
+      if (n == true) {
+        if ( /^getit_link.*/.test(self.parentCtrl.service.scrollId)  && !self.recordPnx.display.oa && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0 ) {
+          self.showRequestACopyButton();
+        }
+        servicesWatcher(); //deregister watcher
+      }
+    }, false)
   }
   
   showRequestACopyButton() {
@@ -81,31 +83,18 @@ class RequestACopyController {
         self.view = view;
         self.onCampus = self.user.isOnCampus();         
   
-        
-//     console.log (self.parentCtrl.service.scrollId)
-
         if ( /^getit_link1_0.*/.test(self.parentCtrl.service.scrollId) ) {
           var appendButtonTo = self.$element
 /*
-          console.log ("self.recordPnx")
-          console.log (self.recordPnx)
           console.log ("self.recordData")
           console.log (self.recordData)
           console.log ("self.parentCtrl.service")
           console.log (self.parentCtrl.service)
           console.log (self.$element)
-          console.log(  self.recordData.delivery.availability )
-          console.log ( self.$scope.$parent.$parent.$parent.$parent.$ctrl.item.delivery.availability)
-          console.log(  self.recordData.delivery.availability.filter(availability => ['no_inventory', 'fulltext_unknown'].includes(availability)).length ) 
+          console.log( "self.recordData.delivery.availability: " + self.recordData.delivery.availability.toString() )
           console.log ("onCampus :" + self.onCampus)
 */          
 
-          // console.log( "self.recordData.delivery.availability: " + self.recordData.delivery.availability.toString() )
-          
-          // self.onCampus = false 
-
-          // console.log ("onCampus :" + self.onCampus)
-          // console.log (self.recordData.delivery.electronicServices)
 
           if (  self.recordData.delivery.availability.filter(availability => ['no_inventory'].includes(availability)).length > 0 ) {
             console.log( " ===> Add appendButtonTo requestACopyHTML [no_inventory] ")
@@ -113,29 +102,21 @@ class RequestACopyController {
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
           if (  (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown] ")
-            
+            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown]")
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
-          if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown] [off_campus]")
+          // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
+          //   console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc] [off_campus] ") 
+          if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
+            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc]") 
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
+          // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
+          //  console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted] [off_campus]")
           if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted] [off_campus]")
-            self.showRequestACopy = false;
-            appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
-          }
-
-          /* Not One file service that does not contains [ Available for KU Leuven users] And off-cmapus */
-          if ( 
-            !self.onCampus && 
-            (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) &&
-            self.recordData.delivery.electronicServices.filter(s => { ! /.*\[Available for KU Leuven users\]$/.test(s.packageName);} ).length == 0
-          ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc] [off_campus]  packageName contains Available for KU Leuven users )")
+            console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted]")
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
