@@ -96,26 +96,26 @@ class RequestACopyController {
 */          
 
 
-          if (  self.recordData.delivery.availability.filter(availability => ['no_inventory'].includes(availability)).length > 0 ) {
+          if ( self.recordData.delivery.availability.filter(availability => ['no_inventory'].includes(availability)).length > 0 ) {
             console.log( " ===> Add appendButtonTo requestACopyHTML [no_inventory] ")
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
-          if (  (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
+          if ( (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
             console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown]")
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
           // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
           //   console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc] [off_campus] ") 
-          if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
+          if ( (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
             console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc]") 
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
           // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
           //  console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted] [off_campus]")
-          if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
+          if ( (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
             console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted]")
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
