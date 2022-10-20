@@ -58,20 +58,21 @@ class RequestACopyController {
     console.log (ShowRequestACopyStatus)
     console.log( !self.recordPnx.display.oa )
 */
-    if ( /^getit_link.*/.test(self.parentCtrl.service.scrollId)  && !self.recordPnx.display.oa && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0 ) {
-      let servicesWatcher = self.$scope.$watch(() => {
-        let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
-        let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
-        let calculatePcDeliveryDone =self.parentCtrl.fullViewService.calculatePcDeliveryDone;
-        let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
-        return (servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
-      }, (n, o) => {
-        if (n == true) {
+    
+    let servicesWatcher = self.$scope.$watch(() => {
+      let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
+      let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
+      let calculatePcDeliveryDone =self.parentCtrl.fullViewService.calculatePcDeliveryDone;
+      let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
+      return (servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
+    }, (n, o) => {
+      if (n == true) {
+        if ( /^getit_link.*/.test(self.parentCtrl.service.scrollId)  && !self.recordPnx.display.oa && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0 ) {
           self.showRequestACopyButton();
-          servicesWatcher(); //deregister watcher
         }
-      }, false)
-    }
+        servicesWatcher(); //deregister watcher
+      }
+    }, false)
   }
   
   showRequestACopyButton() {
@@ -85,21 +86,15 @@ class RequestACopyController {
         if ( /^getit_link1_0.*/.test(self.parentCtrl.service.scrollId) ) {
           var appendButtonTo = self.$element
 /*
-          console.log ("self.recordPnx")
-          console.log (self.recordPnx)
           console.log ("self.recordData")
           console.log (self.recordData)
           console.log ("self.parentCtrl.service")
           console.log (self.parentCtrl.service)
           console.log (self.$element)
-          console.log(  self.recordData.delivery.availability )
-          console.log ( self.$scope.$parent.$parent.$parent.$parent.$ctrl.item.delivery.availability)
-          console.log(  self.recordData.delivery.availability.filter(availability => ['no_inventory', 'fulltext_unknown'].includes(availability)).length ) 
+          console.log( "self.recordData.delivery.availability: " + self.recordData.delivery.availability.toString() )
           console.log ("onCampus :" + self.onCampus)
 */          
 
-          console.log( "self.recordData.delivery.availability: " + self.recordData.delivery.availability.toString() )
-          console.log ("onCampus :" + self.onCampus)
 
           if (  self.recordData.delivery.availability.filter(availability => ['no_inventory'].includes(availability)).length > 0 ) {
             console.log( " ===> Add appendButtonTo requestACopyHTML [no_inventory] ")
@@ -107,19 +102,22 @@ class RequestACopyController {
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
           if (  (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown] ")
-            
+            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown]")
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
-          if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown] [off_campus]")
+          // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
+          //   console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc] [off_campus] ") 
+          if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
+            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc]") 
             self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
+          // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
+          //  console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted] [off_campus]")
           if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted] [off_campus]")
-            self.showRequestACopy = false;
+            console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted]")
+            self.showRequestACopy = true;
             appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
           }
         }
