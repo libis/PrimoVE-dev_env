@@ -3,7 +3,7 @@ import reportAProblemDialogHTML from './reportAProblemDialog.html'
 
 class ReportAProblemController {
 
-  constructor($element, $compile, $scope, $mdDialog, $translate, $http, reportAProblemURL, MessageService )  { 
+  constructor($element, $compile, $scope, $mdDialog, $translate, $http, reportAProblemURL, MessageService) {
     this.$element = $element;
     this.$compile = $compile;
     this.$scope = $scope;
@@ -17,109 +17,129 @@ class ReportAProblemController {
 
   $onInit() {
     let self = this;
-    if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
-      self.$element.parent().parent().find('h4').after(self.$compile(self.reportAProblemHTML)(self.$scope));
+    self.parentCtrl = this.parentCtrl.parentCtrl;
+    
+    let servicesWatcher = self.$scope.$watch(() => {
+      let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
+      let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
+      let calculatePcDeliveryDone = self.parentCtrl.fullViewService.calculatePcDeliveryDone;
+      let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
+      return (servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
+    }, (n, o) => {
+      if (n == true) {
+        if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
+          self.showReportAProblembutton();
+        }
+        servicesWatcher(); //deregister watcher
+      }
+    }, false)
+  }
 
-      let recordData = self.currentRecord;
 
-      Primo.user.then(user => {
-        self.user = user;
+  showReportAProblembutton() {
+    var self = this;
+    self.$element.parent().parent().find('h4').after(self.$compile(self.reportAProblemHTML)(self.$scope));
 
-        Primo.view.then(view => {
-          self.view = view;
+    let recordData = self.currentRecord;
 
-          self.showReportAProblemForm = ($event) => {
-            self.$mdDialog.show({
-              parent: angular.element(document.body),
-              clickOutsideToClose: true,
-              fullscreen: false,
-              targetEvent: $event,
-              template: reportAProblemDialogHTML,
-              controller: function($scope, $mdDialog) {
-                $scope.report = {
-                  replyTo: self.user.email,
-                  message: '',
-                  subject: 'report a problem'
-                }
-                $scope.cancelReport = function() {
-                  $mdDialog.cancel();
-                }
-                $scope.sendReport = function(answer) {
-                  let data = {
-                    recordId: recordData.pnx.control.recordid[0],
-                    index: 0,
-                    page: 0,
-                    scope: '',
-                    query: '',
-                    searchType: '',
-                    sessionId: user.id,
-                    tab: '',
-                    title: recordData.pnx.display.title[0],
-                    type: 'resource_problem',
-                    subject: $scope.report.subject,
-                    view: self.view.code,
-                    inst: self.view.institution.code,
-                    loggedIn: self.user.isLoggedIn()(),
-                    onCampus: self.user.isOnCampus(),
-                    user: self.user.name,
-                    fe: '',
-                    //ip: self.view.ip.address,
-                    ip: self.view.ip,
-                    message: $scope.report.message,
-                    replyTo: $scope.report.replyTo || self.user.email,
-                    userAgent: navigator.userAgent
-                  };
-                  if ($scope.report.replyTo.length > 0 && $scope.report.message.length > 0) {
-                    $mdDialog.hide();
+    Primo.user.then(user => {
+      self.user = user;
 
-                    $http({
-                      method: 'POST',
-                      url: reportAProblemURL,
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'X-From-ExL-API-Gateway': undefined
-                      },
-                      cache: false,
-                      data: data
-                    }).then(function(response) {
-                      let message = self.translate.instant('nui.customization.report_a_problem.success') || 'Thank you for your feedback!';
-                      MessageService.show(message, {scope:$scope, hideDelay: 5000});
-                    }, function(response) {
-                      let message = self.translate.instant('nui.customization.report_a_problem.fail') || 'Unable to submit feedback.';
-                      MessageService.show(message, {scope:$scope, hideDelay: 5000});                      
-                    });
-                  }
+      Primo.view.then(view => {
+        self.view = view;
+
+        self.showReportAProblemForm = ($event) => {
+          self.$mdDialog.show({
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+            fullscreen: false,
+            targetEvent: $event,
+            template: reportAProblemDialogHTML,
+            controller: function ($scope, $mdDialog) {
+              $scope.report = {
+                replyTo: self.user.email,
+                message: '',
+                subject: 'report a problem'
+              }
+              $scope.cancelReport = function () {
+                $mdDialog.cancel();
+              }
+              $scope.sendReport = function (answer) {
+                let data = {
+                  recordId: recordData.pnx.control.recordid[0],
+                  index: 0,
+                  page: 0,
+                  scope: '',
+                  query: '',
+                  searchType: '',
+                  sessionId: user.id,
+                  tab: '',
+                  title: recordData.pnx.display.title[0],
+                  type: 'resource_problem',
+                  subject: $scope.report.subject,
+                  view: self.view.code,
+                  inst: self.view.institution.code,
+                  loggedIn: self.user.isLoggedIn()(),
+                  onCampus: self.user.isOnCampus(),
+                  user: self.user.name,
+                  fe: '',
+                  //ip: self.view.ip.address,
+                  ip: self.view.ip,
+                  message: $scope.report.message,
+                  replyTo: $scope.report.replyTo || self.user.email,
+                  userAgent: navigator.userAgent
+                };
+                if ($scope.report.replyTo.length > 0 && $scope.report.message.length > 0) {
+                  $mdDialog.hide();
+
+                  $http({
+                    method: 'POST',
+                    url: reportAProblemURL,
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'X-From-ExL-API-Gateway': undefined
+                    },
+                    cache: false,
+                    data: data
+                  }).then(function (response) {
+                    let message = self.translate.instant('nui.customization.report_a_problem.success') || 'Thank you for your feedback!';
+                    MessageService.show(message, { scope: $scope, hideDelay: 5000 });
+                  }, function (response) {
+                    let message = self.translate.instant('nui.customization.report_a_problem.fail') || 'Unable to submit feedback.';
+                    MessageService.show(message, { scope: $scope, hideDelay: 5000 });
+                  });
                 }
               }
-            });
-          }; //showReportAProblemForm
-        });
+            }
+          });
+        }; //showReportAProblemForm
       });
-    }
+    });
   }
+
 
   get currentRecord() {
-    let selector = 'prm-full-view-service-container'; //'prm-full-view-service-container'
-    let element = angular.element(document.querySelector(selector));
-    if (element) {
-      let elementCtrl = element.controller(selector);
-     // console.log(elementCtrl);
-      return elementCtrl.item;
-    }
-    return null;
+  let selector = 'prm-full-view-service-container'; //'prm-full-view-service-container'
+  let element = angular.element(document.querySelector(selector));
+  if (element) {
+    let elementCtrl = element.controller(selector);
+    // console.log(elementCtrl);
+    return elementCtrl.item;
   }
+  return null;
+}
 }
 
-ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$translate', '$http','reportAProblemURL', 'MessageService'];
+ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$translate', '$http', 'reportAProblemURL', 'MessageService'];
 
 export let reportAProblemcomponent = {
-    name: 'custom-report-a-problem',
-    enabled: true,
-    appendTo: 'prm-service-header-after',
-    enableInView: '.*',
-    config: {
-        bindings: { parentCtrl: '<' },
-        controller: ReportAProblemController,
-        template: ''
-    }
+  name: 'custom-report-a-problem',
+  enabled: true,
+  appendTo: 'prm-service-header-after',
+  enableInView: '.*',
+  config: {
+    bindings: { parentCtrl: '<' },
+    controller: ReportAProblemController,
+    template: ''
+  }
 }
