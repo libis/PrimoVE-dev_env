@@ -18,7 +18,7 @@ class ReportAProblemController {
   $onInit() {
     let self = this;
     self.parentCtrl = this.parentCtrl.parentCtrl;
-    
+
     let servicesWatcher = self.$scope.$watch(() => {
       let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
       let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
@@ -27,7 +27,7 @@ class ReportAProblemController {
       return (servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
     }, (n, o) => {
       if (n == true) {
-        if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
+        if (/^nui\.getit\./.test(self.parentCtrl.service.title)) {
           self.showReportAProblembutton();
         }
         servicesWatcher(); //deregister watcher
@@ -38,7 +38,8 @@ class ReportAProblemController {
 
   showReportAProblembutton() {
     var self = this;
-    self.$element.parent().parent().find('h4').after(self.$compile(self.reportAProblemHTML)(self.$scope));
+
+    self.$element.parent().parent().find('h4').after(self.$compile(reportAProblemHTML)(self.$scope));
 
     let recordData = self.currentRecord;
 
@@ -47,6 +48,8 @@ class ReportAProblemController {
 
       Primo.view.then(view => {
         self.view = view;
+
+
 
         self.showReportAProblemForm = ($event) => {
           self.$mdDialog.show({
@@ -108,6 +111,7 @@ class ReportAProblemController {
                     let message = self.translate.instant('nui.customization.report_a_problem.fail') || 'Unable to submit feedback.';
                     MessageService.show(message, { scope: $scope, hideDelay: 5000 });
                   });
+
                 }
               }
             }
@@ -135,7 +139,8 @@ ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog
 export let reportAProblemcomponent = {
   name: 'custom-report-a-problem',
   enabled: true,
-  appendTo: 'prm-service-header-after',
+//   appendTo: 'prm-service-header-after',
+  appendTo: 'prm-full-view-service-container-after',
   enableInView: '.*',
   config: {
     bindings: { parentCtrl: '<' },
