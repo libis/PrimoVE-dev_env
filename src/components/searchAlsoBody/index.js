@@ -2,7 +2,7 @@ import searchAlsoBodyHTML from './searchAlsoBody.html'
 
 class SearchAlsoBodyController {
   constructor($location) {
-    this.location = $location;
+    this.$location = $location;
   }
 
   $onInit() {
