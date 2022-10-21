@@ -1,4 +1,5 @@
 import liriasHTML from './lirias.html'
+import './lirias.css'
 
 class LiriasController {
     constructor() {
