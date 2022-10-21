@@ -1,7 +1,6 @@
 const syncFetch = require('sync-fetch');
 
 window.blendedSearch = {
-    originalLimit: 10,
     get vid() {
         return window.appConfig['vid'];
     },
@@ -32,10 +31,10 @@ window.blendedSearch = {
         let cloned_params = blendedSearch.set2.params;
 
         if (blendedSearch.hasBlendKey && cloned_params.tab !== 'jsearch_slot') {
-            console.log('BLENDING: Blend allowed');
+//            console.log('BLENDING: Blend allowed');
             return true;
         }
-        console.log('BLENDING: Blend not allowed');
+//        console.log('BLENDING: Blend not allowed');
         return false;
     },
     searchURL(url_set, url_path) {
@@ -290,20 +289,20 @@ window.blendedSearch = {
 pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
     blendedSearch.originalLimit = reqRes.params.limit;
     blendedSearch.init(reqRes);
-    if (blendedSearch.allowed) {    
+    //if (blendedSearch.allowed) {    
         blendedSearch.set2.search();
 
         reqRes.params.limit = blendedSearch.set1.limit;
         reqRes.params.offset = blendedSearch.set1.offset;
         return reqRes;
-    }
+    //}
 
     return reqRes;
 })
 
 // federated search and merge result set
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
-    if (blendedSearch.allowed) {
+//    if (blendedSearch.allowed) {
         if (reqRes.config.params['scope'] != 'lirias_profile') {
             let result = blendedSearch.set2.data;
             blendedSearch.set1.data = JSON.parse(JSON.stringify(reqRes.data));
@@ -332,7 +331,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
             // console.log(reqRes.data);
 
         }
-    }
+//    }
     return reqRes;
 //});
 

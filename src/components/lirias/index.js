@@ -15,6 +15,10 @@ class LiriasController {
         }        
     }
 
+    get show() {
+        return blendedSearch.allowed;
+    }
+
     goLirias() {
         let self = this;
     

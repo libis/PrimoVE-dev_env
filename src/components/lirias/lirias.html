@@ -1,4 +1,4 @@
-<div ng-hide="$ctrl.total == 0">
+<div ng-show="$ctrl.total > 0 && $ctrl.show">
     <md-button class="md-raised md-primary" ng-click="$ctrl.goLirias()">
         <span>{{$ctrl.total}}</span>
         <span translate="blend.label.results_in_lirias"></span> 
