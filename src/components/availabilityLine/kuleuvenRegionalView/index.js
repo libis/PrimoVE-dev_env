@@ -1,11 +1,13 @@
 class AvailabilityLineController {
   constructor($scope, $translate) {
+    this.$scope = $scope;
+    this.$translate = $translate;
+  }
+
+  $onInit() {
     let self = this;
 
     self.almaInstitutionsFilterInstCodeList = ["32KUL_HUB", "32KUL_KHM", "32KUL_KHK", "32KUL_KHL", "32KUL_KATHO", "32KUL_LUCAWENK"]
-
-    self.$scope = $scope;
-    self.$translate = $translate;
     self.$ctrl = self.parentCtrl.parentCtrl;
     self.$scope.$ctrl = self.parentCtrl.parentCtrl;
 

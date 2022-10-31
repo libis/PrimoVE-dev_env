@@ -1,7 +1,10 @@
 class RemoveLoginController {
-  constructor($scope,$element) {
-    let self = this;
+  constructor($element) { 
+    this.$element = $element;
+  }
 
+  $onInit() {
+    let self = this;
     // $ctrl.isLoggedInIDP()
     self.parentCtrl = this.parentCtrl.parentCtrl
     
@@ -9,13 +12,13 @@ class RemoveLoginController {
     if(typeof self.parentCtrl.isSignedIn === "function"){
       var s = document.createElement("style");
       s.innerHTML = "prm-user-area-expandable > button, md-menu-item.my-library-card-ctm { display: none !important }";
-      $element.append(angular.element(s));
+      self.$element.append(angular.element(s));
     }
 
   }
 }
 
-RemoveLoginController.$inject = ['$scope','$element'];
+RemoveLoginController.$inject = ['$element'];
 
 export let RemoveLoginComponent = {
   name: 'custom-remove-login',

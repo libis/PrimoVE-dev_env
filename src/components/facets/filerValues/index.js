@@ -57,7 +57,7 @@ export let filterFacetValuesConfig = {
     name: 'custom-filter-facet-values',
     enabled: false,
     appendTo: 'prm-facet-after',
-    enableInView: '32KUL_KUL:JESUITS,32KUL_LIBIS_NETWORK:JESUITS_UNION',
+    enableInView: '32KUL_KUL:JESUITS|32KUL_LIBIS_NETWORK:JESUITS_UNION',
     config: {
         bindings: { parentCtrl: '<' },
         controller: filterFacetValuesController,

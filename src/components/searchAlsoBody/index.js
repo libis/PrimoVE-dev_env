@@ -2,12 +2,16 @@ import searchAlsoBodyHTML from './searchAlsoBody.html'
 
 class SearchAlsoBodyController {
   constructor($location) {
+    this.$location = $location;
+  }
+
+  $onInit() {
     let self = this;
     Primo.view.then(v => {
       self.viewCode = v.code;      
       self.targets = self._targets();    
     });
-    this.location = $location;
+    this.location = this.$location;
   }
 
   get search() {
@@ -39,47 +43,6 @@ class SearchAlsoBodyController {
     let self = this;
 
     return [
-      /*
-      {
-        "view": "41SLSP_RZS:VU15",
-        "name": "swisscovery RZS",
-        "url": "https://slsp-rzs.primo.exlibrisgroup.com/discovery/search?&tab=41SLSP_RZS_MyInst_and_CI&search_scope=MyInst_and_CI&vid=41SLSP_RZS:VU15&",
-        "img": "https://slsp-rzs.primo.exlibrisgroup.com/discovery/custom/41SLSP_RZS-VU15/img/favicon_everything_view.png",
-        "tooltip": "nui.customizing.idslu.search_also.tooltip.swisscovery-rzs",
-        mapping: function mapping(search) {
-          return self.searchTerms;
-        }
-      },
-      {
-        "view": "41SLSP_RZS:VU06",
-        "name": "swisscovery RZS - HSLU",
-        "url": "https://slsp-rzs.primo.exlibrisgroup.com/discovery/search?&tab=41SLSP_RZS_MyInst_and_CI&search_scope=MyInst_and_CI&vid=41SLSP_RZS:VU06&",
-        "img": "https://slsp-rzs.primo.exlibrisgroup.com/discovery/custom/41SLSP_RZS-VU15/img/favicon_hslu_view.png",
-        "tooltip": "nui.customizing.idslu.search_also.tooltip.swisscovery-rzs-hslu",
-        mapping: function mapping(search) {
-          return self.searchTerms;
-        }
-      },
-      {
-        "view": "41SLSP_RZS:VU07",
-        "name": "swisscovery RZS - ZHB/Uni/PH",
-        "url": "https://slsp-rzs.primo.exlibrisgroup.com/discovery/search?&tab=41SLSP_RZS_MyInst_and_CI&search_scope=MyInst_and_CI&vid=41SLSP_RZS:VU07&",
-        "img": "https://slsp-rzs.primo.exlibrisgroup.com/discovery/custom/41SLSP_RZS-VU15/img/favicon_zhb_view.png",
-        "tooltip": "nui.customizing.idslu.search_also.tooltip.swisscovery-rzs-zhbuniph",
-        mapping: function mapping(search) {
-          return self.searchTerms;
-        }
-      }, {
-        "view": "41SLSP_NETWORK:VU1_UNION",
-        "name": "swisscovery",
-        "url": "https://slsp-network.primo.exlibrisgroup.com/discovery/search?&tab=41SLSP_NETWORK&search_scope=DN_and_CI&vid=41SLSP_NETWORK:VU1_UNION&",
-        "img": "https://slsp-network.primo.exlibrisgroup.com/discovery/custom/41SLSP_RZS-VU15/img/favicon_swisscovery.png",
-        "tooltip": "nui.customizing.idslu.search_also.tooltip.swisscovery",
-        mapping: function mapping(search) {
-          return self.searchTerms;
-        }
-      }, 
-      */
      {
         "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL',       
         "name": "Google Scholar",

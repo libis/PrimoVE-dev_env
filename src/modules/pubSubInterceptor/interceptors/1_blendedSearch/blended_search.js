@@ -52,6 +52,21 @@ window.blendedSearch = {
         
         return esURL;
     },    
+    searchURL(url_set, url_path) {
+        let esURL = new URL(`${window.location.origin}${url_path}`);
+
+        Object.keys(url_set.params).forEach(key => {
+            if (url_set.params[key] != undefined) {
+                if (key == 'scope') {
+                    esURL.searchParams.append(key, 'lirias_profile');
+                } else {
+                    esURL.searchParams.append(key, url_set.params[key])
+                }
+            }
+        });
+        
+        return esURL;
+    },    
     init: (reqRes) => {
         let self = this;        
         blendedSearch.set1.url = reqRes.url;
@@ -285,7 +300,7 @@ window.blendedSearch = {
 
 //angular.module('blendedSearch', ['ng']).run(() => {
 
-//document.addEventListener('pubSubInterceptorsReady', (e) => {
+////document.addEventListener('pubSubInterceptorsReady', (e) => {
 pubSub.subscribe('before-pnxBaseURL', (reqRes) => {
     blendedSearch.originalLimit = reqRes.params.limit;
     blendedSearch.init(reqRes);

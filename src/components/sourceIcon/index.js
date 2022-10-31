@@ -9,22 +9,32 @@ import sourceIconHTML from './sourceIcon.html'
 
 class SourceIconController {
   constructor($scope, $element, $compile) {
-    var self = this;
-    var parentCtrl = $scope.$parent.$ctrl.parentCtrl;
-    var iconConf = [{
+    this.$scope = $scope;
+    this.$element = $element;
+    this.$compile = $compile;
+  }
+
+  $onInit() {
+    let self = this;
+    let $scope = self.$scope;
+    let $element = self.$element;
+    let $compile = self.$compile;
+
+    let parentCtrl = $scope.$parent.$ctrl.parentCtrl;
+    let iconConf = [{
       'sourceid': 'lirias',
       'iconUrl': 'custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/lirias.jpg',
       'iconText': 'Lirias'
     }];
 
-    var iconConfSources = iconConf.map(obj => obj.sourceid);
+    let iconConfSources = iconConf.map(obj => obj.sourceid);
 
     self.sourceid = null;
     if ('sourceid' in parentCtrl.item.pnx.control) {
       self.sourceid = parentCtrl.item.pnx.control.sourceid[0].toLowerCase();
 
       if (iconConfSources.includes(self.sourceid)) {
-        self.icon = iconConf.find(function(x) {
+        self.icon = iconConf.find(function (x) {
           return x.sourceid === self.sourceid;
         });
       }

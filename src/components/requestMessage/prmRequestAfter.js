@@ -1,14 +1,21 @@
 class RequestMessageController {
+
+
     constructor($templateCache, $translate) {
-        this.instituttion = window.appConfig.vid.split(":")[0];
-        this.requestType = undefined;
-        this.pickupInstitution = undefined;
-        this.$ctrl = this.parentCtrl.parentCtrl;
+        let self = this;
+        this.$templateCache = $templateCache;
         this.$translate = $translate;
-        this.$ctrl.requestConsortiumFormDescription = 'almaRequest.formDescription';
+    }
+
+    $onInit() {
+        let self = this;
+        self.instituttion = window.appConfig.vid.split(":")[0];
+        self.requestType = undefined;
+        self.pickupInstitution = undefined;
+        self.$ctrl = this.parentCtrl.parentCtrl;
+        self.$ctrl.requestConsortiumFormDescription = 'almaRequest.formDescription';
         let template = 'components/search/fullView/getit/opac/request/request.html';
-        this.$templateCache =  $templateCache
-        $templateCache.put (template, $templateCache.get(template).replaceAll('$ctrl.requestFormDescription', '$ctrl.requestConsortiumFormDescription'));
+        self.$templateCache.put (template, self.$templateCache.get(template).replaceAll('$ctrl.requestFormDescription', '$ctrl.requestConsortiumFormDescription'));
     }
 
     $doCheck() {

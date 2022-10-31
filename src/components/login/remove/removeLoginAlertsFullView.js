@@ -1,5 +1,9 @@
 class RemoveLoginAlertsFullViewController {
-  constructor($scope,$element) {
+  constructor($element) { 
+    this.$element = $element;
+  }
+
+  $onInit() {
     let self = this;
     // $ctrl.isLoggedInIDP()
     self.parentCtrl = this.parentCtrl.parentCtrl
@@ -13,13 +17,13 @@ class RemoveLoginAlertsFullViewController {
     if( self.parentCtrl.reqAlert ){
       var s = document.createElement("style");
       s.innerHTML = "alma-htgi-tabs > prm-alert-bar { display: none  !important }";
-      $element.append(angular.element(s));
+      self.$element.append(angular.element(s));
     }
 
   }
 }
 
-RemoveLoginAlertsFullViewController.$inject = ['$scope','$element'];
+RemoveLoginAlertsFullViewController.$inject = ['$element'];
 
 export let RemoveLoginAlertsFullViewComponent = {
   name: 'custom-remove-login-alerts-full-view',

@@ -12,9 +12,18 @@ app.run(($templateCache) => {
 */
 
 class AltMetricController {
-  constructor($element, $window, $scope) {
-    var self = this;
+
+  constructor($window, $scope) {
+    this.$window = $window;
+    this.$scope = $scope;
+  }
+
+  $onInit() {
+    let self = this;
+    let $scope = self.$scope;
+    let $window= self.$window;
     let item = self.parentCtrl.parentCtrl.item;
+
 
     self.doi = '';
     self.isbn = '';
@@ -62,7 +71,7 @@ class AltMetricController {
   }
 }
 
-AltMetricController.$inject = ['$element', '$window', '$scope'];
+AltMetricController.$inject = ['$window', '$scope'];
 
 export let altMetricComponent = {
   name: 'custom-altmetric',  
