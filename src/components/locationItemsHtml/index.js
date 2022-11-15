@@ -37,7 +37,7 @@ LocationItemsHtmlController.$inject = ['$scope', '$element'];
 
 export let locationItemsHtmlcomponent = {
     name: 'custom-location-items-html',
-    enabled: true,
+    enabled: false,
     appendTo: 'prm-location-items-after',
     enableInView: '.*',
     config: {
