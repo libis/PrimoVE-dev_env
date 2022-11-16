@@ -112,6 +112,13 @@ configCentral = () => {
         }
     }))
 
+    viewdirs.forEach(viewdir => {
+        if (/32KUL_LIBIS_NETWORK/.test(viewdir) ) {
+            process.env.VIEW = viewdir.replace("-", ":");            
+            configiew();
+        }
+    })
+
 }
 
 configiew = () => {
