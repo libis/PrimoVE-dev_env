@@ -153,38 +153,50 @@ window.linksServiceRewrite = {
         // console.log (source)
         if (  doc.pnx.display.source.filter(s => source.includes(s)).length > 0 ) {
             if (doc.delivery){
-
 /*
                 console.log ( doc.delivery.deliveryCategory )
                 console.log ( doc.delivery.deliveryCategory.includes("Remote Search Resource") )
+                console.log (doc.delivery.availabilityLinks )
                 console.log (doc.delivery.availabilityLinksUrl )
                 console.log (doc.delivery.availabilityLinksUrl.length )
                 console.log (doc.delivery.availabilityLinksUrl.length > 0)
 */
-
                 if (
                     ( doc.delivery.deliveryCategory.includes("Remote Search Resource") || doc.delivery.deliveryCategory.includes("EXTERNAL-P") )
                     &&
                     doc.delivery.availabilityLinksUrl.length > 0
                 ){
+                    
                     var displayConstant   = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
-                    // console.log ( displayConstant )
+
+//                    console.log ( displayConstant )
 
                     if ( displayConstant ){
-                        /*
-                        console.log ( displayConstant )
-                        console.log ( pubSub.translate.instant('delivery.code.' + displayConstant) );
-                        console.log ( doc.delivery.availabilityLinksUrl[0] )
-                        */
                         doc.delivery.displayedAvailability = displayConstant;
                         doc.delivery.availability[0] = displayConstant;
-    
-                        doc.delivery.electronicServices[0].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
-                        doc.delivery.electronicServices[0].serviceUrl = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
+
+/* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
+//                        doc.delivery.availabilityLinks = ['directlink']
+//                        window.appConfig['system-configuration']['enable_direct_linking_in_record_full_view'] = true;
+
+                        if ( doc.delivery.deliveryCategory.includes("Remote Search Resource")  ) {
+                            doc.delivery.electronicServices[0].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
+                            doc.delivery.electronicServices[0].serviceUrl = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");   
+                        }
+                        if ( doc.delivery.deliveryCategory.includes("EXTERNAL-P") && doc.delivery.availabilityLinksUrl[0]  ) {
+                            doc.delivery.electronicServices[0] = { serviceUrl: window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U")    }
+                        }
+
+                        doc.delivery.availabilityLinksUrl[0] = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
+                        doc.delivery.link = doc.delivery.link.filter( l => { return ! new RegExp(displayConstant).test(l.linkURL) } )
+
+                        console.log ( doc.delivery.link)
+
                     }   
+
+                   
                 }
-    
-                // console.log ( doc.pnx.display.source )    
+
             }
         }
         
