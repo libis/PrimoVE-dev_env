@@ -91,6 +91,17 @@ const config = {
 
 configCentral = () => {
     // console.log("\nCENTRAL\n\n")
+/*    
+    config.output.clean = true;
+    viewdirs.forEach(viewdir => {
+        if (/32KUL_LIBIS_NETWORK/.test(viewdir) ) {
+            process.env.VIEW = viewdir.replace("-", ":");            
+            configiew();
+        }
+    })
+*/ 
+    config.output.clean = true;
+
     copy_plugin_patterns = copy_plugin_patterns.concat([
         { from: path.resolve(root, `resources/${centralPackage}/html`), to: `${distDir}/${centralPackage}/html` },
         { from: path.resolve(root, `resources/${centralPackage}/img`), to: `${distDir}/${centralPackage}/img` }
@@ -112,12 +123,7 @@ configCentral = () => {
         }
     }))
 
-    viewdirs.forEach(viewdir => {
-        if (/32KUL_LIBIS_NETWORK/.test(viewdir) ) {
-            process.env.VIEW = viewdir.replace("-", ":");            
-            configiew();
-        }
-    })
+
 
 }
 
