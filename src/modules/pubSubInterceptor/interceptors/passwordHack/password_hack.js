@@ -74,5 +74,12 @@ window.passwordHack = {
             return reqRes;
         })
 
+        pubSub.subscribe('after-openUrl', (reqRes) => {
+            let links = reqRes.data.delivery.link;
+            if (links) {
+                reqRes.data.delivery['link'] = passwordHack.removePasswordLinks(links);
+            }
+            return reqRes;
+        })
    // });
 //});
