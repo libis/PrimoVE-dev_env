@@ -20,11 +20,12 @@ class ReportAProblemController {
     self.parentCtrl = this.parentCtrl.parentCtrl;
 
     let servicesWatcher = self.$scope.$watch(() => {
+      let services = self.parentCtrl.service !== undefined;
       let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
       let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
       let calculatePcDeliveryDone = self.parentCtrl.fullViewService.calculatePcDeliveryDone;
       let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
-      return (servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
+      return (services && servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
     }, (n, o) => {
       if (n == true) {
         if (/^nui\.getit\./.test(self.parentCtrl.service.title)) {
@@ -95,9 +96,9 @@ class ReportAProblemController {
                 if ($scope.report.replyTo.length > 0 && $scope.report.message.length > 0) {
                   $mdDialog.hide();
 
-                  $http({
+                  self.$http({
                     method: 'POST',
-                    url: reportAProblemURL,
+                    url: self.reportAProblemURL,
                     headers: {
                       'Content-Type': 'application/json',
                       'X-From-ExL-API-Gateway': undefined
@@ -105,11 +106,11 @@ class ReportAProblemController {
                     cache: false,
                     data: data
                   }).then(function (response) {
-                    let message = self.translate.instant('nui.customization.report_a_problem.success') || 'Thank you for your feedback!';
-                    MessageService.show(message, { scope: $scope, hideDelay: 5000 });
+                    let message = self.$translate.instant('nui.customization.report_a_problem.success') || 'Thank you for your feedback!';
+                    self.MessageService.show(message, { scope: $scope, hideDelay: 5000 });
                   }, function (response) {
-                    let message = self.translate.instant('nui.customization.report_a_problem.fail') || 'Unable to submit feedback.';
-                    MessageService.show(message, { scope: $scope, hideDelay: 5000 });
+                    let message = self.$translate.instant('nui.customization.report_a_problem.fail') || 'Unable to submit feedback.';
+                    self.MessageService.show(message, { scope: $scope, hideDelay: 5000 });
                   });
 
                 }
