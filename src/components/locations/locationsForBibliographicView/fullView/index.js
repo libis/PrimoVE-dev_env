@@ -15,6 +15,10 @@ class fullLocationsForBibliographicViewController {
         self.parentCtrl = this.parentCtrl.parentCtrl;
         self.item = this.parentCtrl.item;
         self.pnx = this.item.pnx;
+/*
+        console.log ("locations/fullView self")
+        console.log (self )
+*/
 
         const library_filter_array = {
             'msb jesuit armarium': {
@@ -26,10 +30,9 @@ class fullLocationsForBibliographicViewController {
                 //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
             },
             'anet ruusbroec collection': {
-                "url": "https://anet.be/record/uantwerpen/opacuantwerpen/" + self.pnx.control.sourcerecordid + "/N"
+                "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.control.sourcerecordid + "/N"
             }
         }
-
 
         self.delivery_library = self.pnx.display.lds10.map(lds10 => {
             var library_code = lds10.toLowerCase();
@@ -42,7 +45,9 @@ class fullLocationsForBibliographicViewController {
         self.parentElement = self.$element.parent().parent()[0];
 
         let translatorWatcher = this.$scope.$watch(() => {
-            return this.$translate.isReady()
+            let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
+            let translationReady = this.$translate.isReady();
+            return (calculatePrimaViewItDone && translationReady);
         }, (n, o) => {
             if (n == true) {
                 self.insertLocationsLinksSection()
@@ -52,9 +57,6 @@ class fullLocationsForBibliographicViewController {
     }
 
     insertLocationsLinksSection() {
-        console.log ("this.pnx:")
-        console.log (this.pnx.display)
-
         
         if (typeof this.pnx.display.lds10 !== 'undefined' && this.pnx.display.lds10.length > 0) {
             let locationsLinksSectionData = {
@@ -80,6 +82,9 @@ class fullLocationsForBibliographicViewController {
     }
 
     // Wait for the target element to be created.
+
+
+
     waitForTargetThenMoveSection(sectionTitleSelector, sectionElement) {
         let unbindWatcher = this.$scope.$watch(() =>
         this.parentElement.querySelector(sectionTitleSelector),
@@ -129,7 +134,7 @@ fullLocationsForBibliographicViewController.$inject = ['$element', '$translate',
 
 export let fullLocationsForBibliographicViewConfig = {
     name: 'custom-locations-bibliographic-view',
-    enabled: false,
+    enabled: true,
     appendTo: 'prm-full-view-after',
     enableInView: '32KUL_KUL:JESUITS|32KUL_LIBIS_NETWORK:JESUITS_UNION',
     config: {

@@ -1,0 +1,20 @@
+prm-search-result-availability-line > div, prm-search-result-availability-line > div.layout-row {
+    display: none !important;
+}
+
+ul.availability-line.availability-line-jesuits-view { 
+    list-style-type: none;
+    margin:0.2 0 0 0;
+    padding:0;
+    margin-block-start: 0.2em;
+    margin-block-end: 0.1em;
+  }
+
+ul.availability-line.availability-line-jesuits-view li {
+  /* min-height: 1.8em; */
+  min-height: auto; 
+}
+
+prm-search-result-availability-line:before {
+    height: auto;
+}

@@ -12,6 +12,7 @@ class AvailabilityLineController {
     self.$ctrl = self.parentCtrl.parentCtrl;
     self.$scope.$ctrl = self.parentCtrl.parentCtrl;
 
+    // Filter sources from pnx via self.sourceList
     let sources = self.$ctrl.result.pnx.display.source.filter( source => {
       console.log (source)
       return ( self.sourceList.includes(source.toLowerCase()) )

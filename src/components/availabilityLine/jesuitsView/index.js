@@ -1,120 +1,117 @@
+
+import availabilityLineHTML from './availabilityLine.html'
+import availabilityLineCSS from './availabilityLine.css'
 class AvailabilityLineController {
 
-  constructor($scope, $translate) {
+  constructor($scope, $translate, $element) {
     this.$scope = $scope;
     this.$translate = $translate;
+    this.$element = $element;
   }
 
 
   $onInit() {
     let self = this;
     self.almaInstitutionsFilterInstCodeList = ["32KUL_KUL", "32KUL_KADOC"]
+    self.pnxDisplaySourceList = { "RUUSBROEC_ANET": {"instCode" : "ANET Ruusbroec Collection", instName: 'Ruusbroec Collection' } }
     self.$ctrl = self.parentCtrl.parentCtrl;
     self.$scope.$ctrl = self.parentCtrl.parentCtrl;
+    self.pnx = self.$ctrl.result.pnx;
 
-/*
-    console.log("AvailabilityLineController")
-    console.log(self)
-    console.log( self.$ctrl.result )
-*/
+    self.library_filter_array = {
+      'msb jesuit armarium': {
+          "url": "https://kuleuven.limo.libis.be/permalink/32KUL_KUL/tuno99/" + self.pnx.control.recordid
+          //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KULeuven&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab&noLogin=true"
+      },
+      'kadoc jesuit armarium': {
+          "url": "https://kadoc.limo.libis.be/permalink/32KUL_KADOC/dtohan/" + self.pnx.control.recordid
+          //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
+      },
+      'anet ruusbroec collection': {
+          "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.control.sourcerecordid + "/N"
+      }
+    }
+
+    let translatorWatcher = this.$scope.$watch(() => {
+      let translationReady = this.$translate.isReady();
+      return (translationReady);
+    }, (n, o) => {
+        if (n == true) {
+            // self.replaceAvailabiltyLine()
+            translatorWatcher();
+        }
+    }, false);
+
+
+    self.$ctrl.delivery_library = self.pnx.display.lds10.map(lds10 => {
+      var library_code = lds10.toLowerCase();
+      lds10 = self.library_filter_array[library_code];
+      lds10['name'] = this.$translate.instant(library_code);
+
+      return lds10;
+    });
+
+//    self.parentElement = self.$element.parent().parent()[0];
+
+  }
+
+  /*
+  replaceAvailabiltyLine() {
+    let self = this;
+
+
+    self.delivery_library = self.pnx.display.lds10.map(lds10 => {
+      var library_code = lds10.toLowerCase();
+      lds10 = self.library_filter_array[library_code];
+      lds10['name'] = this.$translate.instant(library_code);
+
+      return lds10;
+    });
+
+    console.log ( self.delivery_library )
+   
 
     self.$scope.$ctrl.getPlaceHolders = function () {
       return self.$scope.$ctrl.placeHolders;
     }
 
-    /*
-    console.log ( self.$ctrl.result.delivery.almaInstitutionsList )
-    console.log ( self.$ctrl)
-    console.log ( "displayedAvailability:"+ self.$ctrl.displayedAvailability );
-    console.log ( "delivery.displayedAvailability:"+ self.$ctrl.result.delivery.displayedAvailability)
-    console.log ( "delivery.availability:"+self.$ctrl.result.delivery.availability[0] );
-    */
-
-    self.$ctrl.displayedAvailability.forEach(availability => {
-      /*
-      console.log(" showOtherLibraries(availability) " + self.$ctrl.showOtherLibraries(availability))
-      console.log(" showDisplayOtherLocations() " + self.$ctrl.showDisplayOtherLocations())
-      console.log(" showDisplayLocation()" + self.$ctrl.showDisplayLocation())
-      console.log(" getCoverage()" + self.$ctrl.getCoverage())
-      */
+    if (typeof this.pnx.display.lds10 !== 'undefined' && this.pnx.display.lds10.length > 0) {
+      
       self.$ctrl.showOtherLibraries = function () { false }
       self.$ctrl.showDisplayOtherLocations = function () { false }
+      self.$ctrl.result.delivery.availability = ["available_in_library"];
 
-      /*
-      console.log ( "ifShowAvailability(availability):"+ self.$ctrl.ifShowAvailability(availability) );
-      console.log ( "!$ctrl.isCollectionDiscoveryCollection:"+ self.$ctrl.isCollectionDiscoveryCollection );
-      console.log ( "$ctrl.showTimer:"+ self.$ctrl.showTimer);
-      console.log ( "$ctrl.handleDueDate(availability):"+ self.$ctrl.handleDueDate(availability) );
-      console.log ( "$ctrl.isPhysical():"+ self.$ctrl.isPhysical());
-      console.log ( "$translate.instant('delivery.code.available_in_library') :"+ $translate.instant('delivery.code.'+ self.$ctrl.handleDueDate(availability) )  );
-      console.log (  $translate.instant('delivery.code.'+ self.$ctrl.handleDueDate(availability) )  );
-      */
-      // ng-if="::($ctrl.showDisplayOtherLocations() || $ctrl.showDisplayLocation()  || $ctrl.showOtherLibraries(availability)) && $ctrl.isPhysical($index)"
-      var availabilityInstitutions = []
-      if (self.$ctrl.result.delivery.almaInstitutionsList) {
-        availabilityInstitutions = self.$ctrl.result.delivery.almaInstitutionsList.filter(inst => {
-          return (inst.availabilityStatus === "available_in_institution" && self.almaInstitutionsFilterInstCodeList.includes(inst.instCode))
-        })
-      }
+
+      let availabilityInstitutionsNames = self.delivery_library.map ( library => library["name"])
       
-      var availabilityInstitutionsNames = availabilityInstitutions.map(inst => inst.instName)
 
-      if (self.$ctrl.result.delivery.availability[0] === "available_in_library") {
+      if (availabilityInstitutionsNames.length > 0) {
+        // replace instname from availabilityText with list of instnames
+        if (availabilityInstitutionsNames.length === 1) {
+          self.$ctrl.placeHolders = {
+            idx_0: "AvailabilityLineController TEST0",
+            idx_1: availabilityInstitutionsNames[0],
+            idx_2: "AvailabilityLineController TEST2"
+          }
+        } else {
 
-        alert ('Check how tis works ???\nNeed to config delivery in Import Profile ?\n physical vs electronic??')
-
-
-        if (self.$ctrl.result.delivery.displayedAvailability === "available_in_library" || self.$ctrl.result.delivery.displayedAvailability === null ) {
-          availabilityInstitutionsNames.unshift(window.appConfig["primo-view"].institution.description);
-        }
-        if (availabilityInstitutionsNames.length > 0) {
-          // replace instname from availabilityText with list of instnames
-          if (availabilityInstitutionsNames.length === 1) {
-            self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
-              idx_1: availabilityInstitutionsNames[0],
-              idx_2: "AvailabilityLineController TEST2"
-            }
-          } else {
-
-            self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
-              idx_1: availabilityInstitutionsNames.slice(0, -1).join(', ') + ' and ' + availabilityInstitutionsNames.slice(-1),
-              idx_2: "AvailabilityLineController TEST2"
-            }
+          self.$ctrl.placeHolders = {
+            idx_0: "AvailabilityLineController TEST0",
+            idx_1: availabilityInstitutionsNames.slice(0, -1).join(', ') + ' and ' + availabilityInstitutionsNames.slice(-1),
+            idx_2: "AvailabilityLineController TEST2"
           }
         }
       }
-
-
-      
-      // if (self.$ctrl.result.delivery.bestlocation === null) {
-      if (self.$ctrl.result.delivery.availability[0] === "no_inventory") {
-        self.$ctrl.result.delivery.availability = ["available_in_library"];
-        if (availabilityInstitutionsNames.length > 0) {
-          if (availabilityInstitutionsNames.length === 1) {
-            self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
-              idx_1: availabilityInstitutionsNames[0],
-              idx_2: "AvailabilityLineController TEST2"
-            }
-          } else {
-            self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
-              idx_1: availabilityInstitutionsNames.slice(0, -1).join(', ') + ' and ' + availabilityInstitutionsNames.slice(-1),
-              idx_2: "AvailabilityLineController TEST2"
-            }
-          }
-        }
-      }
-    });
+    }   
   }
+*/
+
 }
 
-AvailabilityLineController.$inject = ['$scope', '$translate'];
+AvailabilityLineController.$inject = ['$scope', '$translate', "$element"];
 
 export let availabilityLineLocationsForKULeuvenRegionalViewwConfig = {
-  name: 'custom-availability-line-regional-view',
+  name: 'custom-availability-line-jesuits-view',
   enabled: true,
   appendTo: 'prm-search-result-availability-line-after',
   enableInView: '32KUL_KUL:JESUITS|32KUL_LIBIS_NETWORK:JESUITS_UNION',
@@ -123,6 +120,6 @@ export let availabilityLineLocationsForKULeuvenRegionalViewwConfig = {
       parentCtrl: '<'
     },
     controller: AvailabilityLineController,
-    template: ''
+    template: availabilityLineHTML
   }
 }
