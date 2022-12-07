@@ -179,8 +179,8 @@ window.blendedSearch = {
         }
     },
     limitOffset() {
-        let l1_fraction = parseFloat(Primo.bridge.translate.instant('blend.alma_fraction')) || 0.5;
-        let l2_fraction = parseFloat(Primo.bridge.translate.instant('blend.lirias_fraction')) || 0.5;
+        let l1_fraction = parseFloat(Primo.bridge.translate.instant('blend.alma_fraction')) || 1.0;
+        let l2_fraction = parseFloat(Primo.bridge.translate.instant('blend.lirias_fraction')) || 0.0;
 
         let t1 = 0;
         let l1 = Math.ceil(this.set1.params.limit * l1_fraction);
