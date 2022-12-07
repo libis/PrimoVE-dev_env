@@ -7,6 +7,7 @@
   "license": "MIT",
   "primo": {
     "url": "https://libis-network.primo.exlibrisgroup.com/",
+    "url2": "https://libis-kul-psb.primo.exlibrisgroup.com/",
     "institution": "32KUL_LIBIS_NETWORK",
     "vidId": "CENTRAL_PACKAGE",
     "build": {

@@ -10,10 +10,13 @@ window.blendedSearch = {
         return key;
     },
     get hasBlendKey() {
-        return blendedSearch.blendFilter && blendedSearch.blendFilter.length > 1;
+        return blendedSearch.blendFilter && blendedSearch.blendFilter.length > 0;
     },
     get blendFilter() {
-        let filter = Primo.bridge.translate.instant(blendedSearch.blendKey);
+        
+        //let filter = Primo.bridge.translate.instant(blendedSearch.blendKey);        
+        //let filter = 'facet_delcategory,include,Online Resource|tlevel,include,online_resources';
+        let filter = 'tlevel,include,online_resources';
 
         if (filter != blendedSearch.blendKey &&
             filter != blendedSearch.blendKey.replace(/^blend\./, '').replaceAll('_', ' ') &&
@@ -31,10 +34,8 @@ window.blendedSearch = {
         let cloned_params = blendedSearch.set2.params;
 
         if (blendedSearch.hasBlendKey && cloned_params.tab !== 'jsearch_slot') {
-//            console.log('BLENDING: Blend allowed');
             return true;
         }
-//        console.log('BLENDING: Blend not allowed');
         return false;
     },
     searchURL(url_set, url_path) {
@@ -144,17 +145,18 @@ window.blendedSearch = {
             blendedSearch.set2.data = {};
             let esURL = blendedSearch.searchURL(blendedSearch.set2, blendedSearch.set2.url);
 
-            Object.keys(blendedSearch.set2.params).forEach(key => {
-                if (blendedSearch.set2.params[key] != undefined) {
-                    if (key == 'scope') {
-                        esURL.searchParams.append(key, 'lirias_profile');
-                    } else {
-                        esURL.searchParams.append(key, blendedSearch.set2.params[key])
-                    }
-                }
-            });
+            // Object.keys(blendedSearch.set2.params).forEach(key => {
+            //     if (blendedSearch.set2.params[key] != undefined) {
+            //         if (key == 'scope') {
+            //             esURL.searchParams.append(key, 'lirias_profile');
+            //         } else {
+            //             esURL.searchParams.append(key, blendedSearch.set2.params[key])
+            //         }
+            //     }
+            // });
 
             console.log(`BLENDING: ${esURL.href}`);
+            console.log(`BLENDING: ${blendedSearch.allowed ? "ALLOWED" : "NOT ALLOWED"}`);
             //fetch result
             try {
                 result = syncFetch(esURL, { method: 'GET', headers: blendedSearch.set2.headers }).json();
@@ -360,5 +362,6 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
 //     }
 //     return reqRes;
 // })
+
     });
 //});

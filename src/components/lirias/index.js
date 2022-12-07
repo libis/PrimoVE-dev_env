@@ -8,7 +8,7 @@ class LiriasController {
 
     get total() {
         try {
-            return blendedSearch.set2.data.info.total;
+            return parseInt(blendedSearch.set2.data.info.total);
         }
         catch(e) {
             return 0;
@@ -43,6 +43,6 @@ export let liriasComponent = {
     template: liriasHTML
   },
   enabled: true,
-  appendTo: 'prm-search-result-tool-bar-after',
+  appendTo: ['prm-search-result-tool-bar-after','prm-no-search-result-after'],
   enableInView: '.*'
 }
