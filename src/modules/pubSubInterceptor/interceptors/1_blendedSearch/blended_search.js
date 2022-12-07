@@ -17,6 +17,7 @@ window.blendedSearch = {
         //let filter = Primo.bridge.translate.instant(blendedSearch.blendKey);        
         //let filter = 'facet_delcategory,include,Online Resource|tlevel,include,online_resources';
         let filter = 'tlevel,include,online_resources';
+        //let filter = '';
 
         if (filter != blendedSearch.blendKey &&
             filter != blendedSearch.blendKey.replace(/^blend\./, '').replaceAll('_', ' ') &&
