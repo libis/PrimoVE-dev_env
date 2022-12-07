@@ -1,12 +1,22 @@
 
 import availabilityLineHTML from './availabilityLine.html'
-import availabilityLineCSS from './availabilityLine.css'
+// import availabilityLineCSS from './availabilityLine.css'
 class AvailabilityLineController {
 
   constructor($scope, $translate, $element) {
     this.$scope = $scope;
     this.$translate = $translate;
     this.$element = $element;
+
+    s.setAttribute("id", "style_hide_availability" );
+    s.innerHTML = ""
+    s.innerHTML +="prm-search-result-availability-line > div, prm-search-result-availability-line > div.layout-row { display: none !important; }"
+    s.innerHTML +="ul.availability-line.availability-line-jesuits-view { list-style-type: none; margin:0.2 0 0 0; padding:0; margin-block-start: 0.2em; margin-block-end: 0.1em; }"
+    s.innerHTML +="ul.availability-line.availability-line-jesuits-view li { min-height: auto; }"
+    s.innerHTML +="prm-search-result-availability-line:before { height: auto; }"
+
+    document.getElementsByTagName("primo-explore")[0].appendChild(s);
+
   }
 
 
