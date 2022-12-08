@@ -8,6 +8,7 @@ class AvailabilityLineController {
     this.$translate = $translate;
     this.$element = $element;
 
+    var s = document.createElement("style");
     s.setAttribute("id", "style_hide_availability" );
     s.innerHTML = ""
     s.innerHTML +="prm-search-result-availability-line > div, prm-search-result-availability-line > div.layout-row { display: none !important; }"
@@ -38,7 +39,7 @@ class AvailabilityLineController {
           //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
       },
       'anet ruusbroec collection': {
-          "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.control.sourcerecordid + "/N"
+          "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.display.lds12 + "/N"
       }
     }
 
