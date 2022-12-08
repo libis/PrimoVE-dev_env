@@ -60,7 +60,7 @@ export let removeDescForDbcomponent = {
     name: 'custom-remove-desc-for-db',
     enabled: true,
     appendTo: 'prm-service-details-after',
-    enableInView: '.*',
+    enableInView: '49ECB_INST:ECB.*',
     config: {
         bindings: { parentCtrl: '<' },
         controller: RemoveDescForDbController,
