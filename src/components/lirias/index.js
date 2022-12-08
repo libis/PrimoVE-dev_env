@@ -44,5 +44,5 @@ export let liriasComponent = {
   },
   enabled: true,
   appendTo: ['prm-search-result-tool-bar-after','prm-no-search-result-after'],
-  enableInView: '!32KUL_KUL:Lirias'
+  enableInView: '32KUL_KUL:KULeuven*'
 }
