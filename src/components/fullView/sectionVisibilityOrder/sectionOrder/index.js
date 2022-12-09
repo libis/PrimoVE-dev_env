@@ -104,7 +104,7 @@ class SectionOrderController {
 
         self.parentCtrl.parentCtrl.fullViewService.servicesArray.forEach(function (service) {
             var orderId = service["scrollId"].replace(/getit_link1.*/, 'getit_link1').replace(/getit_link2.*/, 'getit_link2')
-            var styleId = 'style_section_order_' + service["scrollId"]
+            // var styleId = 'style_section_order_' + service["scrollId"]
             var order = self.servicesOrder.indexOf(orderId);
             /*
                         console.log (styleId)
@@ -124,7 +124,7 @@ class SectionOrderController {
     addStyle(order, service) {
         var self = this
 
-        var styleId = 'style_' + service["scrollId"]
+        var styleId = 'style_section_order_' + service["scrollId"]
         if (window.fullViewServiceOrder.includes(styleId)) {
             return;
         }
