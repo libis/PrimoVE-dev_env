@@ -220,24 +220,21 @@ window.linksServiceRewrite = {
     },
 
     /* Basismethode voor de vertaling van display constants in online-delivery velden waar dit niet automatisch gebeurt.
-     * Stelt subvelden $$U and $$D in als respectievelijk URL en displaylabel, incl. detectie en aanduiding van Lirias delivery URLs.
-     * Input: delivery URL met display constants --- Output: array met URL en custom displaylabel.
-     * Creatiecontext: customization van delivery URL in Primo VE basic view voor Lirias records met Full-text access.*/
+         * Stelt subvelden $$U and $$D in als respectievelijk URL en displaylabel, incl. detectie en aanduiding van Lirias delivery URLs.
+         * Input: delivery URL met display constants --- Output: array met URL en custom displaylabel.
+         * Creatiecontext: customization van delivery URL in Primo VE basic view voor Lirias records met Full-text access.*/
     getUrlAndLabel: (linkfield) => {
         try {
-            //Verdeling is subvelden
+            //Verdeling in subvelden
             var urlString = linkfield.trim().split('$$');
-            //console.log(urlString);
 
             // Extractie subveld 'U'. Deze waarde wordt als delivery URL gebruikt.
             var baseUrl = window.linksServiceRewrite.getValueFromSubfield(urlString, "U");
-            //console.log(baseUrl);
 
             /* Ophalen  en instellen labelinfo. Voor het label wordt de description uit subfield 'D' gebruikt indien aanwezig.
                  * Als subfield 'D' niet aanwezig is, wordt een default waarde ingesteld.
                  * Met custom vermelding voor Lirias delivery URLs. Andere bronnen worden als 'external source' aangegeven.*/
             var displayLabel = window.linksServiceRewrite.getValueFromSubfield(urlString, "D");
-            //console.log("display: " + displayLabel);
 
             // Toevoeging bronaanduiding in displaylabel
             if (displayLabel === undefined) {
@@ -260,17 +257,16 @@ window.linksServiceRewrite = {
     /* Methode voor de omzetting van displayconstants in online delivery velden waar dit niet automatisch gebeurt.
      * Input: Java object op basis van pnx text-file. --- Output: aangepast Java object met custom delivery URLs en display-labels.
      * Creatiecontext: Basisview in Primo VE voor Lirias records met full-text access.*/
-    transformDeliveryLinks: ({ doc = {}, recordType=null, field1 = null, field2=null, field3=null, field4=null, type = null}) => {
+    transformDeliveryLinks: ({ doc = {}, recordType = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
 
+        // Test of het om een Lirias record gaat op basis van de aanwezigheid van tenminste één originalsourceid dat start met 'lirias'.
         liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
-        console.log(liriasRec);
         if (liriasRec) {
-            console.log("Lirias record");
 
+            // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
 
             if (doc.delivery) {
-                console.log("Start section 1")
                 //SEGMENT 1: ELECTRONIC SERVICES - Vertaling display constants in directe delivery URLs van veld 'View Online' in full display.
                 if (doc.delivery[field1]) {
                     // Ophalen veld 'electronicServices'. ElectronicServices is als een array gestructureerd.
@@ -280,58 +276,28 @@ window.linksServiceRewrite = {
                     // Loop doorheen array uit veld 'electronicServices' en bewerk individuele entries
                     serv1.forEach(link => {
                         if (link.serviceUrl.match(linkSign)) {
-                            //console.log(link.serviceUrl);
                             linkData = window.linksServiceRewrite.getUrlAndLabel(link.serviceUrl);
                             link.serviceUrl = linkData[0];
-                            //console.log("baseUrl: " + baseUrl);   
-
-                            /* Ophalen  en instellen labelinfo. Voor het label wordt de description uit subfield 'd' gebruikt indien aanwezig.
-                             * Als subfield 'd' niet aanwezig is, wordt een default waarde ingesteld
-                             * Het displaylabel wordt in veld packageName ingesteld */
-                            //displayLabel = window.linksServiceRewrite.getValueFromSubfield(urlString, "D");
-                            //console.log("display: " + displayLabel);
-
-                            // Toevoeging bronaanduiding in displaylabel
-                            //if (displayLabel === undefined) {
-                            //    displayLabel = "Link to full text";
-                            //}
-
-                            //if (baseUrl.match('^https://lirias.kuleuven.be/retrieve')) {
-                            //    displayLabel += " - Lirias";
-                            //}
-                            //else {
-                            //    displayLabel += " - external source";
-                            //}
-
                             link.packageName = linkData[1];
-                            //console.log(link);
-                            console.log("End section 1")
                         }
                     });
                 }
 
-                //serv1.forEach(link => { console.log(link); })
-
                 // SEGMENT 2: GETIT
                 if (doc.delivery[field2[0]]) {
-                    console.log("Start section 2")
                     // Ophalen sectie doc.delivery.GetIt1. GetIt1 is gestructureerd als een array. Veldnaam is geconfigueerd via variabele 'field2', eerste element binnen de array.
                     var serv2 = doc.delivery[field2[0]];
                     //var serv2 = field2.split('.').reduce((previous, current) => { return previous[current] }, doc.delivery);
-                    //console.log("getIt: " + serv2);
 
                     serv2.forEach(hold => {
-                        //console.log(hold);
                         // Ophalen set links. Links is gestructureerd als een array. Veldnaam is geconfigureerd via variabele 'field2', tweede element binnen de array.
                         var links = hold[field2[1]];
-                        //console.log(links);
 
                         links.forEach(getLink => {
                             // Ophalen individuele link. Veldnaam is geconfigueerd via variabele 'field2', derde element in de array.
                             var baseLink = getLink[field2[2]];
-                            //console.log(baseLink);
-                            //console.log("API: " + getLink["ilsApiId"]);
-                            //console.log("linking: " + baseLink);
+
+                            // Vertaling van display constants. Code wordt enkel uitgevoerd als bij links met ilsApiId 'lirias' en aanwezigheid van string '$$'.
                             if (getLink["ilsApiId"].match("lirias") && baseLink.match(linkSign)) {
                                 linkData = window.linksServiceRewrite.getUrlAndLabel(baseLink);
                                 getLink.link = linkData[0];
@@ -346,48 +312,37 @@ window.linksServiceRewrite = {
                             }
                         });
                     });
-                    console.log("End section 1")
-                    //console.log("new getit: " + serv2);
                 }
 
                 // SEGMENT 3: Availability URL - Vertaling van displayconstants in direct delivery URL in de brief display.
                 if (doc.delivery[field3]) {
-                    console.log("Start section 3")
                     // Inladen segment 'doc.delivery.availabilityUrls'. Veldnaam is geconfigureerd via variabele 'field3'.
                     var serv3 = field3.split('.').reduce((previous, current) => { return previous[current] }, doc.delivery);
-                    //console.log("urls: " + serv3);
 
                     // Array voor opslag van correcte URLs.
                     linkSet = []
 
                     serv3.forEach(link => {
-                        //console.log(link);
                         /* Vertaling van display constants. Een if-clause gaat na of de URL display constants bevat.
                         Zo ja, dan wordt de URL uit de basisstring geïsoleerd. Zo nee, dan wordt de URL onveranderd toegevoegd aan linkSet.*/
                         if (link.match(linkSign)) {
                             linkData = window.linksServiceRewrite.getUrlAndLabel(link);
                             link = linkData[0];
-                            //console.log('changedLink: ' + link);
                         }
 
                         linkSet.push(link);
-                        //console.log(linkSet);
                     });
                     /* Terugplaatsen van aangepaste URL-set in 'availabilityURLS'.
                     Ook ongewijzigde URLs zijn in de array toegevoegd, dus de oude waarde kan veilig overschreven worden.*/
                     doc.delivery.availabilityLinksUrl = linkSet;
-
-                    //console.log("new urls: " + doc.delivery.availabilityLinksUrl);
-                    console.log("End section 3")
                 }
 
                 // SEGMENT 4: LINKS SECTION - Vertaling van display constants in URLs in de links-sectie van de full display.
                 if (doc.delivery[field4]) {
-                    console.log("Start section 4")
                     //Inladen segment 'doc.delivery.links'. Veldnaam is geconfigueerd via variabele 'field4'.
                     serv4 = doc.delivery[field4];
-                    //console.log(serv4);
 
+                    // Vertalen van display constants. De code wordt enkel toegepast op links van linktype 'addLink' (geconfigureerd via variabele 'linktype') die de string '$$' bevatten.
                     serv4.forEach(link => {
                         if ((link["linkType"] == type) && link["linkURL"].match(linkSign)) {
                             var linkData = window.linksServiceRewrite.getUrlAndLabel(link["linkURL"])
@@ -400,8 +355,7 @@ window.linksServiceRewrite = {
                             }
                         }
                     });
-                    console.log("End section 4")
-                }
+                  }
             }
             console.log(doc);
             return doc;
