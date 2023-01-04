@@ -25,13 +25,20 @@ class SourceIconController {
       'sourceid': 'lirias',
       'iconUrl': 'custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/lirias.jpg',
       'iconText': 'Lirias'
+    },
+    {
+      'sourceid': 'lirias_basic',
+      'iconUrl': 'custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/lirias.jpg',
+      'iconText': 'Lirias'
     }];
 
     let iconConfSources = iconConf.map(obj => obj.sourceid);
 
     self.sourceid = null;
-    if ('sourceid' in parentCtrl.item.pnx.control) {
-      self.sourceid = parentCtrl.item.pnx.control.sourceid[0].toLowerCase();
+
+    if ('source' in parentCtrl.item.pnx.display) {
+      //self.sourceid = parentCtrl.item.pnx.control.sourceid.toLowerCase();
+      self.sourceid = parentCtrl.item.pnx.display.source[0].toLowerCase();
 
       if (iconConfSources.includes(self.sourceid)) {
         self.icon = iconConf.find(function (x) {
@@ -39,9 +46,7 @@ class SourceIconController {
         });
       }
     }
-
     $element.parent().parent().parent().find('div').append($compile(sourceIconHTML)($scope));
-
   }
 }
 
