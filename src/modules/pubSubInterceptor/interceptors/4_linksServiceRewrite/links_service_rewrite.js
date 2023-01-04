@@ -20,7 +20,7 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KUL:KULeuven_TEST',
-                transformDeliveryLinks: { recordType: "lirias", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4:"link", type:"addlink"}
+                transformDeliveryLinks: { recordType: "lirias", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ],
         afterDeliveryURL: [
@@ -34,7 +34,7 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KUL:KULeuven_TEST',
-                transformDeliveryLinks: { recordType: "lirias", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type:"addlink"}
+                transformDeliveryLinks: { recordType: "lirias", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ]
     },
@@ -290,7 +290,7 @@ window.linksServiceRewrite = {
                     //var serv2 = field2.split('.').reduce((previous, current) => { return previous[current] }, doc.delivery);
 
                     serv2.forEach(hold => {
-                        // Ophalen set links. Links is gestructureerd als een array. Veldnaam is geconfigureerd via variabele 'field2', tweede element binnen de array.
+                        // Ophalen set Links. Veldnaam is geconfigureerd via variabele 'field2', tweede element binnen de array.
                         var links = hold[field2[1]];
 
                         links.forEach(getLink => {
@@ -339,72 +339,76 @@ window.linksServiceRewrite = {
 
                 // SEGMENT 4: LINKS SECTION - Vertaling van display constants in URLs in de links-sectie van de full display.
                 if (doc.delivery[field4]) {
-                    //Inladen segment 'doc.delivery.links'. Veldnaam is geconfigueerd via variabele 'field4'.
+                    //Inladen segment 'doc.delivery.link'. Veldnaam is geconfigueerd via variabele 'field4'.
                     serv4 = doc.delivery[field4];
+                    
+                    newLinks = serv4.filter(link => !(link["linkType"] == type));
+                    
+                    doc.delivery[field4] = newLinks;
 
-                    // Vertalen van display constants. De code wordt enkel toegepast op links van linktype 'addLink' (geconfigureerd via variabele 'linktype') die de string '$$' bevatten.
-                    serv4.forEach(link => {
-                        if ((link["linkType"] == type) && link["linkURL"].match(linkSign)) {
-                            var linkData = window.linksServiceRewrite.getUrlAndLabel(link["linkURL"])
-                            link.linkURL = linkData[0];
-                            if (linkData[1].match('Lirias')) {
-                                link.displayLabel = link.displayLabel + " - Lirias";
-                            }
-                            else {
-                                link.displayLabel = link.displayLabel + " - External source";
-                            }
-                        }
-                    });
-                  }
+                    //// Vertalen van display constants. De code wordt enkel toegepast op links van linktype 'addLink' (geconfigureerd via variabele 'linktype') die de string '$$' bevatten.
+                    //serv4.forEach(link => {
+                    //    if ((link["linkType"] == type) && link["linkURL"].match(linkSign)) {
+                    //        var linkData = window.linksServiceRewrite.getUrlAndLabel(link["linkURL"])
+                    //        link.linkURL = linkData[0];
+                    //        if (linkData[1].match('Lirias')) {
+                    //            link.displayLabel = link.displayLabel + " - Lirias";
+                    //        }
+                    //        else {
+                    //            link.displayLabel = link.displayLabel + " - External source";
+                    //        }
+                    //    }
+                    //});
+                }
             }
             console.log(doc);
             return doc;
         }
     }
 }
-    pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
-        // "linksServiceRewrite".init(url, headers, params, $translate);
-        var rewriteActions = linksServiceRewrite.configuration.afterPnxBaseURL.filter(c => {
-            return new RegExp(c.enableInView).test(window.appConfig.vid)
-        })
+pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
+    // "linksServiceRewrite".init(url, headers, params, $translate);
+    var rewriteActions = linksServiceRewrite.configuration.afterPnxBaseURL.filter(c => {
+        return new RegExp(c.enableInView).test(window.appConfig.vid)
+    })
 
-        if (rewriteActions.length > 0) {
-            rewriteActions.forEach(rewriteAction => {
+    if (rewriteActions.length > 0) {
+        rewriteActions.forEach(rewriteAction => {
 
-                delete rewriteAction.enableInView;
-                // console.log(rewriteAction);
-                Object.entries(rewriteAction).forEach(ra => {
-                    const [action, parameters] = ra;
-                    // console.log(action, parameters);
-                    // console.log (reqRes.data)
+            delete rewriteAction.enableInView;
+            // console.log(rewriteAction);
+            Object.entries(rewriteAction).forEach(ra => {
+                const [action, parameters] = ra;
+                // console.log(action, parameters);
+                // console.log (reqRes.data)
 
-                    // pnxBaseURL is also called for fullview (Permalink)
-                    // the url than starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
-                    // the url than starts with /primaws/rest/pub/pnxs/SearchWebhook/ instead of /primaws/rest/pub/pnxs
-                    if (reqRes.data['docs']) {
-                        reqRes.data['docs'].map(d => {
-                            parameters.doc = d
-                            try {
-                                d = linksServiceRewrite[action](parameters);
-                            } catch (error) {
-                                console.error(error);
-                            }
-                            return d
-                        });
-                    }
-                    if (reqRes.data['pnx']) {
-                        parameters.doc = reqRes.data
+                // pnxBaseURL is also called for fullview (Permalink)
+                // the url than starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
+                // the url than starts with /primaws/rest/pub/pnxs/SearchWebhook/ instead of /primaws/rest/pub/pnxs
+                if (reqRes.data['docs']) {
+                    reqRes.data['docs'].map(d => {
+                        parameters.doc = d
                         try {
-                            reqRes.data = linksServiceRewrite[action](parameters);
+                            d = linksServiceRewrite[action](parameters);
                         } catch (error) {
                             console.error(error);
                         }
+                        return d
+                    });
+                }
+                if (reqRes.data['pnx']) {
+                    parameters.doc = reqRes.data
+                    try {
+                        reqRes.data = linksServiceRewrite[action](parameters);
+                    } catch (error) {
+                        console.error(error);
                     }
-                });
+                }
             });
-        }
-        return reqRes;
-    })
+        });
+    }
+    return reqRes;
+})
 
 
 pubSub.subscribe('after-deliveryURL', (reqRes) => {
