@@ -2,13 +2,13 @@ import acquisitionsnlBEHTML from './acquisitionsnlBE.html'
 
 class AcquisitionsController {
   constructor($scope) {
-    var self = this;
-    var vid = window.appConfig['vid'];
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var current_month = month;
-    var current_year = year;
+    let self = this;
+    let vid = window.appConfig['vid'];
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let current_month = month;
+    let current_year = year;
     if(month - 1 == 0){
       month = 12;
       year = year - 1;
@@ -19,7 +19,18 @@ class AcquisitionsController {
     current_month = ("0" + current_month).slice(-2);
     // console.log("Current month is: " + month);
 
-    $scope.url = window.location.origin + "/discovery/search?query=any,contains,acquisitionDate" + year + month + "DOCVB* OR acquisitionDate" + current_year + current_month + "DOCVB*,AND&tab=phys_items_tab&search_scope=PHYS_ITEMS&vid="+ vid + "&lang=nl_BE&mode=advanced&offset=0;"
+    Primo.view.then((view) => {
+      //let vid = view.code;
+      let locale = view.interfaceLanguage;
+      $scope.lang = locale;
+      if(vid == "32KUL_DOCVB:docvlaamsbrabant"){
+        $scope.url = window.location.origin + "/discovery/search?query=any,contains,acquisitionDate" + year + month + "DOCVB* OR acquisitionDate" + current_year + current_month + "DOCVB*,AND&tab=phys_items_tab&search_scope=PHYS_ITEMS&vid="+ vid + "&lang=nl_BE&mode=advanced&offset=0;"
+    
+      }
+      if(vid == "32KUL_NBB:NBBMED"){
+        $scope.url = window.location.origin + "/discovery/search?query=any,contains,Acquisitiondate"+ year + month +"*&tab=LibraryCatalog&search_scope=NBBMED_PROFILE&vid=32KUL_NBB:NBBMED&offset=0&lang="+locale;
+      }
+    });
   }
 }
 

@@ -1,3 +1,9 @@
-<p>
-    Bekijk <a href="{{url}}">hier</a> welke publicaties recent werden toegevoegd aan de catalogus
-  </p>
+<p ng-if="lang == 'nl'">
+  Bekijk <a href="{{url}}">hier</a> welke publicaties recent werden toegevoegd aan de catalogus
+</p>
+<p ng-if="lang == 'en'">
+  View <a href="{{url}}">here</a> which publications have recently been added to the catalogue
+</p>
+<p ng-if="lang == 'fr'">
+  Voir <a href="{{url}}">ici</a> les publications récemment ajoutées au catalogue
+</p>
