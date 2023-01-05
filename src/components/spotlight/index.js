@@ -47,7 +47,7 @@ class SpotlightController {
   
   export let spotlightConfig = {
     name: 'prm-spotlight',
-    enabled: false,
+    enabled: true,
     appendTo: null,
     enableInView: '.*',
     config: {
