@@ -341,31 +341,46 @@ window.linksServiceRewrite = {
                 if (doc.delivery[field4]) {
                     //Inladen segment 'doc.delivery.link'. Veldnaam is geconfigueerd via variabele 'field4'.
                     serv4 = doc.delivery[field4];
-                    
-                    newLinks = serv4.filter(link => !(link["linkType"] == type));
-                    
-                    doc.delivery[field4] = newLinks;
 
-                    //// Vertalen van display constants. De code wordt enkel toegepast op links van linktype 'addLink' (geconfigureerd via variabele 'linktype') die de string '$$' bevatten.
-                    //serv4.forEach(link => {
-                    //    if ((link["linkType"] == type) && link["linkURL"].match(linkSign)) {
-                    //        var linkData = window.linksServiceRewrite.getUrlAndLabel(link["linkURL"])
-                    //        link.linkURL = linkData[0];
-                    //        if (linkData[1].match('Lirias')) {
-                    //            link.displayLabel = link.displayLabel + " - Lirias";
-                    //        }
-                    //        else {
-                    //            link.displayLabel = link.displayLabel + " - External source";
-                    //        }
-                    //    }
-                    //});
-                }
+                    newLinks = serv4.filter(link => !(link["linkType"] == type));
+
+                    sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/);
+                    console.log(sourceId.groups.id);
+
+                    let liriasLink = {
+                        "@id": "_:0",
+                        displayLabel: "View detailed record (Lirias)",
+                        linkType: "backlink",
+                        linkURL: "https://lirias.kuleuven.be/" + sourceId.groups.id,
+                        publicNote: null
+                    }
+                    console.log(liriasLink);
+                    newLinks.push(liriasLink);
+                    console.log("linkset: " + newLinks);
+
+                    doc.delivery[field4] = newLinks;
+                }               
+
+                //// Vertalen van display constants. De code wordt enkel toegepast op links van linktype 'addLink' (geconfigureerd via variabele 'linktype') die de string '$$' bevatten.
+                //serv4.forEach(link => {
+                //    if ((link["linkType"] == type) && link["linkURL"].match(linkSign)) {
+                //        var linkData = window.linksServiceRewrite.getUrlAndLabel(link["linkURL"])
+                //        link.linkURL = linkData[0];
+                //        if (linkData[1].match('Lirias')) {
+                //            link.displayLabel = link.displayLabel + " - Lirias";
+                //        }
+                //        else {
+                //            link.displayLabel = link.displayLabel + " - External source";
+                //        }
+                //    }
+                //});
             }
-            console.log(doc);
-            return doc;
         }
+        console.log(doc);
+        return doc;
     }
 }
+
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
     // "linksServiceRewrite".init(url, headers, params, $translate);
     var rewriteActions = linksServiceRewrite.configuration.afterPnxBaseURL.filter(c => {
