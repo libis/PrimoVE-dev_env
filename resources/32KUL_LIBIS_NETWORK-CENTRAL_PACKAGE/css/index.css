@@ -18,6 +18,7 @@
 @import "./hide_source_text.css";
 @import "./banner.css";
 @import "./availability_scopearchiv.css";
+@import "./location.css";
 
 .material-icons {
     font-family: 'Material Icons';
