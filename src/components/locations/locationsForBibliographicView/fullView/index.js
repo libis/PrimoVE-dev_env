@@ -30,10 +30,11 @@ class fullLocationsForBibliographicViewController {
                 //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
             },
             'anet ruusbroec collection': {
-                "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.control.sourcerecordid + "/N"
+                "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.display.lds12 
             }
         }
 
+        
         self.delivery_library = self.pnx.display.lds10.map(lds10 => {
             var library_code = lds10.toLowerCase();
             lds10 = library_filter_array[library_code];
