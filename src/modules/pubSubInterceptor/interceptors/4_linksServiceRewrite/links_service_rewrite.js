@@ -361,19 +361,7 @@ window.linksServiceRewrite = {
                     doc.delivery[field4] = newLinks;
                 }               
 
-                //// Vertalen van display constants. De code wordt enkel toegepast op links van linktype 'addLink' (geconfigureerd via variabele 'linktype') die de string '$$' bevatten.
-                //serv4.forEach(link => {
-                //    if ((link["linkType"] == type) && link["linkURL"].match(linkSign)) {
-                //        var linkData = window.linksServiceRewrite.getUrlAndLabel(link["linkURL"])
-                //        link.linkURL = linkData[0];
-                //        if (linkData[1].match('Lirias')) {
-                //            link.displayLabel = link.displayLabel + " - Lirias";
-                //        }
-                //        else {
-                //            link.displayLabel = link.displayLabel + " - External source";
-                //        }
-                //    }
-                //});
+               
             }
         }
         console.log(doc);
