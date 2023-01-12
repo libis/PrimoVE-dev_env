@@ -345,7 +345,7 @@ window.linksServiceRewrite = {
                     newLinks = serv4.filter(link => !(link["linkType"] == type));
 
                     sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/);
-                    console.log(sourceId.groups.id);
+                    //console.log(sourceId.groups.id);
 
                     let liriasLink = {
                         "@id": "_:0",
@@ -354,9 +354,9 @@ window.linksServiceRewrite = {
                         linkURL: "https://lirias.kuleuven.be/" + sourceId.groups.id,
                         publicNote: null
                     }
-                    console.log(liriasLink);
+                    //console.log(liriasLink);
                     newLinks.push(liriasLink);
-                    console.log("linkset: " + newLinks);
+                    //console.log("linkset: " + newLinks);
 
                     doc.delivery[field4] = newLinks;
                 }               
@@ -364,7 +364,7 @@ window.linksServiceRewrite = {
                
             }
         }
-        console.log(doc);
+        //console.log(doc);
         return doc;
     }
 }
