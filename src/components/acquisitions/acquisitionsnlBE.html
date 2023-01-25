@@ -1,3 +1,16 @@
+<div ng-if="nbb_urls">
+  <div ng-if="lang == 'nl'">  
+    <span ng-repeat="(key, value) in nbb_urls">
+      <b><a href="{{value}}">Aanwinsten {{key}}</a><br>
+    </lspan>
+  </div>
+  <div ng-if="lang == 'fr'">  
+    <span ng-repeat="(key, value) in nbb_urls">
+      <b><a href="{{value}}">Nouveaux médias {{key}}</a><br>
+    </span>
+  </div>
+</div>
+<div ng-if="!nbb_urls">
 <p ng-if="lang == 'nl'">
   Bekijk <a href="{{url}}">hier</a> welke publicaties recent werden toegevoegd aan de catalogus
 </p>
@@ -7,3 +20,4 @@
 <p ng-if="lang == 'fr'">
   Voir <a href="{{url}}">ici</a> les publications récemment ajoutées au catalogue
 </p>
+</div>
