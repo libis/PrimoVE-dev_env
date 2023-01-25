@@ -39,7 +39,7 @@ class AvailabilityLineController {
           //"url": "https://" + document.location.host + "/primo-explore/fulldisplay?docid="+ this.pnx.control.recordid +"&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
       },
       'anet ruusbroec collection': {
-          "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.display.lds12 + "/N"
+          "url": "https://anet.be/record/opacuantwerpen/" + self.pnx.display.lds12 
       }
     }
 

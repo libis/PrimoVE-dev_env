@@ -34,7 +34,6 @@ class fullLocationsForBibliographicViewController {
             }
         }
 
-        
         self.delivery_library = self.pnx.display.lds10.map(lds10 => {
             var library_code = lds10.toLowerCase();
             lds10 = library_filter_array[library_code];
