@@ -30,6 +30,7 @@ class LiriasController {
         lirias.searchParams.set('search_scope', 'lirias_profile');
         lirias.searchParams.set('vid', '32KUL_KUL:Lirias');
         lirias.searchParams.set('offset', '0');
+        lirias.searchParams.delete('pcAvailability');
 
         window.open(lirias.href, '_blank');
     }
