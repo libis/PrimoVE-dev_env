@@ -8,13 +8,14 @@ class AvailabilityLineController {
 
   $onInit() {
     let self = this;
-    self.sourceList = ["scopearchive"]
+    self.sourceList = ["kadoc_scopearchiv"]
     self.$ctrl = self.parentCtrl.parentCtrl;
     self.$scope.$ctrl = self.parentCtrl.parentCtrl;
 
     // Filter sources from pnx via self.sourceList
     let sources = self.$ctrl.result.pnx.display.source.filter( source => {
-      console.log (source)
+        console.log(source)
+        console.log(self.sourceList.includes(source.toLowerCase()))
       return ( self.sourceList.includes(source.toLowerCase()) )
     })
 
@@ -40,7 +41,7 @@ export let availabilityLineScopeArchiveComponent = {
   name: 'custom-availability-line-scopearchive',
   enabled: true,
   appendTo: 'prm-search-result-availability-line-after',
-  enableInView: '32KUL_KADOC:',
+  enableInView: '32KUL_KADOC:.*',
   config: {
     bindings: {
       parentCtrl: '<'

@@ -13,7 +13,7 @@ yarn install
 ```
 - Check if ```primoServe``` was installed if not install it manually
 ```
-yarn add primo-server --dev
+yarn add primo-serve --dev
 ```
 ### start, build, watch, package
 - Start up a proxy for testing. Copy the URL into a private or incognito window to break the browser cache.

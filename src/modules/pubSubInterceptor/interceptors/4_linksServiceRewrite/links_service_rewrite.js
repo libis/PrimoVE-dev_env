@@ -16,11 +16,11 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KADOC:KADOC.*',
-                deliveryForExternalResource: { source: "ScopeArchive" }
+                deliveryForExternalResource: { source: "KADOC_scopeArchiv" }
             },
             {
                 enableInView: '32KUL_KUL:KULeuven_TEST',
-                transformDeliveryLinks: { recordType: "lirias", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+                transformDeliveryLinks: { recordSource: "Lirias_basic", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ],
         afterDeliveryURL: [
@@ -30,11 +30,11 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KADOC:KADOC.*',
-                deliveryForExternalResource: { source: "ScopeArchive" }
+                deliveryForExternalResource: { source: "KADOC_scopeArchiv" }
             },
             {
                 enableInView: '32KUL_KUL:KULeuven_TEST',
-                transformDeliveryLinks: { recordType: "lirias", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+                transformDeliveryLinks: { recordSource: "Lirias_basic", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ]
     },
@@ -157,9 +157,12 @@ window.linksServiceRewrite = {
 
     deliveryForExternalResource: ({ doc = {}, source = null }) => {
         // console.log (doc)
-        // console.log (source)
+        // console.log(source)
+        // console.log(doc.pnx.display.source)
+        // console.log(doc.pnx.display.source.filter(s => source.includes(s)).length > 0)
         if (doc.pnx.display.source.filter(s => source.includes(s)).length > 0) {
             if (doc.delivery) {
+                //console.log("Delivering")
                 /*
                                 console.log ( doc.delivery.deliveryCategory )
                                 console.log ( doc.delivery.deliveryCategory.includes("Remote Search Resource") )
@@ -173,6 +176,7 @@ window.linksServiceRewrite = {
                     &&
                     doc.delivery.availabilityLinksUrl.length > 0
                 ) {
+                   // console.log("DeliveryLink - part 1")
 
                     var displayConstant = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
 
@@ -182,6 +186,8 @@ window.linksServiceRewrite = {
                         doc.delivery.displayedAvailability = displayConstant;
                         doc.delivery.availability[0] = displayConstant;
 
+                      //  console.log("DeliveryLink - part 2")
+
                         /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
                         //                        doc.delivery.availabilityLinks = ['directlink']
                         //                        window.appConfig['system-configuration']['enable_direct_linking_in_record_full_view'] = true;
@@ -189,15 +195,17 @@ window.linksServiceRewrite = {
                         if (doc.delivery.deliveryCategory.includes("Remote Search Resource")) {
                             doc.delivery.electronicServices[0].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
                             doc.delivery.electronicServices[0].serviceUrl = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
+                            //console.log("DeliveryLink - part 3")
                         }
                         if (doc.delivery.deliveryCategory.includes("EXTERNAL-P") && doc.delivery.availabilityLinksUrl[0]) {
                             doc.delivery.electronicServices[0] = { serviceUrl: window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U") }
+                            //console.log("DeliveryLink - part 4")
                         }
 
                         doc.delivery.availabilityLinksUrl[0] = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
                         doc.delivery.link = doc.delivery.link.filter(l => { return !new RegExp(displayConstant).test(l.linkURL) })
 
-                        console.log(doc.delivery.link)
+                        //console.log(doc.delivery.link)
 
                     }
 
@@ -219,7 +227,7 @@ window.linksServiceRewrite = {
         }
     },
 
-    /* Basismethode voor de vertaling van display constants in online-delivery velden waar dit niet automatisch gebeurt.
+    /* Basismethode voor de vertaling van display constants bij basic Lirias records in online-delivery velden waar dit niet automatisch gebeurt.
          * Stelt subvelden $$U and $$D in als respectievelijk URL en displaylabel, incl. detectie en aanduiding van Lirias delivery URLs.
          * Input: delivery URL met display constants --- Output: array met URL en custom displaylabel.
          * Creatiecontext: customization van delivery URL in Primo VE basic view voor Lirias records met Full-text access.*/
@@ -257,11 +265,12 @@ window.linksServiceRewrite = {
     /* Methode voor de omzetting van displayconstants in online delivery velden waar dit niet automatisch gebeurt.
      * Input: Java object op basis van pnx text-file. --- Output: aangepast Java object met custom delivery URLs en display-labels.
      * Creatiecontext: Basisview in Primo VE voor Lirias records met full-text access.*/
-    transformDeliveryLinks: ({ doc = {}, recordType = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
+    transformDeliveryLinks: ({ doc = {}, recordSource = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
 
         // Test of het om een Lirias record gaat op basis van de aanwezigheid van tenminste één originalsourceid dat start met 'lirias'.
-        liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
-        if (liriasRec) {
+        //liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
+        // console.log(doc.pnx.display.source);
+        if (doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0) {
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
