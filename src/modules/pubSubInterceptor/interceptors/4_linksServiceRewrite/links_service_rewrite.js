@@ -19,7 +19,7 @@ window.linksServiceRewrite = {
                 deliveryForExternalResource: { source: "KADOC_scopeArchiv" }
             },
             {
-                enableInView: '32KUL_KUL:KULeuven_TEST',
+                enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
                 transformDeliveryLinks: { recordSource: "Lirias_basic", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ],
@@ -33,7 +33,7 @@ window.linksServiceRewrite = {
                 deliveryForExternalResource: { source: "KADOC_scopeArchiv" }
             },
             {
-                enableInView: '32KUL_KUL:KULeuven_TEST',
+                enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
                 transformDeliveryLinks: { recordSource: "Lirias_basic", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ]
