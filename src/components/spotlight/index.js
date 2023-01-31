@@ -11,9 +11,9 @@ class SpotlightController {
         .then((data) => {
     
           const res = data.items;
-            console.log(res);
-          const posts = res.filter(item => item.categories.length > 0) // That's the main trick* !
-    
+          //console.log(res);
+          //const posts = res.filter(item => item.categories.length > 0) // That's the main trick* !
+          const posts = res;
     
           function toText(node) {
            let tag = document.createElement('div')

@@ -67,16 +67,18 @@ export default class FilterLocationsService {
                     "url":  "https://"+document.location.host+"/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
                 },
                 "ANET_UA-CST": {
-                    "id" : function (lib) { return pnx_record.search.addsrcrecordid },
+                    "id" : function (lib) { return pnx_record.display.lds12  },
                     "name": "Ruusbroec Institute Library – University of Antwerp",
                     //"url": "https://anet.be/record/opacanet/<#recordid>"
-                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
+                    //"url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
+                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>"
                 },
                 "ANET_UA-RG": {
-                    "id" : function (lib) { return pnx_record.search.addsrcrecordid },
+                    "id" : function (lib) { return pnx_record.display.lds12  },
                     "name": "Ruusbroec Institute Library – University of Antwerp",
                     //"url": "https://anet.be/record/opacanet/<#recordid>"
-                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
+                    //"url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
+                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>"
                 }
 
             }
