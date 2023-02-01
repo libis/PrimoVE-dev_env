@@ -32,7 +32,7 @@ class SpotlightController {
     
         var img = posts[0].thumbnail;  //Get thumnail image from rss feed
         console.log(img);
-        $scope.img = 'https://1.bp.blogspot.com/-tcxIdAf5xwU/YDO8JM4qqJI/AAAAAAAAAAk/aZ_hBh8KfdkE_l4Lhlqd7r6RcH5TDwjAgCLcBGAsYHQ/s971/Holle%2Bwegen.jpg';
+        $scope.img = '';
         if(img){
           img = img.replace(/\/s72\-c/, "");//replace /s72\-c with nothing
           $scope.img = img;
