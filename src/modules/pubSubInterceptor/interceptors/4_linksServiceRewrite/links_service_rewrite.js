@@ -267,9 +267,10 @@ window.linksServiceRewrite = {
      * Creatiecontext: Basisview in Primo VE voor Lirias records met full-text access.*/
     transformDeliveryLinks: ({ doc = {}, recordSource = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
 
-        // Test of het om een Lirias record gaat op basis van de aanwezigheid van tenminste één originalsourceid dat start met 'lirias'.
+        // Test of het om een Lirias record gaat op basis van de data source.
         //liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
+        // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
         if (doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0) {
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
@@ -284,6 +285,7 @@ window.linksServiceRewrite = {
 
                     // Loop doorheen array uit veld 'electronicServices' en bewerk individuele entries
                     serv1.forEach(link => {
+                        // console.log(link.serviceUrl);
                         if (link.serviceUrl.match(linkSign)) {
                             linkData = window.linksServiceRewrite.getUrlAndLabel(link.serviceUrl);
                             link.serviceUrl = linkData[0];
