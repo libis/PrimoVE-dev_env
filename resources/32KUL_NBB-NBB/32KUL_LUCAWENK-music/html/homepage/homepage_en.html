@@ -1,0 +1,93 @@
+<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    md-card md-card-content span#ContentLinkToOther::before {
+        content: "explore";
+    }
+
+</style>
+<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+    <md-card-content>
+            <span class="md-headline" id="ContentInLimo">
+                What can you find in LIMO?
+            </span>
+        <br />
+        <ul>
+            <li>Scores: mostly sheet music from all LIBISnet institutions</li>
+            <li>Audio: audio-recordings from all LIBISnet institutions</li>
+            <li>Music catalog: Printed publications concerning music, from <a href="http://bib.kuleuven.be/luca/bibliotheeklemmens">LUCA Libraries Campus Lemmens</a>, 
+                <a href="https://bib.kuleuven.be/lbib/">KU Leuven Libraries Artes LMUZ</a> and <a href="http://www.matrix-new-music.be/">Matrix LMAT</a>, and electronic publications from LUCA</li>
+        </ul>
+
+        <br/>
+        <span class="md-headline" id="ContentSearchTips">
+            Search options
+        </span>
+        <br/>
+        <ul>
+        <li>Choose the source type (under the search box) if you are looking for something else than sheet music</li>
+        <li>For sheet music: use instruments as search terms and filter on player total, refine your search with classification codes</li>
+        </ul>
+        <br />
+        <b>Examples</b>
+        <ul>
+            <li>Search terms: "violin, viola, violoncello" and filter with 4 players: string quartets, 
+                sort your results on author to view your results alphabetically on composer surname</li>
+            <li>Search term: "oboe 262" and filter with 2 players: oboe with keyboard accompaniment</li>
+            <li>Search term "piano 311" and filter 2 players: music for 2 piano’s</li>
+            <li>Search term "piano 226" and filter 2 players: music for quatre-mains</li>
+        </ul>
+
+        <span class="md-headline" id="ContentLinkToOther"></span>
+        Other search tools
+        </span>
+        <br/>
+
+        <ul>
+            <li><a href="http://limo.libis.be/LUCA">LUCA LIMO</a></li>
+            <li><a href="http://limo.libis.be/KULeuven">KU LEUVEN LIMO</a></li>
+        </ul>
+
+    </md-card-content>
+
+</md-card>
+
+<prm-news parent-Ctrl='$ctrl'></prm-news>

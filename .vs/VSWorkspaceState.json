@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\availabilityLine",
+    "\\src\\components\\availabilityLine\\ScopeArchive",
+    "\\src\\modules",
+    "\\src\\modules\\pubSubInterceptor\\interceptors\\4_linksServiceRewrite"
+  ],
+  "SelectedNode": "\\src\\components\\availabilityLine\\ScopeArchive\\index.js",
+  "PreviewInSolutionExplorer": false
+}
