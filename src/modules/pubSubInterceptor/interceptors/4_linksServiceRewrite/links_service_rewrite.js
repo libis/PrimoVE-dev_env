@@ -268,7 +268,7 @@ window.linksServiceRewrite = {
     transformDeliveryLinks: ({ doc = {}, recordSource = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
 
         // Test of het om een Lirias record gaat op basis van de data source.
-        //liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
+        // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
         // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
         if (doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0) {
@@ -370,9 +370,7 @@ window.linksServiceRewrite = {
                     //console.log("linkset: " + newLinks);
 
                     doc.delivery[field4] = newLinks;
-                }               
-
-               
+                }
             }
         }
         //console.log(doc);
