@@ -30,7 +30,7 @@ export let advancedSearchChevronComponent = {
     controller: AdvancedSearchChevronController,
     template: '<chevron-label ng-if="$ctrl.showLabel"><span translate="nui.search-advanced.chevron"></span></chevron-label>',
   },
-  enabled: false,
+  enabled: true,
   appendTo: 'prm-icon-after',
   enableInView: '.*'
 }  
