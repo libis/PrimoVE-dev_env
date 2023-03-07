@@ -43,7 +43,7 @@ export let liriasComponent = {
     controller: LiriasController,
     template: liriasHTML
   },
-  enabled: true,
+  enabled: false,
   appendTo: ['prm-search-result-tool-bar-after','prm-no-search-result-after'],
   enableInView: '32KUL_KUL:(KULeuven|REGIONAL).*'
 }
