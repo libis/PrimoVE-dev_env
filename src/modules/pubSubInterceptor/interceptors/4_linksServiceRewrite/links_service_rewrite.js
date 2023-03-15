@@ -271,7 +271,10 @@ window.linksServiceRewrite = {
         // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
         // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
-        if (doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0) {
+        if (doc.pnx.display.source.filter(function(s) {
+                return recordSource.includes(s);
+        }).length > 0) {
+            //console.log('Delivering Lirias...')
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
