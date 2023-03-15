@@ -287,7 +287,7 @@ window.linksServiceRewrite = {
                     serv1.forEach(link => {
                         // console.log(link.serviceUrl);
                         if (link.serviceUrl.match(linkSign)) {
-                            linkData = window.linksServiceRewrite.getUrlAndLabel(link.serviceUrl);
+                            var linkData = window.linksServiceRewrite.getUrlAndLabel(link.serviceUrl);
                             link.serviceUrl = linkData[0];
                             link.packageName = linkData[1];
                         }
@@ -310,7 +310,7 @@ window.linksServiceRewrite = {
 
                             // Vertaling van display constants. Code wordt enkel uitgevoerd als bij links met ilsApiId 'lirias' en aanwezigheid van string '$$'.
                             if (getLink["ilsApiId"].match("lirias") && baseLink.match(linkSign)) {
-                                linkData = window.linksServiceRewrite.getUrlAndLabel(baseLink);
+                                var linkData = window.linksServiceRewrite.getUrlAndLabel(baseLink);
                                 getLink.link = linkData[0];
                                 getLink.displayText = "Get full text - ";
 
@@ -335,9 +335,9 @@ window.linksServiceRewrite = {
 
                     serv3.forEach(link => {
                         /* Vertaling van display constants. Een if-clause gaat na of de URL display constants bevat.
-                        Zo ja, dan wordt de URL uit de basisstring geïsoleerd. Zo nee, dan wordt de URL onveranderd toegevoegd aan linkSet.*/
+                        Zo ja, dan wordt de URL uit de basisstring geï¿½soleerd. Zo nee, dan wordt de URL onveranderd toegevoegd aan linkSet.*/
                         if (link.match(linkSign)) {
-                            linkData = window.linksServiceRewrite.getUrlAndLabel(link);
+                            var linkData = window.linksServiceRewrite.getUrlAndLabel(link);
                             link = linkData[0];
                         }
 
