@@ -331,7 +331,7 @@ window.linksServiceRewrite = {
                     var serv3 = field3.split('.').reduce((previous, current) => { return previous[current] }, doc.delivery);
 
                     // Array voor opslag van correcte URLs.
-                    linkSet = []
+                    var linkSet = []
 
                     serv3.forEach(link => {
                         /* Vertaling van display constants. Een if-clause gaat na of de URL display constants bevat.
@@ -351,11 +351,11 @@ window.linksServiceRewrite = {
                 // SEGMENT 4: LINKS SECTION - Vertaling van display constants in URLs in de links-sectie van de full display.
                 if (doc.delivery[field4]) {
                     //Inladen segment 'doc.delivery.link'. Veldnaam is geconfigueerd via variabele 'field4'.
-                    serv4 = doc.delivery[field4];
+                    var serv4 = doc.delivery[field4];
 
-                    newLinks = serv4.filter(link => !(link["linkType"] == type));
+                    var newLinks = serv4.filter(link => !(link["linkType"] == type));
 
-                    sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/);
+                    var sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/);
                     //console.log(sourceId.groups.id);
 
                     let liriasLink = {
