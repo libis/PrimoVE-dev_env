@@ -160,7 +160,9 @@ window.linksServiceRewrite = {
         // console.log(source)
         // console.log(doc.pnx.display.source)
         // console.log(doc.pnx.display.source.filter(s => source.includes(s)).length > 0)
-        if (doc.pnx.display.source.filter(s => source.includes(s)).length > 0) {
+        if (doc.pnx.display.source.filter(function(s) {
+                return source.includes(s);
+            }).length > 0) {
             if (doc.delivery) {
                 //console.log("Delivering")
                 /*
