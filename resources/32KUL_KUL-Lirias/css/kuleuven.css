@@ -10523,12 +10523,8 @@ body.collapse {
 }
 
 @media (max-width:799px) {
-
-    .navbar--global .form--search,
-    .navbar--global .nav--user,
-    .navbar--global .navbar--link,
-    .navbar--global+.navbar--global {
-        display: none
+    .navbar--global{
+        padding: 1.5rem !important;
     }
 }
 
@@ -10568,7 +10564,6 @@ footer .navbar--local {
 }
 
 .navbar--footer {
-    background: #fff;
     font-size: 16px
 }
 
