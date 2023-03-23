@@ -71,6 +71,8 @@ class ReportAProblemController {
               $scope.sendReport = function (answer) {
                 let data = {
                   recordId: recordData.pnx.control.recordid[0],
+                  originalsourceid: recordData.pnx.control.originalsourceid[0],
+                  source: recordData.pnx.display.source[0],
                   index: 0,
                   page: 0,
                   scope: '',
