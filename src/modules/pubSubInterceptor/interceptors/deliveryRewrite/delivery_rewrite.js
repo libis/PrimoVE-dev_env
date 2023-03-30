@@ -14,8 +14,8 @@ window.deliveryRewrite = {
         if ( pnx.control.sourceid.includes( source ) ) {
             delivery.link = delivery.link == null ? [] : delivery.link;
             delivery.availability = pnx.delivery.fulltext;
-            delivery.deliveryCategory = pnx.delivery.delcategory;
-            delivery.displayedAvailability = pnx.delivery.fulltext;    
+            //delivery.deliveryCategory = pnx.delivery.delcategory;
+            delivery.displayedAvailability = pnx.delivery.fulltext[0];    
         }
 
         return delivery;
