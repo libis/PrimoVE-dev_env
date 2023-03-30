@@ -20,8 +20,10 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         //console.log(m)
                             m.delivery.link = m.delivery.link == null ? [] : m.delivery.link;
                         
-                            m.delivery.availability = m.pnx.delivery.fulltext;
+                        m.delivery.availability = m.pnx.delivery.fulltext;
+                        if (m.pnx.delivery.fulltext == 'fulltext_linktorsrc') {
                             m.delivery.deliveryCategory = m.pnx.delivery.delcategory;
+                        }
                             m.delivery.displayedAvailability = m.pnx.delivery.fulltext[0];
 
                         //console.log(m)
