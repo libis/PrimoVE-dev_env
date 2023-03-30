@@ -95,7 +95,7 @@ class ReportAProblemController {
                   userAgent: navigator.userAgent
                 };
                 if (recordData.pnx.control.originalsourceid !== undefined) {
-                  data[originalsourceid] = recordData.pnx.control.originalsourceid[0]
+                  data["originalsourceid"] = recordData.pnx.control.originalsourceid[0]
                 }
 
                 if ($scope.report.replyTo.length > 0 && $scope.report.message.length > 0) {
