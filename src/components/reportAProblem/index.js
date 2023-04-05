@@ -71,6 +71,7 @@ class ReportAProblemController {
               $scope.sendReport = function (answer) {
                 let data = {
                   recordId: recordData.pnx.control.recordid[0],
+                  source: recordData.pnx.display.source[0],
                   index: 0,
                   page: 0,
                   scope: '',
@@ -93,6 +94,10 @@ class ReportAProblemController {
                   replyTo: $scope.report.replyTo || self.user.email,
                   userAgent: navigator.userAgent
                 };
+                if (recordData.pnx.control.originalsourceid !== undefined) {
+                  data["originalsourceid"] = recordData.pnx.control.originalsourceid[0]
+                }
+
                 if ($scope.report.replyTo.length > 0 && $scope.report.message.length > 0) {
                   $mdDialog.hide();
 
