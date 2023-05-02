@@ -30,7 +30,7 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KADOC:KADOC.*',
-                deliveryForExternalResource: { source: "KADOC_scopeArchiv" }
+                deliveryForExternalResource: { source: "KADOC_ScopeArchiv" }
             },
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
