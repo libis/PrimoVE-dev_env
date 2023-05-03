@@ -11,8 +11,6 @@ class SparkcentralController {
         self.locale = $scope.$root.$$childHead.$ctrl.userSessionManagerService.i18nService.getLanguage() || "en";
         
         Primo.view.then((view) => {
-            //let vid = view.code;
-            
             let locale = view.interfaceLanguage;
 
             if(locale == "nl"){
@@ -86,7 +84,16 @@ class SparkcentralController {
                     // Your code after init is complete
                 });
             }
-        });       
+        });      
+       
+    }
+     
+    $onInit() {
+        
+    }
+
+    $onDestroy() {
+        Sparkcentral.destroy();
     }
 }
 

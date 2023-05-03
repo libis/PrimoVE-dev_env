@@ -1,6 +1,5 @@
 /*
-  KULeuven/LIBIS (c) 2022
-  Mehmet Celik mehmet(dot)celik(at)kuleuven(dot)be
+  KULeuven/LIBIS (c) 2023
 */
 import './sparkcentral'
 
