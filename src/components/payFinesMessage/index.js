@@ -26,7 +26,7 @@ PayFinesMessageController.$inject = ['$translate', 'MessageService'];
 
 export let payFinesMessageComponent = {
   name: 'custom-pay-fines-message',  
-  enabled: true,
+  enabled: false,
   appendTo: 'prm-top-bar-before',
   enableInView: '32KUL_KUL:.*',  
   config: {
