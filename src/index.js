@@ -14,7 +14,9 @@ import './modules/altmetric';
 import './modules/browzine';
 import './modules/generalMessage';
 import './modules/feedback';
-import './modules/speedcentral';
+// import './modules/speedcentral';
+import './modules/sparkcentral';
+
 
 /* TODO : extra css from institute ? */
 import "./css/index.css";
