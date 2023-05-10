@@ -94,7 +94,7 @@ export default class Bridge {
       let data = userFines.data;
       if (data.status == 'ok') {
         let fines = data.data.fines;
-        return fines.fine;
+        return  fines.fine.filter( (f) => f.finestatus.toUpperCase() != "CLOSED" ) 
       } else {
         console.log('No fines');
         return [];
