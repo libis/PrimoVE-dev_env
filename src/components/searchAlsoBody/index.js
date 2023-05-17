@@ -55,10 +55,20 @@ class SearchAlsoBodyController {
         }
       },
       {
-        "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA',
+        "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHL:UCLL|^32KUL_LUCAWENK:LUCA',
         "name": "UniCat",
-        //"url": "http://kuleuven.e-bronnen.be/login?url=https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
         "url": "https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
+        "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
+        "tooltip": "nui.customizing.idslu.search_also.tooltip.unicat",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      },
+      {
+        "view": '^32KUL_KUL:KULeuven',
+        "name": "UniCat",
+        "url": "http://kuleuven.e-bronnen.be/login?url=https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
         "tooltip": "nui.customizing.idslu.search_also.tooltip.unicat",
         mapping: function mapping(search) {
