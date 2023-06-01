@@ -3,7 +3,7 @@ This is a development environment for Primo VE packages in a ALMA network
 
 ## Getting started:
 ### Dependencies
-node version ">= 14.13.1" !  
+node version ">= 14.15.0" !  
 npm install -g yarn
 ### Setting up the environment
 - Clone the repository
