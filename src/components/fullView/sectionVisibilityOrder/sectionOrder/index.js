@@ -59,6 +59,11 @@ class SectionOrderController {
         if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:Lirias") {
             self.servicesOrder = ["brief", "getit_link1", "details", "links", "altmetrics", "action_list", "tags", "citationTrails"];
         }
+        if ( new RegExp("32KUL_VLP:VLP_PIA").test( self.parentCtrl.parentCtrl.$stateParams.vid ) ) {
+            self.servicesOrder = ["brief", "getit_link1", "details", "links", "altmetrics", "tags", "citationTrails"];
+            self.servicesReverseOrder = ["action_list"];
+
+        }
         if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:JESUITS" ||
             self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_LIBIS_NETWORK:JESUITS_UNION"
         ) {
@@ -73,9 +78,18 @@ class SectionOrderController {
                     var service = self.parentCtrl.parentCtrl.fullViewService.servicesDirectives[service_key];
                     var orderId = service["scrollId"]
                     if (orderId) {
-                        var order = self.servicesOrder.indexOf(orderId);
-                        if (order < 0) {
-                            order = 50
+                        var order = 50
+                        if ( self.servicesOrder ) {
+                            var o = self.servicesOrder.indexOf(orderId);
+                            if (o !== -1) {
+                                order = o
+                            }
+                        }
+                        if ( self.servicesReverseOrder ) {
+                            var o = self.servicesReverseOrder.indexOf(orderId);
+                            if (o !== -1) {
+                                order = 100 - o
+                            }
                         }
                         self.addStyle(order, service)
                     }
