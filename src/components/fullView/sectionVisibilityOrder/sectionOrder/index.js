@@ -60,7 +60,7 @@ class SectionOrderController {
             self.servicesOrder = ["brief", "getit_link1", "details", "links", "altmetrics", "action_list", "tags", "citationTrails"];
         }
         if ( new RegExp("32KUL_VLP:VLP_PIA").test( self.parentCtrl.parentCtrl.$stateParams.vid ) ) {
-            self.servicesOrder = ["brief", "getit_link1", "details", "links", "altmetrics", "tags", "citationTrails"];
+            self.servicesOrder = ["brief", "details", "getit_link1", "links", "altmetrics", "tags", "citationTrails"];
             self.servicesReverseOrder = ["action_list"];
 
         }
