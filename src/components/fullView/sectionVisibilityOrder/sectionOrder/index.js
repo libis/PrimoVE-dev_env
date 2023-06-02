@@ -78,7 +78,7 @@ class SectionOrderController {
                     var service = self.parentCtrl.parentCtrl.fullViewService.servicesDirectives[service_key];
                     var orderId = service["scrollId"]
                     if (orderId) {
-                        var order = 50
+                        var order = 100
                         if ( self.servicesOrder ) {
                             var o = self.servicesOrder.indexOf(orderId);
                             if (o !== -1) {
@@ -88,7 +88,7 @@ class SectionOrderController {
                         if ( self.servicesReverseOrder ) {
                             var o = self.servicesReverseOrder.indexOf(orderId);
                             if (o !== -1) {
-                                order = 100 - o
+                                order = 1000 - o
                             }
                         }
                         self.addStyle(order, service)
