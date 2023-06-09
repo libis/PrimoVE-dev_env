@@ -59,8 +59,8 @@ class SectionOrderController {
         if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KUL:Lirias") {
             self.servicesOrder = ["brief", "getit_link1", "details", "links", "altmetrics", "action_list", "tags", "citationTrails"];
         }
-        if ( new RegExp("32KUL_VLP:VLP_PIA").test( self.parentCtrl.parentCtrl.$stateParams.vid ) ) {
-            self.servicesOrder = ["brief", "details", "getit_link1", "links", "altmetrics", "tags", "citationTrails"];
+        if ( new RegExp("32KUL_VLP:VLP_").test( self.parentCtrl.parentCtrl.$stateParams.vid ) ) {
+            self.servicesOrder = ["brief", "details", "links", "getit_link1", "altmetrics", "tags", "citationTrails"];
             self.servicesReverseOrder = ["action_list"];
 
         }
