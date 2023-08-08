@@ -1,4 +1,3 @@
-import User from "../../primo/user";
 
 class DotTestController {
     constructor($ocLazyLoad,$injector) {

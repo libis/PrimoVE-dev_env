@@ -1,4 +1,4 @@
-
+import Session from '../../primo/session'
 ///////////////////////////////////////////////////////////////////////////
 // logo's must be placed in the <view>-dir
 // - /img/library-logo-en.png
@@ -19,52 +19,50 @@ class ViewLogoController {
     this.compile = $compile;
     this.localeLibraryLogo = window.appConfig.customization.libraryLogo;
     this.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
+    
+    let view = Session.view;
+    //let vid = view.code;
+    let vid = window.appConfig.vid
+    let vidDir = vid.replace(":", "-");
+    let locale = view.interfaceLanguage;
+    let localeLibraryLogo = 'custom/' + vidDir + '/img/library-logo-' + locale + '.png';
 
-
-    Primo.view.then((view) => {
-      //let vid = view.code;
-      let vid = window.appConfig.vid
-      let vidDir = vid.replace(":", "-");
-      let locale = view.interfaceLanguage;
-      let localeLibraryLogo = 'custom/' + vidDir + '/img/library-logo-' + locale + '.png';
-
-      if (self.instituteUrl === 'nui.customization.institutionWebsiteUrl') {
-        let watcher = $rootScope.$watch(() => {
-          try {
-            if ($translate.instant('nui.customization.institutionWebsiteUrl') == 'nui.customization.institutionWebsiteUrl') {
-              return false;
-            } else {
-              return true;
-            }
-          } catch (e) {
+    if (self.instituteUrl === 'nui.customization.institutionWebsiteUrl') {
+      let watcher = $rootScope.$watch(() => {
+        try {
+          if ($translate.instant('nui.customization.institutionWebsiteUrl') == 'nui.customization.institutionWebsiteUrl') {
             return false;
+          } else {
+            return true;
           }
-        }, (n, o) => {
-          if (n == true) {
-            self.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
-            self.processInstituteUrl()
-            watcher();
-          }
-        });
-      } else {
-        self.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
-        self.processInstituteUrl()
-      }
-      if (self.localeLibraryLogo !== localeLibraryLogo) {
-        $http({
-          method: 'GET',
-          url: localeLibraryLogo,
-        }).then(function (response) {
+        } catch (e) {
+          return false;
+        }
+      }, (n, o) => {
+        if (n == true) {
+          self.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
+          self.processInstituteUrl()
+          watcher();
+        }
+      });
+    } else {
+      self.instituteUrl = $translate.instant('nui.customization.institutionWebsiteUrl');
+      self.processInstituteUrl()
+    }
+    if (self.localeLibraryLogo !== localeLibraryLogo) {
+      $http({
+        method: 'GET',
+        url: localeLibraryLogo,
+      }).then(function (response) {
 
-          window.appConfig.customization.libraryLogo = localeLibraryLogo;
-          self.localeLibraryLogo = localeLibraryLogo
-          self.compile(self.element[0].parentNode.parentNode)($scope.$parent.$parent);
+        window.appConfig.customization.libraryLogo = localeLibraryLogo;
+        self.localeLibraryLogo = localeLibraryLogo
+        self.compile(self.element[0].parentNode.parentNode)($scope.$parent.$parent);
 
-        }, function (error) {
-          self.localeLibraryLogo;
-        });
-      }
-    });
+      }, function (error) {
+        self.localeLibraryLogo;
+      });
+    }
   }
 
   processInstituteUrl() {

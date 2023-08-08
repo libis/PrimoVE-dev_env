@@ -1,4 +1,4 @@
-
+import Session from '../../../primo/session'
 import PromoteLoginHTML from './promoteLogin.html'
 
 // nui.customization.promoteLogin.title  => Sign in
@@ -78,21 +78,19 @@ class PromoteLoginController {
         }
       };
     }
-
-    Primo.user.then(user => {
-      self.user = user;
-      if (!self.user.isLoggedIn()() )  {
-        if (localStorage['primoPromoteLogin'] === 'alwaysSignin') {
-            /* Redirect to login */;
-          parentCtrl.loginService.handleLoginClick();
-        } else {
-          if (!sessionStorage['primoPromoteLogin'] && !localStorage['primoPromoteLogin']) {
-            $scope.showSignInPopup();
-            sessionStorage.setItem('primoPromoteLogin', 'SignInPopup');
-          }
+    
+    self.user = Session.user;
+    if (!self.user.isLoggedIn )  {
+      if (localStorage['primoPromoteLogin'] === 'alwaysSignin') {
+          /* Redirect to login */;
+        parentCtrl.loginService.handleLoginClick();
+      } else {
+        if (!sessionStorage['primoPromoteLogin'] && !localStorage['primoPromoteLogin']) {
+          $scope.showSignInPopup();
+          sessionStorage.setItem('primoPromoteLogin', 'SignInPopup');
         }
       }
-    });
+    }
   }
 }
 

@@ -1,69 +1,88 @@
-import libInfoHTML from './libInfo.html'
-import libInfoJSON from './libInfo.json'
+import infoHTML from './libInfo.html';
+import infoJSON from './libInfo.json';
+import Record from '../../../primo/record';
 
 class LibInfoController {
-  constructor($translate, $mdMedia, $scope, $element) {
-    let self = this;
-    self.element = $element;
-    self.hideLabel = false;
-    self.mediaQueries = $mdMedia;
-    self.scope = $scope;
-    self.sourceURL = '';
-    self.translate = $translate;
-    self.XSElement = self.element.parent().parent().parent();
-    self.iconUrl = `custom/41SLSP_NETWORK-CENTRAL_PACKAGE/img/information.png`;    
-    
-    self.translate('nui.customizing.idslu.informationicon').then((iconUrl) => {
-      if (iconUrl !== 'informationicon') {
-        self.iconUrl = iconUrl;
-      }
-    });              
+    constructor($element, $scope, $translate) {
+      this.$element = $element;
+      this.$scope = $scope;
+      this.$translate = $translate;
+    }
+  
+    $onInit(){
 
-    let mediawatcher = $scope.$watch(() => {      
-      return self.mediaQueries('xs') || false;
-    }, (xs) => {
+      let self = this;
+      self.libinfoService = infoJSON;   
+      
+      self.iconUrl = "";    
 
-      self.hideLabel = xs;          
-      if (self.hideLabel) {
-        self.XSElement.removeClass('layout-row');
-        self.XSElement.removeClass('layout-align-space-between-end');
-        self.XSElement.addClass('layout-column');
-        self.XSElement.addClass('layout-align-space-between-start');
-      } else {
-        self.XSElement.addClass('layout-row');
-        self.XSElement.addClass('layout-align-space-between-end');
-        self.XSElement.removeClass('layout-column');
-        self.XSElement.removeClass('layout-align-space-between-start');
+      self.$translate('nui.customizing.idslu.informationicon').then((iconUrl) => {
+        if (iconUrl !== 'informationicon') {
+          self.iconUrl = iconUrl;
+        }
+      }); 
+
+    }
+
+
+    get info(){
+      let self = this;                    
+      if (Object.keys(self.libinfoService).includes(self.libCode)) {
+        return {id: self.libinfoService[self.libCode].url, name: self.libinfoService[self.libCode].label};
       }
-    });    
+      return {};
+    }
+  
+    get libid(){      
+      let id = this.info.id;
+      if (id) {
+        return id;
+      }
+      return '';
+    }
+    get libname(){
+      let name = this.info.name;
+      if (name) {
+        return name;
+      }
+      return '';
+    }
+
+    get libCode() {
+      let code = '';
+      let self = this;
+      switch (self.type) {
+        case 'library':
+          try {
+            code = Record.current.library.all[self.index].lib.split(':')[0];
+          } catch (e) {
+            code = ''
+          }
+          break;
+        case 'location':
+          try {
+            code = Record.current.location.all[self.index].loc.location.libraryCode;
+          } catch (e) {
+            code = ''
+          }
+          break;
+      }
+  
+      return code;
+    }    
+  
   }
   
-  $onInit() {
-    if (self.mediaQueries) {
-      self.hideLabel = self.mediaQueries('xs');
-    }
-  }
+  LibInfoController.$inject = ['$element', '$scope', '$translate'];
 
-  $doCheck(){ 
-    if (this.location && this.sourceURL == '') {
-      let location = libInfoJSON[this.location.libraryCode];    
-      if (location) {
-        this.sourceURL = location.url;
-      } 
-    }
-  }
-}
-
-LibInfoController.$inject = ['$translate', '$mdMedia', '$scope', '$element'];
-
-export let libInfoComponent = {
-  name: 'custom-lib-info',
-  config: {
-    bindings: { location: '<', library: '<' },
-    controller: LibInfoController,
-    template: libInfoHTML
-  },
-  enabled: false,
-  appendTo: null,
-  enableInView: '.*'
-}
+  export let libInfoComponent = {
+    name: 'custom-lib-info',
+    config: {
+        bindings: { index: '@', type: '@', parentCtrl: '<'},
+        controller: LibInfoController,
+        template: infoHTML
+    },
+    enabled: true,
+    appendTo: null,
+    enableInView: '.*'    
+  } 
