@@ -41,7 +41,7 @@ window.passwordHack = {
                     reqRes.data['link'] = passwordHack.removePasswordLinks(links);
                 }
             }else{
-                reqRes.data = Object.keys(reqRes.data).map(key => {
+                Object.keys(reqRes.data).forEach(key => {
                     if ( ! key.match(/^beacon.*/) ){
                         if ( reqRes.data[key]['link'] ) {
                             let links = reqRes.data[key]['link'] ;
@@ -50,8 +50,7 @@ window.passwordHack = {
                             }
                         }
                     } 
-                    return {[key]: reqRes.data[key]};
-                  });
+                });
               }
             return reqRes;
         })
