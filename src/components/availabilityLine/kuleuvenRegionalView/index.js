@@ -65,14 +65,14 @@ class AvailabilityLineController {
           // replace instname from availabilityText with list of instnames
           if (availabilityInstitutionsNames.length === 1) {
             self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
+              idx_0: availabilityInstitutionsNames[0],
               idx_1: availabilityInstitutionsNames[0],
-              idx_2: "AvailabilityLineController TEST2"
+              idx_2: "AvailabilityLineController TEST2 [available_in_library] availabilityInstitutionsNames.length === 1"
             }
           } else {
 
             self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
+              idx_0: availabilityInstitutionsNames.slice(0, -1).join(', ') + ' and ' + availabilityInstitutionsNames.slice(-1),
               idx_1: availabilityInstitutionsNames.slice(0, -1).join(', ') + ' and ' + availabilityInstitutionsNames.slice(-1),
               idx_2: "AvailabilityLineController TEST2"
             }
@@ -83,18 +83,18 @@ class AvailabilityLineController {
 
       
       // if (self.$ctrl.result.delivery.bestlocation === null) {
-      if (self.$ctrl.result.delivery.availability[0] === "no_inventory") {
-        self.$ctrl.result.delivery.availability = ["available_in_library"];
-        if (availabilityInstitutionsNames.length > 0) {
+      if (availabilityInstitutionsNames.length > 0) {
+        if (self.$ctrl.result.delivery.availability[0] === "no_inventory") {
+          self.$ctrl.result.delivery.availability = ["available_in_library"];
           if (availabilityInstitutionsNames.length === 1) {
             self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
+              idx_0: availabilityInstitutionsNames[0],
               idx_1: availabilityInstitutionsNames[0],
-              idx_2: "AvailabilityLineController TEST2"
+              idx_2: "no_inventory AvailabilityLineController TEST2 availabilityInstitutionsNames.length === 1"
             }
           } else {
             self.$ctrl.placeHolders = {
-              idx_0: "AvailabilityLineController TEST0",
+              idx_0: availabilityInstitutionsNames.slice(0, -1).join(', ') + ' and ' + availabilityInstitutionsNames.slice(-1),
               idx_1: availabilityInstitutionsNames.slice(0, -1).join(', ') + ' and ' + availabilityInstitutionsNames.slice(-1),
               idx_2: "AvailabilityLineController TEST2"
             }
@@ -111,7 +111,7 @@ export let availabilityLineLocationsForKULeuvenRegionalViewComponent = {
   name: 'custom-availability-line-regional-view',
   enabled: true,
   appendTo: 'prm-search-result-availability-line-after',
-  enableInView: '32KUL_KUL:REGIONAL',
+  enableInView: '32KUL_KUL:REGIONAL|32KUL_KUL:KULeuven_NEW',
   config: {
     bindings: {
       parentCtrl: '<'
