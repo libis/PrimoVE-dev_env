@@ -10,23 +10,20 @@ class LibInfoController {
     }
   
     $onInit(){
-
       let self = this;
       self.libinfoService = infoJSON;   
-      
       self.iconUrl = "";    
 
       self.$translate('nui.customizing.idslu.informationicon').then((iconUrl) => {
         if (iconUrl !== 'informationicon') {
           self.iconUrl = iconUrl;
         }
-      }); 
-
+      });
     }
 
-
     get info(){
-      let self = this;                    
+      let self = this;       
+                
       if (Object.keys(self.libinfoService).includes(self.libCode)) {
         return {id: self.libinfoService[self.libCode].url, name: self.libinfoService[self.libCode].label};
       }
@@ -34,7 +31,7 @@ class LibInfoController {
     }
   
     get libid(){      
-      let id = this.info.id;
+      let id = this.info.id;      
       if (id) {
         return id;
       }
@@ -67,7 +64,8 @@ class LibInfoController {
           }
           break;
       }
-  
+      
+      //console.log(Record.current.location.all[self.index]);
       return code;
     }    
   
@@ -83,6 +81,6 @@ class LibInfoController {
         template: infoHTML
     },
     enabled: true,
-    appendTo: null,
+    appendTo: '',
     enableInView: '.*'    
   } 
