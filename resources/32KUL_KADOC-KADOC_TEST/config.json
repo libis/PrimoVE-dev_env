@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_KADOC",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-kadoc.primo.exlibrisgroup.com/",
+    "institution": "32KUL_KADOC",
+    "vidId": "KADOC_TEST",
+    "views": [
+      "KADOC_TEST"
+    ]
+  }
+}

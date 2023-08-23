@@ -105,5 +105,5 @@ export let promoteLoginComponent = {
   },
   enabled: true,
   appendTo: ['prm-user-area-expandable-after'],
-  enableInView: '32KUL_KUL:KULeuven|32KUL_KATHO:VIVES|32KUL_KHL:UCLL'
+  enableInView: '32KUL_KUL:KULeuven|32KUL_KATHO:VIVES|32KUL_KHL:UCLL|32KUL_KHM:TMOREMA'
 }
