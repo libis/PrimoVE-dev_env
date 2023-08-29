@@ -57,6 +57,29 @@ class RequestMessageController {
                             }
                         }
                     }
+
+
+                    var label =  "almaRequest.genericCheckBox"
+                    if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumgenericCheckBox.'+  this.pickupInstitution).replace(/[_\s]/g, "") != this.pickupInstitution.replace(/[_\s]/g, "") ) {
+                        label = 'nui.customization.almaRequest.requestConsortiumgenericCheckBox.'+  this.pickupInstitution;
+                    }else{
+                        if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumgenericCheckBox') != "requestConsortiumgenericCheckBox" ) {
+                            label = 'nui.customization.almaRequest.requestConsortiumGenericCheckBox';
+                        }
+                    }
+
+                    var genericCheckBoxFormFieldIndex = this.$ctrl.form.findIndex((obj => obj.key == "genericCheckBox"))
+                    if (genericCheckBoxFormFieldIndex) {
+                        var genericCheckBoxFormField = this.$ctrl.form[genericCheckBoxFormFieldIndex]
+                        genericCheckBoxFormField.options = genericCheckBoxFormField.options.map(function (option) {
+                            if (  option.label == "almaRequest.genericCheckBox") {
+                                option.label = label
+                            }
+                            return option
+                        });
+
+                    }
+
                 }else{
                     this.$ctrl.requestConsortiumFormDescription = this.$ctrl.requestFormDescription;
                     if (this.requestType.key == "booking"){
@@ -71,6 +94,7 @@ class RequestMessageController {
             }
            
            console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
+           console.log ("genericCheckBox label :" + label )
 
         }
     }
