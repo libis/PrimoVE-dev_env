@@ -76,6 +76,17 @@ class SearchAlsoBodyController {
           return terms[2] || "";
         }
       },
+      {
+        "view": '^32KUL_VLP:Archief',
+        "name": "Parlementair Informatiecentrum",
+        "url": "https://libis-vlp.primo.exlibrisgroup.com/discovery/search?vid=32KUL_VLP:VLP&query=any,contains,",
+        "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon.ico",
+        "tooltip": "nui.customizing.idslu.search_also.tooltip.vlp",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      },
        {
         "view": '^FARO|^32KUL_KUL:KULeuven',
         "name": "Worldcat",
@@ -117,5 +128,5 @@ export let searchAlsoBodyComponent = {
   },
   enabled: true,
   appendTo: 'prm-facet-exact-after',
-  enableInView: '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant'
+  enableInView: '^32KUL_KATHO:VIVES|^32KUL_VLP:Archief|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant'
 }
