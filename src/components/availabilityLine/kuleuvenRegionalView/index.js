@@ -7,7 +7,7 @@ class AvailabilityLineController {
   $onInit() {
     let self = this;
 
-    self.almaInstitutionsFilterInstCodeList = ["32KUL_HUB", "32KUL_KHM", "32KUL_KHK", "32KUL_KHL", "32KUL_KATHO", "32KUL_LUCAWENK"]
+    self.almaInstitutionsFilterInstCodeList = ["32KUL_HUB", "32KUL_KHM", "32KUL_KHK", "32KUL_KHL", "32KUL_LUCAWENK"]
     self.$ctrl = self.parentCtrl.parentCtrl;
     self.$scope.$ctrl = self.parentCtrl.parentCtrl;
 
@@ -111,7 +111,7 @@ export let availabilityLineLocationsForKULeuvenRegionalViewComponent = {
   name: 'custom-availability-line-regional-view',
   enabled: true,
   appendTo: 'prm-search-result-availability-line-after',
-  enableInView: '32KUL_KUL:REGIONAL|32KUL_KUL:KULeuven_NEW',
+  enableInView: '32KUL_KUL:REGIONAL|32KUL_KUL:KULeuven_NE|32KUL_KUL:KULeuven',
   config: {
     bindings: {
       parentCtrl: '<'
