@@ -1,0 +1,9 @@
+
+
+prm-journals .layout-row > md-content.flex > .padding-medium > md-card.default-card md-card-content {
+    display:block
+}
+
+prm-journals .layout-row > md-content.flex > .padding-medium > md-card.default-card md-card-title {
+    display:none
+}
