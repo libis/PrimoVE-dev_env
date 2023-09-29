@@ -51,7 +51,7 @@ class LibInfoSeedController {
         let self = this;
         if (Primo.record.current.location.item.elementVisible()) {
             if (Primo.record.current.location.item.allAsElement) {
-                Primo.record.current.location.item.allAsElement.forEach((el, i, a) => {                    
+                Primo.record.current.location.item.allAsElement.forEach((el, i, a) => {   
                     let selector = 'prm-stack-map';
                     if (!el.query(selector)) {
                         selector = 'div > div.layout-row > div';//fallback selector
@@ -99,7 +99,7 @@ class LibInfoSeedController {
             if (el) {
                 return !(window.getComputedStyle(el).visibility == 'hidden' && el.length != document.querySelectorAll('prm-location custom-lib-info'));
             }
-
+            
             return false;
         }, (n, o) => {
             if (n == true) {
@@ -121,7 +121,7 @@ class LibInfoSeedController {
         })
 
         let itemWatcher = self.scope.$watch(() => {
-            let el = document.querySelector('prm-location-items h4');
+            let el = document.querySelector('prm-location-items h6');
             if (el) {
                 return !(window.getComputedStyle(el).visibility == 'hidden');
             }
