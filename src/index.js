@@ -14,9 +14,7 @@ import './modules/altmetric';
 import './modules/browzine';
 import './modules/generalMessage';
 import './modules/feedback';
-// import './modules/speedcentral';
 import './modules/sparkcentral';
-
 
 /* TODO : extra css from institute ? */
 import "./css/index.css";
@@ -33,9 +31,9 @@ import "./css/index.css";
     customType = 'viewCustom';
   }
 
-  window.Primo = new Primo();
+  //window.Primo = new Primo();
     
-  let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'google', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback','sparkcentral'];
+  let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'google', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback', 'sparkcentral'];
   let servicesHost = 'https://services.libis.be/';
 
 

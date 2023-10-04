@@ -160,7 +160,9 @@ window.linksServiceRewrite = {
         // console.log(source)
         // console.log(doc.pnx.display.source)
         // console.log(doc.pnx.display.source.filter(s => source.includes(s)).length > 0)
-        if (doc.pnx.display.source.filter(s => source.includes(s)).length > 0) {
+        if (doc.pnx.display.source.filter(function(s) {
+                return source.includes(s);
+            }).length > 0) {
             if (doc.delivery) {
                 //console.log("Delivering")
                 /*
@@ -268,10 +270,13 @@ window.linksServiceRewrite = {
     transformDeliveryLinks: ({ doc = {}, recordSource = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
 
         // Test of het om een Lirias record gaat op basis van de data source.
-        //liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
+        // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
         // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
-        if (doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0) {
+        if (doc.pnx.display.source.filter(function(s) {
+                return recordSource.includes(s);
+        }).length > 0) {
+            //console.log('Delivering Lirias...')
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
@@ -287,7 +292,7 @@ window.linksServiceRewrite = {
                     serv1.forEach(link => {
                         // console.log(link.serviceUrl);
                         if (link.serviceUrl.match(linkSign)) {
-                            linkData = window.linksServiceRewrite.getUrlAndLabel(link.serviceUrl);
+                            var linkData = window.linksServiceRewrite.getUrlAndLabel(link.serviceUrl);
                             link.serviceUrl = linkData[0];
                             link.packageName = linkData[1];
                         }
@@ -310,7 +315,7 @@ window.linksServiceRewrite = {
 
                             // Vertaling van display constants. Code wordt enkel uitgevoerd als bij links met ilsApiId 'lirias' en aanwezigheid van string '$$'.
                             if (getLink["ilsApiId"].match("lirias") && baseLink.match(linkSign)) {
-                                linkData = window.linksServiceRewrite.getUrlAndLabel(baseLink);
+                                var linkData = window.linksServiceRewrite.getUrlAndLabel(baseLink);
                                 getLink.link = linkData[0];
                                 getLink.displayText = "Get full text - ";
 
@@ -331,13 +336,13 @@ window.linksServiceRewrite = {
                     var serv3 = field3.split('.').reduce((previous, current) => { return previous[current] }, doc.delivery);
 
                     // Array voor opslag van correcte URLs.
-                    linkSet = []
+                    var linkSet = []
 
                     serv3.forEach(link => {
                         /* Vertaling van display constants. Een if-clause gaat na of de URL display constants bevat.
-                        Zo ja, dan wordt de URL uit de basisstring geïsoleerd. Zo nee, dan wordt de URL onveranderd toegevoegd aan linkSet.*/
+                        Zo ja, dan wordt de URL uit de basisstring geï¿½soleerd. Zo nee, dan wordt de URL onveranderd toegevoegd aan linkSet.*/
                         if (link.match(linkSign)) {
-                            linkData = window.linksServiceRewrite.getUrlAndLabel(link);
+                            var linkData = window.linksServiceRewrite.getUrlAndLabel(link);
                             link = linkData[0];
                         }
 
@@ -351,11 +356,11 @@ window.linksServiceRewrite = {
                 // SEGMENT 4: LINKS SECTION - Vertaling van display constants in URLs in de links-sectie van de full display.
                 if (doc.delivery[field4]) {
                     //Inladen segment 'doc.delivery.link'. Veldnaam is geconfigueerd via variabele 'field4'.
-                    serv4 = doc.delivery[field4];
+                    var serv4 = doc.delivery[field4];
 
-                    newLinks = serv4.filter(link => !(link["linkType"] == type));
+                    var newLinks = serv4.filter(link => !(link["linkType"] == type));
 
-                    sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/);
+                    var sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/);
                     //console.log(sourceId.groups.id);
 
                     let liriasLink = {
@@ -370,9 +375,7 @@ window.linksServiceRewrite = {
                     //console.log("linkset: " + newLinks);
 
                     doc.delivery[field4] = newLinks;
-                }               
-
-               
+                }
             }
         }
         //console.log(doc);

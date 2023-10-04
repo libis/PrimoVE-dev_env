@@ -16,7 +16,7 @@
       color: #265f8d;
       background-color: rgba(92, 146, 189, 0.1); }
   .md-button.md-secondary {
-    color: #A9CDD6; }
+    color: #004070; }
     .md-button.md-secondary:hover:not([disabled]), .md-button.md-secondary:focus:not([disabled]), .md-button.md-secondary.hovered:not([disabled]), .md-button.md-secondary.md-focused:not([disabled]), .md-button.md-secondary._md-focused:not([disabled]) {
       color: #53afc6;
       background-color: rgba(169, 205, 214, 0.1); }
@@ -60,7 +60,7 @@
     .tiles-grid-tile .tile-content > prm-icon.md-button,
     .tiles-grid-tile .section-title .tile-content > prm-icon.md-button, md-grid-tile .tile-content > .md-button.link-alt-color,
     .tiles-grid-tile .tile-content > .md-button.link-alt-color {
-      color: #45aab4; }
+      color: #147fa1; }
       .md-button.button-link.link-alt-color:hover:not([disabled]), .section-title prm-icon.md-button.button-link:hover:not([disabled]), .section-title md-grid-tile .tile-content > prm-icon.md-button:hover:not([disabled]), md-grid-tile .section-title .tile-content > prm-icon.md-button:hover:not([disabled]), .section-title
       .tiles-grid-tile .tile-content > prm-icon.md-button:hover:not([disabled]),
       .tiles-grid-tile .section-title .tile-content > prm-icon.md-button:hover:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color:hover:not([disabled]),
@@ -77,7 +77,7 @@
       .tiles-grid-tile .tile-content > prm-icon.md-button._md-focused:not([disabled]),
       .tiles-grid-tile .section-title .tile-content > prm-icon.md-button._md-focused:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color._md-focused:not([disabled]),
       .tiles-grid-tile .tile-content > .md-button.link-alt-color._md-focused:not([disabled]) {
-        color: #1e6d75;
+        color: #003d6a;
         background-color: rgba(69, 170, 180, 0.1); }
   .md-button.button-large {
     font-size: 1.2em;
@@ -154,9 +154,9 @@
       color: #265f8d;
       background-color: rgba(92, 146, 189, 0.1); }
     .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link {
-      color: #45aab4; }
+      color: #147fa1; }
       .md-button.button-as-link.link-alt-color:hover:not([disabled]), .bar prm-authentication .md-button.link-alt-color:hover:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:hover:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:hover:not([disabled]), .section-title prm-icon.md-button.button-as-link:hover:not([disabled]), .md-button.button-as-link.link-alt-color:focus:not([disabled]), .bar prm-authentication .md-button.link-alt-color:focus:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:focus:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:focus:not([disabled]), .section-title prm-icon.md-button.button-as-link:focus:not([disabled]), .md-button.button-as-link.link-alt-color.hovered:not([disabled]), .bar prm-authentication .md-button.link-alt-color.hovered:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.hovered:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.hovered:not([disabled]), .section-title prm-icon.md-button.button-as-link.hovered:not([disabled]), .md-button.button-as-link.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link.md-focused:not([disabled]), .md-button.button-as-link.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button._md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button._md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link._md-focused:not([disabled]) {
-        color: #1e6d75;
+        color: #003d6a;
         background-color: rgba(69, 170, 180, 0.1); }
     .md-button.button-as-link.button-external-link span, .bar prm-authentication .md-button.button-external-link span {
       position: relative;
@@ -219,11 +219,11 @@
     display: none; }
 
 .prm-primary-color, .result-item-actions .md-icon-button, .result-item-actions .more-options-button, prm-add-query-to-saved-searches .custom-button, .md-autocomplete-suggestions .suggestion-scope, md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-active:not([disabled]), md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-focused:not([disabled]), md-tab-content .tab-content-header md-input-container md-select-value .md-text {
-  color: #1f98bd; }
+  color: #147fa1; }
 
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar, prm-journals-search-bar {
   color: white;
-  background-color: #1f98bd; }
+  background-color: #147fa1; }
   .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1 {
     background-color: #1d8db0; }
   .prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2, prm-journals-search-bar.prm-hue2, md-backdrop.md-opaque {
@@ -236,36 +236,36 @@
     background-color: #187591; }
 
 .prm-primary-border {
-  border-color: #1f98bd; }
+  border-color: #147fa1; }
   .prm-primary-border.prm-hue1 {
-    border-color: #1f98bd; }
+    border-color: #147fa1; }
   .prm-primary-border.prm-hue2 {
-    border-color: #1f98bd; }
+    border-color: #147fa1; }
 
 .prm-secondary-color, prm-search-bookmark-filter .md-button, prm-topbar .top-nav-bar {
-  color: #A9CDD6; }
+  color: #004070; }
   .prm-secondary-color.prm-hue1, .link-alt-color, .section-title prm-icon, .result-item-actions .pin-button, prm-add-query-to-saved-searches .custom-button.pin-button, prm-search-bookmark-filter .prm-hue1.md-button, prm-topbar .prm-hue1.top-nav-bar, prm-recomendation-item .media-on-hover .pin-button {
-    color: #45aab4; }
+    color: #147fa1; }
   .prm-secondary-color.prm-hue2, prm-search-bookmark-filter .prm-hue2.md-button, prm-topbar .prm-hue2.top-nav-bar {
     color: #64a5b5; }
 
 .prm-secondary-bg, md-progress-linear[md-mode=indeterminate].header-progress-bar .md-bar {
-  background-color: #A9CDD6; }
+  background-color: #004070; }
   .prm-secondary-bg.prm-hue1, .new-result-item .list-item-count, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue1.md-bar, md-tabs md-ink-bar, md-input-container:after, md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
-    background-color: #45aab4; }
+    background-color: #147fa1; }
   .prm-secondary-bg.prm-hue2, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue2.md-bar, md-checkbox.md-checked .md-icon,
   md-checkbox.md-checked ._md-icon {
     background-color: #64a5b5; }
 
 .prm-secondary-border {
-  border-color: #A9CDD6; }
+  border-color: #004070; }
   .prm-secondary-border.prm-hue1, md-select:focus .md-select-value, .md-input-container-dummy > .md-select-dummy:focus .md-select-value,
   .md-input-focused md-select .md-select-value,
   .md-input-focused .md-input-container-dummy > .md-select-dummy .md-select-value,
   md-select:not([disabled]):focus .md-select-value,
   .md-input-focused
   md-select:not([disabled]) .md-select-value, md-radio-button.md-checked .md-off, md-radio-button.md-checked ._md-off {
-    border-color: #45aab4; }
+    border-color: #147fa1; }
 
 .prm-background, html, body, prm-search-bar .simple-search-wrapper .search-options:after, prm-journals-search-bar .simple-search-wrapper .search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider, prm-journals-search-bar .simple-search-wrapper .search-options md-divider, .prm-view-overlay-inner, .__xs prm-facet,
 .__sm prm-facet, .__sm .sidebar,
@@ -425,7 +425,7 @@ md-tabs.tabs-as-links md-tab-item:not([disabled]), md-tabs.tabs-as-app .back-but
   .tiles-grid-tile .tile-header .header-link .prm-alt-link.arrow-icon, md-grid-tile .tile-header .prm-alt-link.header-link:hover,
   .tiles-grid-tile .tile-header .prm-alt-link.header-link:hover, md-grid-tile .tile-header .prm-alt-link.md-button,
   .tiles-grid-tile .tile-header .prm-alt-link.md-button, md-input-container.has-fixed-message [ng-message] a.prm-alt-link, .separate-list-items md-list-item .item-loader-with-text .prm-alt-link.md-button, md-list-item.prm-alt-link.list-item-as-link {
-    color: #45aab4; }
+    color: #147fa1; }
     .prm-links.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1[link-arrow], a.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1.button-content, .login-dialog md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1,
     .login-dialog md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title,
     .login-dialog .md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1,

@@ -1,0 +1,71 @@
+﻿<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    LinkToAZDatabaseList
+</style>
+<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+    <md-card-content>        
+        <span class="md-headline" id="ContentInLimo">
+                Wat vind je in Limo - Archief?
+            </span>
+        <br>
+        <p>
+        Met  Limo-Archief  doorzoek je de archiefcollectie van het Vlaams Parlement.  Je kan op een uniforme manier zoeken in een veelheid aan bronnen: gedrukte en elektronische documenten, foto’s, beeld- en geluidsopnames. De oudste archieven dateren van 7 december 1971, de dag waarop de Cultuurraad voor de Nederlandse Cultuurgemeenschap is geïnstalleerd.
+        </p>
+        <p>
+        Zoek je specifiek naar een video-opname van een plenaire zitting of een commissievergadering van het Vlaams Parlement? Dan kan je die vinden door de catalogus van Meemoo te raadplegen: <a href="https://hetarchief.be/catalog" target="_blank" class="md-primoExplore-theme">https://hetarchief.be/catalog</a>
+        <br>
+        Meemoo is het Vlaams instituut voor het archief. Het Vlaams Parlement werkt met deze instelling samen voor de archivering van zijn beeldopnames van parlementaire vergaderingen.
+        </p>
+        <p>
+        Niet gevonden wat je zocht? Neem dan rechtsreeks contact op met de Archiefdienst van het Vlaams Parlement via <a href="mailto:archief@vlaamsparlement.be" class="md-primoExplore-theme">archief@vlaamsparlement.be</a>. We helpen je graag verder!
+        </p>    
+        <p>
+            Zoek ook in de catalogus van het <a target="_blank" href="https://libis-vlp.primo.exlibrisgroup.com/discovery/search?vid=32KUL_VLP:VLP">Parlementair Informatiecentrum</a>.    
+        </p>
+        
+        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+
+    </md-card-content>
+
+</md-card>
+<prm-news parent-Ctrl='$ctrl'></prm-news>
+

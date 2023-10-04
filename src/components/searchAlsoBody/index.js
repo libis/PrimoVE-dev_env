@@ -1,4 +1,5 @@
 import searchAlsoBodyHTML from './searchAlsoBody.html'
+import Session from '../../primo/session'
 
 class SearchAlsoBodyController {
   constructor($location) {
@@ -7,10 +8,10 @@ class SearchAlsoBodyController {
 
   $onInit() {
     let self = this;
-    Primo.view.then(v => {
-      self.viewCode = v.code;      
-      self.targets = self._targets();    
-    });
+    let view = Session.view;
+    self.viewCode = view.code;      
+    self.targets = self._targets();    
+    
     this.location = this.$location;
   }
 
@@ -55,12 +56,33 @@ class SearchAlsoBodyController {
         }
       },
       {
-        "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA',
+        "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHL:UCLL|^32KUL_LUCAWENK:LUCA',
         "name": "UniCat",
-        //"url": "http://kuleuven.e-bronnen.be/login?url=https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
         "url": "https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
         "tooltip": "nui.customizing.idslu.search_also.tooltip.unicat",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      },
+      {
+        "view": '^32KUL_KUL:KULeuven',
+        "name": "UniCat",
+        "url": "https://kuleuven.e-bronnen.be/login?url=https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
+        "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
+        "tooltip": "nui.customizing.idslu.search_also.tooltip.unicat",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      },
+      {
+        "view": '^32KUL_VLP:Archief',
+        "name": "Parlementair Informatiecentrum",
+        "url": "https://libis-vlp.primo.exlibrisgroup.com/discovery/search?vid=32KUL_VLP:VLP&query=any,contains,",
+        "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon.ico",
+        "tooltip": "nui.customizing.idslu.search_also.tooltip.vlp",
         mapping: function mapping(search) {
           var terms = search.split(",");
           return terms[2] || "";
@@ -107,5 +129,5 @@ export let searchAlsoBodyComponent = {
   },
   enabled: true,
   appendTo: 'prm-facet-exact-after',
-  enableInView: '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant'
+  enableInView: '^32KUL_KATHO:VIVES|^32KUL_VLP:Archief|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant'
 }
