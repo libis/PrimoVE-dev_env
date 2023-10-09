@@ -16,11 +16,13 @@ window.webhookTLevel = {
     }
 };
 
+
 //angular.module('webhookTLevel', ['ng']).run(() => {
   //  document.addEventListener('pubSubInterceptorsReady', (e) => {
         // federated search and merge result set
         pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
-            if (reqRes.config.params['scope'] == 'lirias_profile') {
+            if ( new RegExp('lirias.*profile').test( reqRes.config.params['scope'] ) ) {
+            // if (reqRes.config.params['scope'] == 'lirias_profile') {
                 // process result 
                 // FACETS
                 let facets = reqRes.data.facets;
