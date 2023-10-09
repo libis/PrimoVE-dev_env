@@ -58,6 +58,7 @@ class RequestMessageController {
                         }
                     }
 
+
                     var label =  "almaRequest.genericCheckBox"
                     if ( this.$translate.instant('nui.customization.almaRequest.requestConsortiumgenericCheckBox.'+  this.pickupInstitution).replace(/[_\s]/g, "") != this.pickupInstitution.replace(/[_\s]/g, "") ) {
                         label = 'nui.customization.almaRequest.requestConsortiumgenericCheckBox.'+  this.pickupInstitution;
@@ -78,7 +79,6 @@ class RequestMessageController {
                         });
 
                     }
-                   
 
                 }else{
                     this.$ctrl.requestConsortiumFormDescription = this.$ctrl.requestFormDescription;
@@ -95,7 +95,6 @@ class RequestMessageController {
            
            console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
            console.log ("genericCheckBox label :" + label )
-
 
         }
     }

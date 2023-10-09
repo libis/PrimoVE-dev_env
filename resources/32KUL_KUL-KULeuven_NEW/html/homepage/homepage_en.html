@@ -1,0 +1,54 @@
+<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+</style>
+
+<md-content layout-xs="column" layout="row" class="display-block-xs">
+    <div flex-xs="100" flex="60" layout="column">
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <a href="https://bib.kuleuven.be/english/collections-access-borrowing/searching" target="_blank" id="limo_content_link" aria-label="Link to info about content in Limo"
+                   title="Link to info about content in Limo">
+                    <span class="md-headline" id="ContentInLimo">
+                        What can you find in Limo?
+                    </span>
+                </a>
+                <h3>All (incl. articles)</h3>
+                <p>More than 1,5 billion items: online articles in e-journals, books and e-books, databases and other media.</p>
+                <h3>Books & more @KU Leuven</h3>
+                <p>
+                    <!--Limit your search to 5 million items:-->
+                    <ul>
+                    <li>E-books, e-journals, databases, digitized works and other online materials available to KU Leuven users</li>
+                    <li>Print books, journals, rare books and other physical items available in the KU Leuven campuses: Leuven, Antwerpen, Brugge, Kortrijk, Sint-Lucas Brussel and Technisch Documentatiecentrum Gent.</li>
+                    </ul>
+                </p>
+                <h3>Physical items @specific locations</h3>
+                <p>Limit your search to physical books & journals per KU Leuven location outside of Leuven.</p>
+                <h3>Curated Collections </h3>
+                <p>
+                <ul>
+                    <li>Digitized heritage and modern materials</li>
+                    <li>Temporary and permanent selected collections on special themes</li>
+                </ul>
+            </p>
+            </md-card-content>
+        </md-card>
+
+    </div>
+    <div flex-xs="100" flex="40" layout="column">
+        <prm-news parent-Ctrl='$ctrl'></prm-news>
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <prm-link-to-my-library-card parent-Ctrl='$ctrl'></prm-link-to-my-library-card>
+               <br>
+                <a href="http://services.libis.be/library_info/" target="_blank" id="find_library" aria-label="Find Library Contact Info" title="Find Library Contact Info" class="md-primoExplore-theme">
+                <span class="md-headline" id="ContentFindLibrary">
+                    Find Library
+                </span>
+                </a>
+                <br>
+                <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>

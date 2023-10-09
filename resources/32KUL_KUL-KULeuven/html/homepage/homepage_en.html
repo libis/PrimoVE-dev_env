@@ -1,5 +1,10 @@
 <style>
     @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    #ContentKULLOCLink > md-card-content > h3 {
+        margin-top:1em;
+        margin-bottom:0.3em
+    }
 </style>
 
 <md-content layout-xs="column" layout="row" class="display-block-xs">
@@ -14,30 +19,24 @@
                 </a>
                 <h3>All (incl. articles)</h3>
                 <p>More than 1,5 billion items: online articles in e-journals, books and e-books, databases and other media.</p>
+                
                 <h3>Books & more @KU Leuven</h3>
-                <p>
-                    Limit you search to 5 million items:
-                    <ul>
-                    <li>E-books, e-journals, databases, digitized works and other online materials available to KU Leuven users</li>
-                    <li>Print books, journals, rare books and other physical items available in the KU Leuven campuses: Leuven, Antwerpen, Brugge, Kortrijk, Sint-Lucas Brussel and Technisch Documentatiecentrum Gent.</li>
-                    </ul>
-                </p>
-            </md-card-content>
-        </md-card>
-        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
-            <md-card-content>
-                <span class="md-title">
-                Switch to catalog: 
-                <nobr><a href="https://kuleuven.limo.libis.be/discovery/search?vid=32KUL_KUL:REGIONAL" 
-                    target="_blank" >KU Leuven campussen <i class="material-icons prm-text">launch</i></a></nobr>
-                </span>           
-                <br>&nbsp;
-                <P>
-                    This catalog allows you to search for physical items per KU Leuven campus, including Aalst, Brussel, Geel, Diepenbeek, Sint-Lucasbibliotheek Gent, Sint-Katelijne-Waver and Rabot Gent.
-                </P>
-            </md-card-content>
+                <ul>
+                <li>E-books, e-journals, databases, digitized works and other online materials available to KU Leuven users</li>
+                <li>Print books, journals, rare books and other physical items available in the KU Leuven campuses: Leuven, Antwerpen, Brugge, Kortrijk, Sint-Lucas Brussel and Technisch Documentatiecentrum Gent.</li>
+                </ul>
 
+                <h3>Physical items @specific locations</h3>
+                Limit your search to physical books & journals per KU Leuven location outside of Leuven.
+                
+                <h3>Curated Collections </h3>
+                <ul>
+                    <li>Digitized heritage and modern materials</li>
+                    <li>Temporary and permanent selected collections on special themes</li>
+                </ul>
+            </md-card-content>
         </md-card>
+
     </div>
     <div flex-xs="100" flex="40" layout="column">
         <prm-news parent-Ctrl='$ctrl'></prm-news>

@@ -1,5 +1,3 @@
-
-
 prm-topbar  {
     height: auto;
 }
@@ -13,27 +11,6 @@ prm-topbar navbar__title a:hover
     background-color: inherit;    
     box-shadow: inherit;
 
-}
-
-/*
-prm-topbar .md-button a,
-prm-topbar .md-button a:link,
-prm-topbar .md-button a:visited
-prm-topbar .md-button a:active
- {
-    color: hsla(0,0%,100%,.65);
-}
-
-
-
-prm-topbar .md-button a:hover
- {
-    color: hsla(0,0%,100%,1);
-}
-*/
-
-prm-topbar > div.top-nav-bar {
-    /* display: none  */
 }
 
 prm-topbar > div.top-nav-bar div.navbar--local > div.container {
@@ -51,28 +28,9 @@ prm-topbar > div.top-nav-bar div.navbar--local > div.container  prm-main-menu > 
     margin-right: 0px;
 }
 
-
-
 div.search-options {
     flex: 0 0 0%;
 }
-
-/*
-prm-autocomplete {
-    background-color: peru;
-}
-md-autocomplete-wrap {
-    background-color: purple;
-    color:  cornflowerblue
-}
-*/
-
-/*
-prm-tabs-and-scopes-selector {
-  
-}
-*/
-
 
 prm-search-bar div.search-input > prm-autocomplete > md-autocomplete-wrap > button,
 prm-search-bar div.search-input > prm-autocomplete > md-autocomplete-wrap > button:focus
@@ -93,6 +51,61 @@ md-content md-content, md-content.md-primoExplore-theme {
     background-color:#fff
 }
 
-div.md-range-content md-input-container input[type="number"]{
-    padding: 2px
+.navbar{
+    padding: 0;
+}
+
+.navbar--local{
+    background: #fff;
+    padding-top:1rem;
+}
+
+.navbar--global {
+    background: #147fa1;
+    border-bottom: 30px solid #fff;
+}
+
+.heading--2 a, .md-headline a{
+    text-decoration: none;
+} 
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 13px;
+    font-family: Source Sans Pro,sans-serif;
+    font-weight: 400;
+    line-height: 1.15;
+    color: #004070;
+}
+
+prm-topbar .md-button:not(.disable-hover):not(.close-btn-favorits-warning-message){
+    color: #003d6a;
+}
+
+md-icon{
+    color: #003d6a !important;
+}
+
+.simple-search-wrapper .layout-column{
+    margin-bottom: 0;
+}
+
+body{
+    font-size: .875rem;
+}
+
+div#footer, div#footer a {
+    color: #004070;
+}
+
+div#footer {
+    width: 100%;
+    background-color: #fff;
+    padding: 2.5rem 1em !important;
+    font-size: small;
+    align-items: center;
+    border-top: 1px solid #004070 !important;
+}
+
+prm-search-bar .advanced-search-tabs md-input-container, prm-tags-search-bar .advanced-search-tabs md-input-container {
+    padding: 0 0 1.5rem 0;
 }

@@ -1,0 +1,3 @@
+:not(.multiselect-facet-group ~ .multiselect-facet-group).multiselect-facet-group {
+    display: none;
+}

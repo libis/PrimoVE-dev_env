@@ -9,7 +9,7 @@ window.permalink = {
     configuration: {
         afterActionsBaseURL: [
             {
-                enableInView: '32KUL_KUL:Lirias.*',
+                enableInView: '32KUL_KUL:Lirias',
                 replaceWithPnxField: { field: "control.sourcerecordid" },
                 prefixLink: { prefix: "https://lirias.kuleuven.be/" }
             }
