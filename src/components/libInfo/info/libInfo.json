@@ -23,7 +23,7 @@
         "url": "https://bib.kuleuven.be/artes/ub",
         "label": "KU Leuven Libraries Artes University Library"
     },
-    "KULAK": {
+    "BIBK": {
         "url": "https://kulak.kuleuven.be/nl/over_kulak/diensten/bibliotheek",
         "label": "KU Leuven Libraries Campus Kulak Kortrijk"
     },
@@ -31,7 +31,7 @@
         "url": "https://bib.kuleuven.be/ebib/antwerpen",
         "label": "KU Leuven Libraries Economics and Business Campus Carolus Antwerp"
     },
-    "EBIB": {
+    "ETEW": {
         "url": "https://bib.kuleuven.be/ebib/leuven",
         "label": "KU Leuven Libraries Economics and Business Leuven"
     },
@@ -123,7 +123,7 @@
         "url": "https://services.libis.be/library_info/GSDB",
         "label": "Don Bosco bibliotheek"
     },
-    "ROLDUC": {
+    "GROL": {
         "url": "https://www.rolduc.nl/grootseminarie-rolduc/bibliotheek/",
         "label": "Scheut Memorial Library"
     }
