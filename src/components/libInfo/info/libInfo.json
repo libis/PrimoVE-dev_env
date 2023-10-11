@@ -8,7 +8,7 @@
         "label": "KU Leuven Libraries 2Bergen - Learning Centre Désiré Collen"
     },
     "SLUCB": {
-        "url": "https://bib.kuleuven.be/brussel",
+        "url": "https://bib.kuleuven.be/2bergen/architectuur-brussel ",
         "label": "KU Leuven Libraries 2Bergen Campus Sint-Lucas Brussels"
     },
     "TDC": {
@@ -118,5 +118,14 @@
     "BSML": {
         "url": "https://www.kuleuven.be/verbiest/sml",
         "label": "Scheut Memorial Library"
+    },
+    "GSDB": {
+        "url": "https://services.libis.be/library_info/GSDB",
+        "label": "Don Bosco bibliotheek"
+    },
+    "ROLDUC": {
+        "url": "https://www.rolduc.nl/grootseminarie-rolduc/bibliotheek/",
+        "label": "Scheut Memorial Library"
     }
+
 }
