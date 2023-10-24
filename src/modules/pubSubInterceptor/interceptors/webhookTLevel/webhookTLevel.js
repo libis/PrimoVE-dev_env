@@ -21,8 +21,9 @@ window.webhookTLevel = {
   //  document.addEventListener('pubSubInterceptorsReady', (e) => {
         // federated search and merge result set
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
-            webhooks=['lirias_profile','Archief']
-            if (webhooks.includes(reqRes.config.params['scope'])) {
+
+            var enableInScopes ='lirias.*profile.*|Archief';
+            if (new RegExp(enableInScopes).test( reqRes.config.params['scope'] )  )  {
                 // process result 
                 // FACETS
                 let facets = reqRes.data.facets;
