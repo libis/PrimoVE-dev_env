@@ -20,7 +20,7 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
-                transformDeliveryLinks: { recordSource: "Lirias_basic", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+                transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ],
         afterDeliveryURL: [
@@ -34,7 +34,7 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
-                transformDeliveryLinks: { recordSource: "Lirias_basic", field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+                transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             }
         ]
     },
@@ -265,18 +265,21 @@ window.linksServiceRewrite = {
     },
 
     /* Methode voor de omzetting van displayconstants in online delivery velden waar dit niet automatisch gebeurt.
-     * Input: Java object op basis van pnx text-file. --- Output: aangepast Java object met custom delivery URLs en display-labels.
-     * Creatiecontext: Basisview in Primo VE voor Lirias records met full-text access.*/
+     Creatiecontext: Basisview in Primo VE voor Lirias records met full-text access.*/
     transformDeliveryLinks: ({ doc = {}, recordSource = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
 
         // Test of het om een Lirias record gaat op basis van de data source.
         // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
         // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
-        if (doc.pnx.display.source.filter(function(s) {
-                return recordSource.includes(s);
-        }).length > 0) {
-            //console.log('Delivering Lirias...')
+        if ((doc.pnx.display.source.filter(function(s) {
+            return recordSource.includes(s);
+        }).length > 0)
+            || (doc.delivery && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); })))
+
+        {
+            console.log('Delivering Lirias...')
+            console.log(doc.delivery.electronicServices)
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
@@ -359,20 +362,21 @@ window.linksServiceRewrite = {
                     var serv4 = doc.delivery[field4];
 
                     var newLinks = serv4.filter(link => !(link["linkType"] == type));
+                    console.log(newLinks)
 
-                    var sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/);
-                    //console.log(sourceId.groups.id);
+                    var sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/)
+                    
+                    if (sourceId) {
+                        let liriasLink = {
+                            "@id": "_:0",
+                            displayLabel: "View detailed record (Lirias)",
+                            linkType: "backlink",
+                            linkURL: "https://lirias.kuleuven.be/" + sourceId.groups.id,
+                            publicNote: null
+                        }
 
-                    let liriasLink = {
-                        "@id": "_:0",
-                        displayLabel: "View detailed record (Lirias)",
-                        linkType: "backlink",
-                        linkURL: "https://lirias.kuleuven.be/" + sourceId.groups.id,
-                        publicNote: null
+                        newLinks.push(liriasLink);
                     }
-                    //console.log(liriasLink);
-                    newLinks.push(liriasLink);
-                    //console.log("linkset: " + newLinks);
 
                     doc.delivery[field4] = newLinks;
                 }
