@@ -31,7 +31,7 @@ import "./css/index.css";
     customType = 'viewCustom';
   }
 
-  window.Primo = new Primo();
+  //window.Primo = new Primo();
     
   let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'google', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback', 'sparkcentral'];
   let servicesHost = 'https://services.libis.be/';

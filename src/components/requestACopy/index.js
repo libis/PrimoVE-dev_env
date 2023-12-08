@@ -1,6 +1,6 @@
 import requestACopyHTML from './requestACopy.html'
 import requestACopyDialogHTML from './requestACopyDialog.html'
-
+import Session from '../../primo/session'
 /*
 The value of recordData.pnx.display.lds07 and recordData.pnx.display.lds08
 in combination with serviceTitleCode determines the
@@ -77,52 +77,50 @@ class RequestACopyController {
   
   showRequestACopyButton() {
     var self = this;
-    Primo.user.then(user => {
-      self.user = user;
-      Primo.view.then(view => {
-        self.view = view;
-        self.onCampus = self.user.isOnCampus();         
-  
-        if ( /^getit_link1_0.*/.test(self.parentCtrl.service.scrollId) ) {
-          var appendButtonTo = self.$element
+    self.view = Session.view;
+    self.user = Session.user;
+
+    self.onCampus = self.user.isOnCampus;         
+
+    if ( /^getit_link1_0.*/.test(self.parentCtrl.service.scrollId) ) {
+      var appendButtonTo = self.$element
 /*
-          console.log ("self.recordData")
-          console.log (self.recordData)
-          console.log ("self.parentCtrl.service")
-          console.log (self.parentCtrl.service)
-          console.log (self.$element)
-          console.log( "self.recordData.delivery.availability: " + self.recordData.delivery.availability.toString() )
-          console.log ("onCampus :" + self.onCampus)
+      console.log ("self.recordData")
+      console.log (self.recordData)
+      console.log ("self.parentCtrl.service")
+      console.log (self.parentCtrl.service)
+      console.log (self.$element)
+      console.log( "self.recordData.delivery.availability: " + self.recordData.delivery.availability.toString() )
+      console.log ("onCampus :" + self.onCampus)
 */          
 
 
-          if ( self.recordData.delivery.availability.filter(availability => ['no_inventory'].includes(availability)).length > 0 ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [no_inventory] ")
-            self.showRequestACopy = true;
-            appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
-          }
-          if ( (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown]")
-            self.showRequestACopy = true;
-            appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
-          }
-          // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
-          //   console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc] [off_campus] ") 
-          if ( (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc]") 
-            self.showRequestACopy = true;
-            appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
-          }
-          // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
-          //  console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted] [off_campus]")
-          if ( (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
-            console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted]")
-            self.showRequestACopy = true;
-            appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
-          }
-        }
-      });
-    });
+      if ( self.recordData.delivery.availability.filter(availability => ['no_inventory'].includes(availability)).length > 0 ) {
+        console.log( " ===> Add appendButtonTo requestACopyHTML [no_inventory] ")
+        self.showRequestACopy = true;
+        appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
+      }
+      if ( (  self.recordData.delivery.availability.filter(availability => ['fulltext_unknown'].includes(availability)).length > 0 ) ) {
+        console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_unknown]")
+        self.showRequestACopy = true;
+        appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
+      }
+      // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
+      //   console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc] [off_campus] ") 
+      if ( (  self.recordData.delivery.availability.filter(availability => ['fulltext_linktorsrc'].includes(availability)).length > 0 ) ) {
+        console.log( " ===> Add appendButtonTo requestACopyHTML [fulltext_linktorsrc]") 
+        self.showRequestACopy = true;
+        appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
+      }
+      // if ( !self.onCampus && (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
+      //  console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted] [off_campus]")
+      if ( (  self.recordData.delivery.availability.filter(availability => ['not_restricted'].includes(availability)).length > 0 ) ) {
+        console.log( " ===> Add appendButtonTo requestACopyHTML [not_restricted]")
+        self.showRequestACopy = true;
+        appendButtonTo.after(self.$compile(requestACopyHTML)(self.$scope))
+      }
+    }
+     
   }
   
   showRequestACopyForm($event) {
