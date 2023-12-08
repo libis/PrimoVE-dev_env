@@ -1,6 +1,6 @@
 import mdCardHTML from './mdCard.html'
 
-class EditDbSearshTextcomponentController {
+class EditDbSearchTextcomponentController {
   constructor($scope, $element, $compile) {
     //this is a watcher on the prm-search component and will trigger replacement of content
     let componentWatcher = $scope.$watch(() => {
@@ -21,16 +21,16 @@ class EditDbSearshTextcomponentController {
   }
 }
 
-EditDbSearshTextcomponentController.$inject = ['$scope', '$element', '$compile'];
+EditDbSearchTextcomponentController.$inject = ['$scope', '$element', '$compile'];
 
-export let editDbSearshTextcomponent = {
+export let editDbSearchTextcomponent = {
   name: 'custom-edit-dbsearch-text',
   enabled: true,
   appendTo: 'prm-databases-after',
   enableInView: '.*',  
   config: {
     bindings: {parentCtrl: '<'},
-    controller: EditDbSearshTextcomponentController,
+    controller: EditDbSearchTextcomponentController,
     template: ''
   }
 }

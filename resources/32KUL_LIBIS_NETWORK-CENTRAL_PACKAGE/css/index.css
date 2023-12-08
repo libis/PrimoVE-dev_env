@@ -20,6 +20,7 @@
 @import "./availability_scopearchiv.css";
 @import "./location.css";
 @import "./info_button_facets.css";
+@import "./hide_journal_categories.css";
 
 .material-icons {
     font-family: 'Material Icons';
