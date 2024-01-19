@@ -275,11 +275,11 @@ window.linksServiceRewrite = {
         if ((doc.pnx.display.source.filter(function(s) {
             return recordSource.includes(s);
         }).length > 0)
-            || (doc.delivery && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); })))
+            || (doc.delivery && doc.delivery.electronicServices && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); })))
 
         {
-            console.log('Delivering Lirias...')
-            console.log(doc.delivery.electronicServices)
+            //console.log('Delivering Lirias...')
+            //console.log(doc.delivery.electronicServices)
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
