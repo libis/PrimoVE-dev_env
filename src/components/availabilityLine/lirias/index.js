@@ -29,7 +29,7 @@ class AvailabilityLineController {
 AvailabilityLineController.$inject = ['$scope', '$translate'];
 
 export let availabilityLineScopeArchiveComponent = {
-  name: 'custom-availability-line-scopearchive',
+  name: 'custom-availability-line-lirias',
   enabled: true,
   appendTo: 'prm-search-result-availability-line-after',
   enableInView: '32KUL_KUL:Lirias.*',
