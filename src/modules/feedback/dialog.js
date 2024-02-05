@@ -25,8 +25,8 @@ export default class DialogController {
         subject: $scope.feedback.subject,
         view: view.code,
         inst: view.institution.code || window.appConfig['primo-view']['institution']['institution-code'],
-        loggedIn: user.isLoggedIn(),
-        onCampus: user.isOnCampus(),
+        loggedIn: user.isLoggedIn,
+        onCampus: user.isOnCampus,
         user: user.name,
         ip: view.ip.address,
         type: 'feedback',
@@ -34,9 +34,9 @@ export default class DialogController {
         email: $scope.feedback.replyTo || user.email,
         userAgent: navigator.userAgent
         };
-
+        
         if ($scope.feedback.replyTo.length > 0 && $scope.feedback.message.length > 0) {
-        self.mdDialog.hide();
+            self.mdDialog.hide();        
 
         self.http({
             method: 'POST',
