@@ -47,7 +47,7 @@ class ReportAProblemController {
 
     self.user = Session.user;
     self.view = Session.view;
-   
+    
     self.showReportAProblemForm = ($event) => {
       self.$mdDialog.show({
         parent: angular.element(document.body),
@@ -64,8 +64,8 @@ class ReportAProblemController {
           $scope.cancelReport = function () {
             $mdDialog.cancel();
           }
-          $scope.sendReport = function (answer) {
-            let data = {
+            $scope.sendReport = function (answer) {
+              let data = {
               recordId: recordData.pnx.control.recordid[0],
               source: recordData.pnx.display.source[0],
               index: 0,
@@ -73,7 +73,7 @@ class ReportAProblemController {
               scope: '',
               query: '',
               searchType: '',
-              sessionId: user.id,
+              sessionId: self.user.user_name,
               tab: '',
               title: recordData.pnx.display.title[0],
               type: 'resource_problem',
@@ -89,7 +89,8 @@ class ReportAProblemController {
               message: $scope.report.message,
               replyTo: $scope.report.replyTo || self.user.email,
               userAgent: navigator.userAgent
-            };
+                };
+            console.log(data)
             if (recordData.pnx.control.originalsourceid !== undefined) {
               data["originalsourceid"] = recordData.pnx.control.originalsourceid[0]
             }
@@ -140,7 +141,7 @@ export let reportAProblemcomponent = {
   enabled: true,
 //   appendTo: 'prm-service-header-after',
   appendTo: 'prm-full-view-service-container-after',
-  enableInView: '.*',
+    enableInView: '^(?!(32KUL_VLER:.*))',
   config: {
     bindings: { parentCtrl: '<' },
     controller: ReportAProblemController,
