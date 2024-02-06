@@ -6,17 +6,16 @@ class PayFinesMessageController {
     self.user = Session.user;    
 
       self.user.fines.then(fines => {
-          self.fines = fines;
+          self.fines = fines.filter((fine) => fine.finestatus == 'ACTIVE');
 
-          if (fines.length > 0) {
+          if (self.fines.length > 0) {
               //TODO:extract html to its own file. find out how to resolve {{}}
 
               let message = $translate.instant('nui.customization.fines.youHaveFines');
-              message = message.replace(/\$0/, fines.length);
+              message = message.replace(/\$0/, self.fines.length);
 
               let pay = $translate.instant('nui.customization.fines.pay');
-              console.log('Payment data: ', pay)
-
+              
               MessageService.show(`
           <span style="align-self:center;">${message}</span>
           <a style="background-color: tomato;color: white;"
