@@ -368,5 +368,41 @@
     "DOCVB": {
         "url": "https://services.libis.be/library_info/DOCVB",
         "label": "DOCVB DOCVB"
+    },
+    "VLOC": {
+        "url": "https://services.libis.be/library_info/VLOC",
+        "label": "VIVES VLOC"
+    },
+    "COBRS": {
+        "url": "https://services.libis.be/library_info/COBRS",
+        "label": "VIVES COBRS"
+    },
+    "KHCA": {
+        "url": "https://services.libis.be/library_info/KHCA",
+        "label": "VIVES KHCA"
+    },
+    "KAKOR": {
+        "url": "https://services.libis.be/library_info/KAKOR",
+        "label": "VIVES KAKOR"
+    },
+    "KHCO": {
+        "url": "https://services.libis.be/library_info/KHCO",
+        "label": "VIVES KHCO"
+    },
+    "COOSS": {
+        "url": "https://services.libis.be/library_info/COOSS",
+        "label": "VIVES COOSS"
+    },
+    "KAROE": {
+        "url": "https://services.libis.be/library_info/KAROE",
+        "label": "VIVES KAROE"
+    },
+    "KATIE": {
+        "url": "https://services.libis.be/library_info/KATIE",
+        "label": "VIVES KATIE"
+    },
+    "KATOR": {
+        "url": "https://services.libis.be/library_info/KATOR",
+        "label": "VIVES KATOR"
     }
 }
