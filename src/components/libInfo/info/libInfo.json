@@ -126,6 +126,250 @@
     "GROL": {
         "url": "https://www.rolduc.nl/grootseminarie-rolduc/bibliotheek/",
         "label": "Scheut Memorial Library"
+    },
+
+
+    "KADOC": {
+        "url": "https://services.libis.be/library_info/KADOC",
+        "label": "KADOC KADOC"
+    },
+    "BETHU": {
+        "url": "https://services.libis.be/library_info/BETHU",
+        "label": "KADOC BETHU"
+    },
+    "ACV": {
+        "url": "https://services.libis.be/library_info/ACV",
+        "label": "ACV ACV"
+    },
+    "FINBI": {
+        "url": "https://services.libis.be/library_info/FINBI",
+        "label": "FINBI FINBI"
+    },
+    "BPB": {
+        "url": "https://services.libis.be/library_info/BPB",
+        "label": "BPB BPB"
+    },
+    "ARCH": {
+        "url": "https://services.libis.be/library_info/ARCH",
+        "label": "BPB ARCH"
+    },
+    "KUB": {
+        "url": "https://services.libis.be/library_info/KUB",
+        "label": "HUB KUB"
+    },
+    "HUB": {
+        "url": "https://services.libis.be/library_info/HUB",
+        "label": "HUB HUB"
+    },
+    "HUBPD": {
+        "url": "https://services.libis.be/library_info/HUBPD",
+        "label": "HUB HUBPD"
+    },
+    "KHSTN": {
+        "url": "https://services.libis.be/library_info/KHSTN",
+        "label": "HUB KHSTN"
+    },
+    "KBC": {
+        "url": "https://services.libis.be/library_info/KBC",
+        "label": "HUB KBC"
+    },
+    "KBCLL": {
+        "url": "https://services.libis.be/library_info/KBCLL",
+        "label": "HUB KBCLL"
+    },
+    "LILED": {
+        "url": "https://services.libis.be/library_info/LILED",
+        "label": "UCLL LILED"
+    },
+    "LILEH": {
+        "url": "https://services.libis.be/library_info/LILEH",
+        "label": "UCLL LILEH"
+    },
+    "LIHBI": {
+        "url": "https://services.libis.be/library_info/LIHBI",
+        "label": "UCLL LIHBI"
+    },
+    "LIGS": {
+        "url": "https://services.libis.be/library_info/LIGS",
+        "label": "UCLL LIGS"
+    },
+    "KHLHR": {
+        "url": "https://services.libis.be/library_info/KHLHR",
+        "label": "UCLL KHLHR"
+    },
+    "KHLCC": {
+        "url": "https://services.libis.be/library_info/KHLCC",
+        "label": "UCLL KHLCC"
+    },
+    "KHLGT": {
+        "url": "https://services.libis.be/library_info/KHLGT",
+        "label": "UCLL KHLGT"
+    },
+    "KHLCH": {
+        "url": "https://services.libis.be/library_info/KHLCH",
+        "label": "UCLL KHLCH"
+    },
+    "LIDIE": {
+        "url": "https://services.libis.be/library_info/LIDIE",
+        "label": "UCLL LIDIE"
+    },
+    "LIHAS": {
+        "url": "https://services.libis.be/library_info/LIHAS",
+        "label": "UCLL LIHAS"
+    },
+    "KHLSH": {
+        "url": "https://services.libis.be/library_info/KHLSH",
+        "label": "UCLL KHLSH"
+    },
+    "KHKL": {
+        "url": "https://services.libis.be/library_info/KHKL",
+        "label": "TMOREK KHKL"
+    },    
+    "KHKT": {
+        "url": "https://services.libis.be/library_info/KHKT",
+        "label": "TMOREK KHKT"
+    },    
+    "KHKV": {
+        "url": "https://services.libis.be/library_info/KHKV",
+        "label": "TMOREK KHKV"
+    },    
+    "KHKG": {
+        "url": "https://services.libis.be/library_info/KHKG",
+        "label": "TMOREK KHKG"
+    },
+    "DNA": {
+        "url": "https://services.libis.be/library_info/DNA",
+        "label": "TMOREK DNA"
+    },
+    "KHM": {
+        "url": "https://services.libis.be/library_info/KHM",
+        "label": "TMOREK KHM"
+    },
+    "KVHB": {
+        "url": "https://services.libis.be/library_info/KVHB",
+        "label": "TMOREK KVHB"
+    },
+    "LCSTA": {
+        "url": "https://services.libis.be/library_info/LCSTA",
+        "label": "TMOREK LCSTA"
+    },
+    "KMMR": {
+        "url": "https://services.libis.be/library_info/KMMR",
+        "label": "KMMR KMMR"
+    },
+    "MIM": {
+        "url": "https://services.libis.be/library_info/MIM",
+        "label": "KMMR MIM"
+    },
+    "SLUCB": {
+        "url": "https://services.libis.be/library_info/SLUCB",
+        "label": "LUCA SLUCB"
+    },
+    "TDC": {
+        "url": "https://services.libis.be/library_info/TDC",
+        "label": "LUCA TDC"
+    },
+    "LIMDA": {
+        "url": "https://services.libis.be/library_info/LIMDA",
+        "label": "LUCA LIMDA"
+    },
+    "LEMM": {
+        "url": "https://services.libis.be/library_info/LEMM",
+        "label": "LUCA LEMM"
+    },
+    "LUKAS": {
+        "url": "https://services.libis.be/library_info/LUKAS",
+        "label": "LUCA LUKAS"
+    },
+    "SLUCG": {
+        "url": "https://services.libis.be/library_info/SLUCG",
+        "label": "LUCA SLUCG"
+    },
+    "LUKAS": {
+        "url": "https://services.libis.be/library_info/LUKAS",
+        "label": "LUCA LUKAS"
+    },
+    "NBJUR": {
+        "url": "https://services.libis.be/library_info/NBJUR",
+        "label": "NBB NBJUR"
+    },
+    "NBLOC": {
+        "url": "https://services.libis.be/library_info/NBLOC",
+        "label": "NBB NBLOC"
+    },
+    "NBMED": {
+        "url": "https://services.libis.be/library_info/NBMED",
+        "label": "NBB NBMED"
+    },
+    "NBPUB": {
+        "url": "https://services.libis.be/library_info/NBPUB",
+        "label": "NBB NBPUB"
+    },
+    "NBWBS": {
+        "url": "https://services.libis.be/library_info/NBWBS",
+        "label": "NBB NBWBS"
+    },
+    "TIFA": {
+        "url": "https://services.libis.be/library_info/TIFA",
+        "label": "BOSA TIFA"
+    },
+    "RBINS": {
+        "url": "https://services.libis.be/library_info/RBINS",
+        "label": "RBINS RBINS"
+    },
+    "BIB": {
+        "url": "https://services.libis.be/library_info/BIB",
+        "label": "VDIC BIB"
+    },
+    "AND": {
+        "url": "https://services.libis.be/library_info/AND",
+        "label": "VDIC AND"
+    },
+    "VES": {
+        "url": "https://services.libis.be/library_info/VES",
+        "label": "VDIC VES"
+    },
+    "RBINS": {
+        "url": "https://services.libis.be/library_info/RBINS",
+        "label": "VDIC RBINS"
+    },
+    "BIOET": {
+        "url": "https://services.libis.be/library_info/BIOET",
+        "label": "VDIC BIOET"
+    },
+    "FAGG": {
+        "url": "https://services.libis.be/library_info/FAGG",
+        "label": "VDIC FAGG"
+    },
+    "WIV": {
+        "url": "https://services.libis.be/library_info/WIV",
+        "label": "VDIC WIV"
+    },
+    "CODA": {
+        "url": "https://services.libis.be/library_info/CODA",
+        "label": "VDIC CODA"
+    },
+    "VLP": {
+        "url": "https://services.libis.be/library_info/VLP",
+        "label": "VLP VLP"
+    },
+    "VLOC": {
+        "url": "https://services.libis.be/library_info/VLOC",
+        "label": "VIVES VLOC"
+    },
+    "KHCA": {
+        "url": "https://services.libis.be/library_info/KHCA",
+        "label": "VIVES KHCA"
+    },
+    "KHCO": {
+        "url": "https://services.libis.be/library_info/KHCO",
+        "label": "VIVES KHCO"
+    },
+    "DOCVB": {
+        "url": "https://services.libis.be/library_info/DOCVB",
+        "label": "DOCVB DOCVB"
     }
 
 }
+
+
