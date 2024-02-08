@@ -1,5 +1,16 @@
-<a ng-if="$ctrl.sourceURL" ng-href="{{$ctrl.sourceURL}}" target="_blank" 
+<style>
+    @media screen and (max-width:600px) {
+        prm-stack-map span {
+            display: none !important;
+        }    
+
+        .hide-mobile {            
+            display: none !important;
+        }
+    }
+</style>
+<a ng-if="$ctrl.libid" ng-href="{{$ctrl.libid}}" target="_blank" 
    class='zero-margin button-with-icon button-link md-button md-primoExplore-theme md-ink-ripple'>
     <prm-icon icon-type="svg" svg-icon-set="primo-actions" icon-definition="info"></prm-icon>
-    <span ng-hide="$ctrl.hideLabel" translate='nui.customizing.idslu.informationtooltip'></span>    
+    <span class="hide-mobile" translate='nui.customizing.idslu.informationtooltip'></span>    
 </a>
