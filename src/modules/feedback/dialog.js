@@ -47,9 +47,9 @@ export default class DialogController {
             },
             cache: false,
             data: data
-        }).then(function(response) {
+        }).then(function (response) {
             //self.mdToast.showSimple('Thank you for your feedback!');
-            let message = self.translate.instant('nui.customization.feedback.succes') || 'Thank you for your feedback!';
+            let message = self.translate.instant('nui.customization.feedback.success') || 'Thank you for your feedback!';
             MessageService.show(message, {scope:$scope, hideDelay: 5000});
         }, function(response) {
             //self.mdToast.showSimple('Unable to submit feedback.');
