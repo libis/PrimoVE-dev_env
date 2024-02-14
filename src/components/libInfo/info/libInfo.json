@@ -371,5 +371,9 @@
   "KATOR": {
     "url": "https://services.libis.be/library_info/KATOR",
     "label": "VIVES KATOR"
+  },
+  "VBS": {
+    "url": "https://services.libis.be/library_info/VBS",
+    "label": "VBS VBS"
   }
 }
