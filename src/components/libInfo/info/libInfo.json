@@ -375,5 +375,10 @@
   "VBS": {
     "url": "https://services.libis.be/library_info/VBS",
     "label": "VBS VBS"
+  },
+  "VCV": {
+    "url": "https://services.libis.be/library_info/VCV",
+    "label": "FARO VCV"
   }
+
 }
