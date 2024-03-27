@@ -42,3 +42,13 @@ prm-location .list-item-actions{
     flex:unset !important;
 }
 
+.collection-info a {
+    color: white !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid white !important;
+    padding-bottom: 0 !important;
+}
+
+.collection-info a:hover {
+    box-shadow: none !important;
+}
