@@ -53,3 +53,13 @@ prm-location .list-item-actions{
     box-shadow: none !important;
 }
 
+.main-banner-content md-icon.md-primoExplore-theme {
+    color: white !important;
+}
+
+.main-banner-content button.md-primoExplore-theme {
+    color: #fff;
+    background-color: black;
+    top:3px;
+    right:3px;
+}
