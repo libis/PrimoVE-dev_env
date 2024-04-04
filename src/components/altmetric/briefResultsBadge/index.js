@@ -77,7 +77,7 @@ export let altMetricComponent = {
   name: 'custom-altmetric',  
   enabled: true,
   appendTo: 'prm-brief-result-after',
-  enableInView: '32KUL_KUL.*|32KUL_HUB.*|32KUL_KHK.*|32KUL_KHL.*|32KUL_KHM.*|32KUL_KATHO.*',
+  enableInView: '32KUL_KUL.*|32KUL_HUB.*|32KUL_KHK.*|32KUL_KHL.*|32KUL_KHM.*|32KUL_KATHO.*|32KUL_VLER.*',
   config: {  
     bindings: {
       parentCtrl: '<'

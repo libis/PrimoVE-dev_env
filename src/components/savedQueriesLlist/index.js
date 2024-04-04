@@ -115,7 +115,7 @@ SavedQueriesLlistController.$inject = ['$scope']
 
 export let savedQueriesLlistConfig = {
   name: 'custom-saved-queries-list',
-  enabled: true,
+  enabled: false,
   appendTo: 'prm-saved-queries-after',
   enableInView: '.*',
   config: {

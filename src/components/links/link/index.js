@@ -14,7 +14,8 @@ class LinkController {
     self.allFines =  {
       count: user.fines.length,
       sum: (user.fines ? user.fines.map(f => parseFloat(f.finesum)).reduce((p,c)=> p+c, 0) : 0)
-    }
+      }
+    console.log('All user fines: ', self.allFines)
   }
 
   get onCampus() {
