@@ -41,7 +41,8 @@ angular.module('browzine', ['angularLoad']).run(['angularLoad', '$rootScope', '$
               articlePDFDownloadViaUnpaywallText: articlePDFDownloadViaUnpaywallText,
               articleLinkViaUnpaywallText: articleLinkViaUnpaywallText,
               articleAcceptedManuscriptPDFViaUnpaywallText: articleAcceptedManuscriptPDFViaUnpaywallText,
-              articleAcceptedManuscriptArticleLinkViaUnpaywallText: articleAcceptedManuscriptArticleLinkViaUnpaywallText
+              articleAcceptedManuscriptArticleLinkViaUnpaywallText: articleAcceptedManuscriptArticleLinkViaUnpaywallText,
+              enableLinkOptimizer: false
             };
 
             angularLoad.loadScript('https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js').then(() => {
