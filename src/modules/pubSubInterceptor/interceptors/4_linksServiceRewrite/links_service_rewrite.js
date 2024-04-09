@@ -406,6 +406,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                 // pnxBaseURL is also called for fullview (Permalink)
                 // the url than starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
                 // the url than starts with /primaws/rest/pub/pnxs/SearchWebhook/ instead of /primaws/rest/pub/pnxs
+                // For saved items, the url starts with /primaws/rest/pub/pnxs/U and the pnx-records are direct children of the data object
                 if (reqRes.data['docs']) {
                     reqRes.data['docs'].map(d => {
                         parameters.doc = d
@@ -424,6 +425,19 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                     } catch (error) {
                         console.error(error);
                     }
+                }
+                if (reqRes['config']['url'].match(/^\/primaws\/rest\/pub\/pnxs\/U/)){
+                    //console.log('Found data, but not docs...')
+                    //console.log(reqRes)
+                    reqRes.data.map(d => {
+                        parameters.doc = d;
+                        try {
+                            d = linksServiceRewrite[action](parameters);
+                        } catch (error) {
+                            console.error(error);
+                        }
+                        return d;
+                    });
                 }
             });
         });
