@@ -18,7 +18,7 @@ export let feedbackConfig = {
   name: 'custom-feedback',  
   enabled: true,
   appendTo: 'prm-main-menu-after',
-  enableInView: '.*',
+    enableInView: '^(?!(32KUL_VLER:.*))',
   config: {  
     bindings: {
       parentCtrl: '<'
