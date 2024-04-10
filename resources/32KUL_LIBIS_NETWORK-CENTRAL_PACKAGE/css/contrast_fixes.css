@@ -54,12 +54,12 @@ prm-location .list-item-actions{
 }
 
 .main-banner-content md-icon.md-primoExplore-theme {
-    color: white !important;
+    color: black !important;
 }
 
 .main-banner-content button.md-primoExplore-theme {
-    color: #fff;
-    background-color: black;
+    color: #000;
+    background-color: #fff;
     top:3px;
     right:3px;
 }
