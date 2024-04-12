@@ -52,3 +52,14 @@ prm-location .list-item-actions{
 .collection-info a:hover {
     box-shadow: none !important;
 }
+
+.main-banner-content md-icon.md-primoExplore-theme {
+    color: black !important;
+}
+
+.main-banner-content button.md-primoExplore-theme {
+    color: #000;
+    background-color: #fff;
+    top:3px;
+    right:3px;
+}
