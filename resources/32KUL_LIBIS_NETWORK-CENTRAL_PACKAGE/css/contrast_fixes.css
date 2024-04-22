@@ -1,9 +1,9 @@
-.list-item-wrapper, md-card.default-card{
-background-color: #ffffff !important;
+.list-item-wrapper, md-card.default-card {
+    background-color: #ffffff !important;
 }
 
-prm-full-view-service-container{
-    padding:1rem;
+prm-full-view-service-container {
+    padding: 1rem;
     background-color: #fcfcfc;
 }
 
@@ -25,8 +25,8 @@ prm-full-view prm-brief-result-container .list-item-primary-content {
     margin-top: 1.5em;
 }
 
-.item-expand-button, .expand-collapse-button{
-    display:none;
+.item-expand-button, .expand-collapse-button {
+    display: none;
 }
 
 prm-location .md-list-item-text p span:last-of-type, prm-location-items .tab-content-header p span:last-of-type {
@@ -34,11 +34,32 @@ prm-location .md-list-item-text p span:last-of-type, prm-location-items .tab-con
     font-size: 1rem;
 }
 
-prm-location-holdings-after .weak-text{
+prm-location-holdings-after .weak-text {
     color: #888 !important;
 }
 
-prm-location .list-item-actions{
-    flex:unset !important;
+prm-location .list-item-actions {
+    flex: unset !important;
 }
 
+.collection-info a {
+    color: white !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid white !important;
+    padding-bottom: 0 !important;
+}
+
+    .collection-info a:hover {
+        box-shadow: none !important;
+    }
+
+.main-banner-content md-icon.md-primoExplore-theme {
+    color: black !important;
+}
+
+.main-banner-content button.md-primoExplore-theme {
+    color: #000;
+    background-color: #fff;
+    top: 3px;
+    right: 3px;
+}
