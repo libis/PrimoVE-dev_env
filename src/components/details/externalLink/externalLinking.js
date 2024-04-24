@@ -3,7 +3,7 @@ import externalLinkingCSS from './externalLinking.css'
 
 class ExternalLinkingController {
     constructor($scope, $element) {
-        self = this
+        let self = this
         this.$scope = $scope;
     }     
 }
