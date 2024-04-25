@@ -16,7 +16,7 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KADOC:KADOC.*',
-                deliveryForExternalResource: { source: "KADOC_ScopeArchiv" }
+                deliveryForExternalResource: { source: "KADOC_ScopeArchiv", field: "display.lds37" }
             },
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
@@ -30,7 +30,7 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KADOC:KADOC.*',
-                deliveryForExternalResource: { source: "KADOC_ScopeArchiv" }
+                deliveryForExternalResource: { source: "KADOC_ScopeArchiv", field: "display.lds37" }
             },
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
@@ -155,14 +155,14 @@ window.linksServiceRewrite = {
         return doc;
     },
 
-    deliveryForExternalResource: ({ doc = {}, source = null }) => {
+    deliveryForExternalResource: ({ doc = {}, source = null, field = null }) => {
         // console.log (doc)
         // console.log(source)
         // console.log(doc.pnx.display.source)
         // console.log(doc.pnx.display.source.filter(s => source.includes(s)).length > 0)
-        if (doc.pnx.display.source.filter(function(s) {
-                return source.includes(s);
-            }).length > 0) {
+        if (doc.pnx.display.source.filter(function (s) {
+            return source.includes(s);
+        }).length > 0) {
             if (doc.delivery) {
                 //console.log("Delivering")
                 /*
@@ -178,17 +178,19 @@ window.linksServiceRewrite = {
                     &&
                     doc.delivery.availabilityLinksUrl.length > 0
                 ) {
-                   // console.log("DeliveryLink - part 1")
+                    console.log("DeliveryLink - part 1")
 
                     var displayConstant = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
 
-                    //                    console.log ( displayConstant )
+                    console.log('Calculated display constant:', displayConstant)
 
+                    /* Old version of interceptor - handles records with display constant loaded into URL */
                     if (displayConstant) {
+                        console.log('Activating advanced link handling')
                         doc.delivery.displayedAvailability = displayConstant;
                         doc.delivery.availability[0] = displayConstant;
 
-                      //  console.log("DeliveryLink - part 2")
+                        console.log("DeliveryLink - part 2")
 
                         /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
                         //                        doc.delivery.availabilityLinks = ['directlink']
@@ -208,7 +210,41 @@ window.linksServiceRewrite = {
                         doc.delivery.link = doc.delivery.link.filter(l => { return !new RegExp(displayConstant).test(l.linkURL) })
 
                         //console.log(doc.delivery.link)
+                    }
+                    else {
+                        console.log('Activating basic link handling')
+                        console.log("DeliveryLink - part new1")
+                        var displayConstant = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx)[0];
 
+                        console.log('Calculated display constant:', displayConstant)
+
+                        if (displayConstant) {
+                            doc.delivery.displayedAvailability = displayConstant;
+                            doc.delivery.availability[0] = displayConstant;
+
+                            console.log("DeliveryLink - part new2")
+
+                            /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
+                            //                        doc.delivery.availabilityLinks = ['directlink']
+                            //                        window.appConfig['system-configuration']['enable_direct_linking_in_record_full_view'] = true;
+
+                            if (doc.delivery.deliveryCategory.includes("Remote Search Resource")) {
+                                console.log("DeliveryLink - part new3")
+                                console.log('Electronic services - before processing:', doc.delivery.electronicServices[0])
+                                let i = 0;
+                                while (i < doc.delivery.electronicServices.length) {
+                                    doc.delivery.electronicServices[i].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
+                                    i++;
+                                }
+
+                                console.log('Electronic services - after processing:', doc.delivery.electronicServices)
+                            }
+
+                            console.log("DeliveryLink - part new4")
+                            doc.delivery.link = doc.delivery.link.filter(l => { console.log(l); return !new RegExp(/Link to (?:resource|request)/).test(l.displayLabel) })
+
+                            console.log('Delivery link', doc.delivery.link);
+                        }
                     }
 
 
@@ -272,12 +308,10 @@ window.linksServiceRewrite = {
         // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
         // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
-        if ((doc.pnx.display.source.filter(function(s) {
+        if ((doc.pnx.display.source.filter(function (s) {
             return recordSource.includes(s);
         }).length > 0)
-            || (doc.delivery && doc.delivery.electronicServices && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); })))
-
-        {
+            || (doc.delivery && doc.delivery.electronicServices && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); }))) {
             //console.log('Delivering Lirias...')
             //console.log(doc.delivery.electronicServices)
 
@@ -365,7 +399,7 @@ window.linksServiceRewrite = {
                     console.log(newLinks)
 
                     var sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/)
-                    
+
                     if (sourceId) {
                         let liriasLink = {
                             "@id": "_:0",
