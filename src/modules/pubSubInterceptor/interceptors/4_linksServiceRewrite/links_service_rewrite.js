@@ -178,11 +178,11 @@ window.linksServiceRewrite = {
                     &&
                     doc.delivery.availabilityLinksUrl.length > 0
                 ) {
-                    console.log("DeliveryLink - part 1")
+                    //console.log("DeliveryLink - part 1")
 
                     var displayConstant = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
 
-                    console.log('Calculated display constant:', displayConstant)
+                    //console.log('Calculated display constant:', displayConstant)
 
                     /* Old version of interceptor - handles records with display constant loaded into URL */
                     if (displayConstant) {
@@ -190,7 +190,7 @@ window.linksServiceRewrite = {
                         doc.delivery.displayedAvailability = displayConstant;
                         doc.delivery.availability[0] = displayConstant;
 
-                        console.log("DeliveryLink - part 2")
+                        //console.log("DeliveryLink - part 2")
 
                         /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
                         //                        doc.delivery.availabilityLinks = ['directlink']
@@ -213,37 +213,37 @@ window.linksServiceRewrite = {
                     }
                     else {
                         console.log('Activating basic link handling')
-                        console.log("DeliveryLink - part new1")
+                        //console.log("DeliveryLink - part new1")
                         var displayConstant = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx)[0];
 
-                        console.log('Calculated display constant:', displayConstant)
+                        //console.log('Calculated display constant:', displayConstant)
 
                         if (displayConstant) {
                             doc.delivery.displayedAvailability = displayConstant;
                             doc.delivery.availability[0] = displayConstant;
 
-                            console.log("DeliveryLink - part new2")
+                            //console.log("DeliveryLink - part new2")
 
                             /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
                             //                        doc.delivery.availabilityLinks = ['directlink']
                             //                        window.appConfig['system-configuration']['enable_direct_linking_in_record_full_view'] = true;
 
                             if (doc.delivery.deliveryCategory.includes("Remote Search Resource")) {
-                                console.log("DeliveryLink - part new3")
-                                console.log('Electronic services - before processing:', doc.delivery.electronicServices[0])
+                                //console.log("DeliveryLink - part new3")
+                                //console.log('Electronic services - before processing:', doc.delivery.electronicServices[0])
                                 let i = 0;
                                 while (i < doc.delivery.electronicServices.length) {
                                     doc.delivery.electronicServices[i].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
                                     i++;
                                 }
 
-                                console.log('Electronic services - after processing:', doc.delivery.electronicServices)
+                                //console.log('Electronic services - after processing:', doc.delivery.electronicServices)
                             }
 
-                            console.log("DeliveryLink - part new4")
-                            doc.delivery.link = doc.delivery.link.filter(l => { console.log(l); return !new RegExp(/Link to (?:resource|request)/).test(l.displayLabel) })
+                            //console.log("DeliveryLink - part new4")
+                            doc.delivery.link = doc.delivery.link.filter(l => { return !new RegExp(/Link to (?:resource|request)/).test(l.displayLabel) })
 
-                            console.log('Delivery link', doc.delivery.link);
+                            //console.log('Delivery link', doc.delivery.link);
                         }
                     }
 
