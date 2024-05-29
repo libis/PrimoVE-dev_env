@@ -45,7 +45,7 @@ class SearchAlsoBodyController {
 
     return [
      {
-        "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL',       
+            "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_VLER.*',       
         "name": "Google Scholar",
         "url": "https://scholar.google.com/scholar?q=",
         "img": "https://scholar.google.com/favicon.ico",
@@ -56,7 +56,7 @@ class SearchAlsoBodyController {
         }
       },
       {
-        "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHL:UCLL|^32KUL_LUCAWENK:LUCA',
+          "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHL:UCLL|^32KUL_LUCAWENK:LUCA|^32KUL_VLER.*',
         "name": "UniCat",
         "url": "https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
@@ -129,5 +129,5 @@ export let searchAlsoBodyComponent = {
   },
   enabled: true,
   appendTo: 'prm-facet-exact-after',
-  enableInView: '^32KUL_KATHO:VIVES|^32KUL_VLP:Archief|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant'
+    enableInView: '^32KUL_KATHO:VIVES|^32KUL_VLP:Archief|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_KUL:KULeuven|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant|^32KUL_VLER.*'
 }
