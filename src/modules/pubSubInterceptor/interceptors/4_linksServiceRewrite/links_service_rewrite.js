@@ -16,11 +16,15 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KADOC:KADOC.*',
-                deliveryForExternalResource: { source: "KADOC_ScopeArchiv" }
+                deliveryForExternalResource: { source: "KADOC_ScopeArchiv", field: "display.lds37" }
             },
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
                 transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+            },
+            {
+                enableInView: '32KUL_.*',
+                linkReadingExcerpt: { source: "Meta4books", field: "display.lds37", link: "display.lds45" }
             }
         ],
         afterDeliveryURL: [
@@ -30,11 +34,15 @@ window.linksServiceRewrite = {
             },
             {
                 enableInView: '32KUL_KADOC:KADOC.*',
-                deliveryForExternalResource: { source: "KADOC_ScopeArchiv" }
+                deliveryForExternalResource: { source: "KADOC_ScopeArchiv", field: "display.lds37" }
             },
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
                 transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+            },
+            {
+                enableInView: '32KUL_.*',
+                linkReadingExcerpt: { source: "Meta4books", field: "display.lds37", link: "display.lds45" }
             }
         ]
     },
@@ -76,6 +84,41 @@ window.linksServiceRewrite = {
         }
     },
 
+    linkReadingExcerpt: ({ doc = {}, field = null, link = null }) => {
+       
+        if (doc.pnx) {
+            var scope = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
+            //console.log(scope)
+
+            if ((scope) && (scope.includes('Meta4books'))) {
+                //console.log('Handling reading excerpt')
+                var links = link.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
+                //console.log(links)
+                if (links) {
+                    links = links.map(url => {
+                        return {
+                            "@id": "_:0",
+                            displayLabel: "Reading excerpt via Boekenbank.be",
+                            linkType: "addlink",
+                            linkURL: url,
+                            publicNote: null
+                        }
+                    });
+                    //console.log('links', links)
+                    
+                    if (doc.delivery) {
+                        //console.log(doc.delivery)
+                        if (doc.delivery.link) {
+                            doc.delivery.link = doc.delivery.link.concat(links)
+                        }
+                    }
+                }
+
+                
+            }
+
+        }
+    },
     createLinksFromOtherField: ({ doc = {}, field = null }) => {
         // console.log (doc)
         // console.log (field)
@@ -155,15 +198,16 @@ window.linksServiceRewrite = {
         return doc;
     },
 
-    deliveryForExternalResource: ({ doc = {}, source = null }) => {
+    deliveryForExternalResource: ({ doc = {}, source = null, field = null }) => {
         // console.log (doc)
         // console.log(source)
         // console.log(doc.pnx.display.source)
         // console.log(doc.pnx.display.source.filter(s => source.includes(s)).length > 0)
-        if (doc.pnx.display.source.filter(function(s) {
-                return source.includes(s);
-            }).length > 0) {
+        if (doc.pnx.display.source.filter(function (s) {
+            return source.includes(s);
+        }).length > 0) {
             if (doc.delivery) {
+
                 //console.log("Delivering")
                 /*
                                 console.log ( doc.delivery.deliveryCategory )
@@ -178,36 +222,47 @@ window.linksServiceRewrite = {
                     &&
                     doc.delivery.availabilityLinksUrl.length > 0
                 ) {
-                   // console.log("DeliveryLink - part 1")
+                    //console.log("DeliveryLink - part 1")
 
-                    var displayConstant = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
+                    var displayConstant = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx)[0];
 
-                    //                    console.log ( displayConstant )
+                    //var displayConstant = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
+
+                    //console.log('Display constant', displayConstant);
+                    //console.log('ElectronicServices', doc.delivery.electronicServices)
 
                     if (displayConstant) {
                         doc.delivery.displayedAvailability = displayConstant;
                         doc.delivery.availability[0] = displayConstant;
 
-                      //  console.log("DeliveryLink - part 2")
+                       //console.log("DeliveryLink - part alt2")
 
                         /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
                         //                        doc.delivery.availabilityLinks = ['directlink']
                         //                        window.appConfig['system-configuration']['enable_direct_linking_in_record_full_view'] = true;
 
                         if (doc.delivery.deliveryCategory.includes("Remote Search Resource")) {
-                            doc.delivery.electronicServices[0].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
-                            doc.delivery.electronicServices[0].serviceUrl = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
+                            //console.log('Electronic services - before processing:', doc.delivery.electronicServices[0])
+                            let i = 0;
+                            while (i < doc.delivery.electronicServices.length) {
+                                doc.delivery.electronicServices[i].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
+                                i++;
+                            }
+                            //doc.delivery.electronicServices[0].packageName = pubSub.translate.instant('delivery.code.' + displayConstant));
+                            //doc.delivery.electronicServices[0].serviceUrl = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
                             //console.log("DeliveryLink - part 3")
+                            //console.log('Electronic services - after processing:', doc.delivery.electronicServices[0])
                         }
-                        if (doc.delivery.deliveryCategory.includes("EXTERNAL-P") && doc.delivery.availabilityLinksUrl[0]) {
+                        /*if (doc.delivery.deliveryCategory.includes("EXTERNAL-P") && doc.delivery.availabilityLinksUrl[0]) {
                             doc.delivery.electronicServices[0] = { serviceUrl: window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U") }
                             //console.log("DeliveryLink - part 4")
                         }
 
                         doc.delivery.availabilityLinksUrl[0] = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
-                        doc.delivery.link = doc.delivery.link.filter(l => { return !new RegExp(displayConstant).test(l.linkURL) })
+                        */
+                        doc.delivery.link = doc.delivery.link.filter(l => { return !new RegExp(/Link to (?:resource|request)/).test(l.displayLabel) })
 
-                        //console.log(doc.delivery.link)
+                        //console.log('Delivery link', doc.delivery.link);
 
                     }
 
@@ -272,14 +327,11 @@ window.linksServiceRewrite = {
         // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
         // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
-        if ((doc.pnx.display.source.filter(function(s) {
+        if ((doc.pnx.display.source.filter(function (s) {
             return recordSource.includes(s);
         }).length > 0)
-            || (doc.delivery && doc.delivery.electronicServices && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); })))
-
-        {
+            || (doc.delivery && doc.delivery.electronicServices && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); }))) {
             //console.log('Delivering Lirias...')
-            //console.log(doc.delivery.electronicServices)
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
@@ -365,7 +417,7 @@ window.linksServiceRewrite = {
                     console.log(newLinks)
 
                     var sourceId = doc.pnx.control.originalsourceid[0].match(/^lirias(?<id>[0-9]*)/)
-                    
+
                     if (sourceId) {
                         let liriasLink = {
                             "@id": "_:0",
@@ -426,10 +478,10 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         console.error(error);
                     }
                 }
-                if (reqRes['config']['url'].match(/^\/primaws\/rest\/pub\/pnxs\/U/)){
+                if (reqRes['config']['url'].match(/^\/primaws\/rest\/pub\/pnxs\/U/)) {
                     //console.log('Found data, but not docs...')
                     //console.log(reqRes)
-                    reqRes.data.map(d => {
+                    reqRes['data'].map(d => {
                         parameters.doc = d;
                         try {
                             d = linksServiceRewrite[action](parameters);
