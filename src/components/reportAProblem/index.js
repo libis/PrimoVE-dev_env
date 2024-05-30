@@ -26,12 +26,13 @@ class ReportAProblemController {
       let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
       let calculatePcDeliveryDone = self.parentCtrl.fullViewService.calculatePcDeliveryDone;
       let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
-      return (services && servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
+    let domElement = !!self.$element.parent().parent().find('h4').length
+        return (services && servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone && domElement);
     }, (n, o) => {
-      if (n == true) {
+        if (n == true) {
         if (/^nui\.getit\./.test(self.parentCtrl.service.title)) {
-          self.showReportAProblembutton();
-        }
+                self.showReportAProblembutton();
+        }        
         servicesWatcher(); //deregister watcher
       }
     }, false)
@@ -41,7 +42,8 @@ class ReportAProblemController {
   showReportAProblembutton() {
     var self = this;
 
-    self.$element.parent().parent().find('h4').after(self.$compile(reportAProblemHTML)(self.$scope));
+      self.$element.parent().parent().find('h4').after(self.$compile(reportAProblemHTML)(self.$scope));
+      //console.log('Report a problem activated.')
 
     let recordData = self.currentRecord;
 
