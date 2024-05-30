@@ -16,26 +16,27 @@ class ReportAProblemController {
 
   }
 
-  $onInit() {
-    let self = this;
-    self.parentCtrl = this.parentCtrl.parentCtrl;
+    $onInit() {
+        let self = this;
+        self.parentCtrl = this.parentCtrl.parentCtrl;
 
-    let servicesWatcher = self.$scope.$watch(() => {
-      let services = self.parentCtrl.service !== undefined;
-      let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
-      let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
-      let calculatePcDeliveryDone = self.parentCtrl.fullViewService.calculatePcDeliveryDone;
-      let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
-      return (services && servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone);
-    }, (n, o) => {
-      if (n == true) {
-        if (/^nui\.getit\./.test(self.parentCtrl.service.title)) {
-          self.showReportAProblembutton();
-        }
-        servicesWatcher(); //deregister watcher
-      }
-    }, false)
-  }
+        let servicesWatcher = self.$scope.$watch(() => {
+            let services = self.parentCtrl.service !== undefined;
+            let servicesLoaded = self.parentCtrl.fullViewService.servicesArray !== undefined;
+            let calculatePrimaViewItDone = self.parentCtrl.fullViewService.calculatePrimaViewItDone();
+            let calculatePcDeliveryDone = self.parentCtrl.fullViewService.calculatePcDeliveryDone;
+            let calculateSvcIdDone = self.parentCtrl.fullViewService.calculateSvcIdDone;
+            let domElement = !!self.$element.parent().parent().find('h4').length
+            return (services && servicesLoaded && calculatePrimaViewItDone && calculatePcDeliveryDone && calculateSvcIdDone && domElement);
+        }, (n, o) => {
+            if (n == true) {
+                if (/^nui\.getit\./.test(self.parentCtrl.service.title)) {
+                    self.showReportAProblembutton();
+                }
+                servicesWatcher(); //deregister watcher
+            }
+        }, false)
+    }
 
 
   showReportAProblembutton() {
