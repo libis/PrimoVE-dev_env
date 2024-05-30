@@ -1,0 +1,44 @@
+
+
+<md-dialog aria-label="{{::('fulldisplay.lds13' | translate)}}">
+
+    <md-dialog-content id="facet-lds13">
+
+        <md-toolbar md-autofocus >
+            <div class="md-toolbar-tools">
+                <h2><span translate="fulldisplay.lds13">Faculty / Departement</span></h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="{{::('nui.customization.facetInfo.close_dialog' | translate)}}"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+
+        <md-content style="padding:1em;" ng-if="local=='nl'">
+            Via deze filter kan je filteren op publicaties van onderzoekers binnen een departement of faculteit, maar let wel: de filter geeft <b>geen correcte weergave van alle publicaties van deze eenheden</b>.
+            <P>
+            Dit om de volgende redenen:
+            </P>
+            <ul>
+                <li>Voor onderzoekers met een dubbele affiliatie wordt er maar één affiliatie opgenomen in deze facet.</li>
+                <li>Een aantal publicaties zijn niet toegekend aan het departement of faculteit waar ze gemaakt zijn. Dit geldt met name voor publicaties van onderzoekers die tijdens hun academische loopbaan zijn veranderd van departement of faculteit. Immers, de publicaties van onderzoekers worden gekoppeld aan hun huidige organisatorische eenheid.</li>
+                <li>Ook publicaties zonder KU Leuven affiliatie worden hier getoond omdat een aantal onderzoekers publicaties uit eerdere aanstellingen in andere instellingen invoerden in Lirias.</li>
+            </ul>
+        </md-content>   
+            
+        <md-content style="padding:1em;" ng-if="local != 'nl'">
+            
+            This filter allows you to filter on publications of researchers within a department or faculty, but please note that <b>the filter does not accurately reflect all publications from these units</b>.
+            <P>
+            This is for the following reasons:
+            </P>
+            <ul>
+                <li>For researchers with dual affiliations, only one affiliation is included in this facet.</li>
+                <li>A number of publications is not assigned to the department or faculty where they were made. This applies to publications of researchers who have moved to another department or faculty during their academic careers. After all, publications are linked to the current organizational unit of the KU Leuven authors.</li>
+                <li>Publications without KU Leuven affiliation are also shown here because a number of researchers entered publications from previous appointments at other institutions into Lirias.</li>
+            </ul>
+        </md-content>
+        
+    </md-dialog-content>
+</md-dialog>
