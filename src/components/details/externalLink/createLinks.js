@@ -27,7 +27,7 @@ class ExternalLinksInDetailsController {
             return ["relatedwork"].includes(d.label);
         });
 
-        /* ALos check PrimoVE-dev_env\resources\32KUL_KUL-Lirias\js\templates\full-view-details-service-details.html */
+        /* Also check PrimoVE-dev_env\resources\32KUL_KUL-Lirias\js\templates\full-view-details-service-details.html */
 
         if (relatedwork.length > 0) {
             relatedwork = relatedwork.map ( relatedwork => {
