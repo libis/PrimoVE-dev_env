@@ -4,9 +4,13 @@ class LinkToBlankIllRequestController {
   constructor($scope, $translate, $element) {
     this.showLink = false
     var upperEl = this.upperElement($element,'prm-requests');
+    var upperEl2 = this.upperElement($element,'prm-loans');
     if (  upperEl    ){
       this.showLink = true
     }   
+    if (  upperEl || upperEl2 ){
+      this.showLink2 = true
+    }  
     $scope.goToBlankIllRequest = function ($event) {
       window.location.href="/discovery/blankIll?vid=" + window.appConfig.vid;
       
