@@ -17,16 +17,16 @@ window.permalink = {
                 }
             },
             {
-                enableInView: '32KUL_KUL:*',
+                enableInView: '32KUL_KUL:(?!Lirias.*$).*$',
                 replaceFieldForSource: 
                 { 
-                    source: 'lirias' ,
+                    source: 'Lirias_basic' ,
                     field: "control.originalsourceid",
                     prefix: "https://lib.is/_/"
                 }
             },
             {
-                enableInView: '32KUL_KADOC:TEST',
+                enableInView: '32KUL_KADOC:.*TEST',
                 replaceFieldForSource: 
                 { 
                     source: 'KADOC_ScopeArchiv' ,
