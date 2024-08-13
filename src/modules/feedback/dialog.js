@@ -1,6 +1,6 @@
 import Session from '../../primo/session'
 export default class DialogController {
-  constructor($scope, $mdDialog, $mdToast, $http, $translate, feedbackServiceURL, MessageService) {
+  constructor($scope, $mdDialog, $mdToast, $http, $translate, feedbackServiceURL, MessageService,target) {
     this.scope = $scope;
     this.mdDialog = $mdDialog;
     this.mdToast = $mdToast;
@@ -11,6 +11,16 @@ export default class DialogController {
     let self = this;
     let user = Session.user
 
+    $scope.feedback = {
+      replyTo: user.email,
+      message: '',
+      subject: 'feedback'
+    }
+
+    if(target.className == "request-feedback"){
+      $scope.feedback.subject = "Requests"
+    }
+
     $scope.cancelFeedback = () => {
       this.mdDialog.cancel();
     }
@@ -19,8 +29,8 @@ export default class DialogController {
     $scope.sendFeedback = (answer) => {
         let self = this;
         let user = Session.user;
-        let view = Session.view;       
-
+        let view = Session.view;   
+        
         let data = {
         subject: $scope.feedback.subject,
         view: view.code,
@@ -59,13 +69,9 @@ export default class DialogController {
         }     
     }
     
-    $scope.feedback = {
-          replyTo: user.email,
-          message: '',
-          subject: 'feedback'
-        }
+    
   }
 
 }
 
-DialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$http', '$translate', 'feedbackServiceURL', 'MessageService'];
+DialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$http', '$translate', 'feedbackServiceURL', 'MessageService','target'];
