@@ -10,18 +10,45 @@ window.permalink = {
         afterActionsBaseURL: [
             {
                 enableInView: '32KUL_KUL:Lirias',
-                replaceWithPnxField: { field: "control.sourcerecordid" },
-                prefixLink: { prefix: "https://lirias.kuleuven.be/" }
+                replaceWithPnxField: 
+                { 
+                    field: "control.sourcerecordid",  
+                    prefix: "https://lirias.kuleuven.be/"  
+                }
+            },
+            {
+                enableInView: '32KUL_KUL:(?!Lirias.*$).*$',
+                replaceFieldForSource: 
+                { 
+                    source: 'Lirias_basic' ,
+                    field: "control.originalsourceid",
+                    prefix: "https://lib.is/_/"
+                }
+            },
+            {
+                enableInView: '32KUL_KADOC:.*TEST',
+                replaceFieldForSource: 
+                { 
+                    source: 'KADOC_ScopeArchiv' ,
+                    field: "control.originalsourceid",
+                    prefix: "https://lib.is/_/"
+                }
             }
         ]
     },
     replaceWithPnxField: ( { reqRes = {}, params = {} } = {} ) => {
         path = "config.data.pnx."+params.field
-        reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);     
+        reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);    
+        reqRes.data.permalink = params.prefix + reqRes.data.permalink  
         return reqRes.data;
     },
-    prefixLink: ( { reqRes = {}, params = {} } = {} ) => {
-        reqRes.data.permalink = params.prefix + reqRes.data.permalink 
+    replaceFieldForSource: ( { reqRes = {}, params = {} } = {} ) => {
+        if (reqRes.config.data.pnx.display.source.includes( params.source ) ) {
+            path = "config.data.pnx."+ params.field
+            reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);    
+            [vid,sub_view] = reqRes.config.data.vid.split(':');
+            reqRes.data.permalink = params.prefix + reqRes.data.permalink +":"+ vid +"."+ reqRes.config.data.search_scope +"."+ reqRes.config.data.tab +"."+ sub_view +"?";
+        }
         return reqRes.data;
     }
 };
