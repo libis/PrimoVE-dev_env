@@ -309,6 +309,8 @@ window.linksServiceRewrite = {
      Creatiecontext: Basisview in Primo VE voor Lirias records met full-text access.*/
     transformDeliveryLinks: ({ doc = {}, recordSource = null, field1 = null, field2 = null, field3 = null, field4 = null, type = null }) => {
 
+        //console.log('Verifying transformDeliveryLinks')
+
         // Test of het om een Lirias record gaat op basis van de data source.
         // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
         // console.log(doc.pnx.display.source);
@@ -457,7 +459,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         return d
                     });
                 }
-                if (reqRes.data['pnx']) {
+                else if (reqRes.data['pnx']) {
                     parameters.doc = reqRes.data
                     try {
                         reqRes.data = linksServiceRewrite[action](parameters);
@@ -465,19 +467,19 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         console.error(error);
                     }
                 }
-                if (reqRes['config']['url'].match(/^\/primaws\/rest\/pub\/pnxs\/U/)) {
-                    //console.log('Found data, but not docs...')
-                    //console.log(reqRes)
-                    reqRes['data'].map(d => {
-                        parameters.doc = d;
-                        try {
-                            d = linksServiceRewrite[action](parameters);
-                        } catch (error) {
-                            console.error(error);
-                        }
-                        return d;
-                    });
-                }
+                //if (reqres['config']['url'].match(/^\/primaws\/rest\/pub\/pnxs\/u/)) {
+                //    //console.log('found data, but not docs...')
+                //    //console.log(reqres)
+                //    reqres['data'].map(d => {
+                //        parameters.doc = d;
+                //        try {
+                //            d = linksservicerewrite[action](parameters);
+                //        } catch (error) {
+                //            console.error(error);
+                //        }
+                //        return d;
+                //    });
+                //}
             });
         });
     }
