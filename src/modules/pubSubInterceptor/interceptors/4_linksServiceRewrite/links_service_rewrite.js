@@ -118,6 +118,7 @@ window.linksServiceRewrite = {
             }
 
         }
+        return doc;
     },
     createLinksFromOtherField: ({ doc = {}, field = null }) => {
         // console.log (doc)
