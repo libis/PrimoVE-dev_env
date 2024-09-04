@@ -35,10 +35,6 @@ prm-banner-card-content .banner-content .url-text md-icon {
     display: none;
 }
 
-.main-banner-content md-icon.md-primoExplore-theme {
-    display: none !important;
-  }
-
 .banner-description:empty {
   display: none;
 }
