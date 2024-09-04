@@ -59,13 +59,21 @@ class LibInfoController {
         case 'location':
           try {
             code = Record.current.location.all[self.index].loc.location.libraryCode;
+            
           } catch (e) {
             code = ''
           }
           break;
+        case 'item-location':
+          try {
+            code = self.code;
+            
+          } catch (e) {
+            code = ''
+          }
+          break;  
       }
-      
-      //console.log(Record.current.location.all[self.index]);
+            
       return code;
     }    
   
@@ -76,7 +84,7 @@ class LibInfoController {
   export let libInfoComponent = {
     name: 'custom-lib-info',
     config: {
-        bindings: { index: '@', type: '@', parentCtrl: '<'},
+        bindings: { index: '@', type: '@', code: '@', parentCtrl: '<'},
         controller: LibInfoController,
         template: infoHTML
     },
