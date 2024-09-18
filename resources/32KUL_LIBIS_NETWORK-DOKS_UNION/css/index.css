@@ -972,5 +972,9 @@ md-toolbar.md-primoExplore-theme .md-toolbar-tools prm-linked-user-selector md-i
     min-width: 180px
   }
 }
+
+.media-content-type{
+  display:none;
+}
   
 /* view color hook end 32KUL_LIBIS_NETWORK-DOKS_UNION/css/index.css */
