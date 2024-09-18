@@ -14,11 +14,13 @@ export default class DialogController {
     $scope.feedback = {
       replyTo: user.email,
       message: '',
-      subject: 'feedback'
+      subject: 'feedback',
+      type: 'feedback'
     }
 
     if(target.className == "request-feedback"){
-      $scope.feedback.subject = "Requests"
+      $scope.feedback.subject = "Requests & loans"
+      $scope.feedback.type = "Requests & loans"
     }
 
     $scope.cancelFeedback = () => {
@@ -39,7 +41,7 @@ export default class DialogController {
         onCampus: user.isOnCampus,
         user: user.name,
         ip: view.ip.address,
-        type: 'feedback',
+        type: $scope.feedback.type,
         feedback: $scope.feedback.message,
         email: $scope.feedback.replyTo || user.email,
         userAgent: navigator.userAgent
