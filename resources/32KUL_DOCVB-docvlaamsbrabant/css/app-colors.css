@@ -869,3 +869,7 @@ md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-it
     color: black; }
 
 /* primary color hook end*/
+
+.media-content-type{
+  display:none;
+}
