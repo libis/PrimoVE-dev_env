@@ -59,7 +59,7 @@ export let facetInfoButtonConfig = {
   name: 'custom-facet-info-button',
   enabled: true,
   appendTo: "prm-facet-exact-after",
-  enableInView: '32KUL_KUL:Lirias',
+  enableInView: '32KUL_KUL:Lirias.*',
   config: {
     bindings: { parentCtrl: '<' },
     controller: facetInfoButtonController,

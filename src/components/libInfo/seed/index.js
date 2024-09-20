@@ -58,7 +58,8 @@ class LibInfoSeedController {
                     }                    
                     if (el.query(selector) && !el.query('custom-lib-info')) {
                         let libraryCode = Primo.record.current.location.item.all[i].loc.location.libraryCode;
-                        self.addLibInfo(el.query(selector)[0], i, libraryCode, 'location');
+                        
+                        self.addLibInfo(el.query(selector)[0], i, libraryCode, 'item-location');
                     }
                 });
             }

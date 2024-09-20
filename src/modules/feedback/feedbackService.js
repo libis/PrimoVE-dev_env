@@ -25,7 +25,8 @@ export default class FeedbackService {
       fullscreen: false,
       targetEvent: $event,
       template: feedbackDialogHTML,
-      controller: feedbackDialogController
+      controller: feedbackDialogController,
+      locals: {target: $event.target}
     });
   }
 }

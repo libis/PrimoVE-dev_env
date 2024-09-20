@@ -50,7 +50,7 @@ SparkcentralController.$inject = ['$scope'];
 
 export let sparkcentralComponent = {
     name: 'custom-sparkcentral',
-    enabled: true,
+    enabled: false,
     appendTo: 'prm-account-after',
     enableInView: '32KUL_KUL:(KULeuven|REGIONAL).*',
     config: {
