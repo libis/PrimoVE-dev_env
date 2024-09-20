@@ -2,6 +2,9 @@
   KULeuven/LIBIS (c) 2022
   Mehmet Celik mehmet(dot)celik(at)kuleuven(dot)be
 */
+
+import customUrls from './config/customRestUrls.json';
+
 export default class PrimoPubSub {
     constructor() {
         this.topics = {};
@@ -43,6 +46,10 @@ export default class PrimoPubSub {
     //* get all WebService base urls
     get restBaseURLs() {
         try {
+            let restURL_dico = angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs');
+            let restURL_merged = Object.assign({}, restURL_dico, customUrls);
+            console.log('dictionary:', restURL_merged);
+            console.log(angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs'));
             return angular.element(document.querySelector('primo-explore')).injector().get('restBaseURLs');
         } catch (e) {
             console.error('restBaseURLs: ', e);
