@@ -20,7 +20,11 @@ class ExternalLinksInDetailsController {
 
     createExternalLinks() {
         let self = this;
-        self.proxyUrl = self.ProxyService.config().filter(f => new RegExp(f.view).test(self.viewCode))[0].url || null;
+        self.proxyUrl  = null
+        let viewProxyService = self.ProxyService.config().filter(f => new RegExp(f.view).test(self.viewCode))
+        if ( viewProxyService.length > 0) {
+           self.proxyUrl = viewProxyService[0].url || null;
+        }
 
         let identifiers = self.parentCtrl.details.filter(function (d) {
             return d.label === "identifier";
