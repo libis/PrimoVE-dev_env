@@ -35,7 +35,9 @@ class RequestMessageController {
 
             this.pickupInstitution =  this.$ctrl.requestService.ilsData["services-arr"].services[0]["chosen-parameters-map"].pickupInstitution
 
-            if (  this.pickupInstitution ) {
+            // console.log ( typeof  this.pickupInstitution )
+
+            if ( this.pickupInstitution !== undefined) {
                 if (  this.instituttion !== this.pickupInstitution) {
                     /*
                     console.log ( " this.pickupInstitution: [" +  this.pickupInstitution +"]")
@@ -94,8 +96,8 @@ class RequestMessageController {
                 }
             }
            
-           console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
-           console.log ("genericCheckBox label :" + label )
+           // console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
+           // console.log ("genericCheckBox label :" + label )
 
         }
     }
@@ -105,7 +107,7 @@ RequestMessageController.$inject = ['$templateCache', '$translate'];
 
 export let requestMessagecomponent = {
     name: 'custom-request-message',
-    enabled: false,
+    enabled: true,
     appendTo: 'prm-request-after',
     enableInView: '.*',
     config: {
