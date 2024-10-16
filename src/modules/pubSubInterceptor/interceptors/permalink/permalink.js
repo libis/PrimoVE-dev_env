@@ -4,6 +4,8 @@
 //                | control.sourceid | control.sourcesystem | display.source
 // Alma           | "alma"           | ["ILS"]              | ["Alma"]
 // CDI            | ["gale_plos_...  | ["Other"]            | ["DOAJ... 
+// Parochiebl...  | "alma"           | ["ROSETTA_OAI_DC1"]  | ["Alma"]
+// Trajecta       | "alma"           | ["Other"]            | ["Trajecta"]  
 // Lirias_basic   | "alma"           | ["Other"]            | ["Lirias_basic"]
 // RUUSBROEC_ANET | "alma"           | ["Other"]            | ["RUUSBROEC_ANET"]
 // ODIS           | "alma"           | ["Other"]            | ["ODIS_organisations"]
@@ -14,10 +16,10 @@
 //     => use pnx.control.recordid in permalink and prefix with "https://lib.is/_/"
 // control.sourceid is NOT "alma" and control.sourcesystem contains "Other" 
 //     => use pnx.control.recordid in permalink and prefix with "https://lib.is/_/"
-// ===> All permalinks are initially converted to this form without any checking (except the view it activates)
-// ===> After that checks on sourceid and sourcesystem will termine if lds12, sourcerecordid or other fields must be used
+// ===> All permalinks are initially converted to this form without any checking (except the view is not activates)
+// ===> Checks on sourceid and sourcesystem will determine if lds12, sourcerecordid or other fields must be used
 // 
-// control.sourceid is "alma" and control.sourcesystem contains "Other"
+// control.sourceid is "alma" and control.sourcesystem does not contains "ILS"
 //     => use pnx.display.lds12 in permalink if it exists and prefix with "https://lib.is/_/"
 // control.sourceid is "lirias" and control.sourcesystem contains "Webhook"
 //     => use pnx.control.sourcerecordid in permalink and prefix with https://lirias.kuleuven.be/
@@ -46,8 +48,8 @@ window.permalink = {
                 enableInView: '32KUL_.*$',
                 replaceFieldForSourceSystem: 
                 { 
-                    sourcesystem: 'Other' ,  // cdi heeft Other als sourcesystem
-                    sourceid: 'alma',          // cdi heeft dit niet als source
+                    sourcesystem: new RegExp('^(?!ILS)') ,  // sourcesystem: cdi => Other; Parochiebladen => ROSETTA_OAI_DC1 Mag NIET gelijk zijn aan ILS
+                    sourceid: 'alma',          // cdi heeft dit niet als sourceid
                     field:  "display.lds12", 
                     prefix: "https://lib.is/_/"
                 }
@@ -56,7 +58,7 @@ window.permalink = {
                 enableInView: '32KUL_.*$',
                 replaceFieldForSourceSystem: 
                 { 
-                    sourcesystem: 'Webhook' ,  
+                    sourcesystem: new RegExp('Webhook'),  
                     sourceid: 'lirias',          
                     field:  "control.sourcerecordid", 
                     prefix:"https://lirias.kuleuven.be/"  
@@ -81,7 +83,7 @@ window.permalink = {
         reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);
 
         if ( params.prefix === "https://lib.is/_/"){
-            reqRes.data.permalink = params.prefix + reqRes.data.permalink + ":"+ reqRes.config.data.vid +"."+ reqRes.config.data.search_scope +"?";
+            reqRes.data.permalink = params.prefix + reqRes.data.permalink + "/representation?vid="+ reqRes.config.data.vid +"&scope="+ reqRes.config.data.search_scope  +"&tab="+ reqRes.config.data.tab;;
         }else{
             reqRes.data.permalink = params.prefix + reqRes.data.permalink +"?"
         } 
@@ -89,7 +91,7 @@ window.permalink = {
         return reqRes.data;
     },
     replaceFieldForSourceSystem: ( { reqRes = {}, params = {} } = {} ) => {
-        const filteredSourceSystemArray = reqRes.config.data.pnx.control.sourcesystem.filter(value => params.sourcesystem.includes(value));
+        const filteredSourceSystemArray = reqRes.config.data.pnx.control.sourcesystem.filter(value => params.sourcesystem.test(value) );
         console.log (filteredSourceSystemArray )
         if (filteredSourceSystemArray.length > 0 ) { 
             if ( params.sourceid == reqRes.config.data.pnx.control.sourceid ){
