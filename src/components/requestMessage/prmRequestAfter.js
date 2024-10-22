@@ -10,7 +10,7 @@ class RequestMessageController {
     $onInit() {
         let self = this;
         self.instituttion = window.appConfig.vid.split(":")[0];
-        self.requestType = undefined;
+        self.requestType = {key: undefined, value: undefined};
         self.pickupInstitution = undefined;
         self.$ctrl = this.parentCtrl.parentCtrl;
         self.$ctrl.requestConsortiumFormDescription = 'almaRequest.formDescription';
@@ -25,8 +25,9 @@ class RequestMessageController {
         */
 
         if ( this.$ctrl.requestService.ilsData) {
-
-            this.requestType = this.$ctrl.requestService.ilsData["services-arr"].services[0].requestType[0]
+            if  ( this.$ctrl.requestService.ilsData["services-arr"].services[0].requestType !== undefined) {
+                this.requestType = this.$ctrl.requestService.ilsData["services-arr"].services[0].requestType[0]
+            }
             ///// requestType: "booking" {key: 'booking', value: 'almaRequest.requestType.booking'}
             ///// requestType: "hold"    {key: 'hold', value: 'almaRequest.requestType.hold'}
 
@@ -34,7 +35,9 @@ class RequestMessageController {
 
             this.pickupInstitution =  this.$ctrl.requestService.ilsData["services-arr"].services[0]["chosen-parameters-map"].pickupInstitution
 
-            if (  this.pickupInstitution ) {
+            // console.log ( typeof  this.pickupInstitution )
+
+            if ( this.pickupInstitution !== undefined) {
                 if (  this.instituttion !== this.pickupInstitution) {
                     /*
                     console.log ( " this.pickupInstitution: [" +  this.pickupInstitution +"]")
@@ -93,8 +96,8 @@ class RequestMessageController {
                 }
             }
            
-           console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
-           console.log ("genericCheckBox label :" + label )
+           // console.log ("requestConsortiumFormDescription:" + this.$ctrl.requestConsortiumFormDescription )
+           // console.log ("genericCheckBox label :" + label )
 
         }
     }

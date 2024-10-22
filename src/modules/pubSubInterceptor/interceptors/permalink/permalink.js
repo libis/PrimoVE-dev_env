@@ -1,3 +1,29 @@
+//
+// pnx contains
+// 
+//                | control.sourceid | control.sourcesystem | display.source
+// Alma           | "alma"           | ["ILS"]              | ["Alma"]
+// CDI            | ["gale_plos_...  | ["Other"]            | ["DOAJ... 
+// Lirias_basic   | "alma"           | ["Other"]            | ["Lirias_basic"]
+// RUUSBROEC_ANET | "alma"           | ["Other"]            | ["RUUSBROEC_ANET"]
+// ODIS           | "alma"           | ["Other"]            | ["ODIS_organisations"]
+// ScopeArchiv    | "alma"           | ["Other"]            | ["KADOC_ScopeArchiv"]
+// Lirias         | "lirias"         | ["Webhook"]          | ["lirias"]
+
+// control.sourceid is "alma" and control.sourcesystem contains "ILS" 
+//     => use pnx.control.recordid in permalink and prefix with "https://lib.is/_/"
+// control.sourceid is NOT "alma" and control.sourcesystem contains "Other" 
+//     => use pnx.control.recordid in permalink and prefix with "https://lib.is/_/"
+// ===> All permalinks are initially converted to this form without any checking (except the view it activates)
+// ===> After that checks on sourceid and sourcesystem will termine if lds12, sourcerecordid or other fields must be used
+// 
+// control.sourceid is "alma" and control.sourcesystem contains "Other"
+//     => use pnx.display.lds12 in permalink if it exists and prefix with "https://lib.is/_/"
+// control.sourceid is "lirias" and control.sourcesystem contains "Webhook"
+//     => use pnx.control.sourcerecordid in permalink and prefix with https://lirias.kuleuven.be/
+
+
+
 window.permalink = {
     active: true,
     activate: () => {
@@ -9,45 +35,70 @@ window.permalink = {
     configuration: {
         afterActionsBaseURL: [
             {
+                enableInView: '32KUL_.*$',
+                replaceWithPnxField: 
+                { 
+                    field: "control.recordid", 
+                    prefix: "https://lib.is/_/"
+                }
+            },
+            {
+                enableInView: '32KUL_.*$',
+                replaceFieldForSourceSystem: 
+                { 
+                    sourcesystem: 'Other' ,  // cdi heeft Other als sourcesystem
+                    sourceid: 'alma',          // cdi heeft dit niet als source
+                    field:  "display.lds12", 
+                    prefix: "https://lib.is/_/"
+                }
+            },
+            {
+                enableInView: '32KUL_.*$',
+                replaceFieldForSourceSystem: 
+                { 
+                    sourcesystem: 'Webhook' ,  
+                    sourceid: 'lirias',          
+                    field:  "control.sourcerecordid", 
+                    prefix:"https://lirias.kuleuven.be/"  
+                }
+            }
+            /*
+            ,
+            {
                 enableInView: '32KUL_KUL:Lirias',
                 replaceWithPnxField: 
                 { 
-                    field: "control.sourcerecordid",  
+                    field: "control.sourcerecordid", 
                     prefix: "https://lirias.kuleuven.be/"  
                 }
-            },
-            {
-                enableInView: '32KUL_KUL:(?!Lirias.*$).*$',
-                replaceFieldForSource: 
-                { 
-                    source: 'Lirias_basic' ,
-                    field: "control.originalsourceid",
-                    prefix: "https://lib.is/_/"
-                }
-            },
-            {
-                enableInView: '32KUL_KADOC:.*TEST',
-                replaceFieldForSource: 
-                { 
-                    source: 'KADOC_ScopeArchiv' ,
-                    field: "control.originalsourceid",
-                    prefix: "https://lib.is/_/"
-                }
             }
+                */
+            
         ]
     },
     replaceWithPnxField: ( { reqRes = {}, params = {} } = {} ) => {
         path = "config.data.pnx."+params.field
-        reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);    
-        reqRes.data.permalink = params.prefix + reqRes.data.permalink  
+        reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);
+
+        if ( params.prefix === "https://lib.is/_/"){
+            reqRes.data.permalink = params.prefix + reqRes.data.permalink + ":"+ reqRes.config.data.vid +"."+ reqRes.config.data.search_scope +"?";
+        }else{
+            reqRes.data.permalink = params.prefix + reqRes.data.permalink +"?"
+        } 
+        
         return reqRes.data;
     },
-    replaceFieldForSource: ( { reqRes = {}, params = {} } = {} ) => {
-        if (reqRes.config.data.pnx.display.source.includes( params.source ) ) {
-            path = "config.data.pnx."+ params.field
-            reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);    
-            [vid,sub_view] = reqRes.config.data.vid.split(':');
-            reqRes.data.permalink = params.prefix + reqRes.data.permalink +":"+ vid +"."+ reqRes.config.data.search_scope +"."+ reqRes.config.data.tab +"."+ sub_view +"?";
+    replaceFieldForSourceSystem: ( { reqRes = {}, params = {} } = {} ) => {
+        const filteredSourceSystemArray = reqRes.config.data.pnx.control.sourcesystem.filter(value => params.sourcesystem.includes(value));
+        console.log (filteredSourceSystemArray )
+        if (filteredSourceSystemArray.length > 0 ) { 
+            if ( params.sourceid == reqRes.config.data.pnx.control.sourceid ){
+                path = "config.data.pnx."+ params.field
+                let permalink = path.split('.').reduce((a, v) => a[v], reqRes);    
+                if (permalink){
+                    reqRes.data.permalink = params.prefix + permalink + ":"+ reqRes.config.data.vid +"."+ reqRes.config.data.search_scope +"?";
+                }
+            }
         }
         return reqRes.data;
     }
@@ -60,11 +111,12 @@ pubSub.subscribe('after-actionsBaseURL', (reqRes) => {
 
     if (actions.length > 0) {
         actions.forEach(action => {
-            // console.log(action)
             Object.keys(action).forEach( a => {
                 if (a !== "enableInView"){
                     try {
+                        console.log ( reqRes.data.permalink )
                         reqRes.data = permalink[a]({ reqRes: reqRes, params: action[a] });
+                        console.log ( reqRes.data.permalink )
                     } catch (error) {
                         console.error(error);
                     }
