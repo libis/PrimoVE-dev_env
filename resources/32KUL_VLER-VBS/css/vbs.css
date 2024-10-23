@@ -304,7 +304,7 @@ prm-explore-main .header .transparent-top-bar::before
       letter-spacing: 0;
       color: #2a67c9; }
       .md-button.button-as-link:hover:not([disabled]), .bar prm-authentication .md-button:hover:not([disabled]), .md-button.button-as-link:focus:not([disabled]), .bar prm-authentication .md-button:focus:not([disabled]), .md-button.button-as-link.hovered:not([disabled]), .bar prm-authentication .md-button.hovered:not([disabled]), .md-button.button-as-link.md-focused:not([disabled]), .bar prm-authentication .md-button.md-focused:not([disabled]), .md-button.button-as-link._md-focused:not([disabled]), .bar prm-authentication .md-button._md-focused:not([disabled]) {
-        color: #ffffff;
+        color: #3e75cf;
         background-color: white; }
       .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link, prm-gallery-collection .collection-folder .item-actions button, prm-gallery-collection .collection-folder .item-actions .md-button, .is-gallery-view prm-gallery-item .collection-element .item-actions button, .is-gallery-view prm-gallery-item .collection-element .item-actions .md-button, .is-grid-view prm-gallery-item .collection-element .item-actions button, .is-grid-view prm-gallery-item .collection-element .item-actions .md-button {
         color: black; }
@@ -317,7 +317,7 @@ prm-explore-main .header .transparent-top-bar::before
       .light-on-dark-dialog .md-button.button-as-link, .light-on-dark-dialog .bar prm-authentication .md-button, .bar prm-authentication .light-on-dark-dialog .md-button {
         color: #33FFFF; }
         .light-on-dark-dialog .md-button.button-as-link:hover:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button:hover:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button:hover:not([disabled]), .light-on-dark-dialog .md-button.button-as-link:focus:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button:focus:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button:focus:not([disabled]), .light-on-dark-dialog .md-button.button-as-link.hovered:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button.hovered:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button.hovered:not([disabled]), .light-on-dark-dialog .md-button.button-as-link.md-focused:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button.md-focused:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button.md-focused:not([disabled]), .light-on-dark-dialog .md-button.button-as-link._md-focused:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button._md-focused:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button._md-focused:not([disabled]) {
-          color: #ffffff;
+          color: #3e75cf;
           background-color: white; }
     .md-button.button-as-link-mobile {
       text-transform: none;
@@ -345,7 +345,7 @@ prm-explore-main .header .transparent-top-bar::before
       .light-on-dark-dialog .md-button.button-as-link-mobile {
         color: #33FFFF; }
         .light-on-dark-dialog .md-button.button-as-link-mobile:hover:not([disabled]), .light-on-dark-dialog .md-button.button-as-link-mobile:focus:not([disabled]), .light-on-dark-dialog .md-button.button-as-link-mobile.hovered:not([disabled]), .light-on-dark-dialog .md-button.button-as-link-mobile.md-focused:not([disabled]), .light-on-dark-dialog .md-button.button-as-link-mobile._md-focused:not([disabled]) {
-          color: #ffffff;
+          color: #3e75cf;
           background-color: white; }
     .md-button.flex-button {
       display: -ms-flexbox;
