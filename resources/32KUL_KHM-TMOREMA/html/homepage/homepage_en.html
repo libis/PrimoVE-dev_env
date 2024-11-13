@@ -2,27 +2,46 @@
     @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
 </style>
 
+<div class="banner">
+    <a href="/discovery/collectionDiscovery?vid=32KUL_KHM%3ATMOREMA&lang=en">
+        <img style="width:100%" src="custom/32KUL_KHM-TMOREMA/img/banner_CD_EN.jpg">
+    </a>
+</div>
+
 <md-content layout-xs="column" layout="row" class="display-block-xs">
     <div flex-xs="100" flex="60" layout="column">
+
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
-                <span class="md-headline" id="ContentInLimo">
-                    What can you find in Limo?
-                </span>
-                <p>
-                    Limo allows you to search the <b>physical and digital collections</b> of Thomas More and other institutions within Associatie KU Leuven.
-                    <br>You can:
-                    <ul>
-                        <li>
-                            Find the location and call number of (print) books, journals and other materials held by <span><a href="https://thomasmore.be/nl/studeren/locaties/onze-leercentra" aria-label="Link to to website Thomas More leercentra">libraries and learning centres of Thomas More</a></span>. <b>Limit your search to your own campus</b> to get accurate results.
-                        </li>
-                        <br>
-                        <li>
-                            Get access to numerous <b>e-books and e-journals</b> as part of scholarly databases and Open Access collections to which Thomas More has a subscription.
-                        </li>
-                    </ul>
+                <a href="http://www.thomasmore.be/bibliotheek/hulp-nodig-bij-limo" target="_blank" id="limo_content_link" aria-label="Link to info about content in Limo"
+                   title="Link to info about content in Limo">
+                    <span class="md-headline" id="ContentInLimo">
+                        What can you find in Limo?
+                    </span>
+                </a>
+                <h3>All content</h3>
+                <p>You can search millions of items: online articles and e-journals, books & e-books, journals, databases, and many more. </p>
+                <h3>Campus</h3>
+                <p>You can limit your search results to local items by selecting your campus: physical books and journals, e-books, e-journals, etc.</p>
+
             </md-card-content>
         </md-card>
+        
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <span class="md-title">
+                Switch to catalog: 
+                <nobr><a href="https://kuleuven.limo.libis.be/discovery/search?vid=32KUL_KUL:KULeuven" 
+                    target="_blank" >KU Leuven campussen <i class="material-icons prm-text">launch</i></a></nobr>
+                </span>           
+                <br>&nbsp;
+                <P>
+                    This catalog allows you to search for physical items per KU Leuven campus, including Aalst, Brussel, Geel, Diepenbeek, Sint-Lucasbibliotheek Gent, Sint-Katelijne-Waver and Rabot Gent.
+                </P>
+            </md-card-content>
+        </md-card>
+        
+        
     </div>
     <div flex-xs="100" flex="40" layout="column">
         <prm-news parent-Ctrl='$ctrl'></prm-news>
