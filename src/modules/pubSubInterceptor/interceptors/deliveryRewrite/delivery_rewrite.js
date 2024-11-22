@@ -14,13 +14,13 @@ window.deliveryRewrite = {
             */
             {
                 enableInView: '32KUL_VLP:.*',
-                copyFromPnx:  { source: "ESVLP_scopeArchiv" }
+                copyFromPnx:  { source: "esvlp_archief" }
             }
         ]
     },
     copyFromPnx: ({ delivery = {},  pnx = {}, source = null }) => {
       
-        if ( pnx.control.sourceid.includes( source ) ) {
+        if ((pnx.control.sourceid.includes(source)) || (pnx.control.sourceid.includes('ESVLP_scopeArchiv'))) {
             delivery.link = delivery.link == null ? [] : delivery.link;
             delivery.availability = pnx.delivery.fulltext;
             delivery.displayedAvailability = pnx.delivery.fulltext[0];    
