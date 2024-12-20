@@ -21,6 +21,10 @@ window.linksServiceRewrite = {
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
                 transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+            },
+            {
+                enableInView: '32KUL.*_TEST',
+                linkReadingExcerpt: { source: "Meta4books", field: "display.lds37", link: "display.lds45" }
             }
         ],
         afterDeliveryURL: [
@@ -35,6 +39,10 @@ window.linksServiceRewrite = {
             {
                 enableInView: '^(?!(32KUL_KUL:Lirias))',// originele setting: 32KUL_KUL:KULeuven_TEST
                 transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
+            },
+            {
+                enableInView: '32KUL.*_TEST',
+                linkReadingExcerpt: { source: "Meta4books", field: "display.lds37", link: "display.lds45" }
             }
         ]
     },
@@ -74,6 +82,45 @@ window.linksServiceRewrite = {
         } catch {
             return undefined;
         }
+    },
+
+    linkReadingExcerpt: ({ doc = {}, field = null, link = null }) => {
+
+        if (doc.pnx) {
+            console.log('Checking reading excerpts');
+            console.log('Field 37: ', doc.pnx.display);
+            var scope = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
+            console.log("Meta4books - check scope: ", scope);
+
+            if ((scope) && (scope.includes('Meta4books'))) {
+                console.log('Handling reading excerpt');
+                var links = link.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
+                console.log(links);
+                if (links) {
+                    links = links.map(url => {
+                        return {
+                            "@id": "_:0",
+                            displayLabel: "Reading excerpt via Boekenbank.be",
+                            linkType: "addlink",
+                            linkURL: url,
+                            publicNote: null
+                        }
+                    });
+                    console.log('links', links);
+
+                    if (doc.delivery) {
+                        console.log(doc.delivery)
+                        if (doc.delivery.link) {
+                            doc.delivery.link = doc.delivery.link.concat(links)
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+        return doc;
     },
 
     createLinksFromOtherField: ({ doc = {}, field = null }) => {
