@@ -1,118 +1,384 @@
 {
-    "LULSO": {
-        "url": "https://www.ilunet.ch/bibliotheken/zhb-uni/#Wzg3MDNd/",
-        "label": "Luzern ZHB Lesesaal Sondersammlung"
-    },
-    "LULES": {
-        "url": "https://www.ilunet.ch/bibliotheken/zhb-uni/#Wzg3MDNd/",
-        "label": "Luzern ZHB Lesesaal Sempacherstrasse"
-    },
-    "LUHSW": {
-        "url": "https://www.ilunet.ch/bibliotheken/hslu/#Wzg3MDVd/",
-        "label": "Luzern ZHB HSLU Wirtschaft"
-    },
-    "LUHSI": {
-        "url": "https://www.ilunet.ch/bibliotheken/hslu/#Wzg3MTBd/",
-        "label": "Luzern ZHB HSLU Campus Zug-Rotkreuz"
-    },
-    "LUZHB": {
-        "url": "https://www.ilunet.ch/bibliotheken/zhb-uni/#Wzg3MDNd/",
-        "label": "Luzern ZHB Sempacherstrasse"
-    },
-    "LUSBI": {
-        "url": "https://www.ilunet.ch/bibliotheken/zhb-uni/#Wzg3MDFd/",
-        "label": "Luzern ZHB Speicherbibliothek"
-    },
-    "LUUHL": {
-        "url": "https://www.ilunet.ch/bibliotheken/zhb-uni/#Wzg3MDJd/",
-        "label": "Luzern ZHB Uni/PH-Gebäude"
-    },
-    "LUNI3": {
-        "url": "https://www.ilunet.ch/bibliotheken/zhb-uni/#Wzg3MDJd/",
-        "label": "Luzern ZHB Uni/PH-Gebäude (LUNI3)"
-    },
-    "LUPHL": {
-        "url": "https://www.ilunet.ch/bibliotheken/zhb-uni/#Wzg3MDJd/",
-        "label": "Luzern ZHB Uni/PH-Gebäude (LUPHL)"
-    },
-    "LUHTA": {
-        "url": "https://www.ilunet.ch/bibliotheken/hslu/#Wzg3MDZd/",
-        "label": "Luzern HSLU Technik & Architektur (LUHTA)"
-    },
-    "LUMHS": {
-        "url": "https://www.ilunet.ch/bibliotheken/hslu/#Wzg3MDld/",
-        "label": "Luzern HSLU Musik (LUMHS)"
-    },
-    "LUHSA": {
-        "url": "https://www.ilunet.ch/bibliotheken/hslu/#Wzg3MDRd/",
-        "label": "Luzern HSLU Soziale Arbeit (LUHSA)"
-    },
-    "LUHGK": {
-        "url": "https://www.ilunet.ch/bibliotheken/hslu/#Wzg3MTFd/",
-        "label": "Luzern HSLU Design & Kunst (LUHGK)"
-    },
-    "LUPML": {
-        "url": "https://www.ilunet.ch/bibliotheken/ph-pmz/#Wzg3MTVd/",
-        "label": "Luzern PMZ Luzern (LUPML)"
-    },
-    "LUPIL": {
-        "url": "https://www.ilunet.ch/bibliotheken/ph-pmz/#Wzg3MTRd/",
-        "label": "Luzern Bilderbuchsammlung PH Luzern (LUPIL)"
-    },
-    "LUPHZ": {
-        "url": "https://www.ilunet.ch/bibliotheken/ph-pmz/#Wzg3MTNd/",
-        "label": "Luzern Mediothek PH Zug (LUPHZ)"
-    },
-    "LUPHS": {
-        "url": "https://www.ilunet.ch/bibliotheken/ph-pmz/#Wzg3MTJd/",
-        "label": "Luzern Medienzentrum PH Schwyz (LUPHS)"
-    },
-    "LUPHP": {
-        "url": "https://www.ilunet.ch/bibliotheken/ph-pmz/#Wzg3MTJd/",
-        "label": "Luzern Medienzentrum PH Schwyz - Standort Pfäffikon (LUPHP)"
-    },
-    "LUDAL": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3Mjdd/",
-        "label": "Luzern Denkmalpflege & Archäologie Kanton Luzern (LUDAL)"
-    },
-    "LUDOL": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MjZd/",
-        "label": "Luzern Haus zum Dolder Beromünster (LUDOL)"
-    },
-    "LUHLB": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MjVd/",
-        "label": "Luzern Hugo-Loetscher-Bibliothek (LUHLB)"
-    },
-    "LUSSB": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MjRd/",
-        "label": "Luzern Seminar St. Beat, Luzern (LUSSB)"
-    },
-    "LUKBW": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MjRd/",
-        "label": "Luzern Kapuzinerbibliothek Wesemlin (LUKBW)"
-    },
-    "LUKBS": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MjNd/",
-        "label": "Luzern Klosterbibliothek Sursee (LUKBS)"
-    },
-    "LUXUN": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MjFd/",
-        "label": "Luzern Mediothek XUND (LUXUN)"
-    },
-    "LUNML": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MjBd/",
-        "label": "Luzern Natur-Museum Luzern (LUNML)"
-    },
-    "LUSTA": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MThd/",
-        "label": "Luzern Staatsarchiv Luzern (LUSTA)"
-    },
-    "LUSAR": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MTdd/",
-        "label": "Luzern Stadtarchiv Luzern (LUSAR)"
-    },
-    "LUVOG": {
-        "url": "https://www.ilunet.ch/bibliotheken/spezialbibliotheken/#Wzg3MTZd/",
-        "label": "Luzern Vogelwarte Sempach (LUVOG)"
-    }
+  "WBIB": {
+    "url": "https://bib.kuleuven.be/2bergen/cba",
+    "label": "KU Leuven Libraries 2Bergen - Campus Arenberg"
+  },
+  "MGAS": {
+    "url": "https://bib.kuleuven.be/2bergen/mgas",
+    "label": "KU Leuven Libraries 2Bergen - Learning Centre Désiré Collen"
+  },
+  "SLUCB": {
+    "url": "https://bib.kuleuven.be/2bergen/architectuur-brussel ",
+    "label": "KU Leuven Libraries 2Bergen Campus Sint-Lucas Brussels"
+  },
+  "TDC": {
+    "url": "https://bib.kuleuven.be/2bergen/architectuur-gent",
+    "label": "KU Leuven Libraries 2Bergen Technical Documentation Center Ghent"
+  },
+  "LBIB": {
+    "url": "https://bib.kuleuven.be/artes/erasmushuis",
+    "label": "KU Leuven Libraries Artes Erasmushuis"
+  },
+  "BIBC": {
+    "url": "https://bib.kuleuven.be/artes/ub",
+    "label": "KU Leuven Libraries Artes University Library"
+  },
+  "BIBK": {
+    "url": "https://kulak.kuleuven.be/nl/over_kulak/diensten/bibliotheek",
+    "label": "KU Leuven Libraries Campus Kulak Kortrijk"
+  },
+  "BIBA": {
+    "url": "https://bib.kuleuven.be/antwerpen",
+    "label": "KU Leuven Libraries Economics and Business Campus Carolus Antwerp"
+  },
+  "ETEW": {
+    "url": "https://bib.kuleuven.be/ebib/leuven",
+    "label": "KU Leuven Libraries Economics and Business Leuven"
+  },
+  "RBIB": {
+    "url": "https://bib.kuleuven.be/rbib",
+    "label": "KU Leuven Libraries Law"
+  },
+  "GBIB": {
+    "url": "https://bib.kuleuven.be/msb",
+    "label": "KU Leuven Libraries Maurits Sabbe Library"
+  },
+  "FBIB": {
+    "url": "https://bib.kuleuven.be/fbib",
+    "label": "KU Leuven Libraries Philosophy"
+  },
+  "PBIB": {
+    "url": "https://bib.kuleuven.be/pbib",
+    "label": "KU Leuven Libraries Psychology and Educational Sciences"
+  },
+  "SBIB": {
+    "url": "https://bib.kuleuven.be/sbib",
+    "label": "KU Leuven Libraries Social Sciences"
+  },
+  "BCOL": {
+    "url": "https://bib.kuleuven.be/bijzondere-collecties",
+    "label": "KU Leuven Libraries Special Collections"
+  },
+  "ARDO": {
+    "url": "https://www.sportimonium.be",
+    "label": "KU Leuven Sportimonium"
+  },
+  "BUAR": {
+    "url": "https://www.kuleuven.be/ahp/universiteitsarchief",
+    "label": "KU Leuven Universiteitsarchief"
+  },
+  "GPAR": {
+    "url": "https://www.visitleuven.be/abdijvanpark",
+    "label": "Abdij van Park"
+  },
+  "GOSA": {
+    "url": "https://www.augustiniana.be/public/",
+    "label": "Augustijns Historisch Instit."
+  },
+  "CAG": {
+    "url": "https://cagnet.be",
+    "label": "Centr. Agrarische Geschiedenis"
+  },
+  "GBER": {
+    "url": "https://gbiomed.kuleuven.be/english/research/50000687/50000697",
+    "label": "KU Leuven Biomed.Ethiek & Recht"
+  },
+  "BAVD": {
+    "url": "https://www.kuleuven.be/onderwijs/onderwijsbeleid/limel",
+    "label": "KU Leuven Dienst Media en Leren"
+  },
+  "BBIB": {
+    "url": "https://bib.kuleuven.be/2bergen/brugge",
+    "label": "KU Leuven Libraries 2Bergen Campus Bruges"
+  },
+  "LMAT": {
+    "url": "http://www.matrix-new-music.be",
+    "label": "KU Leuven MATRIX"
+  },
+  "2BER": {
+    "url": "https://bib.kuleuven.be/2bergen",
+    "label": "KU Leuven 2 Bergen"
+  },
+  "HUMW": {
+    "url": "https://ghum.kuleuven.be",
+    "label": "KU Leuven Humane Wetenschappen"
+  },
+  "GOCB": {
+    "url": "http://karmel.be/communities/karmel-brugge",
+    "label": "Karmelieten Brugge"
+  },
+  "GSMM": {
+    "url": "https://mariaalcentrum.be/monfortbibliotheek-kuleuven",
+    "label": "Montfortbibliotheek"
+  },
+  "BSML": {
+    "url": "https://www.kuleuven.be/verbiest/sml",
+    "label": "Scheut Memorial Library"
+  },
+  "GSDB": {
+    "url": "https://services.libis.be/library_info/GSDB",
+    "label": "Don Bosco bibliotheek"
+  },
+  "GROL": {
+    "url": "https://www.rolduc.nl/grootseminarie-rolduc/bibliotheek/",
+    "label": "Scheut Memorial Library"
+  },
+
+  "KADOC": {
+    "url": "https://services.libis.be/library_info/KADOC",
+    "label": "KADOC KADOC"
+  },
+  "BETHU": {
+    "url": "https://services.libis.be/library_info/BETHU",
+    "label": "KADOC BETHU"
+  },
+  "ACV": {
+    "url": "https://services.libis.be/library_info/ACV",
+    "label": "ACV ACV"
+  },
+  "FINBI": {
+    "url": "https://services.libis.be/library_info/FINBI",
+    "label": "FINBI FINBI"
+  },
+  "BPB": {
+    "url": "https://services.libis.be/library_info/BPB",
+    "label": "BPB BPB"
+  },
+  "ARCH": {
+    "url": "https://services.libis.be/library_info/ARCH",
+    "label": "BPB ARCH"
+  },
+  "KUB": {
+    "url": "https://services.libis.be/library_info/KUB",
+    "label": "HUB KUB"
+  },
+  "HUB": {
+    "url": "https://services.libis.be/library_info/HUB",
+    "label": "HUB HUB"
+  },
+  "HUBPD": {
+    "url": "https://services.libis.be/library_info/HUBPD",
+    "label": "HUB HUBPD"
+  },
+  "KHSTN": {
+    "url": "https://services.libis.be/library_info/KHSTN",
+    "label": "HUB KHSTN"
+  },
+  "KBC": {
+    "url": "https://services.libis.be/library_info/KBC",
+    "label": "HUB KBC"
+  },
+  "KBCLL": {
+    "url": "https://services.libis.be/library_info/KBCLL",
+    "label": "HUB KBCLL"
+  },
+  "LILED": {
+    "url": "https://services.libis.be/library_info/LILED",
+    "label": "UCLL LILED"
+  },
+  "LILEH": {
+    "url": "https://services.libis.be/library_info/LILEH",
+    "label": "UCLL LILEH"
+  },
+  "LIHBI": {
+    "url": "https://services.libis.be/library_info/LIHBI",
+    "label": "UCLL LIHBI"
+  },
+  "LIGS": {
+    "url": "https://services.libis.be/library_info/LIGS",
+    "label": "UCLL LIGS"
+  },
+  "KHLHR": {
+    "url": "https://services.libis.be/library_info/KHLHR",
+    "label": "UCLL KHLHR"
+  },
+  "KHLCC": {
+    "url": "https://services.libis.be/library_info/KHLCC",
+    "label": "UCLL KHLCC"
+  },
+  "KHLGT": {
+    "url": "https://services.libis.be/library_info/KHLGT",
+    "label": "UCLL KHLGT"
+  },
+  "KHLCH": {
+    "url": "https://services.libis.be/library_info/KHLCH",
+    "label": "UCLL KHLCH"
+  },
+  "LIDIE": {
+    "url": "https://services.libis.be/library_info/LIDIE",
+    "label": "UCLL LIDIE"
+  },
+  "LIHAS": {
+    "url": "https://services.libis.be/library_info/LIHAS",
+    "label": "UCLL LIHAS"
+  },
+  "KHLSH": {
+    "url": "https://services.libis.be/library_info/KHLSH",
+    "label": "UCLL KHLSH"
+  },
+  "KHKL": {
+    "url": "https://services.libis.be/library_info/KHKL",
+    "label": "TMOREK KHKL"
+  },
+  "KHKT": {
+    "url": "https://services.libis.be/library_info/KHKT",
+    "label": "TMOREK KHKT"
+  },
+  "KHKV": {
+    "url": "https://services.libis.be/library_info/KHKV",
+    "label": "TMOREK KHKV"
+  },
+  "KHKG": {
+    "url": "https://services.libis.be/library_info/KHKG",
+    "label": "TMOREK KHKG"
+  },
+  "DNA": {
+    "url": "https://services.libis.be/library_info/DNA",
+    "label": "TMOREK DNA"
+  },
+  "KHM": {
+    "url": "https://services.libis.be/library_info/KHM",
+    "label": "TMOREK KHM"
+  },
+  "KVHB": {
+    "url": "https://services.libis.be/library_info/KVHB",
+    "label": "TMOREK KVHB"
+  },
+  "LCSTA": {
+    "url": "https://services.libis.be/library_info/LCSTA",
+    "label": "TMOREK LCSTA"
+  },
+  "KMMR": {
+    "url": "https://services.libis.be/library_info/KMMR",
+    "label": "KMMR KMMR"
+  },
+  "MIM": {
+    "url": "https://services.libis.be/library_info/MIM",
+    "label": "KMMR MIM"
+  },
+  "LIMDA": {
+    "url": "https://services.libis.be/library_info/LIMDA",
+    "label": "LUCA LIMDA"
+  },
+  "LEMM": {
+    "url": "https://services.libis.be/library_info/LEMM",
+    "label": "LUCA LEMM"
+  },
+  "LUKAS": {
+    "url": "https://services.libis.be/library_info/LUKAS",
+    "label": "LUCA LUKAS"
+  },
+  "SLUCG": {
+    "url": "https://services.libis.be/library_info/SLUCG",
+    "label": "LUCA SLUCG"
+  },
+  "NBJUR": {
+    "url": "https://services.libis.be/library_info/NBJUR",
+    "label": "NBB NBJUR"
+  },
+  "NBLOC": {
+    "url": "https://services.libis.be/library_info/NBLOC",
+    "label": "NBB NBLOC"
+  },
+  "NBMED": {
+    "url": "https://services.libis.be/library_info/NBMED",
+    "label": "NBB NBMED"
+  },
+  "NBPUB": {
+    "url": "https://services.libis.be/library_info/NBPUB",
+    "label": "NBB NBPUB"
+  },
+  "NBWBS": {
+    "url": "https://services.libis.be/library_info/NBWBS",
+    "label": "NBB NBWBS"
+  },
+  "TIFA": {
+    "url": "https://services.libis.be/library_info/TIFA",
+    "label": "BOSA TIFA"
+  },
+  "RBINS": {
+    "url": "https://services.libis.be/library_info/RBINS",
+    "label": "RBINS RBINS"
+  },
+  "BIB": {
+    "url": "https://services.libis.be/library_info/BIB",
+    "label": "VDIC BIB"
+  },
+  "AND": {
+    "url": "https://services.libis.be/library_info/AND",
+    "label": "VDIC AND"
+  },
+  "VES": {
+    "url": "https://services.libis.be/library_info/VES",
+    "label": "VDIC VES"
+  },
+  "BIOET": {
+    "url": "https://services.libis.be/library_info/BIOET",
+    "label": "VDIC BIOET"
+  },
+  "FAGG": {
+    "url": "https://services.libis.be/library_info/FAGG",
+    "label": "VDIC FAGG"
+  },
+  "WIV": {
+    "url": "https://services.libis.be/library_info/WIV",
+    "label": "VDIC WIV"
+  },
+  "CODA": {
+    "url": "https://services.libis.be/library_info/CODA",
+    "label": "VDIC CODA"
+  },
+  "VLP": {
+    "url": "https://services.libis.be/library_info/VLP",
+    "label": "VLP VLP"
+  },
+  "VLOC": {
+    "url": "https://services.libis.be/library_info/VLOC",
+    "label": "VIVES VLOC"
+  },
+  "KHCA": {
+    "url": "https://services.libis.be/library_info/KHCA",
+    "label": "VIVES KHCA"
+  },
+  "KHCO": {
+    "url": "https://services.libis.be/library_info/KHCO",
+    "label": "VIVES KHCO"
+  },
+  "DOCVB": {
+    "url": "https://services.libis.be/library_info/DOCVB",
+    "label": "DOCVB DOCVB"
+  },
+  "COBRS": {
+    "url": "https://services.libis.be/library_info/COBRS",
+    "label": "VIVES COBRS"
+  },
+  "KAKOR": {
+    "url": "https://services.libis.be/library_info/KAKOR",
+    "label": "VIVES KAKOR"
+  },
+  "COOSS": {
+    "url": "https://services.libis.be/library_info/COOSS",
+    "label": "VIVES COOSS"
+  },
+  "KAROE": {
+    "url": "https://services.libis.be/library_info/KAROE",
+    "label": "VIVES KAROE"
+  },
+  "KATIE": {
+    "url": "https://services.libis.be/library_info/KATIE",
+    "label": "VIVES KATIE"
+  },
+  "KATOR": {
+    "url": "https://services.libis.be/library_info/KATOR",
+    "label": "VIVES KATOR"
+  },
+  "VBS": {
+    "url": "https://services.libis.be/library_info/VBS",
+    "label": "VBS VBS"
+  },
+  "VCV": {
+    "url": "https://services.libis.be/library_info/VCV",
+    "label": "FARO VCV"
+  }
+
 }

@@ -1,5 +1,14 @@
 /* primary color hook */
 /* commenttttt*/
+.prm-primary-bg, prm-atoz-search-bar, prm-browse-search-bar, prm-collection-gallery-header .collection-header-inner, prm-newspapers-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark::after, prm-tags-search-bar, prm-tree-nav prm-spinner .diamond {
+  color: #fff;
+  background-color: #00283c;
+}
+
+div#footer {
+  background-color: #00283c;
+}
+
 .md-button {
   color: #3a3a3a; }
   .md-button:hover:not([disabled]), .md-button:focus:not([disabled]), .md-button.hovered:not([disabled]), .md-button.md-focused:not([disabled]), .md-button._md-focused:not([disabled]) {
@@ -11,7 +20,7 @@
       color: white;
       background-color: rgba(255, 255, 255, 0.08); }
   .md-button.md-primary {
-    color: #5C92BD; }
+    color: #00283c; }
     .md-button.md-primary:hover:not([disabled]), .md-button.md-primary:focus:not([disabled]), .md-button.md-primary.hovered:not([disabled]), .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary._md-focused:not([disabled]) {
       color: #265f8d;
       background-color: rgba(92, 146, 189, 0.1); }
@@ -47,7 +56,7 @@
       background-color: rgba(255, 99, 71, 0.1); }
   .md-button.button-link, md-grid-tile .tile-content > .md-button,
   .tiles-grid-tile .tile-content > .md-button {
-    color: #5C92BD; }
+    color: #00283c; }
     .md-button.button-link:hover:not([disabled]), md-grid-tile .tile-content > .md-button:hover:not([disabled]),
     .tiles-grid-tile .tile-content > .md-button:hover:not([disabled]), .md-button.button-link:focus:not([disabled]), md-grid-tile .tile-content > .md-button:focus:not([disabled]),
     .tiles-grid-tile .tile-content > .md-button:focus:not([disabled]), .md-button.button-link.hovered:not([disabled]), md-grid-tile .tile-content > .md-button.hovered:not([disabled]),
@@ -60,7 +69,7 @@
     .tiles-grid-tile .tile-content > prm-icon.md-button,
     .tiles-grid-tile .section-title .tile-content > prm-icon.md-button, md-grid-tile .tile-content > .md-button.link-alt-color,
     .tiles-grid-tile .tile-content > .md-button.link-alt-color {
-      color: #45aab4; }
+      color: #00283c; }
       .md-button.button-link.link-alt-color:hover:not([disabled]), .section-title prm-icon.md-button.button-link:hover:not([disabled]), .section-title md-grid-tile .tile-content > prm-icon.md-button:hover:not([disabled]), md-grid-tile .section-title .tile-content > prm-icon.md-button:hover:not([disabled]), .section-title
       .tiles-grid-tile .tile-content > prm-icon.md-button:hover:not([disabled]),
       .tiles-grid-tile .section-title .tile-content > prm-icon.md-button:hover:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color:hover:not([disabled]),
@@ -149,12 +158,12 @@
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     letter-spacing: 0;
-    color: #5C92BD; }
+    color: #00283c; }
     .md-button.button-as-link:hover:not([disabled]), .bar prm-authentication .md-button:hover:not([disabled]), .md-button.button-as-link:focus:not([disabled]), .bar prm-authentication .md-button:focus:not([disabled]), .md-button.button-as-link.hovered:not([disabled]), .bar prm-authentication .md-button.hovered:not([disabled]), .md-button.button-as-link.md-focused:not([disabled]), .bar prm-authentication .md-button.md-focused:not([disabled]), .md-button.button-as-link._md-focused:not([disabled]), .bar prm-authentication .md-button._md-focused:not([disabled]) {
       color: #265f8d;
       background-color: rgba(92, 146, 189, 0.1); }
     .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link {
-      color: #45aab4; }
+      color: #00283c; }
       .md-button.button-as-link.link-alt-color:hover:not([disabled]), .bar prm-authentication .md-button.link-alt-color:hover:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:hover:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:hover:not([disabled]), .section-title prm-icon.md-button.button-as-link:hover:not([disabled]), .md-button.button-as-link.link-alt-color:focus:not([disabled]), .bar prm-authentication .md-button.link-alt-color:focus:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:focus:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:focus:not([disabled]), .section-title prm-icon.md-button.button-as-link:focus:not([disabled]), .md-button.button-as-link.link-alt-color.hovered:not([disabled]), .bar prm-authentication .md-button.link-alt-color.hovered:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.hovered:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.hovered:not([disabled]), .section-title prm-icon.md-button.button-as-link.hovered:not([disabled]), .md-button.button-as-link.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link.md-focused:not([disabled]), .md-button.button-as-link.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button._md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button._md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link._md-focused:not([disabled]) {
         color: #1e6d75;
         background-color: rgba(69, 170, 180, 0.1); }
@@ -219,13 +228,13 @@
     display: none; }
 
 .prm-primary-color, .result-item-actions .md-icon-button, .result-item-actions .more-options-button, prm-add-query-to-saved-searches .custom-button, .md-autocomplete-suggestions .suggestion-scope, md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-active:not([disabled]), md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-focused:not([disabled]), md-tab-content .tab-content-header md-input-container md-select-value .md-text {
-  color: #54969d; }
+  color: #00283c; }
 
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar, prm-journals-search-bar {
   color: white;
-  background-color: #54969d; }
+  background-color: #00283c; }
   .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1 {
-    background-color: #4f8c93; }
+    background-color: #003956; }
   .prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2, prm-journals-search-bar.prm-hue2, md-backdrop.md-opaque {
     background-color: #4b868c; }
   .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue3, prm-journals-search-bar.prm-hue3 {
@@ -236,23 +245,23 @@
     background-color: #42767c; }
 
 .prm-primary-border {
-  border-color: #54969d; }
+  border-color: #00283c; }
   .prm-primary-border.prm-hue1 {
-    border-color: #54969d; }
+    border-color: #00283c; }
   .prm-primary-border.prm-hue2 {
-    border-color: #54969d; }
+    border-color: #00283c; }
 
 .prm-secondary-color, prm-search-bookmark-filter .md-button, prm-topbar .top-nav-bar {
   color: #A9CDD6; }
   .prm-secondary-color.prm-hue1, .link-alt-color, .section-title prm-icon, .result-item-actions .pin-button, prm-add-query-to-saved-searches .custom-button.pin-button, prm-search-bookmark-filter .prm-hue1.md-button, prm-topbar .prm-hue1.top-nav-bar, prm-recomendation-item .media-on-hover .pin-button {
-    color: #45aab4; }
+    color: #00283c; }
   .prm-secondary-color.prm-hue2, prm-search-bookmark-filter .prm-hue2.md-button, prm-topbar .prm-hue2.top-nav-bar {
     color: #64a5b5; }
 
 .prm-secondary-bg, md-progress-linear[md-mode=indeterminate].header-progress-bar .md-bar {
   background-color: #A9CDD6; }
   .prm-secondary-bg.prm-hue1, .new-result-item .list-item-count, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue1.md-bar, md-tabs md-ink-bar, md-input-container:after, md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
-    background-color: #45aab4; }
+    background-color: #00283c; }
   .prm-secondary-bg.prm-hue2, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue2.md-bar, md-checkbox.md-checked .md-icon,
   md-checkbox.md-checked ._md-icon {
     background-color: #64a5b5; }
@@ -265,7 +274,7 @@
   md-select:not([disabled]):focus .md-select-value,
   .md-input-focused
   md-select:not([disabled]) .md-select-value, md-radio-button.md-checked .md-off, md-radio-button.md-checked ._md-off {
-    border-color: #45aab4; }
+    border-color: #00283c; }
 
 .prm-background, html, body, prm-search-bar .simple-search-wrapper .search-options:after, prm-journals-search-bar .simple-search-wrapper .search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider, prm-journals-search-bar .simple-search-wrapper .search-options md-divider, .prm-view-overlay-inner, .__xs prm-facet,
 .__sm prm-facet, .__sm .sidebar,
@@ -403,9 +412,9 @@ md-tabs.tabs-as-links md-tab-item:not([disabled]), md-tabs.tabs-as-app .back-but
 .tiles-grid-tile .tile-header .header-link .arrow-icon, md-grid-tile .tile-header .header-link:hover,
 .tiles-grid-tile .tile-header .header-link:hover, md-grid-tile .tile-header .md-button,
 .tiles-grid-tile .tile-header .md-button, md-input-container.has-fixed-message [ng-message] a, .separate-list-items md-list-item .item-loader-with-text .md-button, md-list-item.list-item-as-link {
-  color: #5C92BD; }
+  color: #00283c; }
   .prm-links-important, .text-link {
-    color: #5C92BD !important; }
+    color: #00283c !important; }
   .prm-links.prm-links-hover, .md-button.arrow-link-button .prm-links-hover[link-arrow], a.prm-links-hover, .md-button.arrow-link-button .prm-links-hover.button-content, .login-dialog md-list md-list-item .md-list-item-text h3.prm-links-hover,
   .login-dialog md-list md-list-item .md-list-item-text .prm-links-hover.list-item-title,
   .login-dialog .md-list md-list-item .md-list-item-text h3.prm-links-hover,
@@ -425,7 +434,7 @@ md-tabs.tabs-as-links md-tab-item:not([disabled]), md-tabs.tabs-as-app .back-but
   .tiles-grid-tile .tile-header .header-link .prm-alt-link.arrow-icon, md-grid-tile .tile-header .prm-alt-link.header-link:hover,
   .tiles-grid-tile .tile-header .prm-alt-link.header-link:hover, md-grid-tile .tile-header .prm-alt-link.md-button,
   .tiles-grid-tile .tile-header .prm-alt-link.md-button, md-input-container.has-fixed-message [ng-message] a.prm-alt-link, .separate-list-items md-list-item .item-loader-with-text .prm-alt-link.md-button, md-list-item.prm-alt-link.list-item-as-link {
-    color: #45aab4; }
+    color: #00283c; }
     .prm-links.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1[link-arrow], a.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1.button-content, .login-dialog md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1,
     .login-dialog md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title,
     .login-dialog .md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1,
@@ -435,7 +444,7 @@ md-tabs.tabs-as-links md-tab-item:not([disabled]), md-tabs.tabs-as-app .back-but
     .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button, md-input-container.has-fixed-message [ng-message] a.prm-alt-link.prm-hue1, .separate-list-items md-list-item .item-loader-with-text .prm-alt-link.prm-hue1.md-button, md-list-item.prm-alt-link.prm-hue1.list-item-as-link {
       color: #73E9FF; }
   .prm-links-bg {
-    color: #5C92BD; }
+    color: #00283c; }
     .prm-links-bg:hover:not([disabled]), .prm-links-bg:focus:not([disabled]), .prm-links-bg.hovered:not([disabled]), .prm-links-bg.md-focused:not([disabled]), .prm-links-bg._md-focused:not([disabled]) {
       color: #265f8d;
       background-color: rgba(92, 146, 189, 0.1); }
@@ -508,6 +517,6 @@ md-toolbar.default-toolbar:not(.md-menu-toolbar) {
     color: #7a1300; }
 
 .prm-citation-title, prm-citation-trails-item.active-item .item-title {
-  color: #44707b; }
+  color: #003956; }
 
 /* primary color hook end*/

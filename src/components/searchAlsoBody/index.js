@@ -1,4 +1,5 @@
 import searchAlsoBodyHTML from './searchAlsoBody.html'
+import Session from '../../primo/session'
 
 class SearchAlsoBodyController {
   constructor($location) {
@@ -7,10 +8,10 @@ class SearchAlsoBodyController {
 
   $onInit() {
     let self = this;
-    Primo.view.then(v => {
-      self.viewCode = v.code;      
-      self.targets = self._targets();    
-    });
+    let view = Session.view;
+    self.viewCode = view.code;      
+    self.targets = self._targets();    
+    
     this.location = this.$location;
   }
 

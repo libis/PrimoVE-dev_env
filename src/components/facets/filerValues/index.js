@@ -18,9 +18,6 @@ class filterFacetValuesController {
             return new RegExp(f.vid).test(this.parentCtrl.parentCtrl.vid)
         });
 
-
-       
-
         if (vidfacetsFilters.length == 1) {
             let vidfacetsFilter = vidfacetsFilters[0]
 

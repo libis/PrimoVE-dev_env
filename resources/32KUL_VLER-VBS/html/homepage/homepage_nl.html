@@ -1,0 +1,60 @@
+<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+</style>
+<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+    <md-card-content>
+        <a href="https://bib.kuleuven.be/ub/zoeken/collecties/index" target="_blank" id="limo_content_link" aria-label="Link naar info over wat je kan vinden in Limo"
+           title="Link naar info over wat je kan vinden in Limo">
+            <span class="md-headline" id="ContentInLimo">
+                Wat vind je in Limo?
+            </span>
+        </a>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim mi ut ligula vulputate tincidunt. Integer tellus ante, varius id sagittis ac, rutrum non ante. Nullam maximus tortor sit amet pellentesque consectetur. Vivamus lobortis magna vel lectus ornare, quis finibus nunc hendrerit. Donec ac cursus nulla, venenatis tempus diam. Donec sit amet tincidunt ipsum. Sed fringilla metus in urna efficitur, ut luctus sapien porta. Maecenas dictum congue venenatis. Vivamus sed mi mattis, fringilla tellus vitae, congue velit. Nam facilisis bibendum accumsan. Curabitur mi erat, viverra sed sodales id, sollicitudin vitae eros. Donec sed lacinia libero, id vestibulum lectus. Ut id libero massa. Donec pellentesque faucibus sapien. Donec in accumsan neque.      </p>
+        <br />
+        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+
+    </md-card-content>
+
+</md-card>
+<prm-news parent-Ctrl='$ctrl'> </prm-news>

@@ -12,13 +12,14 @@
 @import "./facet_persistence_lock.css";
 @import "./hide_advanced_search_day_month.css";
 @import "./hide_short_permalink.css";
-@import "./hide-clipboard.css";
 @import "./contrast_fixes.css";
 @import "./advanced_search_tweaks.css";
 @import "./hide_source_text.css";
 @import "./banner.css";
 @import "./availability_scopearchiv.css";
 @import "./location.css";
+@import "./info_button_facets.css";
+@import "./hide_journal_categories.css";
 
 .material-icons {
     font-family: 'Material Icons';

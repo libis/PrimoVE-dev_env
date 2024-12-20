@@ -30,7 +30,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         }
 
                         //if (m.pnx.control.sourceid.filter(function(s) {
-                        //        return ['ESVLP_scopeArchiv'].includes(s);
+                        //        return ['ESVLP_scopeArchiv','esvlp_archief'].includes(s);
                         //    }).length > 0) {
                         //    //console.log(m)
 

@@ -1,19 +1,26 @@
+
+import Session from '../../../primo/session'
 class ExternalLinksInDetailsController {
 
-    constructor($scope) {
+    constructor($scope, ProxyService) {
         this.$scope = $scope;
+        this.ProxyService = ProxyService;
+          
     }
 
     $onInit() {
         let self = this;
+        let view = Session.view;
+
         self.parentCtrl = this.parentCtrl.parentCtrl;
+        self.viewCode = view.code;  
+        
         this.waitForPNX()
     }
 
     createExternalLinks() {
         let self = this;
-        // console.log( self.parentCtrl.details )
-        // console.log( self.parentCtrl )
+        self.proxyUrl = self.ProxyService.config().filter(f => new RegExp(f.view).test(self.viewCode))[0].url || null;
 
         let identifiers = self.parentCtrl.details.filter(function (d) {
             return d.label === "identifier";
@@ -27,7 +34,7 @@ class ExternalLinksInDetailsController {
             return ["relatedwork"].includes(d.label);
         });
 
-        /* ALos check PrimoVE-dev_env\resources\32KUL_KUL-Lirias\js\templates\full-view-details-service-details.html */
+        /* Also check PrimoVE-dev_env\resources\32KUL_KUL-Lirias\js\templates\full-view-details-service-details.html */
 
         if (relatedwork.length > 0) {
             relatedwork = relatedwork.map ( relatedwork => {
@@ -93,6 +100,10 @@ class ExternalLinksInDetailsController {
                 var newIdentifiers = identifiers[0].values[0].values.map(i => {
                     if (new RegExp(" \\$\\$CDOI: ").test(i)) {
                         return i.replace(/( \$\$CDOI: \$\$V)([^\n ]*)/, '$1<a href="https://doi.org/$2" target="_blank">$2 <i class=\"material-icons prm-text\" style>launch</i></a>');
+                    } else if (new RegExp(" \\$\\$CSCOPUSID: ").test(i)) {
+                        return i.replace(/( \$\$CSCOPUSID: \$\$V)([^\n ]*)/, '$1<a href="'+  self.proxyUrl +'https://www.scopus.com/record/display.uri?eid=$2&origin=resultslist" target="_blank">$2 <i class=\"material-icons prm-text\" style>launch</i></a>');
+                    } else if (new RegExp(" \\$\\$CPMID: ").test(i)) {
+                        return i.replace(/( \$\$CPMID: \$\$V)([^\n ]*)/, '$1<a href="https://pubmed.ncbi.nlm.nih.gov/$2/" target="_blank">$2 <i class=\"material-icons prm-text\" style>launch</i></a>');
                     } else {
                         return i;
                     }
@@ -127,7 +138,7 @@ class ExternalLinksInDetailsController {
     }
 
 }
-ExternalLinksInDetailsController.$inject = ['$scope'];
+ExternalLinksInDetailsController.$inject = ['$scope', 'ProxyService'];
 
 export let externalLinksInDetailscomponent = {
     name: 'custom-external-link',

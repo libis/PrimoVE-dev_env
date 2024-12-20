@@ -2,6 +2,9 @@
   KULeuven/LIBIS (c) 2022
   Mehmet Celik mehmet(dot)celik(at)kuleuven(dot)be
 */
+
+//import customUrls from './config/customRestUrls.json';
+
 export default class PrimoPubSub {
     constructor() {
         this.topics = {};

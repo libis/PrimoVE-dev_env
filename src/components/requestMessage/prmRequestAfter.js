@@ -34,7 +34,7 @@ class RequestMessageController {
 
             this.pickupInstitution =  this.$ctrl.requestService.ilsData["services-arr"].services[0]["chosen-parameters-map"].pickupInstitution
 
-            if (  this.pickupInstitution ) {
+            if ( this.pickupInstitution !== undefined) {
                 if (  this.instituttion !== this.pickupInstitution) {
                     /*
                     console.log ( " this.pickupInstitution: [" +  this.pickupInstitution +"]")

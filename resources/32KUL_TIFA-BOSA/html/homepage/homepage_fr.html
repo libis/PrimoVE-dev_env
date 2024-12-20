@@ -1,0 +1,73 @@
+﻿<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    md-card md-card-content span.md-headline {
+        line-height: 2em;
+    }
+
+        md-card md-card-content span.md-headline::before {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            margin-right: 2px;
+            vertical-align: middle;
+            /*
+     line-height: 1;
+     font-size: 20px;
+     color: #53738c;
+    */
+        }
+
+    md-card md-card-content span#ContentInLimo::before {
+        content: "info";
+    }
+
+    md-card md-card-content span#ContentSearchTips::before {
+        content: "help";
+    }
+
+    md-card md-card-content span#ContentKULLOCLink::before {
+        content: "my_location";
+    }
+
+    LinkToAZDatabaseList
+</style>
+<md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+    <md-card-content>
+        <span class="md-headline" id="ContentInLimo">
+            Quelles collections Limo met-il à votre disposition ?
+        </span>
+        <br />
+        <p>
+            La bibliothèque du Service Public Fédéral Stratégie et Appui (SPF BOSA) est l'une des bibliothèques fédérales. Elle est gérée par la Direction générale du recrutement et du développement du SPF BOSA.
+            <br />
+            Cette bibliothèque offre un accès aisé à l'information via des publications et des supports multimédias. Elle met à disposition environ 13.000 ouvrages de référence et une centaine de périodiques dans les domaines suivants :
+
+            <ul>
+                <li>Matières administratives</li>
+                <li>Sciences sociales</li>
+                <li>Gestion et administration des ressources humaines</li>
+                <li>Gestion de projet, qualité, gestion des connaissances, gestion des conflits, développement professionnel et personnel</li>
+                <li>Communication</li>
+                <li>Apprentissage des langues et informatique</li>
+                <li>Apprentissage et développement : didactique, coaching, gestion d'équipe</li>
+            </ul>
+
+        </p>
+        <br />
+        <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+
+    </md-card-content>
+
+</md-card>
+
+<prm-news parent-Ctrl='$ctrl'></prm-news>

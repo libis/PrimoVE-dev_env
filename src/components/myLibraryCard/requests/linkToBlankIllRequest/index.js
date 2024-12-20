@@ -1,16 +1,26 @@
 import LinkToBlankIllRequestHTML from './linkToBlankIllRequest.html'
 
 class LinkToBlankIllRequestController {
-  constructor($scope, $translate, $element) {
+  constructor($scope, $translate, $element,FeedbackService) {
     this.showLink = false
-    var upperEl = this.upperElement($element,'prm-requests');
-    if (  upperEl    ){
+    this.showLink2 = false
+    this.feedbackService = FeedbackService;
+    var upperRequests = this.upperElement($element,'prm-requests');
+    var upperLoans = this.upperElement($element,'prm-loans');
+    if (  upperRequests    ){
       this.showLink = true
-    }   
+    }  
+    if (  upperLoans    ){
+      this.showLink2 = true
+    } 
     $scope.goToBlankIllRequest = function ($event) {
       window.location.href="/discovery/blankIll?vid=" + window.appConfig.vid;
       
     }
+  }
+
+  showFeedbackForm($event) {  
+    this.feedbackService.show($event);
   }
 
   upperElement = function(start_el,el){
@@ -25,7 +35,7 @@ class LinkToBlankIllRequestController {
   }
 }
 
-LinkToBlankIllRequestController.$inject = ['$scope', '$translate', '$element']
+LinkToBlankIllRequestController.$inject = ['$scope', '$translate', '$element','FeedbackService']
 
 export let LinkToBlankIllRequestcomponent = {
   name: 'custom-link-to-blank-ill-request',
@@ -38,4 +48,3 @@ export let LinkToBlankIllRequestcomponent = {
         template: LinkToBlankIllRequestHTML
     }
 }
-
