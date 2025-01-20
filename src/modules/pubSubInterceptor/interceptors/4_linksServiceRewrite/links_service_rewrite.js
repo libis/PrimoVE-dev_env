@@ -469,6 +469,8 @@ window.linksServiceRewrite = {
 }
 
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
+    //console.log('after-pnxBaseURL')
+    //console.log('reqRes:', reqRes)
     // "linksServiceRewrite".init(url, headers, params, $translate);
     var rewriteActions = linksServiceRewrite.configuration.afterPnxBaseURL.filter(c => {
         return new RegExp(c.enableInView).test(window.appConfig.vid)
@@ -485,10 +487,14 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                 // console.log (reqRes.data)
 
                 // pnxBaseURL is also called for fullview (Permalink)
-                // the url than starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
-                // the url than starts with /primaws/rest/pub/pnxs/SearchWebhook/ instead of /primaws/rest/pub/pnxs
+                // the url then starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
+                // the url then starts with /primaws/rest/pub/pnxs/SearchWebhook/ instead of /primaws/rest/pub/pnxs
                 // For saved items, the url starts with /primaws/rest/pub/pnxs/U and the pnx-records are direct children of the data object
+
+                // Scenario 1: return data contains array of pnx records in element 'docs'
+                // Application range: search/brief results
                 if (reqRes.data['docs']) {
+                    //console.log('Rewrite type 1')
                     reqRes.data['docs'].map(d => {
                         parameters.doc = d
                         try {
@@ -496,10 +502,15 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         } catch (error) {
                             console.error(error);
                         }
+                        //console.log(d)
                         return d
                     });
                 }
+                // Scenario 2: return data is a single pnx record, encoded as a single object 'data' at top level (data = pnx record)
+                // Application range: full view, permalinks
                 if (reqRes.data['pnx']) {
+                    //console.log('Rewrite type 2')
+                    //console.log('Array check type 2:', reqRes.data instanceof Array)
                     parameters.doc = reqRes.data
                     try {
                         reqRes.data = linksServiceRewrite[action](parameters);
@@ -507,7 +518,11 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         console.error(error);
                     }
                 }
-                if (reqRes['config']['url'].match(/^\/primaws\/rest\/pub\/pnxs\/U/)) {
+                // Scenario 3: return data is an array of pnx records, encoded in element 'data'
+                // Application range: saved items
+                if (reqRes.data instanceof Array) {
+                    //console.log('Rewrite type 3')
+                    //console.log('Array check type 3:', reqRes.data instanceof Array)
                     //console.log('Found data, but not docs...')
                     //console.log(reqRes)
                     reqRes.data.map(d => {
@@ -528,7 +543,7 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
 
 pubSub.subscribe('after-deliveryURL', (reqRes) => {
     //console.log('after-deliveryURL')
-    //console.log(reqRes)
+    //console.log('reqRes:', reqRes)
     var rewriteActions = linksServiceRewrite.configuration.afterDeliveryURL.filter(c => {
         return new RegExp(c.enableInView).test(window.appConfig.vid)
     })
