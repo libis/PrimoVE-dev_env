@@ -23,7 +23,7 @@ window.linksServiceRewrite = {
                 transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             },
             {
-                enableInView: '32KUL.*_TEST',
+                enableInView: '32KUL_ACV:ACV|32KUL_BPB:BPB|32KUL_DOCVB:docvlaamsbrabant|32KUL_HUB:ODISEE|32KUL_KADOC:KADOC|32KUL_KATHO:VIVES|32KUL_KHK:TMOREK|32KUL_KHL:UCLL|32KUL_KHM:TMOREMA|32KUL_KUL:KULeuven|32KUL_LIBIS_NETWORK:LIBISNET2_UNION|32KUL_LUCAWENK:LUCA|32KUL_VLP:VLP|32KUL_VLER:VBS',
                 linkReadingExcerpt: { source: "Meta4books", field: "display.lds37", link: "display.lds45" }
             }
         ],
@@ -41,7 +41,7 @@ window.linksServiceRewrite = {
                 transformDeliveryLinks: { recordSource: ["Lirias_basic"], field1: "electronicServices", field2: ["GetIt1", "links", "link"], field3: "availabilityLinksUrl", field4: "link", type: "addlink" }
             },
             {
-                enableInView: '32KUL.*_TEST',
+                enableInView: '32KUL_ACV:ACV|32KUL_BPB:BPB|32KUL_DOCVB:docvlaamsbrabant|32KUL_HUB:ODISEE|32KUL_KADOC:KADOC|32KUL_KATHO:VIVES|32KUL_KHK:TMOREK|32KUL_KHL:UCLL|32KUL_KHM:TMOREMA|32KUL_KUL:KULeuven|32KUL_LIBIS_NETWORK:LIBISNET2_UNION|32KUL_LUCAWENK:LUCA|32KUL_VLP:VLP|32KUL_VLER:VBS',
                 linkReadingExcerpt: { source: "Meta4books", field: "display.lds37", link: "display.lds45" }
             }
         ]
