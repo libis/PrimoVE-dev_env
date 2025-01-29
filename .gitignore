@@ -6,3 +6,5 @@ yarn.lock
 **/_index.css
 yarn-error.log
 resources/*TEST*
+.yarnrc.yml
+.yarn/install-state.gz
