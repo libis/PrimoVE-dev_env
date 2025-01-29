@@ -1,0 +1,23 @@
+/* view color hook */
+/* ---------------- */
+.md-button[aria-label=Search] {
+  color: #f47240; }
+  .md-button[aria-label=Search]:hover:not([disabled]), .md-button[aria-label=Search]:focus:not([disabled]), .md-button[aria-label=Search].hovered:not([disabled]), .md-button[aria-label=Search].md-focused:not([disabled]), .md-button[aria-label=Search]._md-focused:not([disabled]) {
+    color: #ce3900;
+    background-color: rgba(244, 114, 64, 0.1); }
+
+.bar.alert-bar {
+  color: black;
+  background-color: #f79570;
+  border-color: #ea916e; }
+
+.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
+  background-color: #54969d; }
+
+.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
+  background-color: #42767c; }
+
+.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
+  background-color: #cacaca; }
+
+/* view color hook end*/
