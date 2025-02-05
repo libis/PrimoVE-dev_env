@@ -1,13 +1,6 @@
 /* primary color hook */
 /* commenttttt*/
-.prm-primary-bg, prm-atoz-search-bar, prm-browse-search-bar, prm-collection-gallery-header .collection-header-inner, prm-newspapers-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark::after, prm-tags-search-bar, prm-tree-nav prm-spinner .diamond {
-  color: #333;
-  background-color: #02fba3;
-}
 
-div#footer {
-  background-color: #02fba3;
-}
 
 .md-button {
   color: #3a3a3a; }
@@ -232,9 +225,9 @@ div#footer {
 
 .prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar, prm-journals-search-bar {
   color: #333;
-  background-color: #02fba3; }
+  background-color: white; }
   .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1 {
-    background-color: #67fdca ; }
+    background-color: #b2fee3 ; }
   .prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2, prm-journals-search-bar.prm-hue2, md-backdrop.md-opaque {
     background-color: #4b868c; }
   .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue3, prm-journals-search-bar.prm-hue3 {
@@ -631,5 +624,59 @@ prm-facet-range .section-title prm-icon {
 .md-button.button-as-link:hover:not([disabled]), .bar prm-authentication .md-button:hover:not([disabled]), .md-button.button-as-link:focus:not([disabled]), .bar prm-authentication .md-button:focus:not([disabled]), .md-button.button-as-link.hovered:not([disabled]), .bar prm-authentication .md-button.hovered:not([disabled]), .md-button.button-as-link.md-focused:not([disabled]), .bar prm-authentication .md-button.md-focused:not([disabled]), .md-button.button-as-link._md-focused:not([disabled]), .bar prm-authentication .md-button._md-focused:not([disabled]) {
   color: #017c51;
   background-color: rgba(1, 124, 81, 0.1);
+}
+
+div#footer {
+  background-color: white;
+  border-top: 1px solid #b2fee3;
+  height: 3rem;
+  margin-top: 5px;
+}
+
+prm-search-bar, prm-journals-search-bar {
+  color: #333;
+  background-color: white;
+}
+
+.prm-primary-bg, .request-it-link-button, prm-atoz-search-bar, prm-authority-search-bar, prm-browse-search-bar, prm-collection-gallery-header .collection-header-inner, prm-newspapers-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark::after, prm-tags-search-bar, prm-tree-nav prm-spinner .diamond {
+  color: #333;
+  background-color: white;
+}
+
+.prm-background, html, body, prm-search-bar .simple-search-wrapper .search-options::after, prm-journals-search-bar .simple-search-wrapper .search-options::after, prm-search-bar .simple-search-wrapper .search-options md-divider, prm-journals-search-bar .simple-search-wrapper .search-options md-divider, .prm-view-overlay-inner, .__xs prm-facet, .__sm prm-facet, .__sm .sidebar, .__xs .sidebar, prm-full-view-cont prm-recomendation-item .media-on-hover .pin-button, prm-full-view-cont .recommendations-title::after, prm-full-view-cont .recommendations-title prm-icon, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider, md-dialog md-toolbar:not(.md-menu-toolbar), md-card .card-content-block {
+  background-color: white;
+  border-color: #02fba3;
+}
+
+prm-search-result-tool-bar .md-toolbar-tools {
+  padding: 0 5px !important;
+  background-color: #67fcc8;
+  overflow: hidden;
+}
+
+.prm-background-border, prm-search-result-list .results-header, .list-item-wrapper, .action-list-content md-divider, prm-search-bar .advanced-search-tabs, prm-journals-search-bar .advanced-search-tabs, prm-search-bar .advanced-search-output md-card, prm-journals-search-bar .advanced-search-output md-card, md-grid-tile md-list md-list-item, md-grid-tile .tile-content md-list-item, .tiles-grid-tile md-list md-list-item, .tiles-grid-tile .tile-content md-list-item, md-grid-tile md-list md-divider, md-grid-tile .tile-content md-divider, .tiles-grid-tile md-list md-divider, .tiles-grid-tile .tile-content md-divider {
+  border-color: #e9e9e9;
+  border-color: #02fba3 !important;
+}
+
+prm-search-bar, prm-journals-search-bar {
+  color: #333;
+  border-bottom: 1px solid #02fba3;
+}
+
+md-card{
+  box-shadow: none !important;
+  padding:1.5rem;
+}
+
+#Uren{
+  background-color: #f6f5ef !important;
+  height: 100%;
+}
+
+#Contact, #Home{
+  background-color: #02fba3 !important;
+  border:none;
+  height: 100%;
 }
 /* primary color hook end*/
