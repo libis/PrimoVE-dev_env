@@ -1,0 +1,10 @@
+.banner a:hover{
+    border:none;
+    text-decoration: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.banner{
+    margin: 4px 8px;
+}

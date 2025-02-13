@@ -29,5 +29,5 @@ export let RemoveLoginComponent = {
   },
   enabled: true,
   appendTo: ['prm-user-area-expandable-after'],
-  enableInView: '.*Lirias|32KUL_DOCVB:docvlaamsbrabant|32KUL_GSB*|32KUL_GSG.*|32KUL_KMMR.*|32KUL_VES.*|.*JESUITS.*|.*DOKS.*'
+  enableInView: '.*Lirias|32KUL_DOCVB:docvlaamsbrabant|32KUL_GSB*|32KUL_GSG.*|32KUL_KMMR.*|32KUL_VES.*|.*JESUITS.*|.*DOKS.*|32KUL_KUL:sportimonium'
 }

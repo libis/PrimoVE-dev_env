@@ -64,5 +64,9 @@
     "angular-recaptcha": "^4.2.0",
     "sync-fetch": "^0.3.1"
   },
-  "description": "This is a Primo 'CUSTOM_VIEW' package"
+  "description": "This is a Primo 'CUSTOM_VIEW' package",
+  "volta": {
+    "node": "18.20.6",
+    "yarn": "4.6.0"
+  }
 }
