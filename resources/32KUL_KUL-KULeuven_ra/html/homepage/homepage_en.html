@@ -1,0 +1,68 @@
+﻿<style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+
+    #ContentKULLOCLink > md-card-content > h3 {
+        margin-top:1em;
+        margin-bottom:0.3em
+    }
+</style>
+
+<md-content layout-xs="column" layout="row" class="display-block-xs">
+    <div flex-xs="100" flex="60" layout="column">
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <a href="https://www.libis.be/pro/limo-research-assistant" target="_blank" id="limo_content_link" aria-label="Link to info about the Limo AI Assistent"
+                   title="Link to info about the Limo AI Assistent">
+                    <span class="md-headline" id="ContentInLimo">
+                        What does the Limo AI Assistant do?
+                    </span>
+                </a>
+                <br />
+                <p>
+                    AI is coming to Limo! The Limo AI Assistant allows you to enter your question in natural language. Using GenAI, the tool converts
+                    it to a search query that the Limo search engine can understand:
+                </p>
+                <p>
+                    <h3>Click the 'Limo AI Assistant' button in the top menu to start using this new search tool:</h3>
+                    <ul>
+                        <li>
+                            Get a first impression of your search topic thanks to a short AI-generated answer, with inline source citations
+                        </li>
+                        <li>
+                            Explore more sources on your topic via "View more results"                        
+                        </li>
+                        <li>
+                            Find inspiration for related queries through the "Related research questions" under the sources overview
+                        </li>
+                    </ul>
+                </p>
+                <h3>How to construct a query in the Limo AI Assistant?</h3>
+                <p>
+                    <ul>
+                        <li>Formulate your query as a question in natural language (as if talking to a person), ending with a question mark</li>
+                        <li>Make your query as concrete and specific as possible. Use specialised terminology appropriate for your domain</li>
+                        <li>You may ask questions in your native language - the Limo AI Assistant will automatically translate it​</li>
+                        <li>You can filter sources based on resource type and/or publication date</li>
+                    </ul>
+                </p>
+            </md-card-content>
+        </md-card>
+
+    </div>
+    <div flex-xs="100" flex="40" layout="column">
+        <prm-news parent-Ctrl='$ctrl'></prm-news>
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
+                <prm-link-to-my-library-card parent-Ctrl='$ctrl'></prm-link-to-my-library-card>
+               <br>
+                <a href="http://services.libis.be/library_info/" target="_blank" id="find_library" aria-label="Find Library Contact Info" title="Find Library Contact Info" class="md-primoExplore-theme">
+                <span class="md-headline" id="ContentFindLibrary">
+                    Find Library
+                </span>
+                </a>
+                <br>
+                <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>

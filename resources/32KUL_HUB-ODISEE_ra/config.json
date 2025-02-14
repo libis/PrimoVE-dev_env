@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_HUB",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-hub.alma.exlibrisgroup.com/",
+    "institution": "32KUL_HUB",
+    "vidId": "ODISEE_ra",
+    "views": [
+      "ODISEE_ra"
+    ]
+  }
+}

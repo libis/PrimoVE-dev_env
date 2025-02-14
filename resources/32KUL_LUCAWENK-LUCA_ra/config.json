@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_LUCAWENK",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-lucawenk.alma.exlibrisgroup.com/",
+    "institution": "32KUL_LUCAWENK",
+    "vidId": "LUCA_ra",
+    "views": [
+      "LUCA_ra"
+    ]
+  }
+}

@@ -35,10 +35,6 @@
         content: "help";
     }
 
-    md-card md-card-content span#LinkToAZDatabaseList::before {
-        content: "view_list";
-    }
-
     md-card md-card-content span#ContentKULLOCLink::before {
         content: "my_location";
     }
@@ -48,26 +44,47 @@
 <md-content layout-xs="column" layout="row" class="display-block-xs">
     <div flex-xs="100" flex="60" layout="column">
 
-
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
-                <a href="https://www.vives.be/nl/studeren/tools/limo" target="_blank" id="limo_content_link" aria-label="Link naar info over wat je kan vinden in Limo"
-                   title="Link naar info over wat je kan vinden in Limo">
+                <a href="https://www.libis.be/pro/limo-research-assistant" target="_blank" id="limo_content_link" aria-label="Link naar info over de Limo AI-assistent"
+                   title="Link naar info over de Limo AI-assistent">
                     <span class="md-headline" id="ContentInLimo">
-                        Wat vind je in Limo?
+                        Wat is de Limo AI-assistent?
                     </span>
                 </a>
+                <br />
+                <p>
+                    AI komt naar Limo! Met de Limo AI-Assistent kan je je zoekvraag in natuurlijke taal stellen. Met behulp van GenAI zet de tool deze om naar
+                    een zoekopdracht die de zoekmachine begrijpt:
+                </p>
+                <p>
+                    <h3>Klik op de 'Limo AI-assistent'-knop in het menu om met deze tool aan de slag te gaan:</h3>
+                    <ul>
+                        <li>
+                            Krijg een eerste indruk van je zoektopic met een kort antwoord op basis van GenAI, voorzien van inline citaties
+                        </li>
+                        <li>
+                            Verken meer bronnen via "Bekijk meer resultaten"
+                        </li>
+                        <li>
+                            Doe inspiratie op voor aanverwante zoektopics dankzij de "Gerelateerde zoekvragen" onder het overzicht
+                        </li>
+                    </ul>
+                </p>
+                <h3>Hoe een zoekvraag stellen in de Limo AI-assistent?</h3>
+                <p>
+                    <ul>
+                        <li>Stel je vraag zoals je die aan een persoon zou stellen, met een vraagteken</li>
+                        <li>Wees zo concreet en specifiek mogelijk, gebruik vaktermen</li>
+                        <li>Je kan vragen in het Nederlands stellen, ze worden automatisch vertaald​</li>
+                        <li>Je kan beperken op type document en op recente publicaties</li>
+                    </ul>
+                </p>
+            </md-card-content>
 
-                </md-card-content>
         </md-card>
-
-
-
-
     </div>
     <div flex-xs="100" flex="40" layout="column">
-
-
                 <prm-news parent-Ctrl='$ctrl'></prm-news>
                 <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
                   <md-card-content>
@@ -82,6 +99,5 @@
                       <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
                   </md-card-content>
                 </md-card>
-
     </div>
 </md-content>
