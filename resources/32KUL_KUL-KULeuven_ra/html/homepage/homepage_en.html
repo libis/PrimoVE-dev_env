@@ -11,7 +11,7 @@
     <div flex-xs="100" flex="60" layout="column">
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
-                <a href="https://www.libis.be/pro/limo-research-assistant" target="_blank" id="limo_content_link" aria-label="Link to info about the Limo AI Assistent"
+                <a href="https://www.libis.be/pro-en/limo-research-assistant" target="_blank" id="limo_content_link" aria-label="Link to info about the Limo AI Assistent"
                    title="Link to info about the Limo AI Assistent">
                     <span class="md-headline" id="ContentInLimo">
                         What does the Limo AI Assistant do?
@@ -36,6 +36,14 @@
                         </li>
                     </ul>
                 </p>
+            </md-card-content>
+        </md-card>
+
+    </div>
+    <div flex-xs="100" flex="40" layout="column">
+        <prm-news parent-Ctrl='$ctrl'></prm-news>
+        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
+            <md-card-content>
                 <h3>How to construct a query in the Limo AI Assistant?</h3>
                 <p>
                     <ul>
@@ -45,23 +53,6 @@
                         <li>You can filter sources based on resource type and/or publication date</li>
                     </ul>
                 </p>
-            </md-card-content>
-        </md-card>
-
-    </div>
-    <div flex-xs="100" flex="40" layout="column">
-        <prm-news parent-Ctrl='$ctrl'></prm-news>
-        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
-            <md-card-content>
-                <prm-link-to-my-library-card parent-Ctrl='$ctrl'></prm-link-to-my-library-card>
-               <br>
-                <a href="http://services.libis.be/library_info/" target="_blank" id="find_library" aria-label="Find Library Contact Info" title="Find Library Contact Info" class="md-primoExplore-theme">
-                <span class="md-headline" id="ContentFindLibrary">
-                    Find Library
-                </span>
-                </a>
-                <br>
-                <prm-searchtips parent-Ctrl='$ctrl'></prm-searchtips>
             </md-card-content>
         </md-card>
     </div>
