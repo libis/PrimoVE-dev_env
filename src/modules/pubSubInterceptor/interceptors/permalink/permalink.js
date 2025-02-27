@@ -23,7 +23,13 @@
 //     => use pnx.display.lds12 in permalink if it exists and prefix with "https://lib.is/_/"
 // control.sourceid is "lirias" and control.sourcesystem contains "Webhook"
 //     => use pnx.control.sourcerecordid in permalink and prefix with https://lirias.kuleuven.be/
-
+//
+// UPDATE 20250227 
+// All alma records have an pnx.display.lds12 
+// for "standard" ALMA records pnx.display.lds12 is the pnx.control.recordid with "alma" replaced with "lbsn"
+// for "non-standard" ALMA records pnx.display.lds12 is set to the original id from the source
+// cdi-recods do not have a pnx.display.lds12
+// If pnx.control.sourceid is "alma" and pnx.display.lds12 is used in the permalink
 
 
 window.permalink = {
@@ -38,8 +44,10 @@ window.permalink = {
         afterActionsBaseURL: [
             {
                 enableInView: '32KUL_.*$',
-                replaceWithPnxField: 
+                replaceFieldForSourceSystem: 
                 { 
+                    sourcesystem: new RegExp('.*'), 
+                    sourceid:  new RegExp('^(?!alma)'),  // sourcid voor cdi records is niet alma
                     field: "control.recordid", 
                     prefix: "https://lib.is/_/"
                 }
@@ -48,8 +56,8 @@ window.permalink = {
                 enableInView: '32KUL_.*$',
                 replaceFieldForSourceSystem: 
                 { 
-                    sourcesystem: new RegExp('^(?!ILS)') ,  // sourcesystem: cdi => Other; Parochiebladen => ROSETTA_OAI_DC1 Mag NIET gelijk zijn aan ILS
-                    sourceid: 'alma',          // cdi heeft dit niet als sourceid
+                    sourcesystem: new RegExp('.*'), 
+                    sourceid:  new RegExp('alma'), // sourcid voor cdi records is niet alma
                     field:  "display.lds12", 
                     prefix: "https://lib.is/_/"
                 }
@@ -59,7 +67,7 @@ window.permalink = {
                 replaceFieldForSourceSystem: 
                 { 
                     sourcesystem: new RegExp('Webhook'),  
-                    sourceid: 'lirias',          
+                    sourceid:  new RegExp('lirias'),
                     field:  "control.sourcerecordid", 
                     prefix:"https://lirias.kuleuven.be/"  
                 }
@@ -83,7 +91,7 @@ window.permalink = {
         reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);
 
         if ( params.prefix === "https://lib.is/_/"){
-            reqRes.data.permalink = params.prefix + reqRes.data.permalink + "/representation?vid="+ reqRes.config.data.vid +"&scope="+ reqRes.config.data.search_scope  +"&tab="+ reqRes.config.data.tab;;
+            reqRes.data.permalink = params.prefix + reqRes.data.permalink + "/representation?vid="+ reqRes.config.data.vid +"&scope="+ reqRes.config.data.search_scope  +"&tab="+ reqRes.config.data.tab;
         }else{
             reqRes.data.permalink = params.prefix + reqRes.data.permalink +"?"
         } 
@@ -94,7 +102,10 @@ window.permalink = {
         const filteredSourceSystemArray = reqRes.config.data.pnx.control.sourcesystem.filter(value => params.sourcesystem.test(value) );
         console.log (filteredSourceSystemArray )
         if (filteredSourceSystemArray.length > 0 ) { 
-            if ( params.sourceid == reqRes.config.data.pnx.control.sourceid ){
+            if (reqRes.config.data.pnx.control.sourceid.constructor !== Array ) {
+                reqRes.config.data.pnx.control.sourceid = [reqRes.config.data.pnx.control.sourceid]
+            }
+            if (reqRes.config.data.pnx.control.sourceid.filter(value => params.sourcesystem.test(value)).length > 0 ) {
                 path = "config.data.pnx."+ params.field
                 let permalink = path.split('.').reduce((a, v) => a[v], reqRes);    
                 if (permalink){
