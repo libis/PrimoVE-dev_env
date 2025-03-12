@@ -1,0 +1,14 @@
+{
+  "name": "32KUL_BPB",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-fed-parl.primo.exlibrisgroup.com/",
+    "institution": "32KUL_BPB",
+    "vidId": "BPB_TEST",
+    "views": [
+      "BPB_TEST"
+    ]
+  }
+}
