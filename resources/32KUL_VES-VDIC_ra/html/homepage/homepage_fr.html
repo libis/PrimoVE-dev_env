@@ -1,4 +1,4 @@
-﻿<style>
+<style>
     @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
 
     md-card md-card-content span.md-headline {
@@ -35,66 +35,60 @@
         content: "help";
     }
 
-    md-card md-card-content span#LinkToAZDatabaseList::before {
-        content: "view_list";
-    }
-
     md-card md-card-content span#ContentKULLOCLink::before {
         content: "my_location";
     }
 </style>
-
-
 <md-content layout-xs="column" layout="row" class="display-block-xs">
     <div flex-xs="100" flex="60" layout="column">
 
 
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
-                <a href="https://www.libis.be/pro/limo-research-assistant" target="_blank" id="limo_content_link" aria-label="Link naar info over de Limo AI-assistent"
-                   title="Link naar info over de Limo AI-assistent">
+
+                <a href="https://www.libis.be/pro/limo-research-assistant" target="_blank" id="limo_content_link" aria-label="Link to info about the Limo AI Assistent"
+                   title="Link to info about the Limo AI Assistent">
                     <span class="md-headline" id="ContentInLimo">
-                        Wat is de Limo AI-assistent?
+                        Que fait l'assistant Limo IA ?
                     </span>
                 </a>
                 <br />
                 <p>
-                    AI komt naar Limo! Met de Limo AI-Assistent kan je je zoekvraag in natuurlijke taal stellen. Met behulp van GenAI zet de tool deze om naar
-                    een zoekopdracht die de zoekmachine begrijpt:
+                    L'IA arrive dans Limo ! L'assistant Limo IA vous permet de poser votre question en langage naturel. Grâce à GenAI, l'outil la convertit en
+                    en une requête que le moteur de recherche Limo comprend :
                 </p>
                 <p>
-                    <h3>Klik op de 'Limo AI-assistent'-knop in het menu om met deze tool aan de slag te gaan:</h3>
+                    <h3>Cliquez le bouton « assistant Limo IA » dans le menu pour accéder à ce nouvel outil de recherche :</h3>
                     <ul>
                         <li>
-                            Krijg een eerste indruk van je zoektopic met een kort antwoord op basis van GenAI, voorzien van inline citaties
+                            Obtenez un bref aperçu du sujet de votre recherche grâce à une courte réponse générée par l'IA, avec des citations de source en ligne
                         </li>
                         <li>
-                            Verken meer bronnen via "Bekijk meer resultaten"
+                            Explorez plus de sources liées à votre question en cliquant sur « Voir plus de résultats »
                         </li>
                         <li>
-                            Doe inspiratie op voor aanverwante zoektopics dankzij de "Gerelateerde zoekvragen" onder het overzicht
+                            Trouvez de l'inspiration pour des nouvelles questions de recherche grâce aux « Questions de recherche connexes » générées par l'IA
                         </li>
                     </ul>
                 </p>
             </md-card-content>
         </md-card>
-
     </div>
     <div flex-xs="100" flex="40" layout="column">
-
 
         <prm-news parent-Ctrl='$ctrl'></prm-news>
         <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
             <md-card-content>
-                <h3>Hoe een zoekvraag stellen in de Limo AI-assistent?</h3>
+                <h3>Comment construire une bonne quête de recherche pour l'assistant Limo IA</h3>
                 <p>
                     <ul>
-                        <li>Stel je vraag zoals je die aan een persoon zou stellen, met een vraagteken</li>
-                        <li>Wees zo concreet en specifiek mogelijk, gebruik vaktermen</li>
-                        <li>Je kan vragen in het Nederlands stellen, ze worden automatisch vertaald​</li>
-                        <li>Je kan beperken op type document en op recente publicaties</li>
+                        <li>Formulez votre question en langage naturel, comme vous le feriez dans une conversation. Ajoutez une point d'interrogation à la fin de votre question</li>
+                        <li>Posez une question aussi concrète et précise que possible. Utilisez une terminologie spécialisée et adaptée à votre domaine</li>
+                        <li>Vous pouvez poser votre question en français (ou dans toute autre langue) - l'assistant Limo IA la traduira en anglais pour optimiser les résultats</li>
+                        <li>Il est possible de limiter les résultats de recherche en fonction du type de ressource et/ou de la date de publication</li>
                     </ul>
                 </p>
+
             </md-card-content>
         </md-card>
 
