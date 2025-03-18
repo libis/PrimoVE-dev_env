@@ -16,7 +16,7 @@ class ShowcaseController {
         console.log(self.element);
 
         //url comes from the code table
-        $scope.showcaseUrl = decodeURIComponent("http://localhost:8003"+self.$translate.instant( "nui.customization.showcase.url" ));
+        $scope.showcaseUrl = decodeURIComponent( self.$translate.instant( "nui.customization.showcase.url" ));
 
         var month = '0' + (new Date().getMonth() + 1).toString().slice(-2);
         var year= new Date().getFullYear().toString();
