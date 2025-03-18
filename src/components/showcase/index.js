@@ -2,39 +2,43 @@ import showcaseHTML from './showcaseHTML.html'
 
 class ShowcaseController {
 
-    constructor($scope, $translate,$http,$compile) {
-         
+    constructor($scope, $translate) {
         let self = this;
         self.$translate = $translate;
-        self.$compile = $compile;
         this.$scope = $scope;
-        //$scope.showcaseUrl = decodeURIComponent(self.$translate.instant( "nui.customization.showcase.url" ));
-        
     }
-     
+
     $onInit() {
         let self = this;
         let $scope = self.$scope;
-      
-        //url comes from the code table
-        //$scope.showcaseUrl = decodeURIComponent("http://localhost:8003"+self.$translate.instant( "nui.customization.showcase.url" ));
-        //use test url for now
-        $scope.showcaseUrl = 'http://localhost:8003/primaws/rest/external/pnxs?acTriggered=false&blendFacetsSeparately=false&citationTrailFilterByAvailability=true&disableCache=false&getMore=0&inst=32KUL_BPB&isCDSearch=false&lang=en&limit=10&newspapersActive=false&newspapersSearch=false&offset=0&otbRanking=false&pcAvailability=true&q=any,contains,global&qExclude=&qInclude=&rapido=false&refEntryActive=false&rtaLinks=true&scope=MyInstitution&searchInFulltextUserSelection=true&skipDelivery=Y&sort=rank&tab=LibraryCatalog&vid=32KUL_BPB:BPB_TEST'; 
-        
+        self.element = angular.element(document.querySelector("prm-showcase md-content md-card#Showcase md-card-content"));
 
-        //how it should look
-        $scope.showcase = '<search-carousel titleText="Test showcase" searchUrl='+ $scope.showcaseUrl +'></search-carousel>';
-      
+        console.log(self.element);
+
+        //url comes from the code table
+        $scope.showcaseUrl = decodeURIComponent("http://localhost:8003"+self.$translate.instant( "nui.customization.showcase.url" ));
+
+        var month = '0' + (new Date().getMonth() + 1).toString().slice(-2);
+        var year= new Date().getFullYear().toString();
+        //todo - replace or add date in url
+        
+        $scope.titleText = decodeURIComponent( self.$translate.instant( "nui.customization.showcase.titleText" ));
+        // use test titleText for now
+
+        //$scope.titleText = "Showcase"
+        $scope.showcase_tmp = '<search-carousel titleText="'+ $scope.titleText +'" searchUrl='+ $scope.showcaseUrl +'></search-carousel>';
+        self.element.append( $scope.showcase_tmp  );
     }
 }
 
-ShowcaseController.$inject = ['$scope','$translate','$http','$compile'];
+ShowcaseController.$inject = ['$scope','$translate'];
 
 export let showcaseComponent = {
     name: 'prm-showcase',
     enabled: true,
     appendTo: null,
     enableInView: '.*',
+
     config: {
         bindings: {
             parentCtrl: '<' ,
