@@ -19,12 +19,19 @@ class ShowcaseController {
         $scope.showcaseUrl = decodeURIComponent( self.$translate.instant( "nui.customization.showcase.url" ));
 
         var month = '0' + (new Date().getMonth() + 1).toString().slice(-2);
-        var year= new Date().getFullYear().toString();
-        //todo - replace or add date in url
-        
-        $scope.titleText = decodeURIComponent( self.$translate.instant( "nui.customization.showcase.titleText" ));
-        // use test titleText for now
+        var prev_month = '0' + (new Date().getMonth()).toString().slice(-2);
+       
+        var prev_date = new Date();
+        prev_date.setMonth(prev_date.getMonth()-1);
+        var prev_year= prev_date.getFullYear().toString().slice(-2);
+        var year= new Date().getFullYear().toString().slice(-2);
+       
+        //might need changing for other with other views
+        $scope.showcaseUrl = $scope.showcaseUrl.replace("2502", year + month);
+        $scope.showcaseUrl = $scope.showcaseUrl.replace("2501", prev_year + prev_month);
 
+        $scope.titleText = decodeURIComponent( self.$translate.instant( "nui.customization.showcase.titleText" ));
+        
         //$scope.titleText = "Showcase"
         $scope.showcase_tmp = '<search-carousel titleText="'+ $scope.titleText +'" searchUrl='+ $scope.showcaseUrl +'></search-carousel>';
         self.element.append( $scope.showcase_tmp  );
