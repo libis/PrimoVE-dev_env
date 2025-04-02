@@ -28,7 +28,7 @@ class AcquisitionsController {
     $scope.lang = locale;
     
     if(vid == "32KUL_DOCVB:docvlaamsbrabant"){
-      $scope.url = window.location.origin + "/discovery/search?query=any,contains,acquisitionDate" + year + month + "DOCVB* OR acquisitionDate" + current_year + current_month + "DOCVB*,AND&tab=phys_items_tab&search_scope=PHYS_ITEMS&vid="+ vid + "&lang=nl_BE&mode=advanced&offset=0;"
+      $scope.url = window.location.origin + "/discovery/search?query=any,contains,acquisitionDate" + year + month + "DOCVB* OR acquisitionDate" + current_year + current_month + "DOCVB*,AND&search_scope=PHYS_ITEMS&vid="+ vid + "&lang=nl_BE&mode=advanced&offset=0;"
   
     }
     //console.log(vid);
