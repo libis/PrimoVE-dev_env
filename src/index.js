@@ -15,7 +15,6 @@ import './modules/browzine';
 import './modules/generalMessage';
 import './modules/feedback';
 import './modules/proxy';
-import './modules/sparkcentral';
 
 /* TODO : extra css from institute ? */
 import "./css/index.css";
@@ -34,7 +33,7 @@ import "./css/index.css";
 
   //window.Primo = new Primo();
     
-  let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'google', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback', 'sparkcentral', "proxy"];
+  let moduleList = ['pubSubInterceptor', 'ngMaterial', 'vcRecaptcha', 'angularLoad', 'altmetric', 'browzine',  'reCaptcha', 'generalMessage', 'feedback', "proxy"];
   let servicesHost = 'https://services.libis.be/';
 
 
