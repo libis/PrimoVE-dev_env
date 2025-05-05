@@ -40,10 +40,14 @@ class ShowcaseController {
                 $scope.showcaseUrl = $scope.showcaseUrl.replace("2502", year + month);
                 $scope.showcaseUrl = $scope.showcaseUrl.replace("2501", prev_year + prev_month);
 
+                $scope.primoUrl = $scope.showcaseUrl;
+                $scope.primoUrl = $scope.primoUrl.replace("q=", "query=");
+                $scope.primoUrl = $scope.primoUrl.replace("/primaws/rest/external/pnxs", "/discovery/search");
+
                 $scope.titleText = decodeURIComponent( self.$translate.instant( "nui.customization.showcase.titleText" ));
                 
                 //$scope.titleText = "Showcase"
-                $scope.showcase_tmp = '<search-carousel titleText="'+ $scope.titleText +'" searchUrl='+ $scope.showcaseUrl +'></search-carousel>';
+                $scope.showcase_tmp = '<search-carousel titleLink="'+ $scope.primoUrl +'" titleText="'+ $scope.titleText +'" searchUrl='+ $scope.showcaseUrl +'></search-carousel>';
                 self.element.append( $scope.showcase_tmp  );
                 watcher();
             }
