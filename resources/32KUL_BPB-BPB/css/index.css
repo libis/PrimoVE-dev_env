@@ -1,0 +1,8 @@
+.gallery-container h2 a{
+    box-shadow: inset 0 -2px 0 0 #53738c;
+}
+
+.gallery-container h2 a:hover{
+    box-shadow: inset 0 -2px 0 0 #53738c;
+    text-decoration: none;
+}
