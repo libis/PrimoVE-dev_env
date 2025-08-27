@@ -56,6 +56,7 @@ class ReportAProblemController {
         fullscreen: false,
         targetEvent: $event,
         template: reportAProblemDialogHTML,
+        multiple: true,
         controller: function ($scope, $mdDialog) {
           $scope.report = {
             replyTo: self.user.email,

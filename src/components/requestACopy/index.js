@@ -131,6 +131,7 @@ class RequestACopyController {
       fullscreen: false,
       targetEvent: $event,
       template: requestACopyDialogHTML,
+      multiple: true,
       controller: function ($scope, $mdDialog) {
 
         let pnxDisplay =  self.recordPnx.display;
