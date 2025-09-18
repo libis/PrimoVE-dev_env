@@ -1,0 +1,9 @@
+﻿#advanced-search md-card div[role="group"] div.date-range-inputs  md-input-container:nth-child(1), 
+#advanced-search md-card div[role="group"] div.date-range-inputs  md-input-container:nth-child(2) {
+    width:0px;
+}
+
+#advanced-search md-card div[role="group"] div.date-range-inputs  md-input-container:nth-child(1) md-select,
+#advanced-search md-card div[role="group"] div.date-range-inputs  md-input-container:nth-child(2) md-select {
+    display:none;
+} 

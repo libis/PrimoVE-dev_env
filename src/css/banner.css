@@ -1,0 +1,40 @@
+prm-banner-card-content .banner-content md-card-title md-card-title-text span {
+    background: rgba(0,0,0,0.5);
+}
+
+prm-banner-card-content .banner-content md-card-title md-card-title-text .banner-title {
+    font-size:26px;
+}
+
+.__gt-sm prm-banner-card-content a:focus .banner-title, .__gt-sm prm-banner-card-content a:hover .banner-title,
+.__gt-sm prm-banner-card-content prm-tags-list md-chips .md-chip .md-chip-content:hover strong .banner-title,
+.__gt-sm prm-banner-card-content div:hover .banner-title, .__gt-sm prm-banner-card-content div:focus .banner-title
+ {    
+	font-size: 35px;
+	line-height: 160px;
+	word-spacing: normal;
+	color: white;
+	background: rgba(0,0,0,0.87);
+	width: 100%;
+	text-transform: uppercase;
+}
+
+prm-banner-card-content .banner-content .url-text {
+    height: auto;
+    width: auto;
+    max-width: 115px;
+    position: absolute;
+    right: 0;
+    bottom: 25px;   
+    color: #fff;
+    background: rgba(0,0,0,0.87);
+    padding: 5px 7px;
+}
+
+prm-banner-card-content .banner-content .url-text md-icon {
+    display: none;
+}
+
+.banner-description:empty {
+  display: none;
+}

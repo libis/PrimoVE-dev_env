@@ -1,15 +1,7 @@
-
-
 import "../css/index.css";
 
-(function(){
-"use strict";
+(function () {
+  "use strict";
 
-var app = angular.module('viewCustom', ['angularLoad']);
-
+  var app = angular.module("viewCustom", ["angularLoad"]);
 })();
-
-
-
-
-
