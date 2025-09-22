@@ -1,6 +1,6 @@
 
 import cookiePolicyDialogHTML from './cookie_policy_en_US.html'
-import disclaimerDialog_frFR_HTML from './cookie_policy_en_US.html'
+import disclaimerDialog_frFR_HTML from './cookie_policy_fr_FR.html'
 import disclaimerDialog_nlBE_HTML from './cookie_policy_nl_BE.html'
 import disclaimerDialog_enUS_HTML from './cookie_policy_en_US.html'
 import Session from '../../../primo/session'
@@ -25,8 +25,8 @@ class disclaimerController {
         'title_label': "Cookie Policy"
       },
       'fr': {
-        'title': 'Cookie Policy',
-        'title_label': "Cookie Policy"
+        'title': 'Politique de cookies',
+          'title_label': "Politique de cookies"
       },
     }
 
