@@ -25,7 +25,7 @@ class disclaimerController {
         'title_label': "Cookie Policy"
       },
       'fr': {
-        'title': 'Politique de cookies',
+          'title': 'Politique de cookies',
           'title_label': "Politique de cookies"
       },
     }
