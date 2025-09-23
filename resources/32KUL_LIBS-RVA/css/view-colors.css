@@ -1,5 +1,11 @@
 /* view color hook */
 /* ---------------- */
+
+div#footer, div#footer a {
+    color: #fff;
+    background-color: #3a3a3a;
+}
+
 .md-button[aria-label=Search] {
   color: #C4A803; }
   .md-button[aria-label=Search]:hover:not([disabled]), .md-button[aria-label=Search]:focus:not([disabled]), .md-button[aria-label=Search].hovered:not([disabled]), .md-button[aria-label=Search].md-focused:not([disabled]), .md-button[aria-label=Search]._md-focused:not([disabled]) {
