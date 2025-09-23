@@ -1,85 +1,83 @@
+import cookiePolicyDialogHTML from "./cookie_policy_en_US.html";
+import disclaimerDialog_frFR_HTML from "./cookie_policy_fr_FR.html";
+import disclaimerDialog_nlBE_HTML from "./cookie_policy_nl_BE.html";
+import disclaimerDialog_enUS_HTML from "./cookie_policy_en_US.html";
+import Session from "../../../primo/session";
 
-import cookiePolicyDialogHTML from './cookie_policy_en_US.html'
-import disclaimerDialog_frFR_HTML from './cookie_policy_fr_FR.html'
-import disclaimerDialog_nlBE_HTML from './cookie_policy_nl_BE.html'
-import disclaimerDialog_enUS_HTML from './cookie_policy_en_US.html'
-import Session from '../../../primo/session'
-
-import disclaimerLinkHTML from './disclaimer.html'
+import disclaimerLinkHTML from "./disclaimer.html";
 
 class disclaimerController {
   constructor($scope, $mdDialog) {
     let self = this;
 
     self.view = Session.view;
-    
+
     let locale = self.view.interfaceLanguage;
 
     let locale_text = {
-      'nl': {
-        'title': 'Cookiebeleid',
-        'title_label': "Cookiebeleid"
+      nl: {
+        title: "Cookiebeleid",
+        title_label: "Cookiebeleid",
       },
-      'en': {
-        'title': 'Cookie Policy',
-        'title_label': "Cookie Policy"
+      en: {
+        title: "Cookie Policy",
+        title_label: "Cookie Policy",
       },
-      'fr': {
-          'title': 'Politique de cookies',
-          'title_label': "Politique de cookies"
+      fr: {
+        title: "Politique de cookies",
+        title_label: "Politique de cookies",
       },
-    }
+    };
 
-    //Todo Refactory disclaimerDialog / cookiePolicy ??? 
-    //let disclaimerDialog = disclaimerDialogHTML; 
+    //Todo Refactory disclaimerDialog / cookiePolicy ???
+    //let disclaimerDialog = disclaimerDialogHTML;
     let disclaimerDialog = cookiePolicyDialogHTML;
     switch (locale) {
-      case 'fr':
-      disclaimerDialog = disclaimerDialog_frFR_HTML;
+      case "fr":
+        disclaimerDialog = disclaimerDialog_frFR_HTML;
         break;
-      case 'nl':
-      disclaimerDialog = disclaimerDialog_nlBE_HTML;
+      case "nl":
+        disclaimerDialog = disclaimerDialog_nlBE_HTML;
         break;
       default:
-      disclaimerDialog = disclaimerDialog_enUS_HTML;
+        disclaimerDialog = disclaimerDialog_enUS_HTML;
     }
 
-    $scope.title = locale_text[locale]['title'];
-    $scope.title_label = locale_text[locale]['title_label'];
+    $scope.title = locale_text[locale]["title"];
+    $scope.title_label = locale_text[locale]["title_label"];
 
-    $scope.showDisclaimerDialog = function($event) {
+    $scope.showDisclaimerDialog = function ($event) {
       let parentEl = angular.element(document.body);
       $mdDialog.show({
         parent: parentEl,
         targetEvent: $event,
         template: disclaimerDialog,
         locals: {
-          items: $scope.items
+          items: $scope.items,
         },
-        controller: DialogController
+        controller: DialogController,
       });
-    }
+    };
 
     function DialogController($scope, $mdDialog, items) {
       $scope.items = items;
-      $scope.closeDialog = function() {
+      $scope.closeDialog = function () {
         $mdDialog.hide();
-      }
+      };
     }
   }
 }
 
-disclaimerController.$inject = ['$scope', '$mdDialog']
-
+disclaimerController.$inject = ["$scope", "$mdDialog"];
 
 export let disclaimerConfig = {
-  name: 'prm-disclaimer',
+  name: "prm-disclaimer",
   enabled: true,
   appendTo: null,
-  enableInView: '.*',
+  enableInView: ".*",
   config: {
-    bindings: { parentCtrl: '<' },
+    bindings: { parentCtrl: "<" },
     controller: disclaimerController,
-    template: disclaimerLinkHTML
-  }
-}
+    template: disclaimerLinkHTML,
+  },
+};
