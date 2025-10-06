@@ -1,6 +1,14 @@
 /* view color hook */
 /* ---------------- */
 
+.my-refworks-ctm {
+  display: none;
+}
+
+.my-refworks-separator-ctm {
+  display: none;
+}
+
 div#footer,
 div#footer a {
   color: #fff;
