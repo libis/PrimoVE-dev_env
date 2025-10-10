@@ -8,3 +8,4 @@ yarn-error.log
 resources/*VBS_TEST*
 .yarnrc.yml
 .yarn/install-state.gz
+/package_backup_202508/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE.zip

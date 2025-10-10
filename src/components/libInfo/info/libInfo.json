@@ -379,6 +379,17 @@
   "VCV": {
     "url": "https://services.libis.be/library_info/VCV",
     "label": "FARO VCV"
+  },
+  "GBSG": {
+    "url": "https://services.libis.be/library_info/GBSG",
+    "label": "GSG GBSG"
+  },
+  "GGSB": {
+    "url": "https://services.libis.be/library_info/GGSB",
+    "label": "GSB GGSB"
+  },
+  "RVA": {
+    "url": "https://services.libis.be/library_info/RVA",
+    "label": "LIBS RVAONEM"
   }
-
 }
