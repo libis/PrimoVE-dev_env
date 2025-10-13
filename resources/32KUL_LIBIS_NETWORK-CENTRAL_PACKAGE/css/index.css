@@ -1,4 +1,3 @@
-
 /* @import "./db-item-detail.css"; */
 /* @import "./hide_library_code.css"; */
 /* @import "./hide_times_cited.css"; */
@@ -22,9 +21,9 @@
 @import "./hide_journal_categories.css";
 
 .material-icons {
-    font-family: 'Material Icons';
-    -moz-font-feature-settings: 'liga';
-    font-feature-settings: 'liga';
-    -webkit-font-feature-settings: 'liga';
-    font-size: inherit !important;
+  font-family: "Material Icons";
+  -moz-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  font-size: inherit !important;
 }

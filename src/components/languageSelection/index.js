@@ -1,7 +1,8 @@
 class LanguageSelectionController {
   constructor() {
     var onlyshow_fr_FR_in_vid = [
-      "32KUL_LIBS:RVA",
+      "32KUL_LIBS:LIBS",
+      "32KUL_LIBS:RVAONEM",
       "32KUL_ACV:ACV",
       "32KUL_BPB:BPB",
       "32KUL_VCV:FARO",

@@ -4,11 +4,9 @@
   "author": "",
   "license": "MIT",
   "primo": {
-    "url": "https://libis-libs-psb.primo.exlibrisgroup.com/",
+    "url": "https://libis-libs.primo.exlibrisgroup.com/",
     "institution": "32KUL_LIBS",
-    "vidId": "RVA",
-    "views": [
-      "RVA"
-    ]
+    "vidId": "RVAONEM",
+    "views": ["RVAONEM"]
   }
 }
