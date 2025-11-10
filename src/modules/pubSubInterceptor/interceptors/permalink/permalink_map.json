@@ -1,0 +1,188 @@
+{
+  "default": {
+    "inst": "11",
+    "views": {
+      "default": "1",
+      "scopes": {
+        "default": "1"
+      }
+    }
+  },
+  "32KUL_LIBIS_NETWORK": {
+    "inst": "1",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "LIBISNET2_UNION": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "All_Content": "1"
+        }
+      },
+      "DOKS_UNION": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "DOKS": "1"
+        }
+      },
+      "JESUITS_UNION": {
+        "code": "3",
+        "scopes": {
+          "default": "1",
+          "JESUITS": "1"
+        }
+      }
+    }
+  },
+  "32KUL_KATHO": {
+    "inst": "5",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "VIVES": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "VIVES_P_PROFILE": "2",
+          "VIVES_BRUGGE_P_PROFILE": "3",
+          "VIVES_KORTRIJK_P_PROFILE": "4",
+          "VIVES_ROESELARE_P_PROFILE": "5",
+          "VIVES_TORHOUT_P_PROFILE": "6",
+          "lirias_profile": "7"
+        }
+      }
+    }
+  },
+  "32KUL_KADOC": {
+    "inst": "6",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "KADOC": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "KADOC_P_E_D_PROFILE": "2",
+          "KADOC_EVADOC_PROFILE": "3",
+          "KADOC_DEBETHUNE_PROFILE": "4",
+          "KADOC_PAROCHIEBLADEN": "5"
+        }
+      }
+    }
+  },
+  "32KUL_KUL": {
+    "inst": "11",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "KULeuven": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "All_Content": "1",
+          "KULEUVEN_CATALOG": "2",
+          "KULeuven_AALST_P_PROFILE": "3",
+          "BIBA_new": "4",
+          "KULeuven_BRUGGE_P_PROFILE": "5",
+          "KULeuven_BRUSSEL_P_PROFILE": "6",
+          "KULeuven_DIEPENBEEK_P_PROFILE": "7",
+          "KULeuven_DENAYER_P_SCOPE": "8",
+          "KULeuven_GEEL_P_SCOPE": "9",
+          "KULeuven_GENT_P_PROFILE": "10",
+          "KULeuven_KORTRIJK_P_PROFILE": "11",
+          "KULEUVEN_COLLECTIONS": "12"
+        }
+      },
+      "music": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "KULeuven_music_catalog": "1",
+          "scores_NZ": "2",
+          "audio_all": "3"
+        }
+      },
+      "Lirias": {
+        "code": "3",
+        "scopes": {
+          "default": "1",
+          "lirias_profile": "1"
+        }
+      },
+      "sportimonium": {
+        "code": "4",
+        "scopes": {
+          "default": "1",
+          "Alma_P": "1",
+          "sportimonium": "2"
+        }
+      }
+    }
+  },
+  "32KUL_FIN": {
+    "inst": "16",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "FODFIN": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "FIN_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_LIBS": {
+    "inst": "27",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "LIBS": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "LIB_RVAONEM": "2"
+        }
+      },
+      "RVAONEM": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "LIB_RVAONEM": "2"
+        }
+      }
+    }
+  }
+}
