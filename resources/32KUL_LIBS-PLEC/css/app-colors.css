@@ -1,4 +1,18 @@
 /* primary color hook */
+
+/* Force all text inside prm-topbar to be black */
+prm-topbar,
+prm-topbar * {
+  color: black !important;
+}
+
+/* Ensure icons inside prm-topbar are also black */
+prm-topbar md-icon,
+prm-topbar svg {
+  fill: black !important;
+  color: black !important;
+}
+
 .md-button {
   color: #3a3a3a;
 }

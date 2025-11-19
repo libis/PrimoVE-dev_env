@@ -1,6 +1,21 @@
 /* primary color hook */
 /* commenttttt*/
+/* Make all top bar button text black */
+prm-topbar .md-button:not(.disable-hover),
+prm-topbar .md-button:not(.disable-hover) span {
+  color: black !important;
+}
 
+/* Ensure icons in top bar buttons are also black */
+prm-topbar .md-button md-icon,
+prm-topbar .md-button svg {
+  fill: black !important;
+  color: black !important;
+}
+prm-tags-search-bar {
+  color: black !important;
+  background-image: url("https://www.plec-limburg.be/wp-content/uploads/2022/08/header-plec-1920x500.png") !important;
+}
 .md-button {
   color: #3a3a3a;
 }
