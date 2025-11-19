@@ -12,11 +12,16 @@ class AutoLoginFirstOptionController {
     const vid = window.appConfig.vid;
     console.log(" current vid", vid);
 
-    const allowedVids = ["32KUL_LIBS:LIBS", "32KUL_LIBS:RVAONEM"];
+    const allowedVids = [
+      "32KUL_LIBS:LIBS",
+      "32KUL_LIBS:RVAONEM",
+      "32KUL_LIBS:PLEC",
+    ];
 
     const profileMap = {
       "32KUL_LIBS:LIBS": "Alma",
       "32KUL_LIBS:RVAONEM": "RVA_AZURE",
+      "32KUL_LIBS:PLEC": "Alma",
     };
     const targetProfile = profileMap[vid];
     console.log(" target profile is: " + targetProfile);

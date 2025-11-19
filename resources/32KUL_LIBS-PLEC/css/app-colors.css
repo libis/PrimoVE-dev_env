@@ -756,7 +756,7 @@ prm-journals-search-bar,
 prm-browse-search-bar,
 prm-tags-search-bar {
   color: black !important;
-  background-image: url("../img/header-plec.png");
+  background-image: url("https://www.plec-limburg.be/wp-content/uploads/2022/08/header-plec-1920x500.png") !important;
 }
 .prm-primary-bg.prm-hue1,
 prm-spinner.prm-hue1.overlay-cover.light-on-dark:after,
