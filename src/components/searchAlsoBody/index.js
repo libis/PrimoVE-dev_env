@@ -104,7 +104,7 @@ class SearchAlsoBodyController {
           return self.parsedQuery.map(m => `${type_mappings[m[0]] || "kw"}:${m[2] || ''}`).join(' ');
         }
       }, {
-           "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant|^32KUL_LIBS.LIBS|^32KUL_LIBS.RVAONEM',
+           "view": '^32KUL_KATHO:VIVES|^32KUL_HUB:ODISEE|^FARO|^32KUL_KHK:TMOREK|^32KUL_KHM:TMOREMA|^32KUL_KHL:UCLL|^32KUL_LUCAWENK:LUCA|^32KUL_DOCVB:docvlaamsbrabant|^32KUL_LIBS.LIBS|^32KUL_LIBS.PLEC|^32KUL_LIBS.RVAONEM',
         "name": "Bibliotheek.be",
         "url": "https://www.bibliotheek.be/catalogus?q=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/bib_be.png",
