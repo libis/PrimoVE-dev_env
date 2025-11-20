@@ -28,8 +28,8 @@ class ShowcaseController {
                  //url comes from the code table
                 $scope.showcaseUrl = decodeURIComponent( self.$translate.instant( "nui.customization.showcase.url" ));
 
-                var month = '0' + (new Date().getMonth() + 1).toString().slice(-2);
-                var prev_month = '0' + (new Date().getMonth()).toString().slice(-2);
+                var month = String(new Date().getMonth() + 1).padStart(2, '0');
+                var prev_month = String(new Date().getMonth()).padStart(2, '0');
             
                 var prev_date = new Date();
                 prev_date.setMonth(prev_date.getMonth()-1);
