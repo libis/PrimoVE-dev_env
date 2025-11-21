@@ -1,0 +1,664 @@
+{
+  "default": {
+    "inst": "11",
+    "views": {
+      "default": "1",
+      "scopes": {
+        "default": "1"
+      }
+    }
+  },
+  "32KUL_LIBIS_NETWORK": {
+    "inst": "1",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "LIBISNET2_UNION": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "All_Content": "1"
+        }
+      },
+      "DOKS_UNION": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "DOKS": "1"
+        }
+      },
+      "JESUITS_UNION": {
+        "code": "3",
+        "scopes": {
+          "default": "1",
+          "JESUITS": "1"
+        }
+      }
+    }
+  },
+  "32KUL_ACV": {
+    "inst": "2",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "ACV": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "ACV_P_E_D": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      },
+      "tijdschriften": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "ACV_journals": "1"
+        }
+      }
+    }
+  },
+  "32KUL_BPB": {
+    "inst": "3",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "BPB": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "BPB_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_VES": {
+    "inst": "4",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "VDIC": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT": "1",
+          "VDIC_P_PROFILE": "2",
+          "VDIC_RIZIV_LIB_PROFILE": "3",
+          "VDIC_EJOURNALS_PROFILE": "4"
+        }
+      }
+    }
+  },
+  "32KUL_KATHO": {
+    "inst": "5",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "VIVES": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "VIVES_P_PROFILE": "2",
+          "VIVES_BRUGGE_P_PROFILE": "3",
+          "VIVES_KORTRIJK_P_PROFILE": "4",
+          "VIVES_ROESELARE_P_PROFILE": "5",
+          "VIVES_TORHOUT_P_PROFILE": "6",
+          "lirias_profile": "7"
+        }
+      }
+    }
+  },
+  "32KUL_KADOC": {
+    "inst": "6",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "KADOC": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "KADOC_P_E_D_PROFILE": "2",
+          "KADOC_EVADOC_PROFILE": "3",
+          "KADOC_DEBETHUNE_PROFILE": "4",
+          "KADOC_PAROCHIEBLADEN": "5"
+        }
+      }
+    }
+  },
+  "32KUL_KBC": {
+    "inst": "7",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "KBC": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "KBC_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_KMMR": {
+    "inst": "8",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "5"
+        }
+      },
+      "KMKG": {
+        "code": "1",
+        "scopes": {
+          "default": "5",
+          "KMKG_P_E_D_PROFILE": "1",
+          "KMKG_MIM_PROFILE": "2",
+          "KMKG_COLLECTIEDOCUMENTATIE_PROFILE": "3",
+          "KMKG_MUSEUMPUBLICATIES_PROFILE": "4",
+          "ALL_CONTENT_PROFILE": "5"
+        }
+      }
+    }
+  },
+  "32KUL_NBB": {
+    "inst": "9",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "NBB": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "NBB_P_E_D_PROFILE": "2"
+        }
+      },
+      "NBBMED": {
+        "code": "2",
+        "scopes": {
+          "default": "2",
+          "NBBMED_PROFILE": "1",
+          "NBB_P_E_D_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_RBINS": {
+    "inst": "10",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "RBINS": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "RBINS_P_E_D": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_KUL": {
+    "inst": "11",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "KULeuven": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "All_Content": "1",
+          "KULEUVEN_CATALOG": "2",
+          "KULeuven_AALST_P_PROFILE": "3",
+          "BIBA_new": "4",
+          "KULeuven_BRUGGE_P_PROFILE": "5",
+          "KULeuven_BRUSSEL_P_PROFILE": "6",
+          "KULeuven_DIEPENBEEK_P_PROFILE": "7",
+          "KULeuven_DENAYER_P_SCOPE": "8",
+          "KULeuven_GEEL_P_SCOPE": "9",
+          "KULeuven_GENT_P_PROFILE": "10",
+          "KULeuven_KORTRIJK_P_PROFILE": "11",
+          "KULEUVEN_COLLECTIONS": "12"
+        }
+      },
+      "music": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "KULeuven_music_catalog": "1",
+          "scores_NZ": "2",
+          "audio_all": "3"
+        }
+      },
+      "Lirias": {
+        "code": "3",
+        "scopes": {
+          "default": "1",
+          "lirias_profile": "1"
+        }
+      },
+      "sportimonium": {
+        "code": "4",
+        "scopes": {
+          "default": "1",
+          "Alma_P": "1",
+          "sportimonium": "2"
+        }
+      }
+    }
+  },
+  "32KUL_TIFA": {
+    "inst": "12",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "BOSA": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "BOSA_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_VCV": {
+    "inst": "13",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "FARO": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "FARO_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_VLP": {
+    "inst": "14",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "VLP": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "VLP_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      },
+      "Archief": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "Archief": "1"
+        }
+      }
+    }
+  },
+  "32KUL_LUCAWENK": {
+    "inst": "15",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "LUCA": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "LUCA_P_PROFILE": "2",
+          "LUCA_SLUCG_P_PROFILE": "3",
+          "LUCA_CMINE_P_PROFILE": "4",
+          "LUCA_SLUCB_P_PROFILE": "5",
+          "LUCA_LEMM_P_PROFILE": "6",
+          "Lirias": "7"
+        }
+      },
+      "music": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "LUCA_MUSIC_CATALOG": "1",
+          "scores_NZ": "2",
+          "audio_NZ": "3"
+        }
+      }
+    }
+  },
+  "32KUL_FIN": {
+    "inst": "16",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "FODFIN": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "FIN_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_KHM": {
+    "inst": "17",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "TMOREMA": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "TMORE_CATALOGUE_PROFILE": "2",
+          "TMOREMA_SANDERUS_PROFILE": "3",
+          "TMOREMA_DENAYER_PROFILE": "4",
+          "TMOREK_GEEL_PROFILE": "5",
+          "TMOREK_LIER_PROFILE": "6",
+          "TMOREMA_MECHELEN_PROFILE": "7",
+          "TMOREK_TURNHOUT_PROFILE": "8",
+          "TMOREK_VORSELAAR_PROFILE": "9",
+          "DATABASES_PROFILE": "10"
+        }
+      }
+    }
+  },
+  "32KUL_KHK": {
+    "inst": "18",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "TMOREK": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "TMORE_CATALOGUE_PROFILE": "2",
+          "TMOREMA_SANDERUS_PROFILE": "3",
+          "TMOREMA_DENAYER_PROFILE": "4",
+          "TMOREK_GEEL_PROFILE": "5",
+          "TMOREK_LIER_PROFILE": "6",
+          "TMOREMA_MECHELEN_PROFILE": "7",
+          "TMOREK_TURNHOUT_PROFILE": "8",
+          "TMOREK_VORSELAAR_PROFILE": "9"
+        }
+      }
+    }
+  },
+  "32KUL_KHL": {
+    "inst": "19",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "UCLL": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "All_Content": "1",
+          "UCLL_CATALOG": "2",
+          "UCLL_CATALOG_HAASRODE": "3",
+          "UCLL_CATALOG_DIEPENBEEK_PROFILE": "4",
+          "UCLL_CATALOG_DIEST": "5",
+          "UCLL_CATALOG_LEUVEN": "6",
+          "UCLL_CATALOG_HASSELT": "7",
+          "UCLL_CATALOG_HEVERLEE_HERTOGSTRAAT": "8",
+          "UCLL_CATALOG_HEVERLEE_SOC_SCHOOL": "9",
+          "Lirias": "10"
+        }
+      }
+    }
+  },
+  "32KUL_GSB": {
+    "inst": "20",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "GSB": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "GSB_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_GSG": {
+    "inst": "21",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "GSG": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "GSG_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_HUB": {
+    "inst": "22",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "ODISEE": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "HUB_P_PROFILE": "2",
+          "HUB_CAMPUS_AALST_Profile": "3",
+          "HUB_CAMPUS_BRUSSEL_Profile": "4",
+          "HUB_CAMPUS_GENT_PROFILE": "5",
+          "HUB_CAMPUS_DILBEEK_PROFILE": "6",
+          "HUB_CAMPUS_SINTNIKLAAS_PROFILE": "7",
+          "lirias_profile": "8"
+        }
+      }
+    }
+  },
+  "49ECB_INST": {
+    "inst": "23",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "ECB": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "MyInst_and_CI": "1"
+        }
+      }
+    }
+  },
+  "32SCKCEN_INST": {
+    "inst": "24",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "SCKCEN_INST": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "MyInstitution": "1"
+        }
+      }
+    }
+  },
+  "32KUL_DOCVB": {
+    "inst": "25",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "2"
+        }
+      },
+      "docvlaamsbrabant": {
+        "code": "1",
+        "scopes": {
+          "default": "2",
+          "DOCVB_P_E_D_PROFILE": "1",
+          "ALL_CONTENT_PROFILE": "2"
+        }
+      }
+    }
+  },
+  "32KUL_VLER": {
+    "inst": "26",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "VBS": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "MyInstitution": "2"
+        }
+      }
+    }
+  },
+  "32KUL_LIBS": {
+    "inst": "27",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "LIBS": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "LIB_RVAONEM": "2",
+          "LIB_PLEC": "3"
+        }
+      },
+      "RVAONEM": {
+        "code": "2",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "LIB_RVAONEM": "2"
+        }
+      },
+      "PLEC": {
+        "code": "3",
+        "scopes": {
+          "default": "1",
+          "ALL_CONTENT_PLEC": "1",
+          "LIB_PLEC": "2"
+        }
+      }
+    }
+  }
+}
