@@ -89,7 +89,7 @@ class SearchAlsoBodyController {
         }
       },
        {
-        "view": '^FARO|^32KUL_KUL:KULeuven|^32KUL_LIBS.LIBS|^32KUL_LIBS.RVAONEM',
+           "view": '^FARO|^32KUL_KUL:KULeuven|^32KUL_LIBS.LIBS|^32KUL_LIBS.RVAONEM',
         "name": "Worldcat",
         "url": "https://www.worldcat.org/search?q=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_worldcat.ico",
