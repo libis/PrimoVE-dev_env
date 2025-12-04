@@ -1,14 +1,35 @@
 /* primary color hook */
 
-/* Force all text inside prm-topbar to be black */
-prm-topbar,
+/* rmove any box-shadow or divider effect */
+prm-main-menu .top-nav-bar-links .flex-button {
+  box-shadow: none !important;
+}
+
+/* all text inside prm-topbar to be black */
+prm-topbar {
+  height: 180px;
+}
 prm-topbar * {
   color: black !important;
 }
 
-/* Ensure icons inside prm-topbar are also black */
+/* ensure icons inside -topbar are also black */
 prm-topbar md-icon,
 prm-topbar svg {
+  fill: black !important;
+  color: black !important;
+}
+
+/* //// */
+/* Force all text inside prm-search-bar to be black */
+prm-search-bar,
+prm-search-bar * {
+  color: black !important;
+}
+
+/* Ensure icons inside prm-search-bar are also black */
+prm-search-bar md-icon,
+prm-search-bar svg {
   fill: black !important;
   color: black !important;
 }
@@ -770,7 +791,8 @@ prm-journals-search-bar,
 prm-browse-search-bar,
 prm-tags-search-bar {
   color: black !important;
-  background-image: url("https://www.plec-limburg.be/wp-content/uploads/2022/08/header-plec-1920x500.png") !important;
+  /* background-image: url("https://www.plec-limburg.be/wp-content/uploads/2022/08/header-plec-1920x500.png") !important; */
+  background-color: #fab312;
 }
 .prm-primary-bg.prm-hue1,
 prm-spinner.prm-hue1.overlay-cover.light-on-dark:after,
