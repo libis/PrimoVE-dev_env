@@ -46,15 +46,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "ACV": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "ACV_P_E_D": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "ACV_P_E_D": "2"
         }
       },
       "tijdschriften": {
@@ -72,15 +72,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "BPB": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "BPB_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "BPB_P_E_D_PROFILE": "2"
         }
       }
     }
@@ -158,15 +158,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "KBC": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "KBC_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "KBC_P_E_D_PROFILE": "2"
         }
       }
     }
@@ -177,18 +177,18 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "5"
+          "default": "1"
         }
       },
       "KMKG": {
         "code": "1",
         "scopes": {
-          "default": "5",
-          "KMKG_P_E_D_PROFILE": "1",
-          "KMKG_MIM_PROFILE": "2",
-          "KMKG_COLLECTIEDOCUMENTATIE_PROFILE": "3",
-          "KMKG_MUSEUMPUBLICATIES_PROFILE": "4",
-          "ALL_CONTENT_PROFILE": "5"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "KMKG_P_E_D_PROFILE": "2",
+          "KMKG_MIM_PROFILE": "3",
+          "KMKG_COLLECTIEDOCUMENTATIE_PROFILE": "4",
+          "KMKG_MUSEUMPUBLICATIES_PROFILE": "5"
         }
       }
     }
@@ -213,9 +213,9 @@
       "NBBMED": {
         "code": "2",
         "scopes": {
-          "default": "2",
-          "NBBMED_PROFILE": "1",
-          "NBB_P_E_D_PROFILE": "2"
+          "default": "1",
+          "NBB_P_E_D_PROFILE": "1",
+          "NBBMED_PROFILE": "2"
         }
       }
     }
@@ -226,15 +226,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "RBINS": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "RBINS_P_E_D": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "RBINS_P_E_D": "2"
         }
       }
     }
@@ -298,15 +298,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "BOSA": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "BOSA_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "BOSA_P_E_D_PROFILE": "2"
         }
       }
     }
@@ -317,15 +317,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "FARO": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "FARO_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "FARO_P_E_D_PROFILE": "2"
         }
       }
     }
@@ -336,15 +336,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "VLP": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "VLP_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "VLP_P_E_D_PROFILE": "2"
         }
       },
       "Archief": {
@@ -395,15 +395,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "FODFIN": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "FIN_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "FIN_P_E_D_PROFILE": "2"
         }
       }
     }
@@ -494,15 +494,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "GSB": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "GSB_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "GSB_P_E_D_PROFILE": "2"
         }
       }
     }
@@ -513,15 +513,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "GSG": {
         "code": "1",
         "scopes": {
-          "default": "2",
-         "GSG_P_E_D_PROFILE": "1",
-         "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "GSG_P_E_D_PROFILE": "2"
         }
       }
     }
@@ -593,15 +593,15 @@
       "default": {
         "code": "1",
         "scopes": {
-          "default": "2"
+          "default": "1"
         }
       },
       "docvlaamsbrabant": {
         "code": "1",
         "scopes": {
-          "default": "2",
-          "DOCVB_P_E_D_PROFILE": "1",
-          "ALL_CONTENT_PROFILE": "2"
+          "default": "1",
+          "ALL_CONTENT_PROFILE": "1",
+          "DOCVB_P_E_D_PROFILE": "2"
         }
       }
     }
