@@ -1,0 +1,12 @@
+{
+  "name": "32KUL_LIBS",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "primo": {
+    "url": "https://libis-libs.primo.exlibrisgroup.com/",
+    "institution": "32KUL_LIBS",
+    "vidId": "PLEC",
+    "views": ["PLEC"]
+  }
+}
