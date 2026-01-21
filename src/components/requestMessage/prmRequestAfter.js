@@ -104,7 +104,7 @@ RequestMessageController.$inject = ['$templateCache', '$translate'];
 
 export let requestMessagecomponent = {
     name: 'custom-request-message',
-    enabled: false,
+    enabled: true,
     appendTo: 'prm-request-after',
     enableInView: '.*',
     config: {
