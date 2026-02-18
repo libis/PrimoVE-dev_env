@@ -1,94 +1,156 @@
 <style>
-    @import url(https://fonts.googleapis.com/icon?family=Material+Icons );
+  @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
-    md-card md-card-content span.md-headline {
-        line-height: 1em;
-        padding-bottom: 1rem;
-        display: block;
-    }
+  md-card md-card-content span.md-headline {
+    line-height: 1em;
+    padding-bottom: 1rem;
+    display: block;
+  }
 
-        md-card md-card-content span.md-headline::before {
-            font-family: 'Material Icons';
-            font-weight: normal;
-            font-style: normal;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            font-feature-settings: 'liga';
-            -webkit-font-feature-settings: 'liga';
-            -webkit-font-smoothing: antialiased;
-            margin-right: 2px;
-            vertical-align: middle;
-            /*
+  md-card md-card-content span.md-headline::before {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: "liga";
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+    margin-right: 2px;
+    vertical-align: middle;
+    /*
      line-height: 1;
      font-size: 20px;
      color: #53738c;
     */
-        }
+  }
 
-    md-card md-card-content span#ContentInLimo::before {
-        content: "info";
-    }
+  md-card md-card-content span#ContentInLimo::before {
+    content: "info";
+  }
 
-    md-card md-card-content span#ContentSearchTips::before {
-        content: "help";
-    }
+  md-card md-card-content span#ContentSearchTips::before {
+    content: "help";
+  }
 
-    md-card md-card-content span#ContentKULLOCLink::before {
-        content: "my_location";
-    }
+  md-card md-card-content span#ContentKULLOCLink::before {
+    content: "my_location";
+  }
+
+  /* search tips style */
+  .search-tip {
+    display: flex; /* make p a flex container */
+    align-items: flex-start; /* align operator to the top of the paragraph */
+    margin-bottom: 6px;
+  }
+
+  .operator {
+    flex: 0 0 60px; /* fixed width for the operator */
+    font-weight: 600;
+  }
 </style>
 
 <md-content layout-xs="column" layout="row" class="display-block-xs">
-    <div flex-xs="100" flex="50" layout="column">
-        
-        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
-            <md-card-content>                
-                <span class="md-headline">
-                    Vlerick Search
-                </span>
-                <p>Our search portal contains print and electronic information resources from Vlerick Business School, other LIBISnet Libraries and open sources. </p>
-                <p><a href="javascript:document.querySelector('#signInBtn').click()"
-                    id="mimic_signin">Sign in</a> and request items, check loans and save all your results and queries.</p>
-                <p>
-                    Check the LibGuides <a href="https://dam.vlerick.com/m/506082ab5f5e1602/original/LibGuide-Vlerick-Search-Limo.pdf" target="_blank">Vlerick Search</a>
-                    and <a href="https://dam.vlerick.com/m/6baadc111850af1b/original/LibGuide-Request-Services.pdf" target="_blank">Book & ILL Requests</a> for more info.
-                </p>
-            </md-card-content>
-        </md-card>
-        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
-            <md-card-content>    
-                <span class="md-headline">
-                    Need help?
-                </span>
-                <p>
-                Tel: <a target="_blank" href="tel:+3292109727">+32 9 210 97 27</a><br>
-                email: <a target="_blank" href="mailto:library@vlerick.com">library@vlerick.com</a><br>
-                </p>
-            </md-card-content>
-        </md-card>
-        
-    </div>
-    <div flex-xs="100" flex="50" layout="column">
-        <prm-news parent-Ctrl='$ctrl'></prm-news>
-        <md-card class="default-card _md md-primoExplore-theme" id="ContentKULLOCLink">
-            <md-card-content>
-                <span class="md-headline">
-                    Search tips
-                </span>
-                <table>
-                    <tr><td style="padding-right:12px;">AND</td><td>Find results with both terms. E.g. organisation AND impact </td></tr>
-                    <tr><td>OR</td><td>Find results for either term. E.g. organisation OR company</td></tr>
-                    <tr><td>NOT</td><td>Find results that exclude a term. E.g. organisation NOT association</td></tr>
-                    <tr><td>*</td><td>Find results that contain a variation of a term. E.g. develop* > development, developer, developing</td></tr>
-                    <tr><td>?</td><td>Find results that contain variations of 1 character in a term. E.g. organi?ation > organization, organisation</td></tr>
-                    <tr><td>“ ”</td><td>Find results with the exact phrase. E.g. “social responsibility”</td></tr>
-                </table>
-            </md-card-content>
-        </md-card>
-        
-    </div>
+  <div flex-xs="100" flex="50" layout="column">
+    <md-card
+      class="default-card _md md-primoExplore-theme"
+      id="ContentKULLOCLink"
+    >
+      <md-card-content>
+        <span class="md-headline"> Vlerick Search </span>
+        <p>
+          Our search portal contains print and electronic information resources
+          from Vlerick Business School, other LIBISnet Libraries and open
+          sources.
+        </p>
+        <p>
+          <a
+            href="javascript:document.querySelector('#signInBtn').click()"
+            id="mimic_signin"
+            >Sign in</a
+          >
+          and request items, check loans and save all your results and queries.
+        </p>
+        <p>
+          Check the LibGuides
+          <a
+            href="https://dam.vlerick.com/m/506082ab5f5e1602/original/LibGuide-Vlerick-Search-Limo.pdf"
+            target="_blank"
+            >Vlerick Search</a
+          >
+          and
+          <a
+            href="https://dam.vlerick.com/m/6baadc111850af1b/original/LibGuide-Request-Services.pdf"
+            target="_blank"
+            >Book & ILL Requests</a
+          >
+          for more info.
+        </p>
+      </md-card-content>
+    </md-card>
+    <md-card
+      class="default-card _md md-primoExplore-theme"
+      id="ContentKULLOCLink"
+    >
+      <md-card-content>
+        <span class="md-headline"> Need help? </span>
+        <p>
+          Tel: <a target="_blank" href="tel:+3292109727">+32 9 210 97 27</a
+          ><br />
+          email:
+          <a target="_blank" href="mailto:library@vlerick.com"
+            >library@vlerick.com</a
+          ><br />
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex-xs="100" flex="50" layout="column">
+    <prm-news parent-Ctrl="$ctrl"></prm-news>
+    <md-card
+      class="default-card _md md-primoExplore-theme"
+      id="ContentKULLOCLink"
+    >
+    
+      <md-card-content>
+        <span class="md-headline">Search tips</span>
+
+        <p class="search-tip">
+          <span class="operator">AND</span>
+          Find results with both terms. E.g. organisation AND impact
+        </p>
+
+        <p class="search-tip">
+          <span class="operator">OR</span>
+          Find results for either term. E.g. organisation OR company
+        </p>
+
+        <p class="search-tip">
+          <span class="operator">NOT</span>
+          Find results that exclude a term. E.g. organisation NOT association
+        </p>
+
+        <p class="search-tip">
+          <span class="operator">*</span>
+          Find results that contain a variation of a term. E.g. develop* &gt;
+          development, developer, developing
+        </p>
+
+        <p class="search-tip">
+          <span class="operator">?</span>
+          Find results that contain variations of 1 character in a term. E.g.
+          organi?ation &gt; organization, organisation
+        </p>
+
+        <p class="search-tip">
+          <span class="operator">“ ”</span>
+          Find results with the exact phrase. E.g. “social responsibility”
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
 </md-content>
