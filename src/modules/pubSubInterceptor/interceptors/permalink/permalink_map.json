@@ -2,11 +2,13 @@
   "default": {
     "inst": "11",
     "views": {
-      "default": "1",
-      "scopes": {
-        "default": "1"
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
       }
-    }
+      }
   },
   "32KUL_LIBIS_NETWORK": {
     "inst": "1",
@@ -206,16 +208,14 @@
         "code": "1",
         "scopes": {
           "default": "1",
-          "ALL_CONTENT_PROFILE": "1",
-          "NBB_P_E_D_PROFILE": "2"
+          "ALL_CONTENT_PROFILE": "1"
         }
       },
       "NBBMED": {
         "code": "2",
         "scopes": {
           "default": "1",
-          "NBB_P_E_D_PROFILE": "1",
-          "NBBMED_PROFILE": "2"
+          "NBBMED_PROFILE": "1"
         }
       }
     }
@@ -347,11 +347,18 @@
           "VLP_P_E_D_PROFILE": "2"
         }
       },
-      "Archief": {
+      "VLP_Archief": {
         "code": "2",
         "scopes": {
           "default": "1",
           "Archief": "1"
+        }
+      },
+     "Archief": {
+        "code": "3",
+        "scopes": {
+          "default": "1",
+          "Archief_PIA": "1"
         }
       }
     }

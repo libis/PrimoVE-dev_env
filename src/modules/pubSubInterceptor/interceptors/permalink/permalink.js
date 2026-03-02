@@ -40,7 +40,7 @@ window.permalink = {
         linkMap: require('./permalink_map.json'),
         afterActionsBaseURL: [
             {
-                enableInView: '32KUL_.*_TEST$',
+                enableInView: '32KUL_.*_TEST.*$',
                 replaceFieldForSourceSystem:
                 {
                     sourcesystem: new RegExp('^(?!Webhook)'),
@@ -50,7 +50,7 @@ window.permalink = {
                 }
             },
             {
-                enableInView: '32KUL_.*_TEST$',
+                enableInView: '32KUL_.*_TEST.*$',
                 replaceFieldForSourceSystem:
                 {
                     sourcesystem: new RegExp('^(?!Webhook)'),
@@ -67,6 +67,16 @@ window.permalink = {
                     sourceid: new RegExp('lirias'),
                     field: "control.sourcerecordid",
                     prefix: "https://lirias.kuleuven.be/"
+                }
+            },
+            {
+                enableInView: '32KUL_.*_TEST.*$',
+                replaceFieldForSourceSystem:
+                {
+                    sourcesystem: new RegExp('Webhook'),
+                    sourceid: new RegExp('(?!lirias)'),
+                    field: "display.lds12",
+                    prefix: "https://lib.is/_/"
                 }
             }
             //{
@@ -85,32 +95,27 @@ window.permalink = {
     //    reqRes.data.permalink = params.prefix + reqRes.data.permalink
     //    return reqRes.data;
     //},
-    replaceWithPnxField: ({ reqRes = {}, params = {} } = {}) => {
-        path = "config.data.pnx." + params.field
-        reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);
+    //replaceWithPnxField: ({ reqRes = {}, params = {} } = {}) => {
+    //    path = "config.data.pnx." + params.field
+    //    reqRes.data.permalink = path.split('.').reduce((a, v) => a[v], reqRes);
 
-        if (params.prefix === "https://lib.is/_/") {
-            reqRes.data.permalink = params.prefix + reqRes.data.permalink + "/representation?vid=" + reqRes.config.data.vid + "&scope=" + reqRes.config.data.search_scope + "&tab=" + reqRes.config.data.tab;
-        } else {
-            reqRes.data.permalink = params.prefix + reqRes.data.permalink
-        }
+    //    if (params.prefix === "https://lib.is/_/") {
+    //        reqRes.data.permalink = params.prefix + reqRes.data.permalink + "/representation?vid=" + reqRes.config.data.vid + "&scope=" + reqRes.config.data.search_scope + "&tab=" + reqRes.config.data.tab;
+    //    } else {
+    //        reqRes.data.permalink = params.prefix + reqRes.data.permalink
+    //    }
 
-        return reqRes.data;
-    },
+    //    return reqRes.data;
+    //},
     replaceFieldForSourceSystem: ({ reqRes = {}, params = {} } = {}) => {
         const filteredSourceSystemArray = reqRes.config.data.pnx.control.sourcesystem.filter(value => params.sourcesystem.test(value));
-        console.log(filteredSourceSystemArray)
         if (filteredSourceSystemArray.length > 0) {
-            console.log('Entering interceptor with params', params);
-            console.log('Full response:', reqRes);
             if (reqRes.config.data.pnx.control.sourceid.constructor !== Array) {
                 reqRes.config.data.pnx.control.sourceid = [reqRes.config.data.pnx.control.sourceid]
             }
             if (reqRes.config.data.pnx.control.sourceid.filter(value => params.sourceid.test(value)).length > 0) {
-                console.log('Applying changes for interceptor with params', params);
                 path = "config.data.pnx." + params.field
                 let linkID = path.split('.').reduce((a, v) => a[v], reqRes);
-                console.log('linkID:', linkID)
 
                 if (linkID) {
                     if (params.prefix === "https://lirias.kuleuven.be/") {
@@ -142,7 +147,6 @@ pubSub.subscribe('after-actionsBaseURL', (reqRes) => {
 
     if (actions.length > 0) {
         actions.forEach(action => {
-            // console.log(action)
             Object.keys(action).forEach(a => {
                 if (a !== "enableInView") {
                     try {
