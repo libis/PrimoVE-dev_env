@@ -40,23 +40,23 @@ window.permalink = {
         linkMap: require('./permalink_map.json'),
         afterActionsBaseURL: [
             {
-                enableInView: '32KUL_.*_TEST.*$',
+                enableInView: '32KUL_.*$',
                 replaceFieldForSourceSystem:
                 {
                     sourcesystem: new RegExp('^(?!Webhook)'),
                     sourceid: new RegExp('^(?!alma)'),  // sourcid voor cdi records is niet alma
                     field: "control.recordid",
-                    prefix: "https://lib.is/_/"
+                    prefix: "https://lib.is/"
                 }
             },
             {
-                enableInView: '32KUL_.*_TEST.*$',
+                enableInView: '32KUL_.*$',
                 replaceFieldForSourceSystem:
                 {
                     sourcesystem: new RegExp('^(?!Webhook)'),
                     sourceid: new RegExp('alma'), // sourcid voor cdi records is niet alma
                     field: "display.lds12",
-                    prefix: "https://lib.is/_/"
+                    prefix: "https://lib.is/"
                 }
             },
             {
@@ -70,13 +70,13 @@ window.permalink = {
                 }
             },
             {
-                enableInView: '32KUL_.*_TEST.*$',
+                enableInView: '^(?!32KUL_KUL:Lirias)',
                 replaceFieldForSourceSystem:
                 {
                     sourcesystem: new RegExp('Webhook'),
-                    sourceid: new RegExp('(?!lirias)'),
+                    sourceid: new RegExp('.*'),
                     field: "display.lds12",
-                    prefix: "https://lib.is/_/"
+                    prefix: "https://lib.is/"
                 }
             }
             //{
