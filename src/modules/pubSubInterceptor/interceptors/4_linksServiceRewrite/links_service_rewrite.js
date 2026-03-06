@@ -51,7 +51,7 @@ window.linksServiceRewrite = {
     },
     /*
     init: (url, headers, params, data, $translate) => {
-        console.log ("-----> init links_service_rewrite")
+        //console.log ("-----> init links_service_rewrite")
        // console.log ( $translate.instant('nui.customization.browzine.apikey')  )
         let cloned_params = JSON.parse(JSON.stringify(params));
     },
@@ -77,7 +77,6 @@ window.linksServiceRewrite = {
 
     getValueFromSubfield: (field, subfield) => {
         try {
-            // console.log ( "field: " + field)
             return field.filter(f => f.startsWith(subfield))[0].trim().substring(1);
         } catch {
             return undefined;
@@ -87,15 +86,10 @@ window.linksServiceRewrite = {
     linkReadingExcerpt: ({ doc = {}, field = null, link = null }) => {
 
         if (doc.pnx) {
-            console.log('Checking reading excerpts');
-            console.log('Field 37: ', doc.pnx.display);
             var scope = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
-            console.log("Meta4books - check scope: ", scope);
 
             if ((scope) && (scope.includes('Meta4books'))) {
-                console.log('Handling reading excerpt');
                 var links = link.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
-                console.log(links);
                 if (links) {
                     links = links.map(url => {
                         return {
@@ -106,10 +100,8 @@ window.linksServiceRewrite = {
                             publicNote: null
                         }
                     });
-                    console.log('links', links);
 
                     if (doc.delivery) {
-                        console.log(doc.delivery)
                         if (doc.delivery.link) {
                             doc.delivery.link = doc.delivery.link.concat(links)
                         }
@@ -124,8 +116,6 @@ window.linksServiceRewrite = {
     },
 
     createLinksFromOtherField: ({ doc = {}, field = null }) => {
-        // console.log (doc)
-        // console.log (field)
         /*
         var getValueFromSubfield = function (link, subfield) {
             try {
@@ -138,9 +128,6 @@ window.linksServiceRewrite = {
 
         if (doc.pnx) {
             var links = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx);
-
-            // console.log("------------------------------")
-            // console.log (links)
 
             if (links) {
                 links = links.map(link => {
@@ -203,94 +190,49 @@ window.linksServiceRewrite = {
     },
 
     deliveryForExternalResource: ({ doc = {}, source = null, field = null }) => {
-        // console.log (doc)
-        // console.log(source)
-        // console.log(doc.pnx.display.source)
-        // console.log(doc.pnx.display.source.filter(s => source.includes(s)).length > 0)
         if (doc.pnx.display.source.filter(function (s) {
             return source.includes(s);
         }).length > 0) {
             if (doc.delivery) {
-                //console.log("Delivering")
-                /*
-                                console.log ( doc.delivery.deliveryCategory )
-                                console.log ( doc.delivery.deliveryCategory.includes("Remote Search Resource") )
-                                console.log (doc.delivery.availabilityLinks )
-                                console.log (doc.delivery.availabilityLinksUrl )
-                                console.log (doc.delivery.availabilityLinksUrl.length )
-                                console.log (doc.delivery.availabilityLinksUrl.length > 0)
-                */
                 if (
                     (doc.delivery.deliveryCategory.includes("Remote Search Resource") || doc.delivery.deliveryCategory.includes("EXTERNAL-P"))
                     &&
                     doc.delivery.availabilityLinksUrl.length > 0
                 ) {
-                    //console.log("DeliveryLink - part 1")
-
                     var displayConstant = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "C");
-
-                    //console.log('Calculated display constant:', displayConstant)
 
                     /* Old version of interceptor - handles records with display constant loaded into URL */
                     if (displayConstant) {
-                        console.log('Activating advanced link handling')
                         doc.delivery.displayedAvailability = displayConstant;
                         doc.delivery.availability[0] = displayConstant;
-
-                        //console.log("DeliveryLink - part 2")
-
-                        /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
-                        //                        doc.delivery.availabilityLinks = ['directlink']
-                        //                        window.appConfig['system-configuration']['enable_direct_linking_in_record_full_view'] = true;
 
                         if (doc.delivery.deliveryCategory.includes("Remote Search Resource")) {
                             doc.delivery.electronicServices[0].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
                             doc.delivery.electronicServices[0].serviceUrl = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
-                            //console.log("DeliveryLink - part 3")
                         }
                         if (doc.delivery.deliveryCategory.includes("EXTERNAL-P") && doc.delivery.availabilityLinksUrl[0]) {
                             doc.delivery.electronicServices[0] = { serviceUrl: window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U") }
-                            //console.log("DeliveryLink - part 4")
                         }
 
                         doc.delivery.availabilityLinksUrl[0] = window.linksServiceRewrite.getValueFromSubfield(doc.delivery.availabilityLinksUrl[0].split("$$"), "U");
                         doc.delivery.link = doc.delivery.link.filter(l => { return !new RegExp(displayConstant).test(l.linkURL) })
-
-                        //console.log(doc.delivery.link)
                     }
                     else {
-                        console.log('Activating basic link handling')
-                        //console.log("DeliveryLink - part new1")
                         var displayConstant = field.split('.').reduce((previous, current) => { return previous[current] }, doc.pnx)[0];
-
-                        //console.log('Calculated display constant:', displayConstant)
 
                         if (displayConstant) {
                             doc.delivery.displayedAvailability = displayConstant;
                             doc.delivery.availability[0] = displayConstant;
 
-                            //console.log("DeliveryLink - part new2")
-
-                            /* Will be handled in \components\availabilityLine\ScopeArchive\index.js */
-                            //                        doc.delivery.availabilityLinks = ['directlink']
-                            //                        window.appConfig['system-configuration']['enable_direct_linking_in_record_full_view'] = true;
-
                             if (doc.delivery.deliveryCategory.includes("Remote Search Resource")) {
-                                //console.log("DeliveryLink - part new3")
-                                //console.log('Electronic services - before processing:', doc.delivery.electronicServices[0])
                                 let i = 0;
                                 while (i < doc.delivery.electronicServices.length) {
                                     doc.delivery.electronicServices[i].packageName = pubSub.translate.instant('delivery.code.' + displayConstant);
                                     i++;
                                 }
-
-                                //console.log('Electronic services - after processing:', doc.delivery.electronicServices)
                             }
 
-                            //console.log("DeliveryLink - part new4")
                             doc.delivery.link = doc.delivery.link.filter(l => { return !new RegExp(/Link to (?:resource|request)/).test(l.displayLabel) })
-
-                            //console.log('Delivery link', doc.delivery.link);
                         }
                     }
 
@@ -305,7 +247,6 @@ window.linksServiceRewrite = {
 
     getValueFromSubfield: (field, subfield) => {
         try {
-            // console.log ( "field: " + field)
             return field.filter(f => f.startsWith(subfield))[0].trim().substring(1);
         } catch {
             return undefined;
@@ -353,14 +294,10 @@ window.linksServiceRewrite = {
 
         // Test of het om een Lirias record gaat op basis van de data source.
         // liriasRec = doc.pnx.control.originalsourceid.find(id => id.startsWith(recordType));
-        // console.log(doc.pnx.display.source);
-        // console.log(doc.pnx.display.source.filter(s => recordSource.includes(s)).length > 0);
         if ((doc.pnx.display.source.filter(function (s) {
             return recordSource.includes(s);
         }).length > 0)
             || (doc.delivery && doc.delivery.electronicServices && doc.delivery.electronicServices.some(function (s) { return s['ilsApiId'].match(/^lirias/); }))) {
-            //console.log('Delivering Lirias...')
-            //console.log(doc.delivery.electronicServices)
 
             // Regular Expression voor de detectie van display constants in URLs, gekenmerkt door de aanwezigheid van subveld-indicatoren startend met '$$'.
             const linkSign = new RegExp(/\$\$/);
@@ -463,14 +400,11 @@ window.linksServiceRewrite = {
                 }
             }
         }
-        //console.log(doc);
         return doc;
     }
 }
 
 pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
-    //console.log('after-pnxBaseURL')
-    //console.log('reqRes:', reqRes)
     // "linksServiceRewrite".init(url, headers, params, $translate);
     var rewriteActions = linksServiceRewrite.configuration.afterPnxBaseURL.filter(c => {
         return new RegExp(c.enableInView).test(window.appConfig.vid)
@@ -483,8 +417,6 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
             // console.log(rewriteAction);
             Object.entries(rewriteAction).forEach(ra => {
                 const [action, parameters] = ra;
-                // console.log(action, parameters);
-                // console.log (reqRes.data)
 
                 // pnxBaseURL is also called for fullview (Permalink)
                 // the url then starts with /primaws/rest/pub/pnxs/L/ instead of /primaws/rest/pub/pnxs
@@ -494,7 +426,6 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                 // Scenario 1: return data contains array of pnx records in element 'docs'
                 // Application range: search/brief results
                 if (reqRes.data['docs']) {
-                    //console.log('Rewrite type 1')
                     reqRes.data['docs'].map(d => {
                         parameters.doc = d
                         try {
@@ -502,15 +433,12 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                         } catch (error) {
                             console.error(error);
                         }
-                        //console.log(d)
                         return d
                     });
                 }
                 // Scenario 2: return data is a single pnx record, encoded as a single object 'data' at top level (data = pnx record)
                 // Application range: full view, permalinks
                 if (reqRes.data['pnx']) {
-                    //console.log('Rewrite type 2')
-                    //console.log('Array check type 2:', reqRes.data instanceof Array)
                     parameters.doc = reqRes.data
                     try {
                         reqRes.data = linksServiceRewrite[action](parameters);
@@ -521,10 +449,6 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
                 // Scenario 3: return data is an array of pnx records, encoded in element 'data'
                 // Application range: saved items
                 if (reqRes.data instanceof Array) {
-                    //console.log('Rewrite type 3')
-                    //console.log('Array check type 3:', reqRes.data instanceof Array)
-                    //console.log('Found data, but not docs...')
-                    //console.log(reqRes)
                     reqRes.data.map(d => {
                         parameters.doc = d;
                         try {
@@ -542,21 +466,15 @@ pubSub.subscribe('after-pnxBaseURL', (reqRes) => {
 })
 
 pubSub.subscribe('after-deliveryURL', (reqRes) => {
-    //console.log('after-deliveryURL')
-    //console.log('reqRes:', reqRes)
     var rewriteActions = linksServiceRewrite.configuration.afterDeliveryURL.filter(c => {
         return new RegExp(c.enableInView).test(window.appConfig.vid)
     })
 
-    //console.log(reqRes.data[0].delivery.link)
     if (rewriteActions.length > 0) {
         rewriteActions.forEach(rewriteAction => {
             delete rewriteAction.enableInView;
-            // console.log(rewriteAction);
             Object.entries(rewriteAction).forEach(ra => {
                 const [action, parameters] = ra;
-                // console.log(action, parameters);
-                // console.log (reqRes.data)
                 if (reqRes.data.length > 0) {
                     reqRes.data.map(d => {
                         parameters.doc = d
