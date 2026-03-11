@@ -39,7 +39,7 @@ export default class DialogController {
         inst: view.institution.code || window.appConfig['primo-view']['institution']['institution-code'],
         loggedIn: user.isLoggedIn,
         onCampus: user.isOnCampus,
-        user: user.name,
+        user: user.user_name,
         ip: view.ip.address,
         type: $scope.feedback.type,
         feedback: $scope.feedback.message,
