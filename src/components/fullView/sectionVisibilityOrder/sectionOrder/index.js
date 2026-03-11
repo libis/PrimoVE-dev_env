@@ -69,8 +69,8 @@ class SectionOrderController {
         ) {
             self.servicesOrder = ["brief", "details", "locationsLinks", "links", "action_list", "tags", "citationTrails"];
         }
-        if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KHM:TMOREMA_TEST" ||
-            self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KHK:TMOREK_TEST" 
+        if (self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KHM:TMOREMA" ||
+            self.parentCtrl.parentCtrl.$stateParams.vid === "32KUL_KHK:TMOREK" 
         ) {
             self.servicesOrder = ["brief", "getit_link1", "service_viewit", "details", "links", "altmetrics", "action_list", "tags", "citationTrails"];
         }  
