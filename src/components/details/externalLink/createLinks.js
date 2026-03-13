@@ -72,7 +72,7 @@ class ExternalLinksInDetailsController {
                                     }).join(" ");
                                 }else if (new RegExp("^[ ]*researcherid:").test(p)) {
                                     return p.replace(/^[ ]*researcherid:/,'').split(",").map ( id => {
-                                        return '[<a href="https://www.researcherid.com/rid' + id +'" target="_blank">ResearcherID<i class=\"material-icons prm-text\" style>launch</i></a>]'
+                                        return '[<a href="https://www.researcherid.com/rid/' + id +'" target="_blank">ResearcherID<i class=\"material-icons prm-text\" style>launch</i></a>]'
                                     }).join(" ");
                                 }else if (new RegExp("^[ ]*staff_nr:").test(p)) {
                                     return p.replace(/^[ ]*staff_nr:/,'').split(",").map ( id => {
