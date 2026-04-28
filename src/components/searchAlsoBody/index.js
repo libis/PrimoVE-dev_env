@@ -15,23 +15,29 @@ class SearchAlsoBodyController {
     this.location = this.$location;
   }
 
-  get search() {
+    get search() {
+        //console.log('Calling Search Also Search()');
+        //console.log('Search query: ', this.location.search().query);
     return this.location.search().query || '';
   }
 
-  get name() {
+    get name() {
+        //console.log('Calling Search Also Name()');
     return this.parentCtrl.parentCtrl.facetGroup.name;
   }
 
-  get parsedQuery() {
+    get parsedQuery() {
+        //console.log('Calling Search Also ParsedQuery()');
     let query = this.search;
     if (!Array.isArray(query)) {
       query = [query]
-    }
+        }
+        //console.log('Parsed query method - query splitting outcome: ', query.map(m => m.split(',')));
     return query.map(m => m.split(','));
   }
 
-  get searchTerms() {    
+    get searchTerms() {
+        //console.log('Calling Search Also SearchTerms()');
     let search = this.parsedQuery.map(m => `query=${m[0]},${m[1]},${m[2]}` || '').join('&');
     if (this.parsedQuery.length > 1) {
       search += '&mode=advanced';
@@ -51,25 +57,27 @@ class SearchAlsoBodyController {
         "img": "https://scholar.google.com/favicon.ico",
         "tooltip": "nui.customizing.idslu.search_also.tooltip.google_scolar",
         mapping: function mapping(search) {
-          var terms = search.split(",");
+            var terms = search.split(",");
+            //console.log("Google scholar search terms: ", terms);
           return terms[2] || "";
         }
       },
       {
           "view": '^32KUL_KATHO:VIVES|^FARO|^32KUL_KHL:UCLL|^32KUL_LUCAWENK:LUCA|^32KUL_VLER.*|^32KUL_LIBS.LIBS|^32KUL_LIBS.RVAONEM',
         "name": "UniCat",
-        "url": "https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
+        "url": "https://unicat.be/uniCat?func=search&query=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
         "tooltip": "nui.customizing.idslu.search_also.tooltip.unicat",
         mapping: function mapping(search) {
-          var terms = search.split(",");
+            var terms = search.split(",");
+            //console.log("Unicat search terms: ", terms);
           return terms[2] || "";
         }
       },
       {
         "view": '^32KUL_KUL:KULeuven',
         "name": "UniCat",
-        "url": "https://kuleuven.e-bronnen.be/login?url=https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
+        "url": "https://kuleuven.e-bronnen.be/login?url=https://unicat.be/uniCat?func=search&query=",
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon_unicat.ico",
         "tooltip": "nui.customizing.idslu.search_also.tooltip.unicat",
         mapping: function mapping(search) {
@@ -84,7 +92,8 @@ class SearchAlsoBodyController {
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/favicon.ico",
         "tooltip": "nui.customizing.idslu.search_also.tooltip.vlp",
         mapping: function mapping(search) {
-          var terms = search.split(",");
+            var terms = search.split(",");
+            //console.log("VLP PI terms: ", terms);
           return terms[2] || "";
         }
       },
@@ -100,7 +109,8 @@ class SearchAlsoBodyController {
             "title": "ti",
             "creator": "au",
             "subject": "su"
-          };
+            };
+            //console.log("Worldcat terms: ", self.parsedQuery.map(m => `${type_mappings[m[0]] || "kw"}:${m[2] || ''}`).join(' '));
           return self.parsedQuery.map(m => `${type_mappings[m[0]] || "kw"}:${m[2] || ''}`).join(' ');
         }
       }, {
@@ -110,7 +120,8 @@ class SearchAlsoBodyController {
         "img": "/discovery/custom/32KUL_LIBIS_NETWORK-CENTRAL_PACKAGE/img/bib_be.png",
         "tooltip": "nui.customizing.idslu.search_also.tooltip.deBib",
         mapping: function mapping(search) {
-          var terms = search.split(",");
+            var terms = search.split(",");
+            //console.log("Bibliotheek.be terms: ", terms);
           return terms[2] || "";
         }
       }
