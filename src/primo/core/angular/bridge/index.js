@@ -1,8 +1,8 @@
-import Component from '../component';
+import Component from "../component";
 
 export default class Bridge {
   static get app() {
-    let primoExplore = Component.element('primo-explore');
+    let primoExplore = Component.element("primo-explore");
     return primoExplore && primoExplore.length > 0 ? primoExplore[0] : null;
   }
 
@@ -22,7 +22,7 @@ export default class Bridge {
   static get http() {
     let injector = this.injector;
     if (injector) {
-      let h = injector.get('$http');
+      let h = injector.get("$http");
       if (h) {
         return h;
       }
@@ -34,19 +34,19 @@ export default class Bridge {
   static get translate() {
     let injector = this.injector;
     if (injector) {
-      let t = injector.get('$translate');
+      let t = injector.get("$translate");
       if (t) {
         return t;
       }
     }
 
-    return null;    
+    return null;
   }
 
   static rootScope() {
     let injector = this.injector;
     if (injector) {
-      let rootScope = injector.get('$rootScope');
+      let rootScope = injector.get("$rootScope");
       if (rootScope) {
         return rootScope;
       }
@@ -73,53 +73,56 @@ export default class Bridge {
   }
 
   static get restBaseURLs() {
-    return this.injector.get('restBaseURLs')
+    return this.injector.get("restBaseURLs");
   }
 
   static get viewCode() {
-    return this.jwtData.viewId || window.appConfig['vid'];
+    return this.jwtData.viewId || window.appConfig["vid"];
   }
 
   static async userDetails() {
     let viewCode = this.viewCode;
-    let details = await this.http.get(`${this.restBaseURLs.userSettingsBaseURL}?vid=${viewCode}`);
+    let details = await this.http.get(
+      `${this.restBaseURLs.userSettingsBaseURL}?vid=${viewCode}`,
+    );
 
     return details.data;
   }
 
   static async userFines() {
-    let userFines = await this.http.get(`${this.restBaseURLs.myAccountBaseURL}/fines`);
+    let userFines = await this.http.get(
+      `${this.restBaseURLs.myAccountBaseURL}/fines`,
+    );
 
     try {
       let data = userFines.data;
-      if (data.status == 'ok') {
+      if (data.status == "ok") {
         let fines = data.data.fines;
-        return fines.fine.filter( (f) => f.finestatus.toUpperCase() != "CLOSED" ) 
+        return fines.fine.filter((f) => f.finestatus.toUpperCase() != "CLOSED");
       } else {
-        console.log('No fines');
+        console.log("No fines");
         return [];
       }
-    }
-    catch (error) {
+    } catch (error) {
       return [];
     }
   }
 
   static async userLoans() {
-    let userLoans = await this.http.get(`${this.restBaseURLs.myAccountBaseURL}/loans`);
+    let userLoans = await this.http.get(
+      `${this.restBaseURLs.myAccountBaseURL}/loans`,
+    );
     try {
       let data = userLoans.data;
-      if (data.status == 'ok') {
+      if (data.status == "ok") {
         let loans = data.data.loans;
         return loans.loan;
       } else {
-        console.log('No loans');
+        console.log("No loans");
         return [];
       }
-    }
-    catch (error) {
+    } catch (error) {
       return [];
     }
   }
-
 }
