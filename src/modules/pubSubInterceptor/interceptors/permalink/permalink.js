@@ -65,7 +65,7 @@ window.permalink = {
                 {
                     sourcesystem: new RegExp('Webhook'),
                     sourceid: new RegExp('lirias'),
-                    field: "control.sourcerecordid",
+                    field: "control.sourcerecordid",// kan nu ook lds12 gebruiken (Gutenberg bridge is aangepast)
                     prefix: "https://lirias.kuleuven.be/"
                 }
             },

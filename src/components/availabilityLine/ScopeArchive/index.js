@@ -14,14 +14,14 @@ class AvailabilityLineController {
 
     // Filter sources from pnx via self.sourceList
     let sources = self.$ctrl.result.pnx.display.source.filter( source => {
-        console.log(source)
-        console.log(self.sourceList.includes(source.toLowerCase()))
+        //console.log(source)
+        //console.log(self.sourceList.includes(source.toLowerCase()))
       return ( self.sourceList.includes(source.toLowerCase()) )
     })
 
     if (sources.length !== 0) {
       self.$ctrl.doPrimoVEDirectLink = function (index) {
-        console.log ( "doPrimoVEDirectLink - index"+ index)      
+        //console.log ( "doPrimoVEDirectLink - index"+ index)      
         return true;
       }
     }

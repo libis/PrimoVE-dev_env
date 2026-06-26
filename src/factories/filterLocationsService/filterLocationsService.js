@@ -71,14 +71,14 @@ export default class FilterLocationsService {
                     "name": "Ruusbroec Institute Library – University of Antwerp",
                     //"url": "https://anet.be/record/opacanet/<#recordid>"
                     //"url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
-                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>"
+                    "url": "https://go.wander.be/record/uantwerpen/opacuantwerpen/<#recordid>"
                 },
                 "ANET_UA-RG": {
                     "id" : function (lib) { return pnx_record.display.lds12  },
                     "name": "Ruusbroec Institute Library – University of Antwerp",
                     //"url": "https://anet.be/record/opacanet/<#recordid>"
                     //"url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
-                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>"
+                    "url": "https://go.wander.be/record/uantwerpen/opacuantwerpen/<#recordid>"
                 }
 
             }
