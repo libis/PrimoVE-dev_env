@@ -5,6 +5,6 @@ import { payFinesMessageComponent } from "../../../src/components/payFinesMessag
   "use strict";
 
   var app = angular.module("viewCustom", ["angularLoad"]);
-
   app.component(payFinesMessageComponent.name, payFinesMessageComponent.config);
+  console.log("component", payFinesMessageComponent);
 })();

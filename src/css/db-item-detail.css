@@ -1,0 +1,8 @@
+/*
+prm-databases .result-item-text .item-detail {
+    display: none !important;
+}
+*/
+prm-brief-result .item-detail {
+    display: block !important;
+}

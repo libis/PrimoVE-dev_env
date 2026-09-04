@@ -1,0 +1,11 @@
+prm-logo .product-logo{
+  display:inline-block !important;
+}
+
+prm-logo-after .product-logo{
+  display:inline-block !important;
+}
+
+prm-logo .product-logo .organization-logo:focus, prm-logo .product-logo .organization-logo:hover .product-logo:hover{
+    box-shadow: none;
+}
