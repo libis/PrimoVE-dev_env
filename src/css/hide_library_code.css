@@ -1,4 +1,0 @@
-/* Hide Library in availability*/
-prm-search-result-availability-line span.best-location-library-code.locations-link { 
-    display: none !important;  
-}
