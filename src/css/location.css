@@ -1,0 +1,7 @@
+prm-location-holdings .layout-row{
+    display: block !important;
+}
+
+prm-opac .margin-for-related-title {
+    white-space: normal !important;
+} 
