@@ -124,10 +124,10 @@ class newPayFinesMessageController {
 
 newPayFinesMessageController.$inject = ["$translate", "MessageService"];
 
-export let payFinesMessageComponent = {
+export let newPayFinesMessageComponent = {
   name: "new-custom-pay-fines-message",
   enabled: true,
-  appendTo: "prm-top-bar-after",
+  appendTo: "prm-top-bar-before",
   enableInView: "^32KUL_KUL:KULeuven_TEST$",
   config: {
     bindings: {
