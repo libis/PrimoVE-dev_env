@@ -32,7 +32,7 @@
     "label": "KU Leuven Libraries Economics and Business Campus Carolus Antwerp"
   },
   "ETEW": {
-    "url": "https://bib.kuleuven.be/ebib/leuven",
+    "url": "https://bib.kuleuven.be/vleminckxveld/over-bibliotheek-vleminckxveld/locaties#EBIB",
     "label": "KU Leuven Libraries Economics and Business Leuven"
   },
   "RBIB": {
@@ -48,11 +48,11 @@
     "label": "KU Leuven Libraries Philosophy"
   },
   "PBIB": {
-    "url": "https://bib.kuleuven.be/pbib",
+    "url": "https://bib.kuleuven.be/vleminckxveld/over-bibliotheek-vleminckxveld/locaties#PBIB",
     "label": "KU Leuven Libraries Psychology and Educational Sciences"
   },
   "SBIB": {
-    "url": "https://bib.kuleuven.be/sbib",
+    "url": "https://bib.kuleuven.be/vleminckxveld/over-bibliotheek-vleminckxveld/locaties#SBIB",
     "label": "KU Leuven Libraries Social Sciences"
   },
   "BCOL": {
