@@ -665,5 +665,23 @@
         }
       }
     }
+  },
+  "32KUL_GRM": {
+    "inst": "28",
+    "views": {
+      "default": {
+        "code": "1",
+        "scopes": {
+          "default": "1"
+        }
+      },
+      "GRM": {
+        "code": "1",
+        "scopes": {
+          "default": "1",
+          "MyInst_and_CI": "1"
+        }
+      }
+    }
   }
 }
